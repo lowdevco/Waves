@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #046bd2;
+  --color-primary-dark: #014e9a;
+  --color-primary-light: #e0f0fe;
+  --color-secondary: #00d2ff;
+  --color-background: #f0f5fa;
+  --color-background-dark: #0f172a;
+  --color-brandSlate-dark: #1e293b;
+  --color-brandSlate-body: #334155;
+
+  --font-sans: "Poppins", "sans-serif";
+
+  --animate-wave-flow: wave 12s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  --animate-wave-flow-slow: wave-slow 20s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  --animate-float: float 3s ease-in-out infinite;
+
+  @keyframes wave {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes wave-slow {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-brandSlate-body font-sans;
+  }
+}
+
+/* Custom Wave Animations */
+.wave-svg {
+  display: block;
+  width: 200%;
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Custom step active animations */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(4, 107, 210, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(4, 107, 210, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(4, 107, 210, 0);
+  }
+}
+
+.pulse-ring-active {
+  animation: pulse-ring 2s infinite;
+}
