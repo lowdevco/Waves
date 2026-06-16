@@ -3,25 +3,7 @@
  * Built with Plain JS
  */
 
-// 1. PRICE LIST DEFINITIONS
-const PRICE_LIST = [
-  { id: 'shirt', name: 'Shirt', image: 'assets/images/items/shirt.png', category: 'garments', prices: { cleanPress: 9, press: 5 } },
-  { id: 'tshirt', name: 'T-Shirt', image: 'assets/images/items/tshirt.png', category: 'garments', prices: { cleanPress: 9, press: 5 } },
-  { id: 'trousers', name: 'Trousers', image: 'assets/images/items/trousers.png', category: 'garments', prices: { cleanPress: 12, press: 6 } },
-  { id: 'sweater', name: 'Sweater', image: 'assets/images/items/sweater.png', category: 'garments', prices: { cleanPress: 15, press: 8 } },
-  { id: 'jacket', name: 'Jacket', image: 'assets/images/items/jacket.png', category: 'garments', prices: { cleanPress: 23, press: 15 } },
-  { id: 'suit', name: 'Suit', image: 'assets/images/items/suit.png', category: 'garments', prices: { cleanPress: 35, press: 21 } },
-  { id: 'dishdasha', name: 'Dishdasha', image: 'assets/images/items/dishdasha.png', category: 'garments', prices: { cleanPress: 12, press: 6 } },
-  { id: 'blouse', name: 'Blouse', image: 'assets/images/items/blouse.png', category: 'garments', prices: { cleanPress: 10, press: 6 } },
-  { id: 'skirt', name: 'Skirt', image: 'assets/images/items/skirt.png', category: 'garments', prices: { cleanPress: 12, press: 8 } },
-  { id: 'dress', name: 'Dress', image: 'assets/images/items/dress.png', category: 'garments', prices: { cleanPress: 20, press: 10 } },
-  { id: 'long_dress', name: 'Long Dress', image: 'assets/images/items/long_dress.png', category: 'garments', prices: { cleanPress: 30, press: 20 } },
-  { id: 'bedsheet', name: 'Bedsheet', image: 'assets/images/items/bedsheet.png', category: 'bedding', prices: { cleanPress: 10, press: 8 } },
-  { id: 'bedcover', name: 'Bed Cover', image: 'assets/images/items/bedcover.png', category: 'bedding', prices: { cleanPress: 18, press: 13 } },
-  { id: 'pillowcase', name: 'Pillow Case', image: 'assets/images/items/pillowcase.png', category: 'bedding', prices: { cleanPress: 4, press: 2 } },
-  { id: 'blanket', name: 'Blanket', image: 'assets/images/items/blanket.png', category: 'bedding', prices: { cleanPress: 30, press: null } },
-  { id: 'shoecleaning', name: 'Shoe Cleaning', image: 'assets/images/items/shoecleaning.png', category: 'footwear', prices: { cleanPress: 40, press: null } }
-];
+// PRICE_LIST is loaded globally from Price-items.js
 
 // 2. APPLICATION STATE
 const state = {
@@ -44,23 +26,12 @@ const state = {
 // 3. CORE INITIALIZATION
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
-  initServicesTabs();
+  initHeroCarousel();
+  initServicesSlider();
   initPriceEstimator();
   initBookingWizard();
   initFAQs();
-  
-  // Create Lucide Icons after the page loads
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
 });
-
-// Helper: update Lucide icons after dynamic HTML injection
-function refreshIcons() {
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
-}
 
 // ---------------------------------------------------------------------
 // 4. NAVBAR CONTROLLER
@@ -71,9 +42,9 @@ function initNavbar() {
   const mobileDrawer = document.getElementById('mobile-drawer');
   const mobileToggleIcon = mobileToggle.querySelector('i');
 
-  // Scroll header styling
+  // Scroll header styling (Pill navbar turns to regular header after 300px scroll)
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 300) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
@@ -84,11 +55,10 @@ function initNavbar() {
   mobileToggle.addEventListener('click', () => {
     const isActive = mobileDrawer.classList.toggle('active');
     if (isActive) {
-      mobileToggleIcon.setAttribute('data-lucide', 'x');
+      mobileToggleIcon.className = 'fa-solid fa-xmark';
     } else {
-      mobileToggleIcon.setAttribute('data-lucide', 'menu');
+      mobileToggleIcon.className = 'fa-solid fa-bars';
     }
-    refreshIcons();
   });
 
   // Smooth scroll and Drawer closing on link clicks
@@ -101,8 +71,7 @@ function initNavbar() {
       
       // Close mobile drawer if open
       mobileDrawer.classList.remove('active');
-      mobileToggleIcon.setAttribute('data-lucide', 'menu');
-      refreshIcons();
+      mobileToggleIcon.className = 'fa-solid fa-bars';
 
       if (targetElement) {
         // Offset scroll for fixed header
@@ -167,38 +136,242 @@ function initNavbar() {
 }
 
 // ---------------------------------------------------------------------
-// 5. SERVICES FILTER CONTROLLER
+// 5. SERVICES CAROUSEL CONTROLLER
 // ---------------------------------------------------------------------
-function initServicesTabs() {
-  const tabButtons = document.querySelectorAll('.services-section .tab-btn');
-  const serviceCards = document.querySelectorAll('.services-section .service-card');
+function initServicesSlider() {
+  const track = document.getElementById('services-track');
+  const prevBtn = document.getElementById('services-prev');
+  const nextBtn = document.getElementById('services-next');
+  
+  if (!track || !prevBtn || !nextBtn) return;
 
-  tabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Toggle active classes
-      tabButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  // 1. Dynamically render service cards from SERVICES_DATA with clones for seamless looping
+  if (typeof SERVICES_DATA !== 'undefined' && SERVICES_DATA.length > 0) {
+    const originalCardsHTML = SERVICES_DATA.map(service => `
+      <div class="service-card-new" data-service-id="${service.id}">
+        <div class="service-img-wrapper">
+          <div class="service-img-mask">
+            <img src="${service.image}" alt="${service.title}" class="service-img" />
+          </div>
+          <div class="service-circle-icon ${service.iconColorClass || 'icon-blue'}">
+            ${service.iconSvg}
+          </div>
+        </div>
+        <div class="service-body">
+          <h3 class="service-title-new">${service.title}</h3>
+          <p class="service-desc-new">
+            ${service.description}
+          </p>
+          <button class="btn-read-more">READ MORE</button>
+        </div>
+      </div>
+    `);
 
-      const category = btn.getAttribute('data-category');
-      state.activeServiceTab = category;
+    // Clone the last 3 cards and the first 3 cards to build the seamless loop buffer
+    const clonesPrepend = originalCardsHTML.slice(-3);
+    const clonesAppend = originalCardsHTML.slice(0, 3);
+    
+    // Populate the track with: last 3 clones + 10 original cards + first 3 clones
+    track.innerHTML = [...clonesPrepend, ...originalCardsHTML, ...clonesAppend].join('');
 
-      // Filter cards
-      serviceCards.forEach(card => {
-        const cardCat = card.getAttribute('data-category');
-        if (category === 'all' || cardCat === category) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
+    // Bind scroll events to new buttons
+    const readMoreButtons = track.querySelectorAll('.btn-read-more');
+    readMoreButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetElement = document.getElementById('estimator');
+        if (targetElement) {
+          const headerOffset = 110;
+          const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = elementPosition - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
         }
       });
     });
+  }
+  
+  const cards = Array.from(track.children);
+  if (cards.length === 0) return;
+  
+  // Start at index 3 (first original card, skipping the 3 prepended clones)
+  let currentIndex = 3;
+  let isTransitioning = false;
+  
+  function getVisibleCardsCount() {
+    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 640) return 2;
+    return 1;
+  }
+  
+  function updateSliderPosition() {
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    const gap = 32; // Matches gap in CSS
+    const amountToMove = currentIndex * (cardWidth + gap);
+    
+    track.style.transform = `translateX(-${amountToMove}px)`;
+  }
+  
+  // Transition-end listener to reset index instantly without animation when clone limits are crossed
+  track.addEventListener('transitionend', (e) => {
+    // Prevent bubbling transitionend events from cards from triggering this
+    if (e.target !== track) return;
+    
+    isTransitioning = false;
+    const N = SERVICES_DATA.length;
+    
+    if (currentIndex >= N + 3) {
+      // Reached the right clones buffer -> instantly jump back to original card 1 (index 3)
+      track.style.transition = 'none';
+      currentIndex = 3;
+      updateSliderPosition();
+      track.offsetHeight; // force DOM reflow
+      track.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+    } else if (currentIndex <= 2) {
+      // Reached the left clones buffer -> instantly jump back to original card N (index N + 2)
+      track.style.transition = 'none';
+      currentIndex = N + 2;
+      updateSliderPosition();
+      track.offsetHeight; // force DOM reflow
+      track.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+    }
   });
+  
+  prevBtn.addEventListener('click', () => {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentIndex--;
+    updateSliderPosition();
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentIndex++;
+    updateSliderPosition();
+  });
+  
+  // Responsive resize update
+  window.addEventListener('resize', () => {
+    updateSliderPosition();
+  });
+  
+  // Set initial position without animation
+  track.style.transition = 'none';
+  updateSliderPosition();
+  track.offsetHeight; // force reflow
+  track.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
 }
 
 // ---------------------------------------------------------------------
 // 6. PRICE ESTIMATOR & BAG CONTROLLER
 // ---------------------------------------------------------------------
+// Render estimator item cards dynamically
+function renderEstimatorItems() {
+  const container = document.getElementById('estimator-items-panel');
+  if (!container) return;
+
+  container.innerHTML = PRICE_LIST.map(item => {
+    // Determine the label for the primary service
+    const primaryServiceName = item.id === 'shoecleaning' ? 'Deep Clean' : 'Clean & Press';
+    const hasSecondaryService = item.prices.press !== null;
+
+    let servicesHtml = `
+      <div class="item-service-row">
+        <div class="item-service-info">
+          <span class="item-service-name">${primaryServiceName}</span>
+          <span class="item-service-price">${item.prices.cleanPress} AED</span>
+        </div>
+        <div class="item-qty-control">
+          <button class="item-qty-btn" data-qty-action="decrease" data-item-id="${item.id}" data-service-type="cleanPress">
+            <i class="fa-solid fa-minus"></i>
+          </button>
+          <span class="item-qty-val" data-item-id="${item.id}" data-service-type="cleanPress">0</span>
+          <button class="item-qty-btn" data-qty-action="increase" data-item-id="${item.id}" data-service-type="cleanPress">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+      </div>
+    `;
+
+    if (hasSecondaryService) {
+      servicesHtml += `
+        <div class="item-service-row">
+          <div class="item-service-info">
+            <span class="item-service-name">Press Only</span>
+            <span class="item-service-price">${item.prices.press} AED</span>
+          </div>
+          <div class="item-qty-control">
+            <button class="item-qty-btn" data-qty-action="decrease" data-item-id="${item.id}" data-service-type="press">
+              <i class="fa-solid fa-minus"></i>
+            </button>
+            <span class="item-qty-val" data-item-id="${item.id}" data-service-type="press">0</span>
+            <button class="item-qty-btn" data-qty-action="increase" data-item-id="${item.id}" data-service-type="press">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    let categoryDisplay = 'garments care';
+    if (item.category === 'bedding') categoryDisplay = 'bedding care';
+    if (item.category === 'footwear') categoryDisplay = 'footwear care';
+
+    return `
+      <div class="item-card" data-category="${item.category}" data-item-id="${item.id}">
+        <div class="item-card-header">
+          <div class="item-image-box">
+            <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/100x100/e0f0fe/046bd2?text=${encodeURIComponent(item.name)}'" />
+          </div>
+          <div class="item-info">
+            <h3 class="item-info-name">${item.name}</h3>
+            <p class="item-info-cat">${categoryDisplay}</p>
+          </div>
+          <div class="item-active-badge" data-item-id="${item.id}">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+        </div>
+        <div class="item-services-list">
+          ${servicesHtml}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// Synchronize card active class border and badge visibility
+function syncCardActiveState(itemId) {
+  const itemCard = document.querySelector(`.item-card[data-item-id="${itemId}"]`);
+  const activeBadge = document.querySelector(`.item-active-badge[data-item-id="${itemId}"]`);
+
+  const totalQty = state.cart
+    .filter(c => c.id === itemId)
+    .reduce((sum, c) => sum + c.quantity, 0);
+
+  if (itemCard) {
+    if (totalQty > 0) {
+      itemCard.classList.add('active');
+    } else {
+      itemCard.classList.remove('active');
+    }
+  }
+
+  if (activeBadge) {
+    if (totalQty > 0) {
+      activeBadge.classList.add('visible');
+    } else {
+      activeBadge.classList.remove('visible');
+    }
+  }
+}
+
 function initPriceEstimator() {
+  // Render dynamic list of items first
+  renderEstimatorItems();
+
   const filterButtons = document.querySelectorAll('.estimator-filters .filter-btn');
   const itemCards = document.querySelectorAll('.estimator-items-panel .item-card');
 
@@ -243,8 +416,11 @@ function initPriceEstimator() {
     });
   }
 
-  // Initial render
+  // Initial render of cart & initial active states check
   renderCart();
+  PRICE_LIST.forEach(item => {
+    syncCardActiveState(item.id);
+  });
 }
 
 function updateCartQuantity(itemId, serviceType, amount) {
@@ -276,6 +452,7 @@ function updateCartQuantity(itemId, serviceType, amount) {
 
   // Update DOM changes
   syncItemQuantitiesDOM(itemId, serviceType);
+  syncCardActiveState(itemId);
   renderCart();
   syncWizardReviewCart();
 }
@@ -290,6 +467,16 @@ function syncItemQuantitiesDOM(itemId, serviceType) {
   );
   if (qtyIndicator) {
     qtyIndicator.textContent = qtyValue;
+    
+    // Toggle active has-qty class on container
+    const qtyControl = qtyIndicator.closest('.item-qty-control');
+    if (qtyControl) {
+      if (qtyValue > 0) {
+        qtyControl.classList.add('has-qty');
+      } else {
+        qtyControl.classList.remove('has-qty');
+      }
+    }
   }
 }
 
@@ -299,7 +486,18 @@ function clearCart() {
   
   // Reset all quantity selector HTML text values back to 0
   const qtyIndicators = document.querySelectorAll('.item-qty-val');
-  qtyIndicators.forEach(ind => ind.textContent = '0');
+  qtyIndicators.forEach(ind => {
+    ind.textContent = '0';
+    const qtyControl = ind.closest('.item-qty-control');
+    if (qtyControl) {
+      qtyControl.classList.remove('has-qty');
+    }
+  });
+
+  // Reset all active card styles
+  PRICE_LIST.forEach(item => {
+    syncCardActiveState(item.id);
+  });
 
   renderCart();
   syncWizardReviewCart();
@@ -575,7 +773,9 @@ function syncWizardReviewCart() {
     summaryTotalSpan.textContent = `${grandTotal} AED`;
 
     itemsReviewList.innerHTML = state.cart.map(item => {
-      const serviceDisplay = item.serviceType === 'cleanPress' ? 'Clean & Press' : 'Press Only';
+      const serviceDisplay = item.serviceType === 'cleanPress' 
+        ? (item.id === 'shoecleaning' ? 'Deep Clean' : 'Clean & Press') 
+        : 'Press Only';
       return `
         <div class="wizard-summary-items-row">
           <span class="wizard-summary-item-name">${item.quantity} x ${item.name}</span>
@@ -707,14 +907,110 @@ function initFAQs() {
         item.classList.remove('active');
         contentPane.style.maxHeight = '0';
       }
+
+      // Update all eye/eye-slash icons
+      faqItems.forEach(i => {
+        const icon = i.querySelector('.faq-trigger i');
+        if (icon) {
+          if (i.classList.contains('active')) {
+            icon.className = 'fa-regular fa-eye-slash';
+          } else {
+            icon.className = 'fa-regular fa-eye';
+          }
+        }
+      });
     });
   });
 
-  // Open first item by default
-  if (faqItems.length > 0) {
-    const firstItem = faqItems[0];
-    const pane = firstItem.querySelector('.faq-content-pane');
-    firstItem.classList.add('active');
-    if (pane) pane.style.maxHeight = pane.scrollHeight + 'px';
+  // Open active items by default based on HTML
+  faqItems.forEach(item => {
+    const pane = item.querySelector('.faq-content-pane');
+    const icon = item.querySelector('.faq-trigger i');
+    if (item.classList.contains('active')) {
+      if (pane) pane.style.maxHeight = pane.scrollHeight + 'px';
+      if (icon) icon.className = 'fa-regular fa-eye-slash';
+    } else {
+      if (pane) pane.style.maxHeight = '0';
+      if (icon) icon.className = 'fa-regular fa-eye';
+    }
+  });
+}
+
+// ---------------------------------------------------------------------
+// 12. HERO CAROUSEL CONTROLLER
+// ---------------------------------------------------------------------
+function initHeroCarousel() {
+  const bgSlides = document.querySelectorAll('.hero-bg-slide');
+  const contentSlides = document.querySelectorAll('.hero-content-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  
+  if (bgSlides.length === 0) return;
+
+  let currentIndex = 0;
+  let slideInterval;
+  const SLIDE_DURATION = 15000; // 15 seconds slide change interval
+
+  // Transitions the carousel to a specific slide index
+  function showSlide(index) {
+    // 1. Cycle background image slides
+    bgSlides.forEach((slide, i) => {
+      if (i === index) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+
+    // 2. Cycle matching text content blocks
+    contentSlides.forEach((slide, i) => {
+      if (i === index) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+
+    // 3. Cycle corresponding dot controls on the right
+    dots.forEach((dot, i) => {
+      if (i === index) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+
+    currentIndex = index;
   }
+
+  // Advance automatically to the next slide
+  function nextSlide() {
+    let nextIndex = (currentIndex + 1) % bgSlides.length;
+    showSlide(nextIndex);
+  }
+
+  // Starts the autoplay transition timer
+  function startAutoplay() {
+    stopAutoplay();
+    slideInterval = setInterval(nextSlide, SLIDE_DURATION);
+  }
+
+  // Stops the autoplay transition timer
+  function stopAutoplay() {
+    if (slideInterval) {
+      clearInterval(slideInterval);
+    }
+  }
+
+  // Add click events to the right-side dot controllers
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const targetIndex = parseInt(dot.getAttribute('data-slide'), 10);
+      showSlide(targetIndex);
+      startAutoplay(); // Reset the 15s autoplay interval timer on click
+    });
+  });
+
+  // Start with first slide initialized
+  showSlide(0);
+  startAutoplay();
 }

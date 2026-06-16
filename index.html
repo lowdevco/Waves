@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/webp" href="assets/images/logo.webp" />
+  <link rel="icon" type="image/webp" href="assets/images/brand/logo.webp" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
     content="Affordable and professional laundry service in Dubai offering dry cleaning, washing, ironing, carpet and sofa cleaning with free pickup and delivery at your doorstep." />
@@ -24,6 +24,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
 
+  <!-- FontAwesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
   <!-- Custom Style Sheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
 
@@ -39,24 +42,24 @@
     <div class="top-social-bar">
       <div class="container top-social-container">
         <div class="top-social-left">
-          <span>Welcome to our Waves Laundry Services!</span>
+          <span>Welcome to Waves Laundry Services!</span>
         </div>
         <div class="top-social-right">
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link"
             aria-label="Twitter">
-            <i data-lucide="twitter"></i>
+            <i class="fa-brands fa-twitter"></i>
           </a>
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link"
             aria-label="Facebook">
-            <i data-lucide="facebook"></i>
+            <i class="fa-brands fa-facebook-f"></i>
           </a>
           <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="social-link"
             aria-label="Pinterest">
-            <i data-lucide="pinterest"></i>
+            <i class="fa-brands fa-brands fa-pinterest"></i>
           </a>
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link"
             aria-label="Instagram">
-            <i data-lucide="instagram"></i>
+            <i class="fa-brands fa-instagram"></i>
           </a>
         </div>
       </div>
@@ -64,43 +67,45 @@
 
     <!-- Main Navbar (Blue Pill Container) -->
     <div class="container navbar-container">
-      <!-- Logo -->
-      <a href="#home" data-scroll-to="home" class="logo">
-        <img src="assets/images/logo.webp" alt="Waves Laundry Logo" />
-      </a>
-
-      <!-- Desktop Links -->
-      <nav class="nav-links">
-        <button data-scroll-to="home" class="nav-link-btn active">
-          Home
-        </button>
-        <button data-scroll-to="about" class="nav-link-btn">About</button>
-        <button data-scroll-to="services" class="nav-link-btn">
-          Services
-        </button>
-        <button data-scroll-to="estimator" class="nav-link-btn">
-          Estimator
-        </button>
-        <button data-scroll-to="locations" class="nav-link-btn">
-          Locations
-        </button>
-        <button data-scroll-to="faq" class="nav-link-btn">FAQ</button>
-      </nav>
-
-      <!-- CTA Buttons -->
-      <div class="nav-cta">
-        <a href="https://wa.me/971523033446" target="_blank" rel="noopener noreferrer" class="btn btn-white-outline">
-          <i data-lucide="message-square"></i> WhatsApp
+      <div class="navbar-inner-container container">
+        <!-- Logo -->
+        <a href="#home" data-scroll-to="home" class="logo">
+          <img src="assets/images/brand/logo.webp" alt="Waves Laundry Logo" />
         </a>
-        <button data-scroll-to="booking" class="btn btn-white-fill">
-          Book Free Pickup
+
+        <!-- Desktop Links -->
+        <nav class="nav-links">
+          <button data-scroll-to="home" class="nav-link-btn active">
+            Home
+          </button>
+          <button data-scroll-to="about" class="nav-link-btn">About</button>
+          <button data-scroll-to="services" class="nav-link-btn">
+            Services
+          </button>
+          <button data-scroll-to="estimator" class="nav-link-btn">
+            Price Planner
+          </button>
+          <button data-scroll-to="locations" class="nav-link-btn">
+            Locations
+          </button>
+          <button data-scroll-to="faq" class="nav-link-btn">FAQ</button>
+        </nav>
+
+        <!-- CTA Buttons -->
+        <div class="nav-cta">
+          <a href="https://wa.me/971523033446" target="_blank" rel="noopener noreferrer" class="btn btn-white-outline">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+          </a>
+          <button data-scroll-to="booking" class="btn btn-white-fill">
+            Book Free Pickup
+          </button>
+        </div>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars"></i>
         </button>
       </div>
-
-      <!-- Mobile Hamburger Toggle -->
-      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
-        <i data-lucide="menu"></i>
-      </button>
     </div>
 
     <!-- Mobile Drawer -->
@@ -111,21 +116,12 @@
         Services
       </button>
       <button data-scroll-to="estimator" class="mobile-nav-link">
-        Pricing Estimator
+        Price Planner
       </button>
       <button data-scroll-to="locations" class="mobile-nav-link">
         Locations
       </button>
       <button data-scroll-to="faq" class="mobile-nav-link">FAQ</button>
-
-      <div class="mobile-drawer-cta">
-        <a href="https://wa.me/971523033446" target="_blank" rel="noopener noreferrer" class="btn btn-green-fill">
-          <i data-lucide="message-square"></i> WhatsApp Us
-        </a>
-        <button data-scroll-to="booking" class="btn btn-primary">
-          Book Free Pickup
-        </button>
-      </div>
     </div>
   </header>
 
@@ -134,333 +130,302 @@
            2. HERO SECTION
            ========================================== -->
     <section id="home" class="hero-section">
-      <!-- Background SVG Waves decoration -->
-      <div class="hero-wave-bottom">
-        <svg viewBox="0 0 1440 320" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg"
-          style="width: 100%; height: 100%">
-          <path fill="#ffffff"
-            d="M0,160L48,154.7C96,149,192,139,288,144C384,149,480,171,576,165.3C672,160,768,128,864,128C960,128,1056,160,1152,176C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-          </path>
-        </svg>
+      <!-- Background Image Carousel -->
+      <div class="hero-bg-carousel">
+        <div class="hero-bg-slide active" style="background-image: url('assets/images/hero/hero-1.png');"></div>
+        <div class="hero-bg-slide" style="background-image: url('assets/images/hero/hero-2.png');"></div>
+        <div class="hero-bg-slide" style="background-image: url('assets/images/hero/hero-3.png');"></div>
+        <div class="hero-bg-overlay"></div>
+      </div>
+
+      <!-- Vertical Carousel Controls (dots on the right) -->
+      <div class="hero-carousel-controls">
+        <div class="hero-dot active" data-slide="0" aria-label="Slide 1"></div>
+        <div class="hero-dot" data-slide="1" aria-label="Slide 2"></div>
+        <div class="hero-dot" data-slide="2" aria-label="Slide 3"></div>
       </div>
 
       <div class="container">
-        <div class="hero-grid">
-          <!-- Left Content Area -->
-          <div class="hero-content">
+        <div class="hero-content-carousel">
+          
+          <!-- Slide 1 Content: General Brand Intro -->
+          <div class="hero-content-slide active">
             <div class="badge-highlight">
-              <i data-lucide="sparkles"></i>
-              <span>We Never Let Your Fashion Fade – Premium Laundry in
-                Dubai</span>
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>We Never Let Your Fashion Fade – Premium Laundry in Dubai</span>
             </div>
 
             <h1 class="hero-title">
               The Job You Hate! <br />
-              <span>We Do It With Love.</span>
+              We Do It <span> With Love.</span>
             </h1>
 
             <p class="hero-desc">
-              We pick it messy and drop it clean! Waves is your premium
-              one-stop solution for dry cleaning, ironing, carpet, curtain,
-              and sofa cleaning in Dubai. Clean clothes, delivered to your
-              doorstep in 24-48 hours.
+              We pick it messy and drop it clean! Waves is your premium one-stop solution for dry cleaning, ironing, carpet, curtain, and sofa cleaning in Dubai. Clean clothes, delivered to your doorstep in 24-48 hours.
             </p>
 
-            <!-- Quick benefits list -->
             <div class="hero-benefits">
               <div class="hero-benefit-item">
-                <i data-lucide="shield-check"></i>
+                <i class="fa-solid fa-shield-halved"></i>
                 <span>Contactless Pickup</span>
               </div>
               <div class="hero-benefit-item">
-                <i data-lucide="clock"></i>
+                <i class="fa-regular fa-clock"></i>
                 <span>30-Min Rapid Pickup</span>
               </div>
               <div class="hero-benefit-item">
-                <i data-lucide="sparkles"></i>
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
                 <span>Fabric Care Experts</span>
               </div>
             </div>
 
-            <!-- Action button rows -->
             <div class="hero-actions">
               <button data-scroll-to="booking" class="btn btn-primary">
-                Schedule Free Pickup <i data-lucide="arrow-right"></i>
+                Schedule Free Pickup <i class="fa-solid fa-arrow-right"></i>
               </button>
-              <button data-scroll-to="estimator" class="btn btn-secondary">
+              <button data-scroll-to="estimator" class="btn btn-white-outline">
                 Explore Services & Prices
               </button>
             </div>
 
-            <!-- Contact numbers -->
             <div class="hero-contact">
               <a href="tel:+971523033446" class="hero-contact-link">
-                <i data-lucide="phone"></i> +971 52 303 3446
+                <i class="fa-solid fa-phone"></i> +971 52 303 3446
               </a>
               <a href="https://wa.me/971523033446" target="_blank" rel="noopener noreferrer"
                 class="hero-contact-link whatsapp">
-                <i data-lucide="message-square"></i> Chat WhatsApp
+                <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp
               </a>
             </div>
           </div>
 
-          <!-- Right Showcase Card -->
-          <div class="hero-showcase">
-            <div class="hero-showcase-blur"></div>
+          <!-- Slide 2 Content: Dry Cleaning Specialists -->
+          <div class="hero-content-slide">
+            <div class="badge-highlight">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>100% Gentle on Fabrics – Expert Dry Cleaning</span>
+            </div>
 
-            <div class="hero-showcase-card">
-              <img src="assets/images/doorstep-laundry.png" alt="Waves Premium Doorstep Laundry in Dubai" />
+            <h1 class="hero-title">
+              Flawless Pressing <br />
+              & Designer <span> Garment Care.</span>
+            </h1>
 
-              <!-- Floating overlays badge -->
-              <div class="hero-floating-badge glass animate-float">
-                <div class="floating-badge-left">
-                  <div class="floating-badge-icon">⭐</div>
-                  <div class="floating-badge-text">
-                    <p class="floating-badge-tagline">Dubai's Choice</p>
-                    <p class="floating-badge-title">Top Rated Laundry 2026</p>
-                  </div>
-                </div>
-                <span class="floating-badge-pill">100% Quality</span>
+            <p class="hero-desc">
+              Keep your suits, dresses, and delicate garments looking brand new. Our fabric care specialists inspect every item, handling delicate silk, lace, wool, and designer apparel with material-safe solvents.
+            </p>
+
+            <div class="hero-benefits">
+              <div class="hero-benefit-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Delicates Specialist</span>
+              </div>
+              <div class="hero-benefit-item">
+                <i class="fa-regular fa-clock"></i>
+                <span>Crease-Free Guarantee</span>
+              </div>
+              <div class="hero-benefit-item">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Eco-Friendly Solvents</span>
               </div>
             </div>
 
-            <div class="hero-glow-back"></div>
+            <div class="hero-actions">
+              <button data-scroll-to="booking" class="btn btn-primary">
+                Schedule Free Pickup <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <button data-scroll-to="estimator" class="btn btn-white-outline">
+                Explore Services & Prices
+              </button>
+            </div>
+
+            <div class="hero-contact">
+              <a href="tel:+971523033446" class="hero-contact-link">
+                <i class="fa-solid fa-phone"></i> +971 52 303 3446
+              </a>
+              <a href="https://wa.me/971523033446" target="_blank" rel="noopener noreferrer"
+                class="hero-contact-link whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp
+              </a>
+            </div>
           </div>
+
+          <!-- Slide 3 Content: Home & Carpet Cleaning -->
+          <div class="hero-content-slide">
+            <div class="badge-highlight">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>Freshness Restored – Home & Upholstery Deep Cleaning</span>
+            </div>
+
+            <h1 class="hero-title">
+              Deep Carpet, Sofa <br />
+              & Curtain<span> Deep Cleaning.</span>
+            </h1>
+
+            <p class="hero-desc">
+              Say goodbye to dust mites, deep-seated dirt, and stubborn stains. We provide targeted upholstery extraction, curtain steam cleaning, and sanitization services that restore freshness to your home interior.
+            </p>
+
+            <div class="hero-benefits">
+              <div class="hero-benefit-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Dust & Stain Removal</span>
+              </div>
+              <div class="hero-benefit-item">
+                <i class="fa-regular fa-clock"></i>
+                <span>Zero Shrinkage Guarantee</span>
+              </div>
+              <div class="hero-benefit-item">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Deep Sanitization</span>
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <button data-scroll-to="booking" class="btn btn-primary">
+                Schedule Free Pickup <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <button data-scroll-to="estimator" class="btn btn-white-outline">
+                Explore Services & Prices
+              </button>
+            </div>
+
+            <div class="hero-contact">
+              <a href="tel:+971523033446" class="hero-contact-link">
+                <i class="fa-solid fa-phone"></i> +971 52 303 3446
+              </a>
+              <a href="https://wa.me/971523033446" target="_blank" rel="noopener noreferrer"
+                class="hero-contact-link whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
     <!-- ==========================================
-           3. SERVICES & ABOUT US SECTION
+           3. SERVICES SECTION
            ========================================== -->
     <section id="services" class="services-section py-section">
       <div class="container">
         <!-- Section Header -->
         <div class="text-center">
-          <span class="section-subtitle">Our Offerings</span>
-          <h2 class="section-title">
-            Professional Cleaning Services Tailored For You
-          </h2>
-          <p class="section-desc">
-            From your daily clothing to premium rugs, leather shoes, and home
-            sofas, we ensure hygienic, spotless cleanliness at affordable
-            prices.
-          </p>
-
-          <!-- Category Tabs -->
-          <div class="tabs-wrapper">
-            <button class="tab-btn active" data-category="all">All</button>
-            <button class="tab-btn" data-category="garments">
-              Garments & Shoes
-            </button>
-            <button class="tab-btn" data-category="home">
-              Home & Furniture
-            </button>
-          </div>
+          <span class="section-subtitle">OUR BEST SERVICES</span>
+          <h2 class="section-title">Our Best Laundry Services For You!</h2>
         </div>
 
-        <!-- Services Grid List -->
-        <div class="services-grid grid">
-          <!-- Card 1: Laundry -->
-          <div class="service-card" data-category="garments">
-            <div class="service-accent-line"></div>
-            <div>
-              <div class="service-icon-box">
-                <i data-lucide="shirt"></i>
-              </div>
-              <h3 class="service-title">Laundry & Dry Cleaning</h3>
-              <p class="service-desc">
-                Comprehensive garment care including washing, folding, steam
-                pressing, and organic dry cleaning. Spotless execution with
-                professional care.
-              </p>
-            </div>
-            <div class="service-footer">
-              <span class="service-detail-text">Free pickup, premium packaging, delivery in 24-48
-                hours.</span>
-              <button data-scroll-to="estimator" class="service-rate-btn">
-                Check Rates →
-              </button>
+        <!-- Services Slider Wrapper -->
+        <div class="services-slider-wrapper">
+          <!-- Prev Button -->
+          <button class="services-nav-btn prev-btn" id="services-prev" aria-label="Previous service">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          
+          <div class="services-slider-track-container">
+            <div class="services-slider-track" id="services-track">
+              <!-- Dynamically populated by assets/js/script.js using SERVICES_DATA -->
             </div>
           </div>
-
-          <!-- Card 2: Curtain -->
-          <div class="service-card" data-category="home">
-            <div class="service-accent-line"></div>
-            <div>
-              <div class="service-icon-box">
-                <i data-lucide="sparkles"></i>
-              </div>
-              <h3 class="service-title">Curtain Cleaning</h3>
-              <p class="service-desc">
-                Deep cleaning for curtains with zero shrinkage. Special
-                treatment matching every fabric type to extract dust, odors,
-                and indoor pollutants.
-              </p>
-            </div>
-            <div class="service-footer">
-              <span class="service-detail-text">Eco-friendly solvents, color preservation.</span>
-              <button data-scroll-to="estimator" class="service-rate-btn">
-                Check Rates →
-              </button>
-            </div>
-          </div>
-
-          <!-- Card 3: Carpet -->
-          <div class="service-card" data-category="home">
-            <div class="service-accent-line"></div>
-            <div>
-              <div class="service-icon-box">
-                <i data-lucide="award"></i>
-              </div>
-              <h3 class="service-title">Top Carpet Cleaning</h3>
-              <p class="service-desc">
-                Targeted carpet extraction washing that lifts deep-seated
-                dirt, dust mites, and stubborn stains without compromising
-                backing fibers.
-              </p>
-            </div>
-            <div class="service-footer">
-              <span class="service-detail-text">Tailored formulas per fiber type.</span>
-              <button data-scroll-to="estimator" class="service-rate-btn">
-                Check Rates →
-              </button>
-            </div>
-          </div>
-
-          <!-- Card 4: Sofa -->
-          <div class="service-card" data-category="home">
-            <div class="service-accent-line"></div>
-            <div>
-              <div class="service-icon-box">
-                <i data-lucide="sofa"></i>
-              </div>
-              <h3 class="service-title">Expert Sofa Cleaning</h3>
-              <p class="service-desc">
-                Deep extraction shampooing and sanitization of upholstery,
-                reaching tight seams and restoring fabric luster to look brand
-                new.
-              </p>
-            </div>
-            <div class="service-footer">
-              <span class="service-detail-text">Stain pre-treatment, odor sanitization.</span>
-              <button data-scroll-to="estimator" class="service-rate-btn">
-                Check Rates →
-              </button>
-            </div>
-          </div>
-
-          <!-- Card 5: Shoe -->
-          <div class="service-card" data-category="garments">
-            <div class="service-accent-line"></div>
-            <div>
-              <div class="service-icon-box">
-                <i data-lucide="sparkles"></i>
-              </div>
-              <h3 class="service-title">Premium Shoe Care</h3>
-              <p class="service-desc">
-                Meticulous cleaning of branded sneakers, leather shoes, and
-                suede boots. Odor elimination, detailing, and stain
-                extraction.
-              </p>
-            </div>
-            <div class="service-footer">
-              <span class="service-detail-text">Material-specific cleaning agents, hand detailing.</span>
-              <button data-scroll-to="estimator" class="service-rate-btn">
-                Check Rates →
-              </button>
-            </div>
-          </div>
-
-          <!-- Card 6: Fashion -->
-          <div class="service-card" data-category="garments">
-            <div class="service-accent-line"></div>
-            <div>
-              <div class="service-icon-box">
-                <i data-lucide="shield-check"></i>
-              </div>
-              <h3 class="service-title">Designer Accessories & Bags</h3>
-              <p class="service-desc">
-                Gentle cleaning for high-value fashion products like designer
-                bags, hats, and leather accessories. Preserves dyes and
-                integrity.
-              </p>
-            </div>
-            <div class="service-footer">
-              <span class="service-detail-text">Experienced technicians, safe care.</span>
-              <button data-scroll-to="estimator" class="service-rate-btn">
-                Check Rates →
-              </button>
-            </div>
-          </div>
+          
+          <!-- Next Button -->
+          <button class="services-nav-btn next-btn" id="services-next" aria-label="Next service">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
         </div>
+      </div>
+    </section>
 
+    <!-- ==========================================
+           3.1 ABOUT US SECTION
+           ========================================== -->
+    <section class="about-section py-section">
+      <div class="container">
         <!-- About Waves Card -->
         <div id="about" class="about-block">
-          <!-- Left Text -->
+          <!-- Left Text Column -->
           <div class="about-content">
-            <span class="section-subtitle">About Us</span>
+            <span class="section-subtitle subtitle-yellow-line">About Us</span>
             <h2 class="about-title">We Pick It Messy and Drop It Clean!</h2>
+            
+            <p class="about-teaser-yellow">
+              We help you ensure everyone gets clean, crisp, and fresh clothes. Dubai's most committed fabric experts.
+            </p>
+            
+            <p class="about-description">
+              Today, with dedication and striving, we have emerged as Dubai's top-rated laundry service vendor. Waves operates all across Dubai, serving both commercial and residential clients in Sobha Hartland, Business Bay, Downtown, Creek Harbour, and beyond.
+            </p>
 
-            <div class="about-desc-list">
-              <p>
-                We are stirring the waves as the fast-paced laundry and dry
-                cleaners in Dubai! Waves is a team of expert laundry service
-                providers covering everything related to dry cleaning and
-                professional garment care. Our love of pristine cleanliness
-                and customer satisfaction marked the beginning of our
-                adventure.
-              </p>
-              <p>
-                Today, with dedication and striving, we have emerged as
-                <strong>Dubai’s top-rated laundry service vendor</strong>.
-                Waves operates all across Dubai, serving both commercial and
-                residential clients in Sobha Hartland, Business Bay, Downtown,
-                Creek Harbour, and beyond.
-              </p>
-              <p>
-                At Waves, we provide a set of well-structured, contactless,
-                and affordable laundry services, including premium fabric care
-                and express 24-hour delivery, ensuring your clothing and home
-                fabrics are decluttered professionally and efficiently.
-              </p>
+            <!-- Mockup checklist with yellow checkmarks -->
+            <div class="about-features-grid">
+              <div class="about-feature-item">
+                <span class="feature-check"><i class="fa-solid fa-check"></i></span>
+                <span class="feature-text">We are Committed</span>
+              </div>
+              <div class="about-feature-item">
+                <span class="feature-check"><i class="fa-solid fa-check"></i></span>
+                <span class="feature-text">Insured & Bonded</span>
+              </div>
+              <div class="about-feature-item">
+                <span class="feature-check"><i class="fa-solid fa-check"></i></span>
+                <span class="feature-text">Highly Rated Cleaning</span>
+              </div>
+              <div class="about-feature-item">
+                <span class="feature-check"><i class="fa-solid fa-check"></i></span>
+                <span class="feature-text">Trusted Professionals</span>
+              </div>
             </div>
 
-            <!-- Stats bar -->
-            <div class="about-stats">
-              <div class="about-stat-item">
-                <p class="about-stat-val">30 Min</p>
-                <p class="about-stat-lbl">Average Pickup Time</p>
-              </div>
-              <div class="about-stat-item">
-                <p class="about-stat-val">100%</p>
-                <p class="about-stat-lbl">Contactless & Safe</p>
-              </div>
-              <div class="about-stat-item">
-                <p class="about-stat-val">10k+</p>
-                <p class="about-stat-lbl">Happy Clients</p>
+            <!-- CTA row matching mockup style -->
+            <div class="about-cta-row">
+              <button data-scroll-to="booking" class="btn btn-navy-accent">
+                BOOK FREE PICKUP <span class="btn-yellow-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+              </button>
+              
+              <div class="about-phone-box">
+                <div class="about-phone-icon">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="about-phone-text">
+                  <span class="phone-label">Call Support</span>
+                  <a href="tel:+971523033446" class="phone-value">+971 52 303 3446</a>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Right Showcase Showcase -->
-          <div class="about-showcase">
-            <div class="about-image-card">
-              <img src="assets/images/about-dry-cleaning.png" alt="Waves Premium Laundry Processing Facility" />
-            </div>
-
-            <!-- Floating Card -->
-            <div class="about-floating-card">
-              <i data-lucide="heart" class="heart-icon"></i>
-              <div class="about-floating-details">
-                <p class="about-floating-title">Expert Care</p>
-                <p class="about-floating-lbl">
-                  Gentle on fabrics, tough on dirt
-                </p>
+          <!-- Right Graphic Column (Inspiration-Based) -->
+          <div class="about-showcase-new">
+            <!-- Solid blue background card -->
+            <div class="showcase-blue-card">
+              <!-- Dot grids and bubbles decoration -->
+              <div class="showcase-dot-grid-1"></div>
+              <div class="showcase-dot-grid-2"></div>
+              <div class="showcase-bubbles-decor">
+                <span class="bubble bubble-1"></span>
+                <span class="bubble bubble-2"></span>
+                <span class="bubble bubble-3"></span>
+              </div>
+              
+              <!-- Yellow circular backdrop -->
+              <div class="showcase-yellow-circle"></div>
+              
+              <!-- Main Image -->
+              <div class="showcase-main-img-wrapper">
+                <img src="assets/images/about/michane.png" alt="Waves Premium Laundry Facility" class="showcase-main-img" />
+              </div>
+              
+              <!-- Floating thumbnail 1 (Shoe Cleaning) -->
+              <div class="floating-thumb thumb-bottom-left">
+                <img src="assets/images/items/shoecleaning.png" alt="Shoe Detailing" />
+              </div>
+              
+              <!-- Floating thumbnail 2 (Dry Cleaning Facility) -->
+              <div class="floating-thumb thumb-top-right">
+                <img src="assets/images/items/jacket.png" alt="Dry Cleaning Facility" />
               </div>
             </div>
-
-            <div class="about-glow-bottom"></div>
           </div>
         </div>
       </div>
@@ -479,7 +444,7 @@
       <div class="container" style="position: relative; z-index: 10">
         <!-- Section Header -->
         <div class="text-center">
-          <span class="section-subtitle">Cost Planner</span>
+          <span class="section-subtitle">Price Planner</span>
           <h2 class="section-title">Interactive Price Planner</h2>
           <p class="section-desc">
             Estimate your laundry service costs before booking. Build your bag
@@ -507,803 +472,7 @@
         <div class="estimator-split-grid">
           <!-- Left List: Clothing Cards items -->
           <div class="estimator-items-panel" id="estimator-items-panel">
-            <!-- Item: Shirt -->
-            <div class="item-card" data-category="garments" data-item-id="shirt">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/shirt.png" alt="Shirt" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Shirt'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Shirt</h3>
-                  <p class="item-info-cat">garments care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">9 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="shirt"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="shirt" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="shirt"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Press Only</span>
-                    <span class="item-service-price">5 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="shirt"
-                      data-service-type="press">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="shirt" data-service-type="press">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="shirt"
-                      data-service-type="press">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: T-Shirt -->
-            <div class="item-card" data-category="garments" data-item-id="tshirt">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/tshirt.png" alt="T-Shirt" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=T-Shirt'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">T-Shirt</h3>
-                  <p class="item-info-cat">garments care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">9 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="tshirt"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="tshirt" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="tshirt"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Press Only</span>
-                    <span class="item-service-price">5 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="tshirt"
-                      data-service-type="press">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="tshirt" data-service-type="press">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="tshirt"
-                      data-service-type="press">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: Trousers -->
-            <div class="item-card" data-category="garments" data-item-id="trousers">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/trousers.png" alt="Trousers" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Trousers'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Trousers</h3>
-                  <p class="item-info-cat">garments care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">12 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="trousers"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="trousers" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="trousers"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Press Only</span>
-                    <span class="item-service-price">6 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="trousers"
-                      data-service-type="press">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="trousers" data-service-type="press">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="trousers"
-                      data-service-type="press">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: Sweater -->
-            <div class="item-card" data-category="garments" data-item-id="sweater">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/sweater.png" alt="Sweater" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Sweater'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Sweater</h3>
-                  <p class="item-info-cat">garments care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">15 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="sweater"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="sweater" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="sweater"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Press Only</span>
-                    <span class="item-service-price">8 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="sweater"
-                      data-service-type="press">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="sweater" data-service-type="press">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="sweater"
-                      data-service-type="press">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: Jacket -->
-            <div class="item-card" data-category="garments" data-item-id="jacket">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/jacket.png" alt="Jacket" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Jacket'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Jacket</h3>
-                  <p class="item-info-cat">garments care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">23 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="jacket"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="jacket" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="jacket"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Press Only</span>
-                    <span class="item-service-price">15 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="jacket"
-                      data-service-type="press">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="jacket" data-service-type="press">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="jacket"
-                      data-service-type="press">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: Suit -->
-            <div class="item-card" data-category="garments" data-item-id="suit">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/suit.png" alt="Suit" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Suit'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Suit</h3>
-                  <p class="item-info-cat">garments care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">35 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="suit"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="suit" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="suit"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Press Only</span>
-                    <span class="item-service-price">21 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="suit"
-                      data-service-type="press">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="suit" data-service-type="press">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="suit"
-                      data-service-type="press">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: Dishdasha -->
-            <div class="item-card" data-category="garments" data-item-id="dishdasha">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/dishdasha.png" alt="Dishdasha" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Dishdasha'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Dishdasha</h3>
-                  <p class="item-info-cat">garments care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">12 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="dishdasha"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="dishdasha" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="dishdasha"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Press Only</span>
-                    <span class="item-service-price">6 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="dishdasha"
-                      data-service-type="press">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="dishdasha" data-service-type="press">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="dishdasha"
-                      data-service-type="press">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: Blouse -->
-            <div class="item-card" data-category="garments" data-item-id="blouse">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/blouse.png" alt="Blouse" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Blouse'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Blouse</h3>
-                  <p class="item-info-cat">garments care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">10 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="blouse"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="blouse" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="blouse"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Press Only</span>
-                    <span class="item-service-price">6 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="blouse"
-                      data-service-type="press">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="blouse" data-service-type="press">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="blouse"
-                      data-service-type="press">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: Skirt -->
-            <div class="item-card" data-category="garments" data-item-id="skirt">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/skirt.png" alt="Skirt" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Skirt'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Skirt</h3>
-                  <p class="item-info-cat">garments care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">12 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="skirt"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="skirt" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="skirt"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Press Only</span>
-                    <span class="item-service-price">8 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="skirt"
-                      data-service-type="press">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="skirt" data-service-type="press">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="skirt"
-                      data-service-type="press">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: Dress -->
-            <div class="item-card" data-category="garments" data-item-id="dress">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/dress.png" alt="Dress" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Dress'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Dress</h3>
-                  <p class="item-info-cat">garments care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">20 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="dress"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="dress" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="dress"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Press Only</span>
-                    <span class="item-service-price">10 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="dress"
-                      data-service-type="press">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="dress" data-service-type="press">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="dress"
-                      data-service-type="press">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: Long Dress -->
-            <div class="item-card" data-category="garments" data-item-id="long_dress">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/long_dress.png" alt="Long Dress" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Long Dress'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Long Dress</h3>
-                  <p class="item-info-cat">garments care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">30 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="long_dress"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="long_dress" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="long_dress"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Press Only</span>
-                    <span class="item-service-price">20 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="long_dress"
-                      data-service-type="press">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="long_dress" data-service-type="press">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="long_dress"
-                      data-service-type="press">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: Bedsheet -->
-            <div class="item-card" data-category="bedding" data-item-id="bedsheet">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/bedsheet.png" alt="Bedsheet" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Bedsheet'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Bedsheet</h3>
-                  <p class="item-info-cat">bedding care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">10 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="bedsheet"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="bedsheet" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="bedsheet"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Press Only</span>
-                    <span class="item-service-price">8 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="bedsheet"
-                      data-service-type="press">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="bedsheet" data-service-type="press">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="bedsheet"
-                      data-service-type="press">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: Bed Cover -->
-            <div class="item-card" data-category="bedding" data-item-id="bedcover">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/bedcover.png" alt="Bed Cover" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Bed Cover'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Bed Cover</h3>
-                  <p class="item-info-cat">bedding care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">18 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="bedcover"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="bedcover" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="bedcover"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Press Only</span>
-                    <span class="item-service-price">13 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="bedcover"
-                      data-service-type="press">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="bedcover" data-service-type="press">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="bedcover"
-                      data-service-type="press">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: Pillow Case -->
-            <div class="item-card" data-category="bedding" data-item-id="pillowcase">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/pillowcase.png" alt="Pillow Case" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Pillow Case'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Pillow Case</h3>
-                  <p class="item-info-cat">bedding care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">4 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="pillowcase"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="pillowcase" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="pillowcase"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Press Only</span>
-                    <span class="item-service-price">2 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="pillowcase"
-                      data-service-type="press">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="pillowcase" data-service-type="press">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="pillowcase"
-                      data-service-type="press">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: Blanket -->
-            <div class="item-card" data-category="bedding" data-item-id="blanket">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/blanket.png" alt="Blanket" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Blanket'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Blanket</h3>
-                  <p class="item-info-cat">bedding care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Clean & Press</span>
-                    <span class="item-service-price">30 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="blanket"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="blanket" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="blanket"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item: Shoe Cleaning -->
-            <div class="item-card" data-category="footwear" data-item-id="shoecleaning">
-              <div class="item-card-header">
-                <div class="item-image-box">
-                  <img src="assets/images/items/shoecleaning.png" alt="Shoe Cleaning" onerror="
-                        this.src =
-                          'https://placehold.co/100x100/e0f0fe/046bd2?text=Shoe Cleaning'
-                      " />
-                </div>
-                <div class="item-info">
-                  <h3 class="item-info-name">Shoe Cleaning</h3>
-                  <p class="item-info-cat">footwear care</p>
-                </div>
-              </div>
-              <div class="item-services-list">
-                <div class="item-service-row">
-                  <div class="item-service-info">
-                    <span class="item-service-name">Deep Clean</span>
-                    <span class="item-service-price">40 AED</span>
-                  </div>
-                  <div class="item-qty-control">
-                    <button class="item-qty-btn" data-qty-action="decrease" data-item-id="shoecleaning"
-                      data-service-type="cleanPress">
-                      -
-                    </button>
-                    <span class="item-qty-val" data-item-id="shoecleaning" data-service-type="cleanPress">0</span>
-                    <button class="item-qty-btn" data-qty-action="increase" data-item-id="shoecleaning"
-                      data-service-type="cleanPress">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- Dynamically populated by assets/js/script.js from PRICE_LIST in Price-items.js -->
           </div>
 
           <!-- Right Panel: Summary card -->
@@ -1311,18 +480,18 @@
             <div class="bag-card">
               <div class="bag-card-header">
                 <div class="bag-card-title">
-                  <i data-lucide="shopping-bag"></i>
+                  <i class="fa-solid fa-bag-shopping"></i>
                   <span>Your Laundry Bag</span>
                 </div>
                 <button class="bag-clear-btn" id="bag-clear-btn">
-                  <i data-lucide="trash-2"></i> Clear All
+                  <i class="fa-solid fa-trash-can"></i> Clear All
                 </button>
               </div>
 
               <!-- Bag state empty -->
               <div class="bag-empty-state" id="bag-empty-state">
                 <div class="bag-empty-icon">
-                  <i data-lucide="calculator"></i>
+                  <i class="fa-solid fa-calculator"></i>
                 </div>
                 <p class="bag-empty-title">Your bag is empty</p>
                 <p class="bag-empty-desc">
@@ -1354,7 +523,7 @@
                 </div>
 
                 <button data-scroll-to="booking" class="btn btn-primary btn-checkout">
-                  Proceed to Free Pickup <i data-lucide="chevron-right"></i>
+                  Proceed to Free Pickup <i class="fa-solid fa-chevron-right"></i>
                 </button>
 
                 <p class="bag-notice-text">
@@ -1377,13 +546,13 @@
           <!-- Left: Facility Plant image -->
           <div class="benefits-showcase">
             <div class="benefits-image-card">
-              <img src="assets/images/laundry-premium-plant.png" alt="Waves Premium Laundry Cleaning Facility Plant" />
+              <img src="assets/images/about/Lead.png" alt="Waves Premium Laundry Cleaning Facility Plant" />
             </div>
 
             <!-- Overlays Badge -->
             <div class="benefits-floating-badge glass">
               <div class="benefits-badge-icon">
-                <i data-lucide="award"></i>
+                <i class="fa-solid fa-award"></i>
               </div>
               <div class="benefits-badge-text">
                 <p class="benefits-badge-title">Latest Technology</p>
@@ -1401,7 +570,7 @@
 
             <p class="section-desc text-left">
               We operate an advanced, eco-friendly laundry facility. By
-              handling our processes in-house (not outsourcing), we guarantee
+              handling our processes in-house, we guarantee
               high-quality fabric care, express turnarounds, and hygienic
               handling.
             </p>
@@ -1410,7 +579,7 @@
               <!-- Benefit 1 -->
               <div class="benefit-item">
                 <div class="benefit-icon-wrapper">
-                  <i data-lucide="check"></i>
+                  <i class="fa-solid fa-check"></i>
                 </div>
                 <div>
                   <h3 class="benefit-text-title">
@@ -1426,7 +595,7 @@
               <!-- Benefit 2 -->
               <div class="benefit-item">
                 <div class="benefit-icon-wrapper">
-                  <i data-lucide="check"></i>
+                  <i class="fa-solid fa-check"></i>
                 </div>
                 <div>
                   <h3 class="benefit-text-title">
@@ -1442,7 +611,7 @@
               <!-- Benefit 3 -->
               <div class="benefit-item">
                 <div class="benefit-icon-wrapper">
-                  <i data-lucide="check"></i>
+                  <i class="fa-solid fa-check"></i>
                 </div>
                 <div>
                   <h3 class="benefit-text-title">
@@ -1458,7 +627,7 @@
               <!-- Benefit 4 -->
               <div class="benefit-item">
                 <div class="benefit-icon-wrapper">
-                  <i data-lucide="check"></i>
+                  <i class="fa-solid fa-check"></i>
                 </div>
                 <div>
                   <h3 class="benefit-text-title">
@@ -1474,7 +643,7 @@
               <!-- Benefit 5 -->
               <div class="benefit-item">
                 <div class="benefit-icon-wrapper">
-                  <i data-lucide="check"></i>
+                  <i class="fa-solid fa-check"></i>
                 </div>
                 <div>
                   <h3 class="benefit-text-title">
@@ -1490,7 +659,7 @@
               <!-- Benefit 6 -->
               <div class="benefit-item">
                 <div class="benefit-icon-wrapper">
-                  <i data-lucide="check"></i>
+                  <i class="fa-solid fa-check"></i>
                 </div>
                 <div>
                   <h3 class="benefit-text-title">
@@ -1529,7 +698,7 @@
           <div class="location-card">
             <div>
               <div class="location-icon-wrapper">
-                <i data-lucide="map-pin"></i>
+                <i class="fa-solid fa-location-dot"></i>
               </div>
               <h3 class="location-name">Sobha Hartland</h3>
               <p class="location-area">Nad Al Sheba 1</p>
@@ -1538,7 +707,7 @@
               </p>
             </div>
             <button data-scroll-to="booking" class="location-book-btn">
-              Book Pickup here <i data-lucide="external-link"></i>
+              Book Pickup here <i class="fa-solid fa-up-right-from-square"></i>
             </button>
           </div>
 
@@ -1546,7 +715,7 @@
           <div class="location-card">
             <div>
               <div class="location-icon-wrapper">
-                <i data-lucide="map-pin"></i>
+                <i class="fa-solid fa-location-dot"></i>
               </div>
               <h3 class="location-name">Creek Harbour</h3>
               <p class="location-area">Dubai Creek</p>
@@ -1555,7 +724,7 @@
               </p>
             </div>
             <button data-scroll-to="booking" class="location-book-btn">
-              Book Pickup here <i data-lucide="external-link"></i>
+              Book Pickup here <i class="fa-solid fa-up-right-from-square"></i>
             </button>
           </div>
 
@@ -1563,7 +732,7 @@
           <div class="location-card">
             <div>
               <div class="location-icon-wrapper">
-                <i data-lucide="map-pin"></i>
+                <i class="fa-solid fa-location-dot"></i>
               </div>
               <h3 class="location-name">Business Bay</h3>
               <p class="location-area">Downtown Outer</p>
@@ -1572,7 +741,7 @@
               </p>
             </div>
             <button data-scroll-to="booking" class="location-book-btn">
-              Book Pickup here <i data-lucide="external-link"></i>
+              Book Pickup here <i class="fa-solid fa-up-right-from-square"></i>
             </button>
           </div>
 
@@ -1580,7 +749,7 @@
           <div class="location-card">
             <div>
               <div class="location-icon-wrapper">
-                <i data-lucide="map-pin"></i>
+                <i class="fa-solid fa-location-dot"></i>
               </div>
               <h3 class="location-name">Down Town</h3>
               <p class="location-area">Downtown Central</p>
@@ -1589,7 +758,7 @@
               </p>
             </div>
             <button data-scroll-to="booking" class="location-book-btn">
-              Book Pickup here <i data-lucide="external-link"></i>
+              Book Pickup here <i class="fa-solid fa-up-right-from-square"></i>
             </button>
           </div>
 
@@ -1597,7 +766,7 @@
           <div class="location-card">
             <div>
               <div class="location-icon-wrapper">
-                <i data-lucide="map-pin"></i>
+                <i class="fa-solid fa-location-dot"></i>
               </div>
               <h3 class="location-name">Dubai Hills</h3>
               <p class="location-area">Dubai Hills Estate</p>
@@ -1606,7 +775,7 @@
               </p>
             </div>
             <button data-scroll-to="booking" class="location-book-btn">
-              Book Pickup here <i data-lucide="external-link"></i>
+              Book Pickup here <i class="fa-solid fa-up-right-from-square"></i>
             </button>
           </div>
         </div>
@@ -1733,7 +902,7 @@
                   <div class="radio-card">
                     <div class="radio-card-left">
                       <span class="radio-card-title">
-                        Express Delivery <i data-lucide="sparkles"></i>
+                        Express Delivery <i class="fa-solid fa-wand-magic-sparkles"></i>
                       </span>
                       <span class="radio-card-lbl">Emergency delivery in 24 hours</span>
                     </div>
@@ -1744,7 +913,7 @@
 
               <div class="wizard-step-footer">
                 <button type="button" class="btn btn-primary" data-wizard-next>
-                  Schedule Pickup <i data-lucide="chevron-right"></i>
+                  Schedule Pickup <i class="fa-solid fa-chevron-right"></i>
                 </button>
               </div>
             </div>
@@ -1764,7 +933,7 @@
                 <!-- Date input -->
                 <div class="form-group">
                   <label for="date" class="form-label">
-                    <i data-lucide="calendar"></i> Pickup Date:
+                    <i class="fa-regular fa-calendar-days"></i> Pickup Date:
                   </label>
                   <input type="date" id="date" name="date" class="form-input" required />
                 </div>
@@ -1772,7 +941,7 @@
                 <!-- Time input -->
                 <div class="form-group">
                   <label for="time" class="form-label">
-                    <i data-lucide="clock"></i> Pickup Time:
+                    <i class="fa-regular fa-clock"></i> Pickup Time:
                   </label>
                   <input type="time" id="time" name="time" class="form-input" required />
                 </div>
@@ -1780,10 +949,10 @@
 
               <div class="wizard-step-footer split-btns">
                 <button type="button" class="btn btn-secondary" data-wizard-prev>
-                  <i data-lucide="chevron-left"></i> Back
+                  <i class="fa-solid fa-chevron-left"></i> Back
                 </button>
                 <button type="button" class="btn btn-primary" data-wizard-next>
-                  Enter Contact Details <i data-lucide="chevron-right"></i>
+                  Enter Contact Details <i class="fa-solid fa-chevron-right"></i>
                 </button>
               </div>
             </div>
@@ -1804,7 +973,7 @@
                 <!-- Full Name -->
                 <div class="form-group">
                   <label for="name" class="form-label">
-                    <i data-lucide="user"></i> Your Full Name:
+                    <i class="fa-solid fa-user"></i> Your Full Name:
                   </label>
                   <input type="text" id="name" name="name" placeholder="e.g. John Doe" class="form-input" required />
                 </div>
@@ -1812,7 +981,7 @@
                 <!-- Mobile Phone -->
                 <div class="form-group">
                   <label for="mobile" class="form-label">
-                    <i data-lucide="phone"></i> Mobile Number:
+                    <i class="fa-solid fa-phone"></i> Mobile Number:
                   </label>
                   <input type="tel" id="mobile" name="mobile" placeholder="e.g. +971 52 303 3446" class="form-input"
                     required />
@@ -1821,7 +990,7 @@
                 <!-- Address details -->
                 <div class="form-group">
                   <label for="address" class="form-label">
-                    <i data-lucide="map-pin"></i> Pickup & Delivery Address:
+                    <i class="fa-solid fa-location-dot"></i> Pickup & Delivery Address:
                   </label>
                   <textarea id="address" name="address"
                     placeholder="Flat/Villa No, Building Name, Street, Area in Dubai" rows="3" class="form-input"
@@ -1838,10 +1007,10 @@
 
               <div class="wizard-step-footer split-btns">
                 <button type="button" class="btn btn-secondary" data-wizard-prev>
-                  <i data-lucide="chevron-left"></i> Back
+                  <i class="fa-solid fa-chevron-left"></i> Back
                 </button>
                 <button type="button" class="btn btn-primary" data-wizard-next>
-                  Review Order <i data-lucide="chevron-right"></i>
+                  Review Order <i class="fa-solid fa-chevron-right"></i>
                 </button>
               </div>
             </div>
@@ -1872,7 +1041,7 @@
 
               <div class="wizard-step-footer split-btns">
                 <button type="button" class="btn btn-secondary" data-wizard-prev>
-                  <i data-lucide="chevron-left"></i> Back
+                  <i class="fa-solid fa-chevron-left"></i> Back
                 </button>
                 <button type="submit" class="btn btn-primary">
                   Confirm Booking & Schedule Pickup
@@ -1897,7 +1066,7 @@
                  ========================================== -->
           <div class="wizard-success-panel" id="wizard-success-panel">
             <div class="success-icon-box">
-              <i data-lucide="check-circle-2"></i>
+              <i class="fa-solid fa-question"></i>
             </div>
             <h3 class="success-title">Booking Confirmed!</h3>
             <p class="success-desc">
@@ -1919,7 +1088,7 @@
               </button>
               <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-green-fill"
                 id="success-whatsapp-link">
-                <i data-lucide="message-square"></i> Message WhatsApp
+                <i class="fa-brands fa-whatsapp"></i> Message WhatsApp
               </a>
             </div>
           </div>
@@ -1931,132 +1100,88 @@
            8. FREQUENTLY ASKED QUESTIONS (FAQ)
            ========================================== -->
     <section id="faq" class="faq-section py-section">
-      <div class="container faq-container">
-        <!-- Header -->
-        <div class="text-center">
-          <span class="section-subtitle">FAQ</span>
-          <h2 class="section-title">Frequently Asked Questions</h2>
-          <p class="section-desc">
-            Got questions? We have answers. If you don't find what you're
-            looking for, feel free to contact our support team.
-          </p>
+      <div class="container faq-container-new">
+        <div class="faq-grid-new">
+          <!-- Left Column: FAQ Content -->
+          <div class="faq-content-col">
+            <div class="faq-header-new">
+              <span class="section-subtitle subtitle-green-line">FAQ</span>
+              <h2 class="section-title FAQ-title-new">Frequently Asked Have Any Questions</h2>
+            </div>
+            
+            <!-- Search bar -->
+            <div class="faq-search-box-new">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="faq-search-input" placeholder="Search questions..." class="faq-search-input-new" />
+            </div>
 
-          <!-- Search input bar -->
-          <div class="faq-search-box">
-            <i data-lucide="search"></i>
-            <input type="text" id="faq-search-input" placeholder="Search questions..." class="faq-search-input" />
-          </div>
-        </div>
-
-        <!-- FAQ Accordion List -->
-        <div class="faq-list">
-          <!-- FAQ 1 -->
-          <div class="faq-item">
-            <button class="faq-trigger">
-              <span class="faq-question">Do you provide free pickup and delivery in Dubai?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-content-pane">
-              <div class="faq-answer">
-                Yes! Waves provides free contactless pickup and delivery for
-                all standard and express laundry orders across our served
-                areas in Dubai (Downtown, Business Bay, Creek Harbour, Sobha
-                Hartland, Dubai Hills, etc.).
+            <!-- FAQ Accordion List -->
+            <div class="faq-list">
+              <!-- FAQ 1 -->
+              <div class="faq-item">
+                <button class="faq-trigger">
+                  <span class="faq-question">What Services Do You Offer?</span>
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+                <div class="faq-content-pane">
+                  <div class="faq-answer">
+                    We offer professional laundry, dry cleaning, steam pressing, carpet cleaning, curtain deep cleaning, sofa shampooing, and premium shoe care across Dubai with free doorstep pickup and delivery.
+                  </div>
+                </div>
               </div>
+
+              <!-- FAQ 2 -->
+              <div class="faq-item">
+                <button class="faq-trigger">
+                  <span class="faq-question">Do You Have Certified Technicians?</span>
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+                <div class="faq-content-pane">
+                  <div class="faq-answer">
+                    Yes, our fabric care experts and certified technicians inspect each garment individually, selecting the optimal cleaning method and eco-friendly detergents to ensure the highest quality results.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 3 (Starts Expanded/Active) -->
+              <div class="faq-item active">
+                <button class="faq-trigger">
+                  <span class="faq-question">Can You Provide a Customized Service Plan?</span>
+                  <i class="fa-regular fa-eye-slash"></i>
+                </button>
+                <div class="faq-content-pane" style="max-height: 500px;">
+                  <div class="faq-answer">
+                    We value your feedback! Let us know about your experience and if there's anything else we can do to make your laundry service even better. We're always here to assist you.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 4 -->
+              <div class="faq-item">
+                <button class="faq-trigger">
+                  <span class="faq-question">What is Your Pricing Structure?</span>
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+                <div class="faq-content-pane">
+                  <div class="faq-answer">
+                    Our pricing is transparent and affordable. You can use our interactive Price Estimator tool above to select specific items and services to calculate your total cost before booking.
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Empty search results placeholder -->
+            <div class="faq-empty-results" id="faq-empty-results" style="display: none">
+              <p>No results found for "<span></span>"</p>
             </div>
           </div>
 
-          <!-- FAQ 2 -->
-          <div class="faq-item">
-            <button class="faq-trigger">
-              <span class="faq-question">What is your turnaround time for cleaning?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-content-pane">
-              <div class="faq-answer">
-                Our standard turnaround time is 48 hours. If you need your
-                clothes urgently, we offer an Express Delivery option where
-                your items are cleaned, pressed, and returned to your doorstep
-                within 24 hours.
-              </div>
+          <!-- Right Column: Illustration -->
+          <div class="faq-img-col">
+            <div class="faq-illustration-wrapper">
+              <img src="assets/images/faq/Faq.png" alt="Frequently Asked Questions Illustration" class="faq-illustration" />
             </div>
           </div>
-
-          <!-- FAQ 3 -->
-          <div class="faq-item">
-            <button class="faq-trigger">
-              <span class="faq-question">How do I calculate the price of my laundry order?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-content-pane">
-              <div class="faq-answer">
-                You can use our interactive Cost Planner / Price Estimator
-                tool above. Simply select your items (shirts, trousers, suits,
-                blankets) and preferred service (Clean & Press vs Press Only)
-                to calculate your estimated total before booking.
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 4 -->
-          <div class="faq-item">
-            <button class="faq-trigger">
-              <span class="faq-question">Do you clean delicate or designer fabrics?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-content-pane">
-              <div class="faq-answer">
-                Absolutely. We operate a state-of-the-art facility equipped
-                with customized fabric programs. Our specialists inspect each
-                item, handling delicate silk, lace, wool, and designer apparel
-                with material-safe, eco-friendly detergents.
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 5 -->
-          <div class="faq-item">
-            <button class="faq-trigger">
-              <span class="faq-question">Do you clean household furniture, carpets, and shoes?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-content-pane">
-              <div class="faq-answer">
-                Yes, we do! In addition to garments, we specialize in curtain
-                deep cleaning (zero shrinkage), carpet stain extraction,
-                sofa/upholstery shampooing, and detailing for branded
-                sneakers/shoes.
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 6 -->
-          <div class="faq-item">
-            <button class="faq-trigger">
-              <span class="faq-question">What are your working hours and contact details?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-content-pane">
-              <div class="faq-answer">
-                We operate 7 days a week, from 09:00 AM to 10:00 PM. For any
-                custom requests, you can contact us via phone at +971 52 303
-                3446 or send us a WhatsApp message at any time.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Empty search results placeholder -->
-        <div class="faq-empty-results" id="faq-empty-results" style="display: none">
-          <p>No results found for "<span></span>"</p>
-        </div>
-
-        <!-- support bar -->
-        <div class="faq-support-bar">
-          <p>Still have unanswered questions?</p>
-          <a href="https://wa.me/971523033446" target="_blank" rel="noopener noreferrer" class="btn btn-green-fill">
-            <i data-lucide="message-square"></i> Chat With Us on WhatsApp
-          </a>
         </div>
       </div>
     </section>
@@ -2072,7 +1197,7 @@
       <!-- Col 1: Logo & details -->
       <div class="footer-col">
         <div class="footer-logo">
-          <img src="assets/images/logo.webp" alt="Waves Premium Laundry Logo" />
+          <img src="assets/images/brand/logo.webp" alt="Waves Premium Laundry Logo" />
         </div>
         <p class="footer-desc">
           Premium laundry and dry cleaning services in Dubai, delivered with
@@ -2082,15 +1207,15 @@
         <div class="footer-socials">
           <a href="https://www.facebook.com/share/1DjJnwd1Ly/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"
             class="footer-social-btn" aria-label="Facebook">
-            <i data-lucide="facebook"></i>
+            <i class="fa-brands fa-facebook-f"></i>
           </a>
           <a href="https://www.instagram.com/waveslaundry.ae?igsh=MWJ4MHdzNTd2dHhlag==" target="_blank"
             rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
-            <i data-lucide="instagram"></i>
+            <i class="fa-brands fa-instagram"></i>
           </a>
           <a href="https://www.linkedin.com/company/waves-laundry/" target="_blank" rel="noopener noreferrer"
             class="footer-social-btn" aria-label="LinkedIn">
-            <i data-lucide="linkedin"></i>
+            <i class="fa-brands fa-linkedin-in"></i>
           </a>
         </div>
       </div>
@@ -2116,7 +1241,7 @@
           </li>
           <li>
             <button data-scroll-to="estimator" class="footer-link-btn">
-              Pricing Estimator
+              Price Planner
             </button>
           </li>
           <li>
@@ -2168,7 +1293,7 @@
         <ul class="footer-contact-list">
           <!-- Phone Call support -->
           <li class="footer-contact-item">
-            <i data-lucide="phone"></i>
+            <i class="fa-solid fa-phone"></i>
             <div>
               <p class="footer-contact-label">Call Support</p>
               <a href="tel:+971523033446"><span class="footer-contact-val">+971 52 303 3446</span></a>
@@ -2177,7 +1302,7 @@
 
           <!-- WhatsApp chat -->
           <li class="footer-contact-item">
-            <i data-lucide="message-square" class="whatsapp"></i>
+            <i class="fa-brands fa-whatsapp whatsapp"></i>
             <div>
               <p class="footer-contact-label">WhatsApp 24/7</p>
               <a href="https://wa.me/971523033446" target="_blank" rel="noopener noreferrer">
@@ -2188,7 +1313,7 @@
 
           <!-- Email support -->
           <li class="footer-contact-item">
-            <i data-lucide="mail"></i>
+            <i class="fa-regular fa-envelope"></i>
             <div>
               <p class="footer-contact-label">Email Us</p>
               <a href="mailto:waveslaundrydubai@gmail.com">
@@ -2199,7 +1324,7 @@
 
           <!-- Head office address -->
           <li class="footer-contact-item">
-            <i data-lucide="map-pin"></i>
+            <i class="fa-solid fa-location-dot"></i>
             <div>
               <p class="footer-contact-label">Head Office Address</p>
               <p class="footer-contact-val">
@@ -2230,20 +1355,20 @@
     <!-- WhatsApp float -->
     <a href="https://wa.me/971523033446" target="_blank" rel="noopener noreferrer" class="float-btn float-whatsapp"
       aria-label="Contact WhatsApp">
-      <i data-lucide="message-square"></i>
+      <i class="fa-brands fa-whatsapp"></i>
       <span class="float-tooltip">Chat on WhatsApp</span>
     </a>
 
     <!-- Quick booking float -->
     <button data-scroll-to="booking" class="float-btn float-booking" aria-label="Book Pickup Now">
-      <i data-lucide="calendar"></i>
+      <i class="fa-regular fa-calendar-days"></i>
       <span class="float-tooltip">Book Free Pickup</span>
     </button>
   </div>
 
-  <!-- Lucide Library JS CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Custom script JS file -->
+  <script src="assets/js/Service-card.js"></script>
+  <script src="assets/js/Price-items.js"></script>
   <script src="assets/js/script.js"></script>
 </body>
 
