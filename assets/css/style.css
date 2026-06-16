@@ -3060,7 +3060,7 @@ textarea.form-input {
 */
 @media (min-width: 640px) {
   .container {
-    max-width: 640px;
+    max-width: 520px;
   }
 
   .py-section {
@@ -3176,7 +3176,7 @@ textarea.form-input {
 */
 @media (min-width: 768px) {
   .container {
-    max-width: 768px;
+    max-width: 620px;
   }
 
   /* Footer grid split */
@@ -3192,10 +3192,16 @@ textarea.form-input {
    =====================================================================
 */
 @media (min-width: 1024px) {
+  html {
+    font-size: 14.5px;
+  }
   .container {
-    max-width: 1024px;
+    max-width: 820px;
     padding-left: 24px;
     padding-right: 24px;
+  }
+  .navbar-container {
+    max-width: 820px;
   }
 
   .py-section {
@@ -3376,7 +3382,7 @@ textarea.form-input {
     grid-column: span 7;
   }
   .hero-content-slide {
-    max-width: 720px;
+    max-width: 580px;
   }
   .hero-showcase {
     grid-column: span 5;
@@ -3554,10 +3560,11 @@ textarea.form-input {
 */
 @media (min-width: 1280px) {
   .container {
-    max-width: 1240px; /* Enhanced laptop size container */
+    max-width: 1000px; /* Enhanced laptop size container */
   }
 
   .navbar-container {
+    max-width: 1000px;
     padding: 12px 32px;
   }
 
@@ -3591,7 +3598,7 @@ textarea.form-input {
     min-height: 500px;
   }
   .hero-content-slide {
-    max-width: 760px;
+    max-width: 610px;
   }
   .hero-content-slide .hero-title {
     font-size: 3.5rem; /* Scaled hero heading for widescreen */
@@ -3669,10 +3676,11 @@ textarea.form-input {
 */
 @media (min-width: 1440px) {
   .container {
-    max-width: 1380px;
+    max-width: 1100px;
   }
   
   .navbar-container {
+    max-width: 1100px;
     padding: 12px 48px;
   }
 
@@ -3698,7 +3706,7 @@ textarea.form-input {
   }
 
   .hero-content-slide {
-    max-width: 820px;
+    max-width: 660px;
   }
 }
 
@@ -3710,11 +3718,15 @@ textarea.form-input {
 */
 @media (min-width: 1536px) {
   .container {
-    max-width: 1440px; /* Spacious ultra-wide container */
+    max-width: 1150px; /* Spacious ultra-wide container */
+  }
+
+  .navbar-container {
+    max-width: 1150px;
   }
 
   .hero-content-slide {
-    max-width: 880px;
+    max-width: 700px;
   }
 
   .logo img {
@@ -3786,11 +3798,15 @@ textarea.form-input {
 */
 @media (min-width: 1650px) {
   .container {
-    max-width: 1580px;
+    max-width: 1260px;
+  }
+
+  .navbar-container {
+    max-width: 1260px;
   }
   
   .hero-content-slide {
-    max-width: 920px;
+    max-width: 740px;
   }
 }
 
@@ -3802,11 +3818,15 @@ textarea.form-input {
 */
 @media (min-width: 1920px) {
   .container {
-    max-width: 1720px;
+    max-width: 1380px;
+  }
+
+  .navbar-container {
+    max-width: 1380px;
   }
 
   .hero-content-slide {
-    max-width: 980px;
+    max-width: 780px;
   }
 
   .py-section {
@@ -4005,11 +4025,15 @@ textarea.form-input {
 */
 @media (min-width: 2560px) {
   .container {
-    max-width: 2240px;
+    max-width: 1800px;
+  }
+
+  .navbar-container {
+    max-width: 1800px;
   }
 
   .hero-content-slide {
-    max-width: 1200px;
+    max-width: 960px;
   }
 
   .py-section {
