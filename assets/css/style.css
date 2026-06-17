@@ -124,6 +124,8 @@ select {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .row {
@@ -2113,11 +2115,7 @@ select {
    12. BOOKING WIZARD SECTION
 --------------------------------------------------------------------- */
 .booking-section {
-  background-image: url("../images/booking/booking.png");
-  background-size: cover;
   height: 1000PX;
-  background-position: center;
-  background-repeat: no-repeat;
   color: var(--primary);
   position: relative;
   overflow: hidden;
@@ -2127,22 +2125,9 @@ select {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 100%,
-    rgba(0, 76, 156, 0.4) 80%,
-    rgba(0, 86, 156, 0.9) 100%
-  );
   pointer-events: none;
 }
- 
-.booking-wave-backdrop {
-  position: absolute;
-  inset: 0;
-  opacity: 95%;
-  pointer-events: none;
-  z-index: 0;
-}
+
 .booking-wave-backdrop svg {
   position: absolute;
   top: 0;
@@ -2168,7 +2153,7 @@ select {
 
 /* Wizard Form Wrapper Card styling */
 .wizard-card {
-    background-color: rgba(255, 255, 255, 0.795);
+    background-color: rgb(255, 255, 255);
   color: var(--slate-dark);
   border-radius: var(--radius-2xl);
   padding: 24px 16px;
@@ -3423,7 +3408,7 @@ textarea.form-input {
   }
   .estimator-items-panel {
     grid-column: span 8;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   .estimator-summary-panel {
     grid-column: span 4;
