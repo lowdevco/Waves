@@ -2833,14 +2833,6 @@ textarea.form-input {
   overflow: hidden;
 }
 
-.footer-top-gradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(to right, var(--secondary), var(--primary));
-}
 
 .footer-grid {
   display: grid;
