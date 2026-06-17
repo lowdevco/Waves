@@ -507,7 +507,7 @@ select {
 }
 
 .logo img {
-  height: 50px;
+  height: 40px;
   width: auto;
   object-fit: contain;
   filter: brightness(0) invert(1);
@@ -878,6 +878,7 @@ select {
     height: auto;
     transform: none;
     pointer-events: auto;
+    padding:10px;
   }
 
   .hero-content-slide .hero-title {
@@ -1911,7 +1912,6 @@ select {
 .benefits-floating-badge {
   position: absolute;
   top: -24px;
-  right: -12px;
   background-color: var(--white);
   padding: 16px;
   border-radius: var(--radius-lg);
