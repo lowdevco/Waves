@@ -124,8 +124,6 @@ select {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .row {
@@ -141,6 +139,13 @@ select {
 /* ---------------------------------------------------------------------
    4. GENERAL UTILITIES & STYLING
 --------------------------------------------------------------------- */
+.header-py {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 60px;
+  padding-bottom: 0;
+}
+
 .py-section {
   padding-top: 60px;
   padding-bottom: 60px;
@@ -204,7 +209,20 @@ select {
   padding: 12px 24px;
   border-radius: var(--radius-full);
   transition: var(--transition);
-  font-size: 0.875rem;
+  font-size: 14px;
+}
+
+.wizard-btn{
+    display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  text-align: center;
+ padding:15px;
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+  font-size: 14px;
 }
 
 .btn-primary {
@@ -489,7 +507,7 @@ select {
 }
 
 .logo img {
-  height: 32px;
+  height: 50px;
   width: auto;
   object-fit: contain;
   filter: brightness(0) invert(1);
@@ -759,7 +777,7 @@ select {
 
 .hero-content-slide .hero-desc {
   color: rgba(255, 255, 255, 0.85);
-  /* font-size, margin-bottom, max-width inherited to allow media query scaling */
+  font-size:14px;
   line-height: 1.6;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
@@ -822,7 +840,7 @@ select {
   font-weight: 800;
 }
 .hero-desc {
-  font-size: 1.05rem; /* Base size for desktop */
+  font-size:14px; 
   margin-bottom: 36px;
   max-width: 600px;
   line-height: 1.6;
@@ -867,7 +885,7 @@ select {
   }
 
   .hero-content-slide .hero-desc {
-    font-size: 0.95rem;
+    font-size:14px;
     margin-bottom: 24px;
   }
 
@@ -946,8 +964,8 @@ select {
   padding: 24px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: start;
+  text-align: start;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: visible;
 }
@@ -1017,7 +1035,7 @@ select {
 .service-body {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   flex-grow: 1;
   width: 100%;
 }
@@ -1036,6 +1054,7 @@ select {
   flex-grow: 1;
 }
 .btn-read-more {
+  text-align:start;
   background: none;
   border: 1px solid #cbd5e1;
   color: #475569;
@@ -1048,7 +1067,7 @@ select {
 }
 .btn-read-more:hover {
   background-color: var(--yellow);
-  color: var(--slate-dark);
+  color: #ffff ;
   border-color: var(--yellow);
 }
 
@@ -2096,13 +2115,14 @@ select {
 .booking-section {
   background-image: url("../images/booking/booking.png");
   background-size: cover;
+  height: 1000PX;
   background-position: center;
   background-repeat: no-repeat;
   color: var(--primary);
   position: relative;
   overflow: hidden;
 }
-
+ 
 .booking-section::after {
   content: "";
   position: absolute;
@@ -2113,11 +2133,9 @@ select {
     rgba(0, 76, 156, 0.4) 80%,
     rgba(0, 86, 156, 0.9) 100%
   );
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(8px);
   pointer-events: none;
 }
-
+ 
 .booking-wave-backdrop {
   position: absolute;
   inset: 0;
@@ -2150,7 +2168,7 @@ select {
 
 /* Wizard Form Wrapper Card styling */
 .wizard-card {
-  background-color: var(--white);
+    background-color: rgba(255, 255, 255, 0.795);
   color: var(--slate-dark);
   border-radius: var(--radius-2xl);
   padding: 24px 16px;
@@ -2947,8 +2965,11 @@ textarea.form-input {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 32px;
   margin-top: 32px;
-  font-size: 0.75rem;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.5);
+}
+.footer-bottom strong{
+  color: #ffffffca ;
 }
 .footer-bottom-container {
   display: flex;
@@ -3055,6 +3076,9 @@ textarea.form-input {
     padding-top: 80px;
     padding-bottom: 80px;
   }
+  .header-py {
+    padding-top: 80px;
+  }
 
   .section-title {
     font-size: 2.25rem;
@@ -3129,7 +3153,7 @@ textarea.form-input {
     font-size: 1.5rem;
   }
   .wizard-step-desc {
-    font-size: 0.875rem;
+    font-size:14px;
   }
   .wizard-speed-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -3195,6 +3219,9 @@ textarea.form-input {
     padding-top: 112px;
     padding-bottom: 112px;
   }
+  .header-py {
+    padding-top: 112px;
+  }
 
   /* Header Navigation for Desktop */
   .header {
@@ -3218,7 +3245,8 @@ textarea.form-input {
 
   .logo img {
     filter: brightness(0) invert(1);
-    height: 32px;
+    height: 50px;
+    image: fluid ;
   }
 
   .nav-links {
@@ -3328,7 +3356,7 @@ textarea.form-input {
     margin-bottom: 16px;
   }
   .hero-content-slide .hero-desc {
-    font-size: 1.05rem; /* Scaled up hero desc for laptop */
+    font-size: 14px; 
     margin-bottom: 20px;
   }
   .hero-content-slide .badge-highlight {
@@ -3545,7 +3573,7 @@ textarea.form-input {
   }
 
   .logo img {
-    height: 40px;
+    height: 50px;
   }
 
   .nav-links {
@@ -3580,7 +3608,7 @@ textarea.form-input {
     font-size: 3.5rem; /* Scaled hero heading for widescreen */
   }
   .hero-content-slide .hero-desc {
-    font-size: 1.1rem;
+    font-size: 14px;
   }
   .hero-content-slide .badge-highlight {
     font-size: 0.9rem;
@@ -3661,7 +3689,7 @@ textarea.form-input {
   }
 
   .logo img {
-    height: 48px;
+    height: 50px;
   }
 
   .nav-links {
@@ -3706,7 +3734,7 @@ textarea.form-input {
   }
 
   .logo img {
-    height: 56px;
+    height: 50px;
   }
   .section-title {
     font-size: 3.25rem;
@@ -3721,7 +3749,7 @@ textarea.form-input {
     font-size: 4rem; /* Premium scale header for very large layouts */
   }
   .hero-content-slide .hero-desc {
-    font-size: 1.15rem;
+    font-size: 14px;
   }
   .hero-content-slide .badge-highlight {
     font-size: 0.95rem;
@@ -3806,10 +3834,13 @@ textarea.form-input {
     padding-top: 128px;
     padding-bottom: 128px;
   }
+  .header-py {
+    padding-top: 128px;
+  }
 
   /* Font & general component scaling */
   .logo img {
-    height: 64px;
+    height: 50px;
   }
   .nav-link-btn {
     font-size: 1.1rem;
@@ -3840,7 +3871,7 @@ textarea.form-input {
     margin-bottom: 24px;
   }
   .hero-content-slide .hero-desc {
-    font-size: 1.2rem;
+    font-size: 14px;
     margin-bottom: 24px;
     max-width: 700px;
   }
@@ -4003,10 +4034,13 @@ textarea.form-input {
     padding-top: 160px;
     padding-bottom: 160px;
   }
+  .header-py {
+    padding-top: 160px;
+  }
 
   /* Scaling up elements for 4K */
   .logo img {
-    height: 76px;
+    height: 50x;
   }
   .nav-link-btn {
     font-size: 1.25rem;
@@ -4038,7 +4072,7 @@ textarea.form-input {
     margin-bottom: 32px;
   }
   .hero-content-slide .hero-desc {
-    font-size: 1.35rem;
+    font-size: 14px;
     margin-bottom: 32px;
     max-width: 800px;
   }
