@@ -680,6 +680,40 @@ function initBookingWizard() {
   syncWizardReviewCart();
 }
 
+function showToast(message, type = 'error') {
+  let container = document.querySelector('.toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  
+  const icon = type === 'error' ? 'fa-solid fa-triangle-exclamation' : 'fa-solid fa-circle-check';
+  
+  toast.innerHTML = `
+    <i class="${icon} toast-icon"></i>
+    <span class="toast-message">${message}</span>
+  `;
+
+  container.appendChild(toast);
+
+  // Trigger animation
+  setTimeout(() => {
+    toast.classList.add('show');
+  }, 10);
+
+  // Remove toast after 4 seconds
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => {
+      toast.remove();
+    }, 400);
+  }, 4000);
+}
+
 function validateStepInputs() {
   const nameInput = document.getElementById('name');
   const mobileInput = document.getElementById('mobile');
@@ -687,9 +721,51 @@ function validateStepInputs() {
   const dateInput = document.getElementById('date');
   const timeInput = document.getElementById('time');
 
+  // Clear previous validation states
+  const inputs = [nameInput, mobileInput, addressInput, dateInput, timeInput];
+  inputs.forEach(input => {
+    if (!input) return;
+    input.classList.remove('is-invalid');
+    const existingMsg = input.parentNode.querySelector('.validation-error-msg');
+    if (existingMsg) existingMsg.remove();
+  });
+
+  function markInvalid(input, msg) {
+    input.classList.add('is-invalid');
+    
+    // Add real-time listener to clear validation state on input
+    const clearError = () => {
+      input.classList.remove('is-invalid');
+      const errEl = input.parentNode.querySelector('.validation-error-msg');
+      if (errEl) errEl.remove();
+      input.removeEventListener('input', clearError);
+      input.removeEventListener('change', clearError);
+    };
+    input.addEventListener('input', clearError);
+    input.addEventListener('change', clearError);
+
+    // Only add error message if it doesn't already exist
+    let errorMsg = input.parentNode.querySelector('.validation-error-msg');
+    if (!errorMsg) {
+      errorMsg = document.createElement('span');
+      errorMsg.className = 'validation-error-msg';
+      errorMsg.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> ${msg}`;
+      input.parentNode.appendChild(errorMsg);
+    }
+  }
+
   if (state.currentStep === 2) {
-    if (!dateInput.value || !timeInput.value) {
-      alert('Please select a valid date and time for pickup.');
+    let hasError = false;
+    if (!dateInput.value) {
+      markInvalid(dateInput, 'Pickup date is required');
+      hasError = true;
+    }
+    if (!timeInput.value) {
+      markInvalid(timeInput, 'Pickup time is required');
+      hasError = true;
+    }
+    if (hasError) {
+      showToast('Please select a valid date and time for pickup.');
       return false;
     }
     state.formData.date = dateInput.value;
@@ -697,8 +773,21 @@ function validateStepInputs() {
   }
   
   if (state.currentStep === 3) {
-    if (!nameInput.value.trim() || !mobileInput.value.trim() || !addressInput.value.trim()) {
-      alert('Please fill in your name, mobile number, and address.');
+    let hasError = false;
+    if (!nameInput.value.trim()) {
+      markInvalid(nameInput, 'Full name is required');
+      hasError = true;
+    }
+    if (!mobileInput.value.trim()) {
+      markInvalid(mobileInput, 'Mobile number is required');
+      hasError = true;
+    }
+    if (!addressInput.value.trim()) {
+      markInvalid(addressInput, 'Delivery address is required');
+      hasError = true;
+    }
+    if (hasError) {
+      showToast('Please fill in all required contact details.');
       return false;
     }
     state.formData.name = nameInput.value;
