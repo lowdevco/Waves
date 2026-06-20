@@ -1514,7 +1514,6 @@
 .booking-container {
   position: relative;
   z-index: 10;
-  max-width: 896px;
   margin-left: auto;
   margin-right: auto;
 }
