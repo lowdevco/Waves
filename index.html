@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/webp" href="assets/images/brand/favicon.png" />
+  <link rel="icon" type="image/webp" href="assets/images/common_images/brand/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
     content="Affordable and professional laundry service in Dubai offering dry cleaning, washing, ironing, carpet and sofa cleaning with free pickup and delivery at your doorstep." />
@@ -29,8 +29,9 @@
 
   <!-- Custom Style Sheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/index_css/index.css" />
 
-  <title>Waves </title>
+  <title>Waves</title>
 </head>
 
 <body>
@@ -73,32 +74,32 @@
       <div class="navbar-inner-container container">
         <!-- Logo -->
         <a href="#home" data-scroll-to="home" class="logo">
-          <img src="assets/images/brand/logo.webp" alt="Waves Laundry Logo" />
+          <img src="assets/images/common_images/brand/logo.webp" alt="Waves Laundry Logo" />
         </a>
 
         <!-- Desktop Links -->
         <nav class="nav-links">
-          <button data-scroll-to="home" class="nav-link-btn active">
+          <a href="#home" data-scroll-to="home" class="nav-link-btn active">
             Home
-          </button>
-          <button class="nav-link-btn">About</button>
-          <button class="nav-link-btn">
+          </a>
+          <a href="assets/pages/about.html" class="nav-link-btn">About</a>
+          <a href="#services" data-scroll-to="services" class="nav-link-btn">
             Services
-          </button>
-          <button class="nav-link-btn">
+          </a>
+          <a href="#locations" data-scroll-to="locations" class="nav-link-btn">
             Locations
-          </button>
-          <button class="nav-link-btn">Blog</button>
+          </a>
+          <a href="#" class="nav-link-btn">Blog</a>
         </nav>
 
         <!-- CTA Buttons -->
         <div class="nav-cta">
-          <p class="btn btn-white-outline">
+          <a href="#booking" data-scroll-to="booking" class="btn btn-white-outline">
             Contact Us
-          </p>
-          <button data-scroll-to="booking" class="btn btn-white-fill">
+          </a>
+          <a href="#booking" data-scroll-to="booking" class="btn btn-white-fill">
             Book Free Pickup
-          </button>
+          </a>
         </div>
 
         <!-- Mobile Hamburger Toggle -->
@@ -110,16 +111,12 @@
 
     <!-- Mobile Drawer -->
     <div class="mobile-drawer" id="mobile-drawer">
-      <button class="mobile-nav-link">Home</button>
-      <button class="mobile-nav-link">About</button>
-      <button class="mobile-nav-link">
-        Services
-      </button>
-      <button data-scroll-to="locations" class="mobile-nav-link">
-        Locations
-      </button>
-      <button class="mobile-nav-link">Blog</button>
-      <button class="mobile-nav-link">Contact</button>
+      <a href="#home" data-scroll-to="home" class="mobile-nav-link">Home</a>
+      <a href="assets/pages/about.html" class="mobile-nav-link">About</a>
+      <a href="#services" data-scroll-to="services" class="mobile-nav-link">Services</a>
+      <a href="#locations" data-scroll-to="locations" class="mobile-nav-link">Locations</a>
+      <a href="#" class="mobile-nav-link">Blog</a>
+      <a href="#booking" data-scroll-to="booking" class="mobile-nav-link">Contact</a>
     </div>
   </header>
 
@@ -130,9 +127,9 @@
     <section id="home" class="hero-section">
       <!-- Background Image Carousel -->
       <div class="hero-bg-carousel">
-        <div class="hero-bg-slide active" style="background-image: url('assets/images/hero/hero-1.png');"></div>
-        <div class="hero-bg-slide" style="background-image: url('assets/images/hero/hero-2.png');"></div>
-        <div class="hero-bg-slide" style="background-image: url('assets/images/hero/hero-3.png');"></div>
+        <div class="hero-bg-slide active" style="background-image: url('assets/images/index_images/hero/hero-1.png');"></div>
+        <div class="hero-bg-slide" style="background-image: url('assets/images/index_images/hero/hero-2.png');"></div>
+        <div class="hero-bg-slide" style="background-image: url('assets/images/index_images/hero/hero-3.png');"></div>
         <div class="hero-bg-overlay"></div>
       </div>
 
@@ -343,18 +340,18 @@
 
               <!-- Main Image -->
               <div class="showcase-main-img-wrapper">
-                <img src="assets/images/about/michane.png" alt="Waves Premium Laundry Facility"
+                <img src="assets/images/index_images/about/michane.png" alt="Waves Premium Laundry Facility"
                   class="showcase-main-img" />
               </div>
 
               <!-- Floating thumbnail 1 (Shoe Cleaning) -->
               <div class="floating-thumb thumb-bottom-left">
-                <img src="assets/images/items/shoecleaning.png" alt="Shoe Detailing" />
+                <img src="assets/images/common_images/items/shoecleaning.png" alt="Shoe Detailing" />
               </div>
 
               <!-- Floating thumbnail 2 (Dry Cleaning Facility) -->
               <div class="floating-thumb thumb-top-right">
-                <img src="assets/images/items/jacket.png" alt="Dry Cleaning Facility" />
+                <img src="assets/images/common_images/items/jacket.png" alt="Dry Cleaning Facility" />
               </div>
             </div>
           </div>
@@ -477,7 +474,7 @@
           <!-- Left: Facility Plant image -->
           <div class="benefits-showcase">
             <div class="benefits-image-card">
-              <img src="assets/images/about/Lead.png" alt="Waves Premium Laundry Cleaning Facility Plant" />
+              <img src="assets/images/index_images/about/Lead.png" alt="Waves Premium Laundry Cleaning Facility Plant" />
             </div>
 
             <!-- Overlays Badge -->
@@ -1105,7 +1102,7 @@
           <!-- Right Column: Illustration -->
           <div class="faq-img-col">
             <div class="faq-illustration-wrapper">
-              <img src="assets/images/faq/Faq.png" alt="Frequently Asked Questions Illustration"
+              <img src="assets/images/index_images/faq/Faq.png" alt="Frequently Asked Questions Illustration"
                 class="faq-illustration" />
             </div>
           </div>
@@ -1122,7 +1119,7 @@
       <!-- Col 1: Logo & details -->
       <div class="footer-col">
         <div class="footer-logo">
-          <img src="assets/images/brand/logo.webp" alt="Waves Premium Laundry Logo" />
+          <img src="assets/images/common_images/brand/logo.webp" alt="Waves Premium Laundry Logo" />
         </div>
         <p class="footer-desc">
           Premium laundry and dry cleaning services in Dubai, delivered with
@@ -1150,32 +1147,32 @@
         <h4 class="footer-col-title">Quick Links</h4>
         <ul class="footer-links-list">
           <li>
-            <button data-scroll-to="home" class="footer-link-btn">
+            <a href="#home" data-scroll-to="home" class="footer-link-btn">
               Home
-            </button>
+            </a>
           </li>
           <li>
-            <button data-scroll-to="about" class="footer-link-btn">
+            <a href="assets/pages/about.html" class="footer-link-btn">
               About
-            </button>
+            </a>
           </li>
           <li>
-            <button data-scroll-to="services" class="footer-link-btn">
+            <a href="#services" data-scroll-to="services" class="footer-link-btn">
               Services
-            </button>
+            </a>
           </li>
           <li>
-            <button data-scroll-to="estimator" class="footer-link-btn">
+            <a href="#estimator" data-scroll-to="estimator" class="footer-link-btn">
               Price Planner
-            </button>
+            </a>
           </li>
           <li>
-            <button data-scroll-to="locations" class="footer-link-btn">
+            <a href="#locations" data-scroll-to="locations" class="footer-link-btn">
               Locations
-            </button>
+            </a>
           </li>
           <li>
-            <button data-scroll-to="faq" class="footer-link-btn">FAQ</button>
+            <a href="#faq" data-scroll-to="faq" class="footer-link-btn">FAQ</a>
           </li>
         </ul>
       </div>
@@ -1185,29 +1182,29 @@
         <h4 class="footer-col-title">Served Areas</h4>
         <ul class="footer-links-list">
           <li>
-            <button data-scroll-to="locations" class="footer-link-btn">
+            <a href="#locations" data-scroll-to="locations" class="footer-link-btn">
               <span class="dot"></span> Sobha Hartland
-            </button>
+            </a>
           </li>
           <li>
-            <button data-scroll-to="locations" class="footer-link-btn">
+            <a href="#locations" data-scroll-to="locations" class="footer-link-btn">
               <span class="dot"></span> Creek Harbour
-            </button>
+            </a>
           </li>
           <li>
-            <button data-scroll-to="locations" class="footer-link-btn">
+            <a href="#locations" data-scroll-to="locations" class="footer-link-btn">
               <span class="dot"></span> Business Bay
-            </button>
+            </a>
           </li>
           <li>
-            <button data-scroll-to="locations" class="footer-link-btn">
+            <a href="#locations" data-scroll-to="locations" class="footer-link-btn">
               <span class="dot"></span> Downtown Dubai
-            </button>
+            </a>
           </li>
           <li>
-            <button data-scroll-to="locations" class="footer-link-btn">
+            <a href="#locations" data-scroll-to="locations" class="footer-link-btn">
               <span class="dot"></span> Dubai Hills Estate
-            </button>
+            </a>
           </li>
         </ul>
       </div>
@@ -1293,9 +1290,10 @@
   </div>
 
   <!-- Custom script JS file -->
-  <script src="assets/js/Service-card.js"></script>
-  <script src="assets/js/Price-items.js"></script>
+  <script src="assets/js/index_js/Service_card.js"></script>
+  <script src="assets/js/index_js/Price_items.js"></script>
   <script src="assets/js/script.js"></script>
+  <script src="assets/js/index_js/index.js"></script>
 </body>
 
 </html>
