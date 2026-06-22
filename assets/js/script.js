@@ -66,15 +66,16 @@ function initNavbar() {
   const scrollButtons = document.querySelectorAll('[data-scroll-to]');
   scrollButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.preventDefault();
       const targetId = btn.getAttribute('data-scroll-to');
       const targetElement = document.getElementById(targetId);
       
-      // Close mobile drawer if open
-      mobileDrawer.classList.remove('active');
-      mobileToggleIcon.className = 'fa-solid fa-bars';
-
       if (targetElement) {
+        e.preventDefault();
+        
+        // Close mobile drawer if open
+        mobileDrawer.classList.remove('active');
+        mobileToggleIcon.className = 'fa-solid fa-bars';
+
         // Offset scroll for fixed header
         const headerOffset = 110;
         const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
@@ -84,6 +85,10 @@ function initNavbar() {
           top: offsetPosition,
           behavior: 'smooth'
         });
+      } else {
+        // If target element doesn't exist, let it navigate by default (but close drawer)
+        mobileDrawer.classList.remove('active');
+        mobileToggleIcon.className = 'fa-solid fa-bars';
       }
     });
   });
@@ -94,6 +99,11 @@ function initNavbar() {
   const mobileNavLinks = document.querySelectorAll('.mobile-drawer .mobile-nav-link');
 
   function updateActiveLinkOnScroll() {
+    // Skip scroll spy on about.html to preserve active state of the About menu item
+    if (window.location.pathname.includes('about.html')) {
+      return;
+    }
+
     let currentActiveId = '';
     const scrollPosition = window.scrollY + 160; // offset for fixed header trigger
 

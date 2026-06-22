@@ -1,0 +1,691 @@
+/* =====================================================================
+   WAVES LAUNDRY - ABOUT US PAGE SPECIFIC STYLES
+   ===================================================================== */
+
+/* #---------------ABOUT HERO SECTION-----------------# */
+.about-hero {
+  display: flex;
+  align-items: center;
+  height: 50vh;
+  min-height: 350px;
+  background: linear-gradient(to right, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.6) 50%, rgba(15, 23, 42, 0.3) 100%), url('../images/about/waves_hero_bg.png') no-repeat center center / cover;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  padding-top: 140px; /* Offset fixed header and center text nicely */
+  box-sizing: border-box;
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 5;
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-hero-title {
+  font-size: 3.5rem; 
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.breadcrumb-item {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-item:hover {
+  color: var(--white);
+}
+
+.breadcrumb-item.active {
+  color: var(--white);
+  pointer-events: none;
+}
+
+.breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+/* #---------------PROCESS WORKFLOW-----------------# */
+.workflow-section {
+  background-color: var(--bg-light);
+  padding: 100px 0;
+  position: relative;
+}
+
+.workflow-container {
+  position: relative;
+  margin-top: 60px;
+  padding: 0 40px;
+}
+
+.workflow-line {
+  position: absolute;
+  top: 35px;
+  left: 10%;
+  right: 10%;
+  height: 4px;
+  background: var(--slate-border);
+  z-index: 1;
+  border-radius: var(--radius-full);
+}
+
+.workflow-line-progress {
+  height: 100%;
+  width: 50%; /* Managed dynamically by JS */
+  background: var(--primary);
+  border-radius: var(--radius-full);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.workflow-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.workflow-step {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 15px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.step-icon-box {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--slate-border);
+  color: var(--slate-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.step-number {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--slate-light);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--white);
+  transition: all 0.3s ease;
+}
+
+.step-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--slate-dark);
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.step-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--slate-body);
+  max-width: 200px;
+}
+
+/* Timeline animations/highlights */
+.workflow-step.active .step-icon-box {
+  border-color: var(--primary);
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.workflow-step.active .step-number {
+  background-color: var(--primary);
+}
+
+.workflow-step.active .step-title {
+  color: var(--primary-dark);
+}
+
+.workflow-step.current .step-icon-box {
+  border-color: var(--secondary);
+  background-color: var(--white);
+  color: var(--primary);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md);
+}
+
+.workflow-step.current .step-number {
+  background-color: var(--secondary);
+}
+
+.workflow-step.current .step-title {
+  color: var(--primary);
+}
+
+/* #---------------WHAT WE OFFER-----------------# */
+.offer-section {
+  background-color: var(--bg-light);
+  padding: 100px 0;
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.offer-content {
+  padding-right: 20px;
+}
+
+.offer-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--slate-body);
+  margin-bottom: 20px;
+}
+
+.offer-img-box {
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.offer-img-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* #---------------OUR BRAND PHILOSOPHY-----------------# */
+.philosophy-section {
+  background-color: var(--white);
+  padding: 100px 0;
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.philosophy-content {
+  padding-left: 20px;
+}
+
+.philosophy-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--slate-body);
+  margin-bottom: 25px;
+}
+
+.philosophy-interactive-container {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin-top: 30px;
+}
+
+.philosophy-center-logo {
+  position: absolute;
+  z-index: 10;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid var(--slate-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.5s ease;
+  overflow: hidden;
+}
+
+.philosophy-center-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes logo-pulse-blue {
+  0% {
+    box-shadow: 0 0 0 0 rgba(4, 107, 210, 0.25), 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(4, 107, 210, 0), 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(4, 107, 210, 0), 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.philosophy-center-logo {
+  animation: logo-pulse-blue 2s infinite;
+}
+
+.philosophy-interactive-container:hover .philosophy-center-logo {
+  transform: scale(1.1);
+  border-color: var(--primary);
+}
+
+.philosophy-pop-item {
+  position: absolute;
+  width: 200px;
+  opacity: 1;
+  visibility: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.philosophy-pop-item i {
+  font-size: 2.2rem;
+  color: var(--primary); /* brand blue highlight */
+  margin-bottom: 10px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.philosophy-pop-item:hover i {
+  color: var(--primary-dark);
+}
+
+.philosophy-pop-item .pillar-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 4px;
+}
+
+.philosophy-pop-item .pillar-text {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--slate-body);
+}
+
+/* Coordinate positioning and hover expansion */
+.pop-top-left {
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+}
+
+.philosophy-interactive-container:hover .pop-top-left {
+  transform: translate(-10px, -10px);
+}
+
+.pop-top-left:hover {
+  transform: translate(-10px, -10px) scale(1.08) !important;
+}
+
+.pop-top-right {
+  top: 0;
+  right: 0;
+  transform: translate(0, 0);
+}
+
+.philosophy-interactive-container:hover .pop-top-right {
+  transform: translate(10px, -10px);
+}
+
+.pop-top-right:hover {
+  transform: translate(10px, -10px) scale(1.08) !important;
+}
+
+.pop-bottom-left {
+  bottom: 0;
+  left: 0;
+  transform: translate(0, 0);
+}
+
+.philosophy-interactive-container:hover .pop-bottom-left {
+  transform: translate(-10px, 10px);
+}
+
+.pop-bottom-left:hover {
+  transform: translate(-10px, 10px) scale(1.08) !important;
+}
+
+.pop-bottom-right {
+  bottom: 0;
+  right: 0;
+  transform: translate(0, 0);
+}
+
+.philosophy-interactive-container:hover .pop-bottom-right {
+  transform: translate(10px, 10px);
+}
+
+.pop-bottom-right:hover {
+  transform: translate(10px, 10px) scale(1.08) !important;
+}
+
+.philosophy-img-box {
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.philosophy-img-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.philosophy-banner {
+  margin-top: 60px;
+  padding: 30px 40px;
+  background: linear-gradient(135deg, rgba(4, 107, 210, 0.04) 0%, rgba(0, 210, 255, 0.04) 100%);
+  border-left: 5px solid var(--primary);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.philosophy-banner-text {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--primary-dark);
+}
+
+/* #---------------OUR FABRIC CARE SPECIALISTS-----------------# */
+.specialists-section {
+  background-color: var(--white);
+  padding: 100px 0;
+}
+
+.specialists-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.specialists-content {
+  padding-right: 20px;
+}
+
+.specialists-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--slate-body);
+  margin-bottom: 20px;
+}
+
+.specialists-img-box {
+  width: 100%;
+}
+
+.specialists-img-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+
+.specialist-img-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 5;
+}
+
+
+.specialist-img-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+
+
+.specialist-img-card:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.06);
+}
+
+/* #---------------ECO-CARE & SUSTAINABILITY-----------------# */
+.eco-section {
+  background-color: var(--bg-light);
+  padding: 100px 0;
+}
+
+.eco-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.eco-img-box {
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.eco-img-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.eco-lead {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-bottom: 16px;
+}
+
+.eco-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--slate-body);
+  margin-bottom: 25px;
+}
+
+.eco-checklist-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 15px;
+}
+
+.eco-checklist {
+  list-style: none;
+  padding: 0;
+}
+
+.eco-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--slate-body);
+  margin-bottom: 14px;
+}
+
+.eco-checklist li i {
+  color: var(--green);
+  font-size: 1.15rem;
+  margin-top: 2px;
+}
+
+/* #---------------RESPONSIVENESS MEDIA QUERIES-----------------# */
+
+@media (max-width: 991px) {
+  .about-hero {
+    height: auto;
+    min-height: auto;
+    padding-top: 150px;
+    padding-bottom: 60px;
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%), url('../images/about/waves_hero_bg.png') no-repeat center center / cover;
+  }
+  .about-hero-title {
+    font-size: 2.25rem;
+    margin-bottom: 10px;
+  }
+
+  /* Standard Grid collapse */
+  .philosophy-grid,
+  .specialists-grid,
+  .eco-grid,
+  .offer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .philosophy-content,
+  .specialists-content,
+  .offer-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .philosophy-grid,
+  .eco-grid {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  /* Process Workflow Collapse to Vertical */
+  .workflow-container {
+    padding: 0;
+  }
+
+  .workflow-line {
+    left: 35px;
+    top: 20px;
+    bottom: 20px;
+    width: 4px;
+    height: auto;
+  }
+
+  .workflow-steps {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .workflow-step {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0;
+    opacity: 1; /* Reset stagger properties on mobile */
+    transform: none;
+  }
+
+  .step-icon-box {
+    margin-bottom: 0;
+    min-width: 70px;
+  }
+
+  .step-desc {
+    max-width: none;
+  }
+
+  /* Philosophy mobile stack styling */
+  .philosophy-interactive-container {
+    height: auto;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .philosophy-center-logo {
+    position: static;
+    margin-bottom: 10px;
+    animation: none;
+    transform: none !important;
+  }
+
+  .philosophy-pop-item {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .philosophy-banner {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .about-hero-actions .btn {
+    width: 100%;
+  }
+  .specialists-img-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* #---------------SCROLL REVEAL ANIMATIONS-----------------# */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
