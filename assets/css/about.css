@@ -8,7 +8,7 @@
   align-items: center;
   height: 50vh;
   min-height: 350px;
-  background: linear-gradient(to right, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.6) 50%, rgba(15, 23, 42, 0.3) 100%), url('../../images/about/waves_hero_bg.png') no-repeat center center / cover;
+  background: linear-gradient(to right, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.6) 50%, rgba(15, 23, 42, 0.3) 100%), url('../images/about/waves_hero_bg.png') no-repeat center center / cover;
   color: var(--white);
   position: relative;
   overflow: hidden;
@@ -565,7 +565,7 @@
     min-height: auto;
     padding-top: 150px;
     padding-bottom: 60px;
-    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%), url('../../images/about/waves_hero_bg.png') no-repeat center center / cover;
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%), url('../images/about/waves_hero_bg.png') no-repeat center center / cover;
   }
   .about-hero-title {
     font-size: 2.25rem;
