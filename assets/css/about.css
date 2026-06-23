@@ -12,7 +12,7 @@
   color: var(--white);
   position: relative;
   overflow: hidden;
-  padding-top: 140px; /* Offset fixed header and center text nicely */
+  padding-top: 140px; 
   box-sizing: border-box;
 }
 
@@ -69,8 +69,8 @@
 
 /* #---------------PROCESS WORKFLOW-----------------# */
 .workflow-section {
-  background-color: var(--bg-light);
-  padding: 100px 0;
+  background-color: var(--white);
+  padding: 60px 0;
   position: relative;
 }
 
@@ -198,10 +198,23 @@
   color: var(--primary);
 }
 
+/* Full Screen Centered Sections from About Us onward */
+.offer-section,
+.philosophy-section,
+.why-choose-us-section,
+.specialists-section,
+.eco-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 100px 0;
+}
+
 /* #---------------WHAT WE OFFER-----------------# */
 .offer-section {
   background-color: var(--bg-light);
-  padding: 100px 0;
 }
 
 .offer-grid {
@@ -237,7 +250,6 @@
 /* #---------------OUR BRAND PHILOSOPHY-----------------# */
 .philosophy-section {
   background-color: var(--white);
-  padding: 100px 0;
 }
 
 .philosophy-grid {
@@ -434,7 +446,6 @@
 /* #---------------OUR FABRIC CARE SPECIALISTS-----------------# */
 .specialists-section {
   background-color: var(--white);
-  padding: 100px 0;
 }
 
 .specialists-grid {
@@ -493,7 +504,6 @@
 /* #---------------ECO-CARE & SUSTAINABILITY-----------------# */
 .eco-section {
   background-color: var(--bg-light);
-  padding: 100px 0;
 }
 
 .eco-grid {
@@ -506,7 +516,6 @@
 .eco-img-box {
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  box-shadow: var(--shadow-xl);
 }
 
 .eco-img-box img {
@@ -552,7 +561,7 @@
 }
 
 .eco-checklist li i {
-  color: var(--green);
+  color: var(--primary);
   font-size: 1.15rem;
   margin-top: 2px;
 }
@@ -677,15 +686,60 @@
   }
 }
 
-/* #---------------SCROLL REVEAL ANIMATIONS-----------------# */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: opacity, transform;
+/* #---------------WHY CHOOSE US-----------------# */
+.why-choose-us-section {
+  background-color: var(--bg-light);
 }
 
-.reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
+.why-choose-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
 }
+
+@media (min-width: 992px) {
+  .why-choose-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 60px;
+  }
+}
+
+.why-choose-img-box {
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.why-choose-img-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.why-choose-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.why-choose-lead {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--slate-dark);
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.why-choose-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--slate-body);
+  margin-bottom: 20px;
+}
+
+.why-choose-text:last-child {
+  margin-bottom: 0;
+}
+
+

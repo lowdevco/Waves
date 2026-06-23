@@ -1,6 +1,4 @@
-
-//  * Waves Laundry - Services Data 
-
+//  * Waves Laundry - Services Data
 
 const SERVICES_DATA = [
   {
