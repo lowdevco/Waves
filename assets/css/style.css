@@ -521,7 +521,6 @@ select {
   height: 40px;
   width: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
   transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .logo:hover img {
@@ -1034,7 +1033,6 @@ select {
     }
 
   .logo img {
-      filter: brightness(0) invert(1);
       height: 50px;
       image: fluid ;
     }
@@ -2097,6 +2095,7 @@ textarea.form-input {
 /* =====================================================================
    GLOBAL SCROLL REVEAL ANIMATIONS
    ===================================================================== */
+   
 .reveal {
   opacity: 0;
   transform: translateY(30px);

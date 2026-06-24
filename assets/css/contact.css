@@ -7,13 +7,19 @@
 .about-hero {
   display: flex;
   align-items: center;
-  height: 50vh;
-  min-height: 350px;
-  background: linear-gradient(to right, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.6) 50%, rgba(15, 23, 42, 0.3) 100%), url('../images/contact/contact_hero_bg.png') no-repeat center center / cover;
+  height: 45vh;
+  min-height: 320px;
+  background: linear-gradient(
+      to right,
+      rgba(15, 23, 42, 0.9) 0%,
+      rgba(15, 23, 42, 0.65) 50%,
+      rgba(15, 23, 42, 0.3) 100%
+    ),
+    url("../images/contact/contact_hero_bg.png") no-repeat center center / cover;
   color: var(--white);
   position: relative;
   overflow: hidden;
-  padding-top: 140px; 
+  padding-top: 140px;
   box-sizing: border-box;
 }
 
@@ -70,11 +76,12 @@
 
 /* SECTION 1: CONTACT CARDS GRID */
 .contact-cards-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
-    padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 55vh;
+  padding: 60px 0;
   background-color: var(--background);
 }
 

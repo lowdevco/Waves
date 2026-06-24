@@ -3,7 +3,7 @@
 const SERVICES_DATA = [
   {
     id: "dry_cleaning",
-    title: "Premium Dry Cleaning",
+    title: "Expert Dry Cleaning",
     description:
       "Advanced solvent systems, gentle processing cycles, and expert stain-removal techniques tailored specifically for luxury textiles such as silk, velvet, chiffon, cashmere, and couture garments. Every item is treated with the utmost precision to maintain fabric integrity and color richness.",
     image: "assets/images/common_images/services/service-dryclean.png",
@@ -33,7 +33,7 @@ const SERVICES_DATA = [
   },
   {
     id: "luxury_laundry",
-    title: "Luxury Laundry & Finishing",
+    title: "Premium Laundry & Finishing",
     description:
       "Fabric-specific wash programs combined with premium softeners and hand-finished pressing deliver crisp, immaculate, hotel-grade results. Perfect for individuals who expect refined perfection in every fold.",
     image: "assets/images/common_images/services/service-washfold.png",
@@ -50,9 +50,9 @@ const SERVICES_DATA = [
   },
   {
     id: "alterations",
-    title: "Professional Alterations & Repairs",
+    title: "Professional Alterations ",
     description:
-      "Couture-level tailoring solutions including hemming, tapering, resizing, zip replacements, button fixing, and structural repairs. Your garments receive detailed craftsmanship that enhances both fit and comfort.",
+      "Couture-level tailoring solutions including hemming, tapering, resizing, zip replacements, and button fixing. Your garments receive detailed craftsmanship that enhances both fit and comfort.",
     image: "assets/images/common_images/services/service-alterations.png",
     iconColorClass: "icon-blue",
     iconSvg: `
@@ -66,9 +66,9 @@ const SERVICES_DATA = [
   },
   {
     id: "shoe_care",
-    title: "Shoe Care & Restoration",
+    title: "Shoe Care",
     description:
-      "Deep cleaning, deodorizing, polishing, suede revival, color correction, and full sneaker spa treatments. Each pair is rejuvenated using premium materials and expert restoration methods.",
+      "Deep cleaning, deodorizing, polishing, suede revival, color correction, and full sneaker spa treatments. Each pair is rejuvenated using premium materials and expert care methods.",
     image: "assets/images/common_images/services/service-shoes.png",
     iconColorClass: "icon-green",
     iconSvg: `
@@ -93,9 +93,9 @@ const SERVICES_DATA = [
   },
   {
     id: "bag_spa",
-    title: "Bag Spa & Restoration",
+    title: "Bag Care",
     description:
-      "Comprehensive handbag restoration featuring deep cleaning, stain correction, leather conditioning, moisturization treatments, structural reshaping, and hardware polishing. Ideal for luxury leather goods and designer bags.",
+      "Comprehensive handbag care featuring deep cleaning, stain correction, leather conditioning, moisturization treatments, and hardware polishing. Ideal for luxury leather goods and designer bags.",
     image: "assets/images/common_images/services/service-bag-spa.png",
     iconColorClass: "icon-blue",
     iconSvg: `
@@ -130,19 +130,6 @@ const SERVICES_DATA = [
     iconSvg: `
       <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M2 17L12 22L22 17M2 12L17L22 12M12 2L2 7L12 12L22 7L12 2Z"/>
-      </svg>
-    `,
-  },
-  {
-    id: "sofa_cleaning",
-    title: "Sofa Cleaning",
-    description:
-      "Deep extraction shampooing and sanitization of upholstery, reaching tight seams and restoring pristine fabric luster.",
-    image: "assets/images/common_images/services/service-sofa.png",
-    iconColorClass: "icon-green",
-    iconSvg: `
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5M3 11a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4z"/>
       </svg>
     `,
   },

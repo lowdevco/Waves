@@ -1494,19 +1494,6 @@
   position: relative;
 }
 
-.faq-container-new {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-@media (min-width: 1024px) {
-  .faq-container-new {
-    max-width: 1140px;
-  }
-}
-
 .faq-grid-new {
   display: grid;
   grid-template-columns: 1fr;

@@ -6,13 +6,19 @@
 .about-hero {
   display: flex;
   align-items: center;
-  height: 50vh;
-  min-height: 350px;
-  background: linear-gradient(to right, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.6) 50%, rgba(15, 23, 42, 0.3) 100%), url('../images/about/waves_hero_bg.png') no-repeat center center / cover;
+  height: 45vh;
+  min-height: 320px;
+  background: linear-gradient(
+      to right,
+      rgba(15, 23, 42, 0.9) 0%,
+      rgba(15, 23, 42, 0.65) 50%,
+      rgba(15, 23, 42, 0.3) 100%
+    ),
+    url("../images/contact/contact_hero_bg.png") no-repeat center center / cover;
   color: var(--white);
   position: relative;
   overflow: hidden;
-  padding-top: 140px; 
+  padding-top: 140px;
   box-sizing: border-box;
 }
 
@@ -70,8 +76,20 @@
 /* #---------------PROCESS WORKFLOW-----------------# */
 .workflow-section {
   background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 55vh;
   padding: 60px 0;
-  position: relative;
+}
+
+.workflow-section .section-subtitle {
+  margin-bottom: 4px;
+}
+
+.workflow-section .section-title {
+  margin-bottom: 8px;
 }
 
 .workflow-container {
@@ -215,6 +233,7 @@
 /* #---------------WHAT WE OFFER-----------------# */
 .offer-section {
   background-color: var(--bg-light);
+  max-height:100vh;
 }
 
 .offer-grid {
@@ -273,7 +292,7 @@
 .philosophy-interactive-container {
   position: relative;
   width: 100%;
-  height: 350px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -425,22 +444,6 @@
   width: 100%;
   height: auto;
   display: block;
-}
-
-.philosophy-banner {
-  margin-top: 60px;
-  padding: 30px 40px;
-  background: linear-gradient(135deg, rgba(4, 107, 210, 0.04) 0%, rgba(0, 210, 255, 0.04) 100%);
-  border-left: 5px solid var(--primary);
-  border-radius: var(--radius-md);
-  text-align: center;
-}
-
-.philosophy-banner-text {
-  font-size: 1.2rem;
-  font-style: italic;
-  font-weight: 500;
-  color: var(--primary-dark);
 }
 
 /* #---------------OUR FABRIC CARE SPECIALISTS-----------------# */
@@ -740,6 +743,49 @@
 
 .why-choose-text:last-child {
   margin-bottom: 0;
+}
+
+/* About Us Page Content Grid */
+.about-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 30px;
+  margin-top: 35px;
+}
+
+.about-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.about-feature-item .feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  font-size: 16px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.about-feature-item .feature-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--slate-dark);
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+@media (max-width: 576px) {
+  .about-features-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
 
 
