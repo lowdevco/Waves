@@ -24,7 +24,7 @@
 
 <body>
   <!-- ==========================================
-         1. HEADER & NAVIGATION BAR
+      HEADER & NAVIGATION BAR
          ========================================== -->
   <header class="header" id="header">
     <!-- Top Social Bar -->
@@ -67,14 +67,14 @@
 
         <!-- Desktop Links -->
         <nav class="nav-links">
-          <a href="#home" data-scroll-to="home" class="nav-link-btn active">
+          <a href="index.html" data-scroll-to="home" class="nav-link-btn active">
             Home
           </a>
           <a href="about.html" class="nav-link-btn">About</a>
-          <a href="#" class="nav-link-btn">
+          <a href="service.html" class="nav-link-btn">
             Services
           </a>
-          <a href="#" class="nav-link-btn">
+          <a href="#locations" data-scroll-to="locations" class="nav-link-btn">
             Locations
           </a>
           <a href="#" class="nav-link-btn">Blog</a>
@@ -85,7 +85,7 @@
           <a href="contact.html" class="btn btn-white-outline">
             Contact Us
           </a>
-          <a href="#booking" data-scroll-to="booking" class="btn btn-white-fill">
+          <a href="index.html#booking" data-scroll-to="booking" class="btn btn-white-fill">
             Book Free Pickup
           </a>
         </div>
@@ -99,20 +99,20 @@
 
     <!-- Mobile Drawer -->
     <div class="mobile-drawer" id="mobile-drawer">
-      <a href="#home" data-scroll-to="home" class="mobile-nav-link">Home</a>
+      <a href="index.html" data-scroll-to="home" class="mobile-nav-link">Home</a>
       <a href="about.html" class="mobile-nav-link">About</a>
-      <a href="#" class="mobile-nav-link">Services</a>
-      <a href="#" class="mobile-nav-link">Locations</a>
+      <a href="service.html" class="mobile-nav-link">Services</a>
+      <a href="#locations" data-scroll-to="locations" class="mobile-nav-link">Locations</a>
       <a href="#" class="mobile-nav-link">Blog</a>
       <a href="contact.html" data-scroll-to="booking" class="mobile-nav-link">Contact</a>
     </div>
   </header>
 
-  <main>
+  <main id="home">
     <!-- ==========================================
-           2. HERO SECTION
+           HERO SECTION
            ========================================== -->
-    <section id="home" class="hero-section">
+    <section id="home" class="hero-section reveal">
       <!-- Background Image Carousel -->
       <div class="hero-bg-carousel">
         <div class="hero-bg-slide active" style="background-image: url('assets/images/index/hero-1.png');"></div>
@@ -220,7 +220,7 @@
     <!-- ==========================================
            3. SERVICES SECTION
            ========================================== -->
-    <section id="services" class="services-section py-section reveal">
+    <section id="home" class="services-section py-section reveal">
       <div class="container">
         <!-- Section Header -->
         <div class="text-center">
@@ -253,7 +253,7 @@
     <!-- ==========================================
            3. ABOUT US SECTION
            ========================================== -->
-    <section class="about-section py-section reveal">
+    <section class="about-section py-section reveal" id="home">
       <div class="container">
         <!-- About Waves Card -->
         <div id="about" class="about-block">
@@ -350,7 +350,7 @@
     <!-- ==========================================
            4. INTERACTIVE PRICE ESTIMATOR SECTION
            ========================================== -->
-    <section id="estimator" class="estimator-section py-section reveal">
+    <section id="home" class="estimator-section py-section reveal">
       <!-- Backdrop animations -->
       <div class="wave-backdrop">
         <div class="wave-circle-left"></div>
@@ -456,7 +456,7 @@
     <!-- ==========================================
            5. WHY CHOOSE US 
            ========================================== -->
-    <section class="benefits-section py-section reveal">
+    <section class="benefits-section py-section reveal" id="home">
       <div class="container">
         <div class="benefits-grid">
           <!-- Left: Facility Plant image -->
@@ -596,7 +596,7 @@
     <!-- ==========================================
            6. DUBAI LOCATIONS SERVED
            ========================================== -->
-    <section id="locations" class="locations-section py-section reveal">
+    <section id="home" class="locations-section py-section reveal">
       <div class="container">
         <!-- Header -->
         <div class="text-center">
@@ -713,7 +713,7 @@
                7. BOOKING & SCHEDULING WIZARD
                ========================================== -->
     <section class="booking-section py-section reveal" id="booking">
-      <div class="container booking-container">
+      <div class="container booking-container" id="home">
 
         <!-- Header -->
         <div class="text-center booking-p" style="margin-bottom:40px ;">
@@ -1006,7 +1006,7 @@
     <!-- ==========================================
            8. FREQUENTLY ASKED QUESTIONS (FAQ)
            ========================================== -->
-    <section id="faq" class="faq-section py-section reveal">
+    <section id="home" class="faq-section py-section reveal">
       <div class="container faq-container-new">
         <div class="faq-grid-new">
           <!-- Left Column: FAQ Content -->
@@ -1135,7 +1135,7 @@
         <h4 class="footer-col-title">Quick Links</h4>
         <ul class="footer-links-list">
           <li>
-            <a href="#home" data-scroll-to="home" class="footer-link-btn">
+            <a href="index.html" data-scroll-to="home" class="footer-link-btn">
               Home
             </a>
           </li>
@@ -1145,22 +1145,22 @@
             </a>
           </li>
           <li>
-            <a href="#" class="footer-link-btn">
+            <a href="service.html" class="footer-link-btn">
               Services
             </a>
           </li>
           <li>
             <a href="#estimator" data-scroll-to="estimator" class="footer-link-btn">
-              Price Planner
+              Location
             </a>
           </li>
           <li>
             <a href="#" class="footer-link-btn">
-              Locations
+              Blog
             </a>
           </li>
           <li>
-            <a href="#faq" data-scroll-to="faq" class="footer-link-btn">FAQ</a>
+            <a href="contact.html" data-scroll-to="faq" class="footer-link-btn">Contact</a>
           </li>
         </ul>
       </div>

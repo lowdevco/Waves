@@ -100,13 +100,7 @@ function initNavbar() {
   const mobileNavLinks = document.querySelectorAll(
     ".mobile-drawer .mobile-nav-link",
   );
-
   function updateActiveLinkOnScroll() {
-    // Skip scroll spy on about.html to preserve active state of the About menu item
-    if (window.location.pathname.includes("about.html")) {
-      return;
-    }
-
     let currentActiveId = "";
     const scrollPosition = window.scrollY + 160; // offset for fixed header trigger
 
@@ -130,23 +124,28 @@ function initNavbar() {
 
     if (currentActiveId) {
       desktopNavLinks.forEach((link) => {
-        if (link.getAttribute("data-scroll-to") === currentActiveId) {
-          link.classList.add("active");
-        } else {
-          link.classList.remove("active");
+        const scrollTo = link.getAttribute("data-scroll-to");
+        if (scrollTo) {
+          if (scrollTo === currentActiveId) {
+            link.classList.add("active");
+          } else {
+            link.classList.remove("active");
+          }
         }
       });
 
       mobileNavLinks.forEach((link) => {
-        if (link.getAttribute("data-scroll-to") === currentActiveId) {
-          link.classList.add("active");
-        } else {
-          link.classList.remove("active");
+        const scrollTo = link.getAttribute("data-scroll-to");
+        if (scrollTo) {
+          if (scrollTo === currentActiveId) {
+            link.classList.add("active");
+          } else {
+            link.classList.remove("active");
+          }
         }
       });
     }
   }
-
   window.addEventListener("scroll", updateActiveLinkOnScroll);
   // Run once on load to highlight the active section initially
   updateActiveLinkOnScroll();
