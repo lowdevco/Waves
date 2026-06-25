@@ -242,7 +242,7 @@ function initBookingWizard() {
   if (resetBtn) {
     resetBtn.addEventListener("click", () => {
       // Clear cart items
-      clearCart();
+      state.cart = [];
 
       // Reset state form inputs
       state.formData = {
@@ -276,9 +276,6 @@ function initBookingWizard() {
       changeWizardStep(1);
     });
   }
-
-  // Initial synchronizations
-  syncWizardReviewCart();
 }
 
 function showToast(message, type = "error") {
@@ -358,7 +355,7 @@ function validateStepInputs() {
     }
   }
 
-  if (state.currentStep === 2) {
+  if (state.currentStep === 1) {
     let hasError = false;
     if (!dateInput.value) {
       markInvalid(dateInput, "Pickup date is required");
@@ -376,7 +373,7 @@ function validateStepInputs() {
     state.formData.time = timeInput.value;
   }
 
-  if (state.currentStep === 3) {
+  if (state.currentStep === 2) {
     let hasError = false;
     if (!nameInput.value.trim()) {
       markInvalid(nameInput, "Full name is required");
@@ -443,48 +440,8 @@ function changeWizardStep(stepNum) {
   });
 
   // Trigger content-specific renders based on steps
-  if (stepNum === 4) {
+  if (stepNum === 3) {
     renderFinalOrderReview();
-  }
-}
-
-// Synchronize selected estimator items into step 1 reviews
-function syncWizardReviewCart() {
-  const emptyReview = document.getElementById("wizard-empty-cart");
-  const summaryBox = document.getElementById("wizard-summary-box");
-  const itemsReviewList = document.getElementById("wizard-summary-items");
-  const summaryTotalSpan = document.getElementById("wizard-summary-total");
-
-  if (state.cart.length === 0) {
-    emptyReview.style.display = "block";
-    summaryBox.style.display = "none";
-  } else {
-    emptyReview.style.display = "none";
-    summaryBox.style.display = "block";
-
-    const grandTotal = state.cart.reduce(
-      (sum, item) => sum + item.itemTotal,
-      0,
-    );
-    summaryTotalSpan.textContent = `${grandTotal} AED`;
-
-    itemsReviewList.innerHTML = state.cart
-      .map((item) => {
-        const serviceDisplay =
-          item.serviceType === "cleanPress"
-            ? item.id === "shoecleaning"
-              ? "Deep Clean"
-              : "Clean & Press"
-            : "Press Only";
-        return `
-        <div class="wizard-summary-items-row">
-          <span class="wizard-summary-item-name">${item.quantity} x ${item.name}</span>
-          <span class="wizard-summary-item-service">${serviceDisplay}</span>
-          <span class="wizard-summary-item-total">${item.itemTotal} AED</span>
-        </div>
-      `;
-      })
-      .join("");
   }
 }
 
