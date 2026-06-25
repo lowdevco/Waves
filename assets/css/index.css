@@ -811,7 +811,7 @@
 }
 
 /* ---------------------------------------------------------------------
-  PRICE ESTIMATOR & BAG SECTION
+  PREMIUM PRICE LIST SECTION (MODERN SWITCHER & CARDS GRID)
 --------------------------------------------------------------------- */
 
 .estimator-section {
@@ -820,433 +820,322 @@
   overflow: hidden;
 }
 
-/* Item Category Filter buttons */
 
-.estimator-filters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 32px;
+/* Tabs Switcher Segmented Control */
+.price-list-tabs-container {
+  max-width: 1140px;
+  margin: 0 auto;
 }
-.filter-btn {
-  padding: 10px 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  border-radius: var(--radius-full);
+
+.price-tabs-switcher {
+  display: inline-flex;
+  background-color: rgba(226, 232, 240, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 999px;
+  padding: 6px;
+  position: relative;
+  margin-bottom: 48px;
   box-shadow: var(--shadow-sm);
-  background-color: var(--white);
-  color: var(--slate-body);
-  border: 1px solid var(--slate-border);
-  transition: var(--transition);
 }
-@media (min-width: 480px) {
-  .filter-btn {
-    font-size: 0.875rem;
+
+.price-tab {
+  padding: 12px 32px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--slate-body);
+  border-radius: 999px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  outline: none;
+}
+.price-tab i {
+  font-size: 1rem;
+}
+
+/* Active tab text colors */
+.price-tab.active.men-active {
+  color: var(--white);
+}
+.price-tab.active.women-active {
+  color: var(--white);
+}
+.price-tab.active.home-active {
+  color: var(--white);
+}
+
+/* Sliding Background Indicator Pill */
+.active-tab-indicator {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 6px;
+  border-radius: 999px;
+  z-index: 1;
+  transition: all 0.38s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Indicator Theme Colors */
+.indicator-men {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  box-shadow: 0 6px 15px rgba(4, 107, 210, 0.3);
+}
+.indicator-women {
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+  box-shadow: 0 6px 15px rgba(219, 39, 119, 0.3);
+}
+.indicator-home {
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+  box-shadow: 0 6px 15px rgba(22, 163, 74, 0.3);
+}
+
+/* Grid layout for Cards */
+.price-grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+  transition: opacity 0.3s ease;
+  min-height: 300px;
+}
+
+/* Individual Premium Pricing Card */
+.price-item-card {
+  grid-column: span 2; /* 3 cards per row */
+  background: var(--white);
+  border: 1px solid var(--slate-border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.price-item-card.span-3 {
+  grid-column: span 3; /* 2 cards per row */
+}
+
+.price-item-card.span-6 {
+  grid-column: span 6; /* 1 card per row */
+}
+
+/* Animation on item render */
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
-.filter-btn.active {
-  background-color: var(--yellow);
-  color: #ffff;
-  box-shadow: var(--shadow-yellow);
-  border-color: var(--yellow);
-}
-.filter-btn:not(.active):hover {
-  color: var(--yellow-dark);
-  border-color: rgba(40, 95, 189, 0.33);
+.price-item-card {
+  animation: cardEntrance 0.4s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
 
-/* Estimator Layout Grid split: Items List & Bag Summary */
+/* Stagger cards animation */
+.price-item-card:nth-child(1) { animation-delay: 0.02s; }
+.price-item-card:nth-child(2) { animation-delay: 0.04s; }
+.price-item-card:nth-child(3) { animation-delay: 0.06s; }
+.price-item-card:nth-child(4) { animation-delay: 0.08s; }
+.price-item-card:nth-child(5) { animation-delay: 0.10s; }
+.price-item-card:nth-child(6) { animation-delay: 0.12s; }
+.price-item-card:nth-child(7) { animation-delay: 0.14s; }
+.price-item-card:nth-child(8) { animation-delay: 0.16s; }
+.price-item-card:nth-child(9) { animation-delay: 0.18s; }
+.price-item-card:nth-child(10) { animation-delay: 0.20s; }
+.price-item-card:nth-child(11) { animation-delay: 0.22s; }
+.price-item-card:nth-child(12) { animation-delay: 0.24s; }
+.price-item-card:nth-child(13) { animation-delay: 0.26s; }
+.price-item-card:nth-child(14) { animation-delay: 0.28s; }
+.price-item-card:nth-child(15) { animation-delay: 0.30s; }
 
-.estimator-split-grid {
-  margin-top: 48px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-  align-items: start;
-}
-
-/* Left panel: List of clothing items */
-
-.estimator-items-panel {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  max-height: 750px;
-  overflow-y: auto;
-  padding-right: 8px;
-}
-
-/* Styling custom scrollbar for estimator panel */
-
-.estimator-items-panel::-webkit-scrollbar {
-  width: 4px;
-}
-.estimator-items-panel::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
-}
-.estimator-items-panel::-webkit-scrollbar-thumb {
-  background: var(--primary-light);
-  border-radius: 4px;
-}
-.estimator-items-panel::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
-}
-
-.item-card {
-  background-color: var(--white);
-  border-radius: var(--radius-2xl);
-  padding: 20px;
-  border: 1px solid var(--slate-border);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-}
-.item-card:hover {
-  border-color: rgba(4, 107, 210, 0.3);
-  box-shadow: 0 15px 30px rgba(4, 107, 210, 0.1);
+/* Themed card backgrounds and highlights on hover */
+.price-list-tabs-container.theme-men .price-item-card:hover {
+  border-color: rgba(4, 107, 210, 0.4);
+  box-shadow: 0 12px 30px rgba(4, 107, 210, 0.12);
   transform: translateY(-5px);
 }
-.item-card.active {
-  border-color: var(--primary);
-  box-shadow: 0 12px 28px rgba(4, 107, 210, 0.12);
-  background-color: rgba(4, 107, 210, 0.01);
+.price-list-tabs-container.theme-women .price-item-card:hover {
+  border-color: rgba(219, 39, 119, 0.4);
+  box-shadow: 0 12px 30px rgba(219, 39, 119, 0.12);
+  transform: translateY(-5px);
 }
-.item-card.active:hover {
-  border-color: var(--primary-dark);
-  box-shadow: 0 18px 36px rgba(4, 107, 210, 0.18);
-}
-.item-card.hidden {
-  display: none !important;
+.price-list-tabs-container.theme-home .price-item-card:hover {
+  border-color: rgba(22, 163, 74, 0.4);
+  box-shadow: 0 12px 30px rgba(22, 163, 74, 0.12);
+  transform: translateY(-5px);
 }
 
-.item-card-header {
+/* Card Header details */
+.card-top-row {
   display: flex;
+  align-items: center;
   gap: 16px;
-  align-items: center;
-  margin-bottom: 16px;
-  position: relative;
+  margin-bottom: 20px;
 }
-.item-image-box {
-  width: 64px;
-  height: 64px;
-  border-radius: var(--radius-lg);
-  background-color: var(--background);
-  padding: 8px;
+
+.card-icon-bubble {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--slate-border);
-  overflow: hidden;
-  position: relative;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
 }
-.item-card:hover .item-image-box {
-  border-color: rgba(4, 107, 210, 0.3);
-  background-color: rgba(4, 107, 210, 0.04);
+.price-list-tabs-container.theme-men .card-icon-bubble {
+  background-color: var(--primary-light);
+  color: var(--primary);
 }
-.item-image-box img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.price-list-tabs-container.theme-women .card-icon-bubble {
+  background-color: #fce7f3;
+  color: #db2777;
 }
-.item-card:hover .item-image-box img {
-  transform: scale(1.15);
+.price-list-tabs-container.theme-home .card-icon-bubble {
+  background-color: #dcfce7;
+  color: var(--green-dark);
 }
-.item-active-badge {
-  margin-left: auto;
-  color: #72b01d; 
-  font-size: 1.25rem;
-  opacity: 0;
-  transform: scale(0.5);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.price-item-card:hover .card-icon-bubble {
+  transform: scale(1.1) rotate(-5deg);
 }
-.item-active-badge.visible {
-  opacity: 1;
-  transform: scale(1);
+
+.card-icon-bubble svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.8px;
 }
-.item-info {
-  text-align: left;
-}
-.item-info-name {
-  font-size: 1rem;
+
+.card-title-text {
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--slate-dark);
-}
-.item-info-cat {
-  font-size: 0.75rem;
-  color: var(--slate-body);
-  text-transform: capitalize;
+  text-align: left;
 }
 
-/* Service Options inside clothing item card */
-
-.item-services-list {
+/* Card Price layout styling */
+.card-price-grid {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding-top: 12px;
-  border-top: 1px solid var(--slate-border);
+  gap: 8px;
 }
-.item-service-row {
+
+.price-pill-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.875rem;
-}
-.item-service-info {
-  text-align: left;
-}
-.item-service-name {
-  font-weight: 500;
-  color: var(--slate-dark);
-  display: block;
-}
-.item-service-price {
-  font-size: 0.75rem;
-  color: var(--primary);
-  font-weight: 700;
-}
-.item-qty-control {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   background-color: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: var(--radius-full);
-  padding: 4px 10px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 12px;
+  padding: 8px 16px;
+  transition: all 0.3s ease;
 }
-.item-qty-control.has-qty {
-  background-color: rgba(252, 193, 24, 0.08); 
-  border-color: rgba(252, 193, 24, 0.4); 
-}
-.item-qty-btn {
-  width: 24px;
-  height: 24px;
-  border-radius: var(--radius-full);
+.price-pill-row:hover {
   background-color: var(--white);
-  border: 1px solid #cbd5e1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--slate-dark);
-  box-shadow: var(--shadow-sm);
-  font-size: 0.7rem;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.item-qty-btn:hover {
-  background-color: var(--primary);
-  border-color: var(--primary);
-  color: var(--white);
-  transform: scale(1.1);
-}
-.item-qty-btn[data-qty-action="decrease"]:hover {
-  background-color: #ef4444; 
-  border-color: #ef4444;
-}
-.item-qty-val {
-  width: 16px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 0.875rem;
-  color: var(--slate-dark);
-  transition: color 0.3s ease;
-}
-.item-qty-control.has-qty .item-qty-val {
-  color: var(--yellow-dark);
+  border-color: #cbd5e1;
 }
 
-/* Right panel: Laundry Bag Summary Card */
-
-.bag-card {
-  background-color: var(--white);
-  border-radius: var(--radius-2xl);
-  padding: 24px;
-  border: 1px solid var(--slate-border);
-  box-shadow: var(--shadow-xl);
-  position: relative;
-  overflow: hidden;
-}
-
-.bag-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--slate-border);
-  margin-bottom: 24px;
-}
-.bag-card-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 1.125rem;
-  font-weight: 800;
-  color: rgba(42, 39, 39, 0.78);
-}
-.bag-card-title i {
-  color: var(--primary);
-}
-.bag-clear-btn {
+.price-pill-lbl {
   font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--red);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: var(--transition);
-}
-.bag-clear-btn:hover {
-  color: var(--red-dark);
-  text-decoration: underline;
-}
-
-/* Bag Cart Empty state visual style */
-
-.bag-empty-state {
-  padding: 64px 0;
-  text-align: center;
-}
-.bag-empty-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: var(--radius-full);
-  background-color: var(--background);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-weight: 600;
   color: var(--slate-light);
-  margin: 0 auto 16px;
-  font-size: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
-.bag-empty-title {
-  font-weight: 700;
-  color: var(--slate-dark);
-  margin-bottom: 4px;
+.price-pill-lbl i {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.price-pill-val {
   font-size: 0.95rem;
-}
-.bag-empty-desc {
-  font-size: 0.75rem;
-  color: var(--slate-body);
-  max-width: 200px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-/* Bag Cart Populated items list container */
-
-.bag-items-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-height: 300px;
-  overflow-y: auto;
-  padding-right: 4px;
-  margin-bottom: 24px;
-}
-.bag-item-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.875rem;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(241, 245, 249, 0.6);
-}
-.bag-item-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.bag-item-img {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  background-color: var(--background);
-  padding: 4px;
-  object-fit: contain;
-}
-.bag-item-details {
-  text-align: left;
-}
-.bag-item-name {
-  font-weight: 700;
-  color: var(--slate-dark);
-}
-.bag-item-service {
-  font-size: 0.625rem;
-  color: var(--slate-body);
-  text-transform: capitalize;
-  font-weight: 500;
-}
-.bag-item-right {
-  text-align: right;
-}
-.bag-item-total {
-  font-weight: 700;
-  color: var(--slate-dark);
-}
-.bag-item-qtyprice {
-  font-size: 0.625rem;
-  color: var(--slate-body);
-  font-weight: 600;
-}
-
-/* Price Calculations summary box */
-
-.bag-summary-calc {
-  background-color: var(--background);
-  border-radius: var(--radius-lg);
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  font-size: 0.875rem;
-  margin-bottom: 24px;
-}
-.bag-calc-row {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-  color: var(--slate-body);
-}
-.bag-calc-row.green-text span:last-child {
-  color: var(--green-dark);
-  font-weight: 700;
-}
-.bag-calc-row.total-row {
-  padding-top: 12px;
-  border-top: 1px solid var(--slate-border);
-  font-size: 1.125rem;
   font-weight: 800;
   color: var(--slate-dark);
 }
-.bag-calc-row.total-row .color-primary {
-  color: var(--yellow-dark);
-  font-weight: 900;
+
+/* Single Price Box styling (e.g. for Clean Only) */
+.single-price-pill {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.price-list-tabs-container.theme-men .single-price-pill {
+  border-left: 3px solid var(--primary);
+}
+.price-list-tabs-container.theme-women .single-price-pill {
+  border-left: 3px solid #db2777;
+}
+.price-list-tabs-container.theme-home .single-price-pill {
+  border-left: 3px solid var(--green-dark);
 }
 
-.bag-card .btn-checkout {
-  width: 100%;
-  padding: 16px;
-  font-size: 1rem;
-  border-radius: var(--radius-lg);
+.single-price-pill .price-pill-lbl {
+  font-size: 0.72rem;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.single-price-pill .price-pill-val {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: var(--slate-dark);
 }
 
-.bag-notice-text {
-  font-size: 0.625rem;
-  color: var(--slate-body);
-  margin-top: 12px;
-  line-height: 1.5;
+/* Responsive updates */
+@media (max-width: 768px) {
+  .price-tabs-switcher {
+    width: 100%;
+    border-radius: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .price-tab {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+  .active-tab-indicator {
+    display: none; /* Hide animated indicator and use fallback active state */
+  }
+  .price-tab.active {
+    background-color: var(--primary) !important;
+    color: var(--white) !important;
+  }
+  .price-tab.active.women-active {
+    background-color: #db2777 !important;
+  }
+  .price-tab.active.home-active {
+    background-color: var(--green-dark) !important;
+  }
+  .price-grid-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .price-item-card,
+  .price-item-card.span-3,
+  .price-item-card.span-6 {
+    grid-column: span 1 !important;
+  }
 }
 
 /* ---------------------------------------------------------------------

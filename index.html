@@ -442,9 +442,9 @@
     </section>
 
     <!-- ==========================================
-           4. INTERACTIVE PRICE ESTIMATOR SECTION
+           4. PRICE LIST SECTION
            ========================================== -->
-    <section id="home" class="estimator-section py-section reveal">
+    <section id="estimator" class="estimator-section py-section reveal">
       <!-- Backdrop animations -->
       <div class="wave-backdrop">
         <div class="wave-circle-left"></div>
@@ -453,95 +453,32 @@
 
       <div class="container" style="position: relative; z-index: 10">
         <!-- Section Header -->
-        <div class="text-center">
-          <span class="section-subtitle">Price Planner</span>
-          <h2 class="section-title">Interactive Price Planner</h2>
-          <p class="section-desc">
-            Estimate your laundry service costs before booking. Build your bag
-            by selecting items and choosing the service type below.
-          </p>
-
-          <!-- Filters list -->
-          <div class="estimator-filters">
-            <button class="filter-btn active" data-category="all">
-              All Items
-            </button>
-            <button class="filter-btn" data-category="garments">
-              Garments
-            </button>
-            <button class="filter-btn" data-category="bedding">
-              Bedding & Home
-            </button>
-            <button class="filter-btn" data-category="footwear">
-              Footwear & Accessories
-            </button>
-          </div>
+        <div class="text-center" style="margin-bottom: 60px;">
+          <span class="section-subtitle">Price List</span>
+          <h2 class="section-title">Premium care for every item</h2>
         </div>
 
-        <!-- Estimator Layout Split Panel -->
-        <div class="estimator-split-grid">
-          <!-- Left List: Clothing Cards items -->
-          <div class="estimator-items-panel" id="estimator-items-panel">
-            <!-- Dynamically populated by assets/js/script.js from PRICE_LIST in Price-items.js -->
+        <!-- Price List Tabs and Cards Grid Container -->
+        <div class="price-list-tabs-container theme-men" id="price-list-tabs-container">
+          <!-- Segmented Tab Switcher -->
+          <div class="text-center" style="margin-bottom: 20px;">
+            <div class="price-tabs-switcher">
+              <button class="price-tab active men-active" data-category-id="men">
+                <i class="fa-solid fa-shirt"></i> Men
+              </button>
+              <button class="price-tab" data-category-id="women">
+                <i class="fa-solid fa-person-dress"></i> Women
+              </button>
+              <button class="price-tab" data-category-id="home">
+                <i class="fa-solid fa-house"></i> Home Items
+              </button>
+              <div class="active-tab-indicator indicator-men" id="active-tab-indicator"></div>
+            </div>
           </div>
 
-          <!-- Right Panel: Summary card -->
-          <div class="estimator-summary-panel">
-            <div class="bag-card">
-              <div class="bag-card-header">
-                <div class="bag-card-title">
-                  <i class="fa-solid fa-bag-shopping"></i>
-                  <span>Your Laundry Bag</span>
-                </div>
-                <button class="bag-clear-btn" id="bag-clear-btn">
-                  <i class="fa-solid fa-trash-can"></i> Clear All
-                </button>
-              </div>
-
-              <!-- Bag state empty -->
-              <div class="bag-empty-state" id="bag-empty-state">
-                <div class="bag-empty-icon">
-                  <i class="fa-solid fa-calculator"></i>
-                </div>
-                <p class="bag-empty-title">Your bag is empty</p>
-                <p class="bag-empty-desc">
-                  Select clothing items on the left to start building your
-                  order estimate.
-                </p>
-              </div>
-
-              <!-- Bag state list -->
-              <div id="bag-summary-card-body" style="display: none">
-                <div class="bag-items-list" id="bag-items-list">
-                  <!-- Dynamic rendering in script.js -->
-                </div>
-
-                <!-- Total calculators box -->
-                <div class="bag-summary-calc">
-                  <div class="bag-calc-row">
-                    <span>Total Selected Items</span>
-                    <span id="bag-total-items">0 items</span>
-                  </div>
-                  <div class="bag-calc-row green-text">
-                    <span>Pickup & Delivery</span>
-                    <span>FREE</span>
-                  </div>
-                  <div class="bag-calc-row total-row">
-                    <span>Estimated Cost</span>
-                    <span id="bag-estimated-cost" class="color-primary">0 AED</span>
-                  </div>
-                </div>
-
-                <button data-scroll-to="booking" class="btn btn-primary btn-checkout">
-                  Proceed to Free Pickup <i class="fa-solid fa-chevron-right"></i>
-                </button>
-
-                <p class="bag-notice-text">
-                  * Final pricing checked upon receipt at cleaning facility.
-                  Free pickup applies to order areas in Dubai.
-                </p>
-              </div>
-            </div>
+          <!-- Price Cards Grid -->
+          <div class="price-grid-container" id="price-grid-container">
+            <!-- Dynamically populated by assets/js/index/index.js -->
           </div>
         </div>
       </div>
@@ -824,27 +761,20 @@
             <!-- Node 1 -->
             <div class="wizard-step-node active" data-step="1">
               <div class="wizard-step-num">1</div>
-              <span class="wizard-step-label">Summary</span>
+              <span class="wizard-step-label">Schedule</span>
             </div>
             <div class="wizard-tracker-line" data-line="1"></div>
 
             <!-- Node 2 -->
             <div class="wizard-step-node" data-step="2">
               <div class="wizard-step-num">2</div>
-              <span class="wizard-step-label">Schedule</span>
+              <span class="wizard-step-label">Details</span>
             </div>
             <div class="wizard-tracker-line" data-line="2"></div>
 
             <!-- Node 3 -->
             <div class="wizard-step-node" data-step="3">
               <div class="wizard-step-num">3</div>
-              <span class="wizard-step-label">Delivery Details</span>
-            </div>
-            <div class="wizard-tracker-line" data-line="3"></div>
-
-            <!-- Node 4 -->
-            <div class="wizard-step-node" data-step="4">
-              <div class="wizard-step-num">4</div>
               <span class="wizard-step-label">Confirm</span>
             </div>
           </div>
@@ -852,40 +782,36 @@
           <!-- Form Wizard content panels -->
           <form id="booking-wizard-form">
             <!-- ==========================================
-                       STEP 1: SUMMARY
+                       STEP 1: SCHEDULE & SPEED
                        ========================================== -->
             <div class="wizard-step-content active" data-wizard-step="1">
               <div class="wizard-step-header">
-                <h3 class="wizard-step-title">Review Your Items</h3>
+                <h3 class="wizard-step-title">Select Date, Time & Speed</h3>
                 <p class="wizard-step-desc">
-                  Check selected items or proceed with a general/empty bag
-                  pickup.
+                  Choose when and how fast you want our team to pickup your laundry bags.
                 </p>
               </div>
 
-              <!-- Cart empty placeholder -->
-              <div class="wizard-empty-cart-box" id="wizard-empty-cart">
-                <p class="wizard-empty-cart-title">Empty Bag Pickup</p>
-                <p class="wizard-empty-cart-desc">
-                  No specific items selected. No worries! Our team will
-                  collect all your clothes, sort them, and provide an invoice
-                  upon processing at our facility.
-                </p>
-              </div>
-
-              <!-- Cart summary box -->
-              <div class="wizard-summary-box" id="wizard-summary-box" style="display: none">
-                <div class="wizard-summary-items" id="wizard-summary-items">
-                  <!-- Dynamic rendering in script.js -->
+              <div class="form-grid-2">
+                <!-- Date input -->
+                <div class="form-group">
+                  <label for="date" class="form-label">
+                    <i class="fa-regular fa-calendar-days"></i> Pickup Date:
+                  </label>
+                  <input type="date" id="date" name="date" class="form-input" required />
                 </div>
-                <div class="wizard-summary-total-bar">
-                  <span>Estimated Order Cost:</span>
-                  <span id="wizard-summary-total">0 AED</span>
+
+                <!-- Time input -->
+                <div class="form-group">
+                  <label for="time" class="form-label">
+                    <i class="fa-regular fa-clock"></i> Pickup Time:
+                  </label>
+                  <input type="time" id="time" name="time" class="form-input" required />
                 </div>
               </div>
 
               <!-- Delivery Speed Picker -->
-              <div class="wizard-speed-container">
+              <div class="wizard-speed-container" style="margin-top: 30px;">
                 <span class="wizard-speed-title">Choose Service Delivery Option</span>
 
                 <div class="wizard-speed-grid">
@@ -913,54 +839,15 @@
 
               <div class="wizard-step-footer">
                 <button type="button" class="btn btn-primary" data-wizard-next>
-                  Schedule Pickup <i class="fa-solid fa-chevron-right"></i>
-                </button>
-              </div>
-            </div>
-
-            <!-- ==========================================
-                       STEP 2: SCHEDULE
-                       ========================================== -->
-            <div class="wizard-step-content" data-wizard-step="2">
-              <div class="wizard-step-header">
-                <h3 class="wizard-step-title">Select Date & Time</h3>
-                <p class="wizard-step-desc">
-                  Choose when you want our team to pickup your laundry bags.
-                </p>
-              </div>
-
-              <div class="form-grid-2">
-                <!-- Date input -->
-                <div class="form-group">
-                  <label for="date" class="form-label">
-                    <i class="fa-regular fa-calendar-days"></i> Pickup Date:
-                  </label>
-                  <input type="date" id="date" name="date" class="form-input" required />
-                </div>
-
-                <!-- Time input -->
-                <div class="form-group">
-                  <label for="time" class="form-label">
-                    <i class="fa-regular fa-clock"></i> Pickup Time:
-                  </label>
-                  <input type="time" id="time" name="time" class="form-input" required />
-                </div>
-              </div>
-
-              <div class="wizard-step-footer split-btns">
-                <button type="button" class="btn btn-secondary" data-wizard-prev>
-                  <i class="fa-solid fa-chevron-left"></i> Back
-                </button>
-                <button type="button" class="btn btn-primary" data-wizard-next>
                   Delivery Details <i class="fa-solid fa-chevron-right"></i>
                 </button>
               </div>
             </div>
 
             <!-- ==========================================
-                       STEP 3: CONTACT & LOCATION
+                       STEP 2: CONTACT & LOCATION
                        ========================================== -->
-            <div class="wizard-step-content" data-wizard-step="3">
+            <div class="wizard-step-content" data-wizard-step="2">
               <div class="wizard-step-header">
                 <h3 class="wizard-step-title">Location & Details</h3>
                 <p class="wizard-step-desc">
@@ -1016,9 +903,9 @@
             </div>
 
             <!-- ==========================================
-                       STEP 4: CONFIRMATION
+                       STEP 3: CONFIRMATION
                        ========================================== -->
-            <div class="wizard-step-content" data-wizard-step="4">
+            <div class="wizard-step-content" data-wizard-step="3">
               <div class="wizard-step-header">
                 <h3 class="wizard-step-title">Final Review</h3>
                 <p class="wizard-step-desc">
