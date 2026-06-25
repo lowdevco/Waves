@@ -84,34 +84,10 @@
   padding: 60px 0;
 }
 
-.workflow-section .section-subtitle {
-  margin-bottom: 4px;
-}
-
-.workflow-section .section-title {
-  margin-bottom: 8px;
-}
-
 .workflow-card {
   position: relative;
   z-index: 5;
   width: 100%;
-}
-
-@media (min-width: 800px) {
-  .workflow-card {
-    background-color: var(--white);
-    border-radius: var(--radius-2xl);
-    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
-    padding: 60px 40px;
-    margin-top: -45px;
-  }
-  
-  .workflow-section {
-    position: relative;
-    z-index: 10;
-    padding-top: 0 !important;
-  }
 }
 
 .workflow-container {
