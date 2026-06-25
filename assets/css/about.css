@@ -114,7 +114,7 @@
   width: 50%; /* Managed dynamically by JS */
   background: var(--primary);
   border-radius: var(--radius-full);
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .workflow-steps {
@@ -233,7 +233,6 @@
 /* #---------------WHAT WE OFFER-----------------# */
 .offer-section {
   background-color: var(--bg-light);
-  max-height:100vh;
 }
 
 .offer-grid {
@@ -584,6 +583,19 @@
     margin-bottom: 10px;
   }
 
+  /* Section height overrides for mobile flow to prevent overlaps */
+  .workflow-section,
+  .offer-section,
+  .philosophy-section,
+  .why-choose-us-section,
+  .specialists-section,
+  .eco-section {
+    min-height: auto !important;
+    height: auto !important;
+    display: block !important;
+    padding: 60px 0 !important;
+  }
+
   /* Standard Grid collapse */
   .philosophy-grid,
   .specialists-grid,
@@ -617,6 +629,11 @@
     bottom: 20px;
     width: 4px;
     height: auto;
+  }
+
+  .workflow-line-progress {
+    width: 100% !important;
+    height: 50%; /* Managed dynamically by JS element.style.height */
   }
 
   .workflow-steps {

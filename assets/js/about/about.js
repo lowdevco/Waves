@@ -28,10 +28,45 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const pct = (index / (workflowSteps.length - 1)) * 100;
       progressLine.style.width = `${pct}%`;
+      progressLine.style.height = `${pct}%`;
     };
 
-    // Set initial default state
+    const adjustTimelineLine = () => {
+      const workflowLine = document.querySelector(".workflow-line");
+      if (!workflowLine) return;
+
+      if (window.innerWidth <= 991) {
+        const firstStep = workflowSteps[0];
+        const lastStep = workflowSteps[workflowSteps.length - 1];
+        const firstIcon = firstStep.querySelector(".step-icon-box");
+        const lastIcon = lastStep.querySelector(".step-icon-box");
+        
+        if (firstIcon && lastIcon) {
+          const containerRect = workflowContainer.getBoundingClientRect();
+          const firstIconRect = firstIcon.getBoundingClientRect();
+          const lastIconRect = lastIcon.getBoundingClientRect();
+          
+          const firstCenter = firstIconRect.top - containerRect.top + (firstIconRect.height / 2);
+          const lastCenter = lastIconRect.top - containerRect.top + (lastIconRect.height / 2);
+          
+          workflowLine.style.top = `${firstCenter}px`;
+          workflowLine.style.height = `${lastCenter - firstCenter}px`;
+          workflowLine.style.bottom = "auto";
+        }
+      } else {
+        // Reset to desktop styles
+        workflowLine.style.top = "";
+        workflowLine.style.height = "";
+        workflowLine.style.bottom = "";
+      }
+    };
+
+    // Set initial default state and adjust line
     updateWorkflow(defaultIndex);
+    adjustTimelineLine();
+
+    // Recalculate on window resize
+    window.addEventListener("resize", adjustTimelineLine);
 
     workflowSteps.forEach((step, idx) => {
       // Hover event to preview steps dynamically

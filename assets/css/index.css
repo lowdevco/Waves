@@ -136,6 +136,10 @@
   width: auto;
 }
 
+.btn-white-outline i {
+  scale:1.2;
+}
+
 /* Vertical Carousel Controls (dots on the right) */
 
 .hero-carousel-controls {
@@ -2588,4 +2592,110 @@
       width: 100%;
       justify-content: center;
     }
+}
+
+/* Hero Stats Section */
+.hero-stats-section {
+  background-color: var(--white);
+  padding: 35px 0;
+  border-bottom: 1px solid var(--slate-border);
+  position: relative;
+  z-index: 10;
+}
+
+.stats-bar-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  align-items: center;
+}
+
+.stat-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.stat-bar-item:hover {
+  transform: translateY(-2px);
+}
+
+.stat-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px -4px rgba(4, 107, 210, 0.2);
+}
+
+.stat-bar-item:hover .stat-icon-wrapper {
+  background-color: var(--primary);
+  color: var(--white);
+  box-shadow: 0 8px 16px -4px rgba(4, 107, 210, 0.3);
+}
+
+.stat-svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-number {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--slate-dark);
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--slate-light);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+@media (max-width: 991px) {
+  .stats-bar-inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px 20px;
+  }
+  .stat-bar-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  .stat-info {
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-stats-section {
+    padding: 30px 0;
+  }
+  .stats-bar-inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 15px;
+  }
+  .stat-number {
+    font-size: 1.1rem;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+  }
 }
