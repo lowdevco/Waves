@@ -1,0 +1,340 @@
+p {
+  font-size: 14px !important;
+}
+
+.creek-hero-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary-light);
+  margin-top: 15px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.creek-hero-btns {
+  display: flex;
+  gap: 16px;
+  margin-top: 25px;
+  justify-content: center;
+}
+
+.creek-hero-btns .btn {
+  padding: 14px 28px;
+  font-weight: 700;
+}
+
+.creek-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.creek-about-image {
+  width: 100%;
+  height: 450px;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--slate-border);
+}
+
+.creek-about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.creek-about-content {
+  text-align: left;
+}
+
+.creek-about-content .btn {
+  margin-top: 24px;
+}
+
+.creek-offer-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.creek-offer-content {
+  text-align: left;
+}
+
+.creek-offer-content .btn {
+  margin-top: 24px;
+}
+
+.creek-offer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 35px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+}
+
+.creek-offer-list li {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.creek-offer-list li i {
+  color: var(--primary);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.creek-offer-image {
+  width: 100%;
+  height: 480px;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--slate-border);
+}
+
+.creek-offer-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.creek-cta-banner {
+  background-color: var(--primary-dark);
+  color: var(--white);
+  text-align: center;
+  padding: 70px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.creek-cta-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary-light);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.creek-cta-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.creek-cta-desc {
+  max-width: 680px;
+  margin: 0 auto 30px auto;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.creek-cta-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.creek-cta-btns .btn {
+  padding: 14px 28px;
+  font-weight: 700;
+}
+
+.creek-faq-container {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.creek-faq-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  text-align: left;
+  margin-top: 35px;
+}
+
+.creek-faq-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.creek-faq-column .faq-item {
+  background-color: var(--white);
+  border: 1px solid var(--slate-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.01);
+  transition: box-shadow 0.3s ease;
+}
+
+.creek-faq-column .faq-item:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.creek-faq-column .faq-trigger {
+  width: 100%;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.creek-faq-column .faq-question {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.creek-faq-column .faq-trigger i {
+  color: var(--yellow-dark) !important;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.creek-faq-column .faq-item.active .faq-trigger i {
+  color: #94a3b8 !important;
+}
+
+.creek-faq-column .faq-content-pane {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.creek-faq-column .faq-answer {
+  padding: 0 20px 18px 20px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--slate-desc);
+}
+
+@media (max-width: 1024px) {
+  .creek-about-grid,
+  .creek-offer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .creek-about-image,
+  .creek-offer-image {
+    height: 380px;
+  }
+
+  .creek-faq-columns {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .creek-hero-btns {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .creek-about-image,
+  .creek-offer-image {
+    height: 300px;
+  }
+
+  .creek-offer-list {
+    grid-template-columns: 1fr;
+  }
+
+  .creek-cta-btns {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.price-item-card {
+  align-items: stretch !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  background: var(--white) !important;
+  border: 1px solid var(--slate-border) !important;
+  border-radius: 20px !important;
+  padding: 24px !important;
+  box-shadow: var(--shadow-sm) !important;
+  text-align: left !important;
+}
+
+@media (min-width: 769px) {
+  .price-item-card {
+    grid-column: span 2 !important;
+  }
+
+  .price-item-card.span-3 {
+    grid-column: span 3 !important;
+  }
+
+  .price-item-card.span-6 {
+    grid-column: span 6 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .price-item-card,
+  .price-item-card.span-3,
+  .price-item-card.span-6 {
+    grid-column: span 1 !important;
+  }
+}
+
+.card-top-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 16px !important;
+  margin-bottom: 20px !important;
+}
+
+.price-pill-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.price-item-card {
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.price-list-tabs-container.theme-men .price-item-card:hover {
+  border-color: rgba(4, 107, 210, 0.4) !important;
+  box-shadow: 0 12px 30px rgba(4, 107, 210, 0.12) !important;
+  transform: translateY(-5px) !important;
+}
+
+.price-list-tabs-container.theme-women .price-item-card:hover {
+  border-color: rgba(219, 39, 119, 0.4) !important;
+  box-shadow: 0 12px 30px rgba(219, 39, 119, 0.12) !important;
+  transform: translateY(-5px) !important;
+}
+
+.price-list-tabs-container.theme-home .price-item-card:hover {
+  border-color: rgba(22, 163, 74, 0.4) !important;
+  box-shadow: 0 12px 30px rgba(22, 163, 74, 0.12) !important;
+  transform: translateY(-5px) !important;
+}
