@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
     <link rel="icon" type="image/webp" href="assets/images/common_images/brand/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,13 +17,15 @@
 
     <!-- Custom Style Sheets -->
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/contact.css" />
+    <link rel="stylesheet" href="assets/css/blog.css" />
 
-    <title>Contact Us | Waves</title>
+    <title>Blog | Waves</title>
 </head>
 
 <body>
+
     <!-- #---------------HEADER & NAVIGATION BAR-----------------# -->
+
     <header class="header" id="header">
         <!-- Top Social Bar -->
         <div class="top-social-bar">
@@ -81,17 +84,19 @@
                             Locations <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
                         </a>
                         <div class="nav-dropdown-menu">
-                            <a href="location.html#creek-harbour" data-scroll-to="creek-harbour" class="dropdown-item">Creek Harbour</a>
-                            <a href="location.html#business-bay" data-scroll-to="business-bay" class="dropdown-item">Business Bay</a>
+                            <a href="location.html#creek-harbour" data-scroll-to="creek-harbour"
+                                class="dropdown-item">Creek Harbour</a>
+                            <a href="location.html#business-bay" data-scroll-to="business-bay"
+                                class="dropdown-item">Business Bay</a>
                             <a href="location.html#down-town" data-scroll-to="down-town" class="dropdown-item">Down Town</a>
                         </div>
-                        </div>
-                        <a href="blog.html" class="nav-link-btn">Blog</a>
+                    </div>
+                    <a href="blog.html" class="nav-link-btn active">Blog</a>
                 </nav>
 
                 <!-- CTA Buttons -->
                 <div class="nav-cta">
-                    <a href="contact.html" class="btn btn-white-outline active">
+                    <a href="contact.html" class="btn btn-white-outline">
                         Contact Us
                     </a>
                     <a href="booking.html" class="btn btn-white-fill">
@@ -116,140 +121,77 @@
                 Locations <i class="fa-solid fa-chevron-down toggle-arrow"></i>
             </button>
             <div class="mobile-dropdown-menu">
-                <a href="location.html#creek-harbour" data-scroll-to="creek-harbour" class="mobile-nav-link mobile-dropdown-item">Creek Harbour</a>
-                <a href="location.html#business-bay" data-scroll-to="business-bay" class="mobile-nav-link mobile-dropdown-item">Business Bay</a>
-                <a href="location.html#down-town" data-scroll-to="down-town" class="mobile-nav-link mobile-dropdown-item">Down Town</a>
+                <a href="location.html#creek-harbour" data-scroll-to="creek-harbour"
+                    class="mobile-nav-link mobile-dropdown-item">Creek Harbour</a>
+                <a href="location.html#business-bay" data-scroll-to="business-bay"
+                    class="mobile-nav-link mobile-dropdown-item">Business Bay</a>
+                <a href="location.html#down-town" data-scroll-to="down-town"
+                    class="mobile-nav-link mobile-dropdown-item">Down Town</a>
             </div>
-            <a href="blog.html" class="mobile-nav-link">Blog</a>
-            <a href="contact.html" class="mobile-nav-link active">Contact</a>
+            <a href="blog.html" class="mobile-nav-link active">Blog</a>
+            <a href="contact.html" class="mobile-nav-link">Contact</a>
         </div>
     </header>
 
     <main>
-        <!-- #---------------CONTACT HERO SECTION-----------------# -->
-        <section class="about-hero reveal">
+        <!-- #---------------BLOG HERO SECTION-----------------# -->
+        <section class="blog-hero reveal">
             <div class="container">
-                <div class="about-hero-content">
-                    <h1 class="about-hero-title">Contact Us</h1>
+                <div class="blog-hero-content">
+                    <h1 class="blog-hero-title">Blog</h1>
                     <nav class="breadcrumb" aria-label="Breadcrumb">
                         <a href="index.html" class="breadcrumb-item">Home</a>
                         <span class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></span>
-                        <span class="breadcrumb-item active">Contact Us</span>
+                        <span class="breadcrumb-item active">Blog</span>
                     </nav>
                 </div>
             </div>
         </section>
 
-        <!-- #---------------CONTACT INFO CARDS SECTION-----------------# -->
-        <section class="contact-cards-section reveal">
+        <!-- #---------------Blog Section-----------------# -->
+        <section class="blog-section py-section reveal" id="blog">
             <div class="container">
-                <div class="contact-cards-grid">
-                    <!-- Card 1: Call Us -->
-                    <div class="contact-info-card">
-                        <div class="card-icon-wrapper">
-                            <i class="fa-solid fa-phone"></i>
+                <!-- Section Header -->
+                <div class="text-center" style="margin-bottom: 50px;">
+                    <span class="section-subtitle">Our Blog</span>
+                    <h2 class="section-title">Latest Articles & Laundry Care Tips</h2>
+                    <p class="section-desc" style="margin: 0 auto;">
+                        Discover useful tips, garment care guides, and the latest updates from Waves Laundry.
+                    </p>
+                </div>
+
+                <!-- Blog Grid -->
+                <div class="blog-grid" id="blog-grid">
+                    <!-- Dynamically populated by assets/js/blog/blog.js -->
+
+                    <!-- Reference Card Template 
+                    <article class="blog-card">
+                        <div class="blog-card-img-wrapper">
+                            <img src="assets/images/blog/placeholder.png" alt="Blog Title" class="blog-card-img" />
+                            <span class="blog-card-category">Category</span>
                         </div>
-                        <h3 class="card-title">Call Us</h3>
-                        <p class="card-text">Speak directly with our laundry care experts.</p>
-                        <a href="tel:+971523033446" class="card-link">+971 52 303 3446</a>
-                    </div>
-                    <!-- Card 2: WhatsApp -->
-                    <div class="contact-info-card">
-                        <div class="card-icon-wrapper whatsapp">
-                            <i class="fa-brands fa-whatsapp"></i>
+                        <div class="blog-card-content">
+                            <div class="blog-card-meta">
+                                <span class="meta-item"><i class="fa-regular fa-calendar"></i> Date</span>
+                                <span class="meta-item"><i class="fa-regular fa-clock"></i> Read Time</span>
+                            </div>
+                            <h3 class="blog-card-title">
+                                <a href="#">Blog Title Here</a>
+                            </h3>
+                            <p class="blog-card-excerpt">Blog excerpt description goes here.</p>
+                            <a href="#" class="blog-card-link">
+                                Read More <i class="fa-solid fa-arrow-right-long"></i>
+                            </a>
                         </div>
-                        <h3 class="card-title">WhatsApp Support</h3>
-                        <p class="card-text">Chat with us 24/7 for support and bookings.</p>
-                        <a href="https://wa.me/971523033446" target="_blank" rel="noopener noreferrer"
-                            class="card-link">+971 52 303 3446</a>
-                    </div>
-                    <!-- Card 3: Email Us -->
-                    <div class="contact-info-card">
-                        <div class="card-icon-wrapper">
-                            <i class="fa-regular fa-envelope"></i>
-                        </div>
-                        <h3 class="card-title">Email Us</h3>
-                        <p class="card-text">Drop us a line and we'll reply within 24 hours.</p>
-                        <a href="mailto:waveslaundrydubai@gmail.com" class="card-link">waveslaundrydubai@gmail.com</a>
-                    </div>
+                    </article>
+                    -->
                 </div>
             </div>
         </section>
 
-        <!-- #---------------CONTACT GRID SECTION-----------------# -->
-        <section class="contact-grid-section reveal">
-            <div class="container">
-                <div class="contact-split-grid">
-                    <!-- Left Column: Contact Form -->
-                    <div class="contact-form-card">
-                        <div class="form-header">
-                            <span class="section-subtitle">Get In Touch</span>
-                            <h2 class="contact-section-title">Send Us A Message</h2>
-                            <p class="contact-section-desc">Have questions about our premium services or need assistance
-                                with a pickup? Fill out the form below and we will get back to you shortly.</p>
-                        </div>
-                        <form id="contact-message-form" class="contact-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="contact-name">Full Name</label>
-                                    <div class="input-wrapper"><i class="fa-regular fa-user input-icon"></i><input
-                                            type="text" id="contact-name" name="name" placeholder="John Doe" required />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="contact-email">Email Address</label>
-                                    <div class="input-wrapper"><i class="fa-regular fa-envelope input-icon"></i><input
-                                            type="email" id="contact-email" name="email" placeholder="john@example.com"
-                                            required /></div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="contact-phone">Phone Number</label>
-                                    <div class="input-wrapper"><i class="fa-solid fa-phone input-icon"></i><input
-                                            type="tel" id="contact-phone" name="phone" placeholder="+971 50 000 0000"
-                                            required /></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="contact-subject">Subject</label>
-                                    <div class="input-wrapper"><i
-                                            class="fa-regular fa-folder-open input-icon"></i><select
-                                            id="contact-subject" name="subject" required>
-                                            <option value="" disabled selected>Select a subject</option>
-                                            <option value="general">General Inquiry</option>
-                                            <option value="pickup">Schedule Pickup</option>
-                                            <option value="pricing">Pricing & Services</option>
-                                            <option value="corporate">Corporate Accounts</option>
-                                            <option value="custom_location">Custom Location Order / Inquiry</option>
-                                            <option value="feedback">Feedback & Suggestions</option>
-                                        </select></div>
-                                </div>
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="contact-message">Your Message</label>
-                                <div class="input-wrapper"><i
-                                        class="fa-regular fa-comment-dots textarea-icon input-icon"></i><textarea
-                                        id="contact-message" name="message" placeholder="How can we help you?"
-                                        required></textarea></div>
-                            </div>
-                            <button type="submit" class="contact-submit-btn"><span>Send Message</span><i
-                                    class="fa-solid fa-paper-plane"></i></button>
-                        </form>
-                    </div>
 
-                    <!-- Right Column: Google Map -->
-                    <div class="contact-map-card">
-                        <div class="contact-map-block">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d616.6993866132735!2d55.343025119648594!3d25.20815953611079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x22eb3de62f834eb3%3A0x94929ee190bb792c!2sWaves%20Laundry%20%7C%20Laundry%20Service%20%26%20Dry%20Cleaners!5e1!3m2!1sen!2sin!4v1782185890570!5m2!1sen!2sin"
-                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
-
+    <!-- #---------------FOOTER SECTION-----------------# -->
     <footer class="footer">
         <div class="container footer-grid">
             <!-- Col 1: Logo & details -->
@@ -258,9 +200,9 @@
                     <img src="assets/images/common_images/brand/logo.webp" alt="Waves Premium Laundry Logo" />
                 </div>
                 <p class="footer-desc">
-                    Premium laundry and dry cleaning services in Dubai, delivered with
-                    precision, care, and ultimate doorstep convenience. We make your
-                    garments look and feel their best—every single time.
+                    Premium laundry and dry cleaning services in Dubai, delivered with precision, care, and ultimate
+                    doorstep
+                    convenience. We make your garments look and feel their best—every single time.
                 </p>
                 <div class="footer-socials">
                     <a href="https://www.facebook.com/share/1DjJnwd1Ly/?mibextid=wwXIfr" target="_blank"
@@ -339,7 +281,6 @@
             <div class="footer-col">
                 <h4 class="footer-col-title">Contact Info</h4>
                 <ul class="footer-contact-list">
-                    <!-- Phone Call support -->
                     <li class="footer-contact-item">
                         <i class="fa-solid fa-phone"></i>
                         <div>
@@ -347,8 +288,6 @@
                             <a href="tel:+971523033446"><span class="footer-contact-val">+971 52 303 3446</span></a>
                         </div>
                     </li>
-
-                    <!-- WhatsApp chat -->
                     <li class="footer-contact-item">
                         <i class="fa-brands fa-whatsapp whatsapp"></i>
                         <div>
@@ -358,8 +297,6 @@
                             </a>
                         </div>
                     </li>
-
-                    <!-- Email support -->
                     <li class="footer-contact-item">
                         <i class="fa-regular fa-envelope"></i>
                         <div>
@@ -369,8 +306,6 @@
                             </a>
                         </div>
                     </li>
-
-                    <!-- Head office address -->
                     <li class="footer-contact-item">
                         <i class="fa-solid fa-location-dot"></i>
                         <div>
@@ -390,15 +325,14 @@
                 <p>Copyright © 2026 <a href="index.html"> <strong>Waves Laundry</strong> </a> | Developed by <a
                         href="https://xeventure.com/" target="_blank"><strong>Xeventure</strong></a> </p>
                 <div class="footer-bottom-links">
-                    <a href="index.html#faq" data-scroll-to="faq" class="footer-bottom-link">Privacy Policy</a>
-                    <a href="index.html#faq" data-scroll-to="faq" class="footer-bottom-link">Terms of Service</a>
+                    <a href="index.html#faq" class="footer-bottom-link">Privacy Policy</a>
+                    <a href="index.html#faq" class="footer-bottom-link">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
-
-
+    <!-- #---------------FLOATING ACTION WIDGETS-----------------# -->
     <div class="floating-widgets">
         <!-- WhatsApp float -->
         <a href="https://wa.me/971523033446" target="_blank" rel="noopener noreferrer" class="float-btn float-whatsapp"
@@ -414,27 +348,9 @@
         </a>
     </div>
 
-    <!-- Custom script JS file -->
+    <!-- Custom script JS files -->
     <script src="assets/js/script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const contactForm = document.getElementById('contact-message-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-
-                    // Show a premium toast message using the global showToast helper
-                    if (typeof showToast === 'function') {
-                        showToast('Your message has been sent successfully! We will get in touch with you shortly.', 'success');
-                    } else {
-                        alert('Your message has been sent successfully! We will get in touch with you shortly.');
-                    }
-
-                    contactForm.reset();
-                });
-            }
-        });
-    </script>
+    <script src="assets/js/blog/blog.js"></script>
 </body>
 
 </html>

@@ -1542,6 +1542,9 @@ select {
 .wizard-step-desc {
   font-size: 0.75rem;
   color: var(--slate-body);
+  text-align: left;
+  margin: 0 0 24px 0;
+  max-width: 600px;
 }
 
 /* Empty state placeholder in summary block */
@@ -2151,4 +2154,103 @@ textarea.form-input {
 .reveal-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* =====================================================================
+   LOCATIONS DROPDOWN & MOBILE ACCORDION
+   ===================================================================== */
+
+/* Locations Dropdown Menu (Desktop) */
+.nav-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: var(--white);
+  min-width: 170px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 100;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid var(--slate-border);
+}
+
+.nav-dropdown-wrapper:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 20px;
+  color: var(--primary) !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: var(--primary-light);
+  color: var(--primary-dark) !important;
+}
+
+.dropdown-toggle i {
+  font-size: 0.75rem;
+  margin-left: 4px;
+  transition: transform 0.3s ease;
+}
+
+.nav-dropdown-wrapper:hover .dropdown-toggle i {
+  transform: rotate(180deg);
+}
+
+/* Mobile Accordion Styles */
+button.mobile-dropdown-toggle {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.mobile-dropdown-toggle i {
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+}
+
+.mobile-dropdown-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-dropdown-menu.open {
+  max-height: 200px; /* Large enough to display items */
+  margin-bottom: 8px;
+}
+
+.mobile-dropdown-item {
+  padding-left: 32px !important;
+  font-size: 0.95rem;
+}
+
+.mobile-dropdown-item:hover {
+  padding-left: 36px !important;
 }

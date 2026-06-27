@@ -77,10 +77,18 @@
           <a href="service.html" class="nav-link-btn">
             Services
           </a>
-          <a href="#locations" data-scroll-to="locations" class="nav-link-btn">
-            Locations
-          </a>
-          <a href="#" class="nav-link-btn">Blog</a>
+          <!-- Locations Dropdown -->
+          <div class="nav-dropdown-wrapper">
+            <a href="location.html" data-scroll-to="locations" class="nav-link-btn dropdown-toggle">
+              Locations <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <div class="nav-dropdown-menu">
+              <a href="location.html#creek-harbour" data-scroll-to="creek-harbour" class="dropdown-item">Creek Harbour</a>
+              <a href="location.html#business-bay" data-scroll-to="business-bay" class="dropdown-item">Business Bay</a>
+              <a href="location.html#down-town" data-scroll-to="down-town" class="dropdown-item">Down Town</a>
+            </div>
+            </div>
+            <a href="blog.html" class="nav-link-btn">Blog</a>
         </nav>
 
         <!-- CTA Buttons -->
@@ -88,7 +96,7 @@
           <a href="contact.html" class="btn btn-white-outline">
             Contact Us
           </a>
-          <a href="index.html#booking" data-scroll-to="booking" class="btn btn-white-fill">
+          <a href="booking.html" data-scroll-to="booking" class="btn btn-white-fill">
             Book Free Pickup
           </a>
         </div>
@@ -105,9 +113,17 @@
       <a href="index.html" data-scroll-to="home" class="mobile-nav-link">Home</a>
       <a href="about.html" class="mobile-nav-link">About</a>
       <a href="service.html" class="mobile-nav-link">Services</a>
-      <a href="#locations" data-scroll-to="locations" class="mobile-nav-link">Locations</a>
-      <a href="#" class="mobile-nav-link">Blog</a>
-      <a href="contact.html" data-scroll-to="booking" class="mobile-nav-link">Contact</a>
+      <!-- Locations Accordion Trigger -->
+      <button class="mobile-nav-link mobile-dropdown-toggle">
+        Locations <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+      </button>
+      <div class="mobile-dropdown-menu">
+        <a href="location.html#creek-harbour" data-scroll-to="creek-harbour" class="mobile-nav-link mobile-dropdown-item">Creek Harbour</a>
+        <a href="location.html#business-bay" data-scroll-to="business-bay" class="mobile-nav-link mobile-dropdown-item">Business Bay</a>
+        <a href="location.html#down-town" data-scroll-to="down-town" class="mobile-nav-link mobile-dropdown-item">Down Town</a>
+      </div>
+      <a href="blog.html" class="mobile-nav-link">Blog</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
     </div>
   </header>
 
@@ -311,7 +327,7 @@
     <!-- ==========================================
            3. SERVICES SECTION
            ========================================== -->
-    <section id="home" class="services-section py-section reveal">
+    <section id="services" class="services-section py-section reveal">
       <div class="container">
         <!-- Section Header -->
         <div class="text-center">
@@ -344,7 +360,7 @@
     <!-- ==========================================
            3. ABOUT US SECTION
            ========================================== -->
-    <section class="about-section py-section reveal" id="home">
+    <section class="about-section py-section reveal" id="about-section">
       <div class="container">
         <!-- About Waves Card -->
         <div id="about" class="about-block">
@@ -627,7 +643,7 @@
     <!-- ==========================================
            6. DUBAI LOCATIONS SERVED
            ========================================== -->
-    <section id="home" class="locations-section py-section reveal">
+    <section id="locations" class="locations-section py-section reveal">
       <div class="container">
         <!-- Header -->
         <div class="text-center">
@@ -641,25 +657,8 @@
 
         <!-- Locations Grid -->
         <div class="locations-grid grid">
-          <!-- Area 1: Sobha -->
-          <div class="location-card">
-            <div>
-              <div class="location-icon-wrapper">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <h3 class="location-name">Sobha Hartland</h3>
-              <p class="location-area">Nad Al Sheba 1</p>
-              <p class="location-address">
-                Waves Laundry Hub, Sobha Hartland, Dubai
-              </p>
-            </div>
-            <button data-scroll-to="booking" class="location-book-btn">
-              Book Pickup here <i class="fa-solid fa-up-right-from-square"></i>
-            </button>
-          </div>
-
-          <!-- Area 2: Creek Harbour -->
-          <div class="location-card">
+          <!-- Area 1: Creek Harbour -->
+          <div class="location-card" id="creek-harbour">
             <div>
               <div class="location-icon-wrapper">
                 <i class="fa-solid fa-location-dot"></i>
@@ -675,8 +674,8 @@
             </button>
           </div>
 
-          <!-- Area 3: Business Bay -->
-          <div class="location-card">
+          <!-- Area 2: Business Bay -->
+          <div class="location-card" id="business-bay">
             <div>
               <div class="location-icon-wrapper">
                 <i class="fa-solid fa-location-dot"></i>
@@ -692,8 +691,8 @@
             </button>
           </div>
 
-          <!-- Area 4: Down Town -->
-          <div class="location-card">
+          <!-- Area 3: Down Town -->
+          <div class="location-card" id="down-town">
             <div>
               <div class="location-icon-wrapper">
                 <i class="fa-solid fa-location-dot"></i>
@@ -702,23 +701,6 @@
               <p class="location-area">Downtown Central</p>
               <p class="location-address">
                 Boulevard Elite Care Center, Downtown, Dubai
-              </p>
-            </div>
-            <button data-scroll-to="booking" class="location-book-btn">
-              Book Pickup here <i class="fa-solid fa-up-right-from-square"></i>
-            </button>
-          </div>
-
-          <!-- Area 5: Dubai Hills -->
-          <div class="location-card">
-            <div>
-              <div class="location-icon-wrapper">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <h3 class="location-name">Dubai Hills</h3>
-              <p class="location-area">Dubai Hills Estate</p>
-              <p class="location-address">
-                Villa & Residential Delivery Center, Dubai
               </p>
             </div>
             <button data-scroll-to="booking" class="location-book-btn">
@@ -743,8 +725,8 @@
     <!-- ==========================================
                7. BOOKING & SCHEDULING WIZARD
                ========================================== -->
-    <section class="booking-section py-section reveal" id="booking">
-      <div class="container booking-container" id="home">
+    <section class="booking-section py-section reveal">
+      <div class="container booking-container" id="booking">
 
         <!-- Header -->
         <div class="text-center booking-p" style="margin-bottom:40px ;">
@@ -987,7 +969,7 @@
     <!-- ==========================================
            8. FREQUENTLY ASKED QUESTIONS (FAQ)
            ========================================== -->
-    <section id="home" class="faq-section py-section reveal">
+    <section id="faq" class="faq-section py-section reveal">
       <div class="container ">
         <div class="faq-grid-new">
           <!-- Left Column: FAQ Content -->
@@ -1131,17 +1113,17 @@
             </a>
           </li>
           <li>
-            <a href="#estimator" data-scroll-to="estimator" class="footer-link-btn">
+            <a href="location.html" data-scroll-to="locations" class="footer-link-btn">
               Location
             </a>
           </li>
           <li>
-            <a href="#" class="footer-link-btn">
+            <a href="blog.html" class="footer-link-btn">
               Blog
             </a>
           </li>
           <li>
-            <a href="contact.html" data-scroll-to="faq" class="footer-link-btn">Contact</a>
+            <a href="contact.html" class="footer-link-btn">Contact</a>
           </li>
         </ul>
       </div>
@@ -1151,28 +1133,18 @@
         <h4 class="footer-col-title">Served Areas</h4>
         <ul class="footer-links-list">
           <li>
-            <a href="#" class="footer-link-btn">
-              <span class="dot"></span> Sobha Hartland
-            </a>
-          </li>
-          <li>
-            <a href="#" class="footer-link-btn">
+            <a href="location.html#creek-harbour" data-scroll-to="creek-harbour" class="footer-link-btn">
               <span class="dot"></span> Creek Harbour
             </a>
           </li>
           <li>
-            <a href="#" class="footer-link-btn">
+            <a href="location.html#business-bay" data-scroll-to="business-bay" class="footer-link-btn">
               <span class="dot"></span> Business Bay
             </a>
           </li>
           <li>
-            <a href="#" class="footer-link-btn">
+            <a href="location.html#down-town" data-scroll-to="down-town" class="footer-link-btn">
               <span class="dot"></span> Downtown Dubai
-            </a>
-          </li>
-          <li>
-            <a href="#" class="footer-link-btn">
-              <span class="dot"></span> Dubai Hills Estate
             </a>
           </li>
         </ul>
@@ -1251,11 +1223,10 @@
       <span class="float-tooltip">Chat on WhatsApp</span>
     </a>
 
-    <!-- Quick booking float -->
-    <button data-scroll-to="booking" class="float-btn float-booking" aria-label="Book Pickup Now">
+    <a href="booking.html" class="float-btn float-booking" aria-label="Book Pickup Now">
       <i class="fa-regular fa-calendar-days"></i>
       <span class="float-tooltip">Book Free Pickup</span>
-    </button>
+    </a>
   </div>
 
   <!-- Custom script JS file -->

@@ -78,9 +78,17 @@
           <a href="service.html" class="nav-link-btn">
             Services
           </a>
-          <a href="#" class="nav-link-btn">
-            Locations
-          </a>
+          <!-- Locations Dropdown -->
+          <div class="nav-dropdown-wrapper">
+            <a href="location.html" class="nav-link-btn dropdown-toggle">
+              Locations <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <div class="nav-dropdown-menu">
+              <a href="location.html#creek-harbour" data-scroll-to="creek-harbour" class="dropdown-item">Creek Harbour</a>
+              <a href="location.html#business-bay" data-scroll-to="business-bay" class="dropdown-item">Business Bay</a>
+              <a href="location.html#down-town" data-scroll-to="down-town" class="dropdown-item">Down Town</a>
+            </div>
+            </div>
           <a href="blog.html" class="nav-link-btn">Blog</a>
         </nav>
 
@@ -106,7 +114,15 @@
       <a href="index.html" class="mobile-nav-link">Home</a>
       <a href="about.html" class="mobile-nav-link active">About</a>
       <a href="service.html" class="mobile-nav-link">Services</a>
-      <a href="#" class="mobile-nav-link">Locations</a>
+      <!-- Locations Accordion Trigger -->
+      <button class="mobile-nav-link mobile-dropdown-toggle">
+        Locations <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+      </button>
+      <div class="mobile-dropdown-menu">
+        <a href="location.html#creek-harbour" data-scroll-to="creek-harbour" class="mobile-nav-link mobile-dropdown-item">Creek Harbour</a>
+        <a href="location.html#business-bay" data-scroll-to="business-bay" class="mobile-nav-link mobile-dropdown-item">Business Bay</a>
+        <a href="location.html#down-town" data-scroll-to="down-town" class="mobile-nav-link mobile-dropdown-item">Down Town</a>
+      </div>
       <a href="blog.html" class="mobile-nav-link">Blog</a>
       <a href="contact.html" class="mobile-nav-link">Contact</a>
     </div>
@@ -130,13 +146,7 @@
     <section class="workflow-section py-section">
       <div class="container">
         <div class="workflow-card reveal">
-          <!-- <div class="text-center">
-            <span class="section-subtitle">Our Seamless Process</span>
-            <h2 class="section-title">The Waves Journey</h2>
-            <p class="section-desc">How we treat your garments from doorstep pickup to fresh delivery.</p>
-          </div> -->
-
-          
+          <div class="workflow-container">
             <!-- Timeline Line -->
             <div class="workflow-line">
               <div class="workflow-line-progress"></div>
@@ -194,7 +204,7 @@
                 <p class="step-desc">Fresh doorstep delivery.</p>
               </div>
             </div>
-          
+          </div>
         </div>
       </div>
     </section>
@@ -466,7 +476,7 @@
             </a>
           </li>
           <li>
-            <a href="#estimator" data-scroll-to="estimator" class="footer-link-btn">
+            <a href="location.html" data-scroll-to="locations" class="footer-link-btn">
               Location
             </a>
           </li>
@@ -476,7 +486,7 @@
             </a>
           </li>
           <li>
-            <a href="contact.html" data-scroll-to="faq" class="footer-link-btn">Contact</a>
+            <a href="contact.html" class="footer-link-btn">Contact</a>
           </li>
         </ul>
       </div>
@@ -486,28 +496,18 @@
         <h4 class="footer-col-title">Served Areas</h4>
         <ul class="footer-links-list">
           <li>
-            <a href="#" class="footer-link-btn">
-              <span class="dot"></span> Sobha Hartland
-            </a>
-          </li>
-          <li>
-            <a href="#" class="footer-link-btn">
+            <a href="location.html#creek-harbour" data-scroll-to="creek-harbour" class="footer-link-btn">
               <span class="dot"></span> Creek Harbour
             </a>
           </li>
           <li>
-            <a href="#" class="footer-link-btn">
+            <a href="location.html#business-bay" data-scroll-to="business-bay" class="footer-link-btn">
               <span class="dot"></span> Business Bay
             </a>
           </li>
           <li>
-            <a href="#" class="footer-link-btn">
+            <a href="location.html#down-town" data-scroll-to="down-town" class="footer-link-btn">
               <span class="dot"></span> Downtown Dubai
-            </a>
-          </li>
-          <li>
-            <a href="#" class="footer-link-btn">
-              <span class="dot"></span> Dubai Hills Estate
             </a>
           </li>
         </ul>

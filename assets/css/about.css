@@ -84,6 +84,14 @@
   padding: 60px 0;
 }
 
+.workflow-section .section-subtitle {
+  margin-bottom: 4px;
+}
+
+.workflow-section .section-title {
+  margin-bottom: 8px;
+}
+
 .workflow-card {
   position: relative;
   z-index: 5;
@@ -92,7 +100,6 @@
 
 .workflow-container {
   position: relative;
-  margin-top: 60px;
   padding: 0 40px;
 }
 
@@ -622,7 +629,7 @@
   }
 
   .workflow-line {
-    left: 35px;
+    left: 27.5px;
     top: 20px;
     bottom: 20px;
     width: 4px;
@@ -640,22 +647,51 @@
   }
 
   .workflow-step {
-    flex-direction: row;
+    display: grid !important;
+    grid-template-columns: 55px 1fr;
+    grid-template-areas:
+      "icon title"
+      "icon desc";
+    column-gap: 16px;
+    row-gap: 4px;
+    align-items: start;
     text-align: left;
-    align-items: flex-start;
-    gap: 20px;
     padding: 0;
     opacity: 1; /* Reset stagger properties on mobile */
     transform: none;
   }
 
   .step-icon-box {
+    grid-area: icon;
     margin-bottom: 0;
-    min-width: 70px;
+    min-width: 55px;
+    width: 55px;
+    height: 55px;
+    font-size: 1.2rem;
+    border-width: 2px;
+  }
+
+  .step-number {
+    top: -4px;
+    right: -4px;
+    width: 20px;
+    height: 20px;
+    font-size: 0.65rem;
+    border-width: 1.5px;
+  }
+
+  .step-title {
+    grid-area: title;
+    margin-bottom: 0;
+    align-self: center;
+    font-size: 1.05rem;
   }
 
   .step-desc {
+    grid-area: desc;
     max-width: none;
+    font-size: 13px;
+    line-height: 1.4;
   }
 
   /* Philosophy mobile stack styling */
@@ -801,6 +837,7 @@
     grid-template-columns: 1fr;
     gap: 16px;
   }
+  .philosophy-center-logo{
+    display:none;
+  }
 }
-
-

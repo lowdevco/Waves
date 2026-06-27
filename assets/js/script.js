@@ -94,6 +94,28 @@ function initNavbar() {
     });
   });
 
+  // Mobile locations accordion toggle
+  const mobileDropdownToggles = document.querySelectorAll(".mobile-dropdown-toggle");
+  mobileDropdownToggles.forEach((toggle) => {
+    toggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      const menu = toggle.nextElementSibling;
+      const arrow = toggle.querySelector("i");
+      
+      const isOpen = toggle.classList.toggle("open");
+      if (menu) {
+        menu.classList.toggle("open", isOpen);
+      }
+      if (arrow) {
+        if (isOpen) {
+          arrow.style.transform = "rotate(180deg)";
+        } else {
+          arrow.style.transform = "";
+        }
+      }
+    });
+  });
+
   // Scroll Spy logic to update active class on scroll
   const sections = document.querySelectorAll('section[id], div[id="about"]');
   const desktopNavLinks = document.querySelectorAll(".nav-links .nav-link-btn");
@@ -432,7 +454,7 @@ function changeWizardStep(stepNum) {
   });
 
   lines.forEach((line, index) => {
-    const lineIndex = index + 1; // line between index and index + 1
+    const lineIndex = index + 1; 
     line.classList.remove("active");
     if (lineIndex < stepNum) {
       line.classList.add("active");
@@ -440,12 +462,14 @@ function changeWizardStep(stepNum) {
   });
 
   // Trigger content-specific renders based on steps
+
   if (stepNum === 3) {
     renderFinalOrderReview();
   }
 }
 
 // Render review checklist in step 4
+
 function renderFinalOrderReview() {
   const reviewClient = document.getElementById("review-info-client");
   const reviewLocation = document.getElementById("review-info-location");
@@ -479,14 +503,13 @@ function renderFinalOrderReview() {
 }
 
 // Populate success checkout panels and set WhatsApp link contents
+
 function renderSuccessConfirmation() {
   const userNameSpan = document.getElementById("success-user-name");
   const userDateSpan = document.getElementById("success-pickup-date");
   const userTimeSpan = document.getElementById("success-pickup-time");
   const summaryBox = document.getElementById("success-details-summary");
   const whatsappAnchor = document.getElementById("success-whatsapp-link");
-
-  const grandTotal = state.cart.reduce((sum, item) => sum + item.itemTotal, 0);
 
   userNameSpan.textContent = state.formData.name;
   userDateSpan.textContent = state.formData.date;
@@ -495,7 +518,6 @@ function renderSuccessConfirmation() {
   summaryBox.innerHTML = `
     <p><strong>Pickup Address:</strong> ${state.formData.address}</p>
     <p><strong>Mobile Number:</strong> ${state.formData.mobile}</p>
-    <p><strong>Order Estimate:</strong> ${grandTotal > 0 ? `${grandTotal} AED` : "Custom Bag (Calculated on receipt)"}</p>
   `;
 
   // WhatsApp prefilled URL
@@ -508,6 +530,7 @@ function renderSuccessConfirmation() {
 // ---------------------------------------------------------------------
 // GLOBAL SCROLL REVEAL OBSERVER
 // ---------------------------------------------------------------------
+
 function initScrollReveal() {
   const revealObserverOptions = {
     root: null,
