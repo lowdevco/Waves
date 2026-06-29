@@ -1,5 +1,12 @@
 # Dependencies
 node_modules/
+*node_modules/
+backend/env/
+backend/db.sqlite3
+backend/congig/__pycache__/
+backend/__pycache__
+*.pyc
+.env
 
 # Build output
 dist/
