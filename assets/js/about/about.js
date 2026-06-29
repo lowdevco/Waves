@@ -40,15 +40,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const lastStep = workflowSteps[workflowSteps.length - 1];
         const firstIcon = firstStep.querySelector(".step-icon-box");
         const lastIcon = lastStep.querySelector(".step-icon-box");
-        
+
         if (firstIcon && lastIcon) {
           const containerRect = workflowContainer.getBoundingClientRect();
           const firstIconRect = firstIcon.getBoundingClientRect();
           const lastIconRect = lastIcon.getBoundingClientRect();
-          
-          const firstCenter = firstIconRect.top - containerRect.top + (firstIconRect.height / 2);
-          const lastCenter = lastIconRect.top - containerRect.top + (lastIconRect.height / 2);
-          
+
+          const firstCenter =
+            firstIconRect.top - containerRect.top + firstIconRect.height / 2;
+          const lastCenter =
+            lastIconRect.top - containerRect.top + lastIconRect.height / 2;
+
           workflowLine.style.top = `${firstCenter}px`;
           workflowLine.style.height = `${lastCenter - firstCenter}px`;
           workflowLine.style.bottom = "auto";

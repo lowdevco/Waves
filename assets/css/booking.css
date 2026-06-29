@@ -8,7 +8,8 @@
   align-items: center;
   height: 45vh;
   min-height: 380px;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       to right,
       rgba(15, 23, 42, 0.9) 0%,
       rgba(15, 23, 42, 0.65) 50%,
@@ -34,7 +35,7 @@
 }
 
 .booking-hero-title {
-  font-size: 3.5rem; 
+  font-size: 3.5rem;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -130,7 +131,13 @@
     min-height: auto;
     padding-top: 150px;
     padding-bottom: 60px;
-    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%), url('../images/booking/waves_hero_bg.png') no-repeat center center / cover;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.9) 0%,
+        rgba(15, 23, 42, 0.7) 100%
+      ),
+      url("../images/booking/waves_hero_bg.png") no-repeat center center / cover;
   }
   .booking-hero-title {
     font-size: 2.25rem;
@@ -143,7 +150,7 @@
     padding-top: 50px;
     padding-bottom: 50px;
   }
-  
+
   .booking-section .section-title {
     font-size: 1.75rem;
   }

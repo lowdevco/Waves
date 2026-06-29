@@ -517,11 +517,11 @@ select {
   max-width: 100% !important;
 }
 
-  .mobile-logo {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
+.mobile-logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
 
 .logo img {
   display: block;
@@ -2196,7 +2196,9 @@ textarea.form-input {
   font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
   text-align: left;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }

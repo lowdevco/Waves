@@ -4,7 +4,8 @@
   align-items: center;
   height: 45vh;
   min-height: 380px;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       to right,
       rgba(15, 23, 42, 0.9) 0%,
       rgba(15, 23, 42, 0.65) 50%,
@@ -30,7 +31,7 @@
 }
 
 .blog-hero-title {
-  font-size: 3.5rem; 
+  font-size: 3.5rem;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -75,7 +76,13 @@
     min-height: auto;
     padding-top: 150px;
     padding-bottom: 60px;
-    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%), url('../images/blog/waves_hero_bg.png') no-repeat center center / cover;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.9) 0%,
+        rgba(15, 23, 42, 0.7) 100%
+      ),
+      url("../images/blog/waves_hero_bg.png") no-repeat center center / cover;
   }
   .blog-hero-title {
     font-size: 2.25rem;
@@ -115,7 +122,9 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+  transition:
+    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.3s ease;
   border: 1px solid rgba(0, 0, 0, 0.02);
 }
 
@@ -296,10 +305,9 @@
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   .blog-section {
     padding-top: 50px;
     padding-bottom: 50px;
   }
 }
-

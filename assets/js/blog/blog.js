@@ -8,30 +8,33 @@ const BLOG_POSTS = [
   {
     id: 1,
     title: "The Ultimate Guide to Stain Removal at Home",
-    excerpt: "Learn how to tackle tough stains like coffee, red wine, and grease using common household ingredients before calling the pros.",
+    excerpt:
+      "Learn how to tackle tough stains like coffee, red wine, and grease using common household ingredients before calling the pros.",
     date: "June 25, 2026",
     readTime: "4 Min Read",
     category: "Stain Removal",
-    image: "" // Empty as requested, user will add later
+    image: "", // Empty as requested, user will add later
   },
   {
     id: 2,
     title: "Dry Cleaning vs. Wet Cleaning: What's the Difference?",
-    excerpt: "Explore the technical differences, environmental impacts, and fabric care advantages of professional dry cleaning vs. modern wet cleaning.",
+    excerpt:
+      "Explore the technical differences, environmental impacts, and fabric care advantages of professional dry cleaning vs. modern wet cleaning.",
     date: "June 18, 2026",
     readTime: "5 Min Read",
     category: "Expert Care",
-    image: "" // Empty as requested, user will add later
+    image: "", // Empty as requested, user will add later
   },
   {
     id: 3,
     title: "How to Safely Store Your Silk & Cashmere Garments",
-    excerpt: "Protect your luxury fabrics from moths, humidity, and stretching with our expert seasonal storage guide for silk and cashmere.",
+    excerpt:
+      "Protect your luxury fabrics from moths, humidity, and stretching with our expert seasonal storage guide for silk and cashmere.",
     date: "June 10, 2026",
     readTime: "6 Min Read",
     category: "Fabric Guide",
-    image: "" // Empty as requested, user will add later
-  }
+    image: "", // Empty as requested, user will add later
+  },
 ];
 
 // 2. INITIALIZATION ON DOM LOAD
@@ -66,9 +69,12 @@ function renderBlogPosts() {
     } else {
       // Premium icon fallback based on post category
       let fallbackIcon = "fa-solid fa-newspaper";
-      if (post.category === "Stain Removal") fallbackIcon = "fa-solid fa-wand-magic-sparkles";
-      else if (post.category === "Expert Care") fallbackIcon = "fa-solid fa-soap";
-      else if (post.category === "Fabric Guide") fallbackIcon = "fa-solid fa-shirt";
+      if (post.category === "Stain Removal")
+        fallbackIcon = "fa-solid fa-wand-magic-sparkles";
+      else if (post.category === "Expert Care")
+        fallbackIcon = "fa-solid fa-soap";
+      else if (post.category === "Fabric Guide")
+        fallbackIcon = "fa-solid fa-shirt";
 
       imageHtml = `
         <div class="blog-card-img-placeholder">

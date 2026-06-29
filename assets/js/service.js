@@ -12,12 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 function getFallbackIconClass(item, groupId) {
   if (item.name === "Shoe Cleaning") return "fa-solid fa-shoe-prints";
-  
+
   const iconMap = {
     shirt: "fa-solid fa-shirt",
     tshirt: "fa-solid fa-shirt",
     polo: "fa-solid fa-shirt",
-    pants: "fa-solid fa-shirt", 
+    pants: "fa-solid fa-shirt",
     suit: "fa-solid fa-user-tie",
     jacket: "fa-solid fa-shirt",
     "jacket-winter": "fa-solid fa-shirt",
@@ -113,7 +113,7 @@ function renderPricingItems(category) {
           ...item,
           displayName: displayName,
           category: mappedCategory,
-          groupId: group.id
+          groupId: group.id,
         });
       });
     });

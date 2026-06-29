@@ -95,13 +95,15 @@ function initNavbar() {
   });
 
   // Mobile locations accordion toggle
-  const mobileDropdownToggles = document.querySelectorAll(".mobile-dropdown-toggle");
+  const mobileDropdownToggles = document.querySelectorAll(
+    ".mobile-dropdown-toggle",
+  );
   mobileDropdownToggles.forEach((toggle) => {
     toggle.addEventListener("click", (e) => {
       e.preventDefault();
       const menu = toggle.nextElementSibling;
       const arrow = toggle.querySelector("i");
-      
+
       const isOpen = toggle.classList.toggle("open");
       if (menu) {
         menu.classList.toggle("open", isOpen);
@@ -454,7 +456,7 @@ function changeWizardStep(stepNum) {
   });
 
   lines.forEach((line, index) => {
-    const lineIndex = index + 1; 
+    const lineIndex = index + 1;
     line.classList.remove("active");
     if (lineIndex < stepNum) {
       line.classList.add("active");

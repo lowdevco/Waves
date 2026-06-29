@@ -8,7 +8,8 @@
   align-items: center;
   height: 45vh;
   min-height: 320px;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       to right,
       rgba(15, 23, 42, 0.9) 0%,
       rgba(15, 23, 42, 0.65) 50%,
@@ -103,7 +104,9 @@
   background: var(--white);
   padding: 40px 30px;
   border-radius: var(--radius-2xl);
-  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+  box-shadow:
+    0 10px 30px -15px rgba(0, 0, 0, 0.05),
+    0 1px 3px 0 rgba(0, 0, 0, 0.02);
   transition: all 0.3s ease;
   border: 1px solid var(--slate-border);
   text-align: center;
@@ -112,7 +115,7 @@
 }
 
 .intro-feature-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -219,7 +222,9 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+  transition:
+    transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s ease;
   border: 1px solid var(--slate-border);
 }
 
@@ -473,7 +478,7 @@
   .services-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   /* Make the 10th item (Sofa Cleaning) span 3 columns and have a horizontal layout */
   .services-grid > .service-item-card:nth-child(10) {
     grid-column: 1 / span 3;
@@ -504,11 +509,11 @@
   .service-hero-title {
     font-size: 2.5rem;
   }
-  
+
   .services-grid {
     gap: 40px 20px;
   }
-  
+
   .pricing-tab-btn {
     padding: 8px 18px;
     font-size: 0.8rem;
@@ -533,4 +538,3 @@
   background-color: var(--primary);
   color: var(--white);
 }
-

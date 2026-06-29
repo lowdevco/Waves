@@ -2,7 +2,6 @@
    INDEX PAGE COMPONENT STYLES
    ===================================================================== */
 
-
 /* ---------------------------------------------------------------------
    HERO SECTION
 --------------------------------------------------------------------- */
@@ -10,11 +9,11 @@
 .hero-section {
   position: relative;
   min-height: 100vh;
-  padding-top: 140px; 
+  padding-top: 140px;
   padding-bottom: 60px;
   display: flex;
-  align-items: flex-start; 
-  box-sizing: border-box; 
+  align-items: flex-start;
+  box-sizing: border-box;
   background-color: #0b1528;
   overflow: hidden;
 }
@@ -101,7 +100,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  margin-bottom: 16px; 
+  margin-bottom: 16px;
 }
 
 .hero-content-slide .hero-title {
@@ -109,7 +108,7 @@
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  margin-bottom: 16px; 
+  margin-bottom: 16px;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
 }
 
@@ -119,7 +118,7 @@
 
 .hero-content-slide .hero-desc {
   color: rgba(255, 255, 255, 0.85);
-  font-size:14px;
+  font-size: 14px;
   line-height: 1.6;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
@@ -128,7 +127,7 @@
   display: flex;
   flex-direction: row;
   gap: 16px;
-  margin-bottom: 24px; 
+  margin-bottom: 24px;
   width: 100%;
 }
 
@@ -137,7 +136,7 @@
 }
 
 .btn-white-outline i {
-  scale:1.2;
+  scale: 1.2;
 }
 
 /* Vertical Carousel Controls (dots on the right) */
@@ -178,7 +177,7 @@
 /* Fallback base styles for standard elements if used outside carousel context */
 
 .hero-title {
-  font-size: 3rem; 
+  font-size: 3rem;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -188,7 +187,7 @@
   font-weight: 800;
 }
 .hero-desc {
-  font-size:14px; 
+  font-size: 14px;
   margin-bottom: 36px;
   max-width: 600px;
   line-height: 1.6;
@@ -227,7 +226,7 @@
     height: auto;
     transform: none;
     pointer-events: auto;
-    padding:10px;
+    padding: 10px;
   }
 
   .hero-content-slide .hero-title {
@@ -235,7 +234,7 @@
   }
 
   .hero-content-slide .hero-desc {
-    font-size:14px;
+    font-size: 14px;
     margin-bottom: 24px;
   }
 
@@ -324,12 +323,12 @@
 }
 @media (min-width: 640px) {
   .service-card-new {
-    flex: 0 0 calc((100% - 32px) / 2); 
+    flex: 0 0 calc((100% - 32px) / 2);
   }
 }
 @media (min-width: 1024px) {
   .service-card-new {
-    flex: 0 0 calc((100% - 64px) / 3); 
+    flex: 0 0 calc((100% - 64px) / 3);
   }
 }
 
@@ -407,7 +406,7 @@
   flex-grow: 1;
 }
 .btn-read-more {
-  text-align:start;
+  text-align: start;
   background: none;
   border: 1px solid #cbd5e1;
   color: #475569;
@@ -420,7 +419,7 @@
 }
 .btn-read-more:hover {
   background-color: var(--yellow);
-  color: #ffff ;
+  color: #ffff;
   border-color: var(--yellow);
 }
 
@@ -434,7 +433,7 @@
   height: 48px;
   border-radius: 50%;
   background-color: var(--yellow);
-  color: #ffff ;
+  color: #ffff;
   border: none;
   cursor: pointer;
   display: flex;
@@ -446,7 +445,7 @@
 }
 .services-nav-btn:hover {
   background-color: var(--yellow-dark);
-  color: #ffff ;
+  color: #ffff;
   transform: translateY(-50%) scale(1.1);
   box-shadow: 0 8px 20px rgba(40, 95, 189, 0.33);
 }
@@ -659,7 +658,7 @@
 }
 .showcase-blue-card {
   position: relative;
-  background-color: #0e3e8d; 
+  background-color: #0e3e8d;
   border-radius: 32px;
   padding: 24px;
   height: 380px;
@@ -671,7 +670,7 @@
   width: 260px;
   height: 260px;
   border-radius: 50%;
-  border: 8px solid var(--accent-yellow); 
+  border: 8px solid var(--accent-yellow);
   background-color: transparent;
   top: 50%;
   left: 50%;
@@ -694,7 +693,7 @@
   transition:
     width 0.3s ease,
     height 0.3s ease;
-  animation: wash-spin 18s linear infinite; 
+  animation: wash-spin 18s linear infinite;
 }
 .showcase-main-img {
   width: 100%;
@@ -820,7 +819,6 @@
   overflow: hidden;
 }
 
-
 /* Tabs Switcher Segmented Control */
 .price-list-tabs-container {
   max-width: 1140px;
@@ -884,7 +882,11 @@
 
 /* Indicator Theme Colors */
 .indicator-men {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-dark) 100%
+  );
   box-shadow: 0 6px 15px rgba(4, 107, 210, 0.3);
 }
 .indicator-women {
@@ -945,21 +947,51 @@
 }
 
 /* Stagger cards animation */
-.price-item-card:nth-child(1) { animation-delay: 0.02s; }
-.price-item-card:nth-child(2) { animation-delay: 0.04s; }
-.price-item-card:nth-child(3) { animation-delay: 0.06s; }
-.price-item-card:nth-child(4) { animation-delay: 0.08s; }
-.price-item-card:nth-child(5) { animation-delay: 0.10s; }
-.price-item-card:nth-child(6) { animation-delay: 0.12s; }
-.price-item-card:nth-child(7) { animation-delay: 0.14s; }
-.price-item-card:nth-child(8) { animation-delay: 0.16s; }
-.price-item-card:nth-child(9) { animation-delay: 0.18s; }
-.price-item-card:nth-child(10) { animation-delay: 0.20s; }
-.price-item-card:nth-child(11) { animation-delay: 0.22s; }
-.price-item-card:nth-child(12) { animation-delay: 0.24s; }
-.price-item-card:nth-child(13) { animation-delay: 0.26s; }
-.price-item-card:nth-child(14) { animation-delay: 0.28s; }
-.price-item-card:nth-child(15) { animation-delay: 0.30s; }
+.price-item-card:nth-child(1) {
+  animation-delay: 0.02s;
+}
+.price-item-card:nth-child(2) {
+  animation-delay: 0.04s;
+}
+.price-item-card:nth-child(3) {
+  animation-delay: 0.06s;
+}
+.price-item-card:nth-child(4) {
+  animation-delay: 0.08s;
+}
+.price-item-card:nth-child(5) {
+  animation-delay: 0.1s;
+}
+.price-item-card:nth-child(6) {
+  animation-delay: 0.12s;
+}
+.price-item-card:nth-child(7) {
+  animation-delay: 0.14s;
+}
+.price-item-card:nth-child(8) {
+  animation-delay: 0.16s;
+}
+.price-item-card:nth-child(9) {
+  animation-delay: 0.18s;
+}
+.price-item-card:nth-child(10) {
+  animation-delay: 0.2s;
+}
+.price-item-card:nth-child(11) {
+  animation-delay: 0.22s;
+}
+.price-item-card:nth-child(12) {
+  animation-delay: 0.24s;
+}
+.price-item-card:nth-child(13) {
+  animation-delay: 0.26s;
+}
+.price-item-card:nth-child(14) {
+  animation-delay: 0.28s;
+}
+.price-item-card:nth-child(15) {
+  animation-delay: 0.3s;
+}
 
 /* Themed card backgrounds and highlights on hover */
 .price-list-tabs-container.theme-men .price-item-card:hover {
@@ -1413,7 +1445,6 @@
   gap: 12px;
 }
 
-
 /* Search bar styling */
 
 .faq-search-box-new {
@@ -1510,7 +1541,7 @@
   margin-left: 16px;
 }
 .faq-item.active .faq-trigger i {
-  color: #94a3b8; 
+  color: #94a3b8;
 }
 
 .faq-content-pane {
@@ -1545,7 +1576,7 @@
 }
 @media (max-width: 991px) {
   .faq-img-col {
-    display: none; 
+    display: none;
   }
 }
 .faq-illustration-wrapper {
@@ -1566,7 +1597,7 @@
   width: 110%;
   height: 110%;
   border-radius: 50%;
-  background-color: rgba(81, 137, 227, 0.10);
+  background-color: rgba(81, 137, 227, 0.1);
   z-index: -1;
   filter: blur(16px);
 }
@@ -1588,899 +1619,895 @@
   margin-bottom: 16px;
 }
 
-
 /* =====================================================================
    INDEX PAGE RESPONSIVE MEDIA QUERIES
    ===================================================================== */
 
 @media (min-width: 640px) {
   /* Hero Section */
-  
-    .hero-title {
-      font-size: 2.75rem;
-    }
+
+  .hero-title {
+    font-size: 2.75rem;
+  }
 
   .hero-desc {
-      font-size: 14px;
-    }
+    font-size: 14px;
+  }
 
   .hero-content-slide .badge-highlight {
-      font-size: 0.8rem;
-      padding: 8px 16px;
-      margin-bottom: 16px;
-    }
+    font-size: 0.8rem;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+  }
 
   .hero-actions {
-      flex-direction: row;
-    }
+    flex-direction: row;
+  }
 
   .hero-actions .btn {
-      width: auto;
-      font-size: 14px;
-    }
+    width: auto;
+    font-size: 14px;
+  }
 
   /* Services & About block */
-  
-    .about-block {
-      padding: 48px;
-    }
+
+  .about-block {
+    padding: 48px;
+  }
 
   .about-stat-val {
-      font-size: 2rem;
-    }
+    font-size: 2rem;
+  }
 
   .about-stat-lbl {
-      font-size: 0.75rem;
-    }
+    font-size: 0.75rem;
+  }
 
   /* Price Estimator items grid */
-  
-    .estimator-items-panel {
-      grid-template-columns: repeat(2, 1fr);
-    }
+
+  .estimator-items-panel {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   /* Locations grid */
-  
-    .locations-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+
+  .locations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 1024px) {
   /* Hero grid side-by-side */
-  
-    .hero-section {
-      padding-top: 140px;
-      padding-bottom: 60px;
-      align-items: flex-start;
-    }
+
+  .hero-section {
+    padding-top: 140px;
+    padding-bottom: 60px;
+    align-items: flex-start;
+  }
 
   .hero-content-carousel {
-      min-height: 480px;
-    }
+    min-height: 480px;
+  }
 
   .hero-content-slide .hero-title {
-      font-size: 3.25rem; 
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
+    font-size: 3.25rem;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
 
   .hero-content-slide .hero-desc {
-      font-size: 14px; 
-      margin-bottom: 20px;
-    }
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
 
   .hero-content-slide .badge-highlight {
-      font-size: 12px;
-      padding: 10px 18px;
-      margin-bottom: 20px;
-    }
+    font-size: 12px;
+    padding: 10px 18px;
+    margin-bottom: 20px;
+  }
 
   .hero-content-slide .hero-actions {
-      gap: 20px;
-      margin-bottom: 20px;
-    }
+    gap: 20px;
+    margin-bottom: 20px;
+  }
 
   .hero-showcase-card {
-      padding: 20px;
-    }
+    padding: 20px;
+  }
 
   .floating-badge-title {
-      font-size: 0.95rem;
-    }
+    font-size: 0.95rem;
+  }
 
   .floating-badge-tagline {
-      font-size: 0.75rem;
-    }
+    font-size: 0.75rem;
+  }
 
   .floating-badge-pill {
-      font-size: 0.75rem;
-    }
+    font-size: 0.75rem;
+  }
 
   .hero-grid {
-      grid-template-columns: repeat(12, 1fr);
-      gap: 48px;
-    }
+    grid-template-columns: repeat(12, 1fr);
+    gap: 48px;
+  }
 
   .hero-content {
-      grid-column: span 7;
-    }
+    grid-column: span 7;
+  }
 
   .hero-content-slide {
-      max-width: 580px;
-    }
+    max-width: 580px;
+  }
 
   .hero-showcase {
-      grid-column: span 5;
-    }
+    grid-column: span 5;
+  }
 
   /* Services list grid columns */
-  
-    .services-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   /* About US card split */
-  
-    .about-block {
-      grid-template-columns: repeat(12, 1fr);
-      padding: 64px;
-      gap: 48px;
-    }
+
+  .about-block {
+    grid-template-columns: repeat(12, 1fr);
+    padding: 64px;
+    gap: 48px;
+  }
 
   .about-content {
-      grid-column: span 7;
-    }
+    grid-column: span 7;
+  }
 
   .about-showcase-new {
-      grid-column: span 5;
-    }
+    grid-column: span 5;
+  }
 
   .showcase-blue-card {
-      height: 420px;
-    }
+    height: 420px;
+  }
 
   .showcase-yellow-circle {
-      width: 230px;
-      height: 230px;
-    }
+    width: 230px;
+    height: 230px;
+  }
 
   .showcase-main-img-wrapper {
-      width: 200px;
-      height: 200px;
-    }
+    width: 200px;
+    height: 200px;
+  }
 
   /* Price Estimator layout grid splits */
-  
-    .estimator-split-grid {
-      grid-template-columns: repeat(12, 1fr);
-    }
+
+  .estimator-split-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
 
   .estimator-items-panel {
-      grid-column: span 8;
-      grid-template-columns: repeat(2, 1fr);
-    }
+    grid-column: span 8;
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   .estimator-summary-panel {
-      grid-column: span 4;
-      position: sticky;
-      top: 96px;
-    }
+    grid-column: span 4;
+    position: sticky;
+    top: 96px;
+  }
 
   /* Benefits block layout */
-  
-    .benefits-grid {
-      grid-template-columns: repeat(12, 1fr);
-      gap: 64px;
-    }
+
+  .benefits-grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 64px;
+  }
 
   .benefits-showcase {
-      grid-column: span 5;
-    }
+    grid-column: span 5;
+  }
 
   .benefits-content {
-      grid-column: span 7;
-    }
+    grid-column: span 7;
+  }
 
   .benefits-list {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   /* Locations grid columns */
-  
-    .locations-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+
+  .locations-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   /* Services & About US */
-  
-    .service-card-new {
-      padding: 36px;
-    }
+
+  .service-card-new {
+    padding: 36px;
+  }
 
   .service-title-new {
-      font-size: 1.35rem;
-    }
+    font-size: 1.35rem;
+  }
 
   .service-desc-new {
-      font-size: 0.925rem;
-    }
+    font-size: 0.925rem;
+  }
 
   .service-detail-text {
-      font-size: 0.8rem;
-    }
+    font-size: 0.8rem;
+  }
 
   .about-title {
-      font-size: 2.25rem;
-    }
+    font-size: 2.25rem;
+  }
 
   .about-desc-list {
-      font-size: 0.95rem;
-    }
+    font-size: 0.95rem;
+  }
 
   .about-stat-val {
-      font-size: 2.25rem;
-    }
+    font-size: 2.25rem;
+  }
 
   /* Estimator */
-  
-    .item-info-name {
-      font-size: 14px;
-    }
+
+  .item-info-name {
+    font-size: 14px;
+  }
 
   .item-service-name {
-      font-size: 14px;
-    }
+    font-size: 14px;
+  }
 
   .item-service-price {
-      font-size: 0.875rem;
-    }
+    font-size: 0.875rem;
+  }
 
   .bag-card-title {
-      font-size: 1.25rem;
-    }
+    font-size: 1.25rem;
+  }
 
   .bag-item-name {
-      font-size: 0.95rem;
-    }
+    font-size: 0.95rem;
+  }
 
   .bag-item-total {
-      font-size: 0.95rem;
-    }
-
+    font-size: 0.95rem;
+  }
 
   /* FAQ */
-  
-    .faq-question {
-      font-size: 1.05rem;
-    }
+
+  .faq-question {
+    font-size: 1.05rem;
+  }
 
   .faq-answer {
-      font-size: 0.925rem;
-    }
+    font-size: 0.925rem;
+  }
 
   .faq-search-input-new {
-      font-size: 0.95rem;
-      padding: 14px 18px 14px 52px;
-    }
+    font-size: 0.95rem;
+    padding: 14px 18px 14px 52px;
+  }
 }
 
 @media (min-width: 1280px) {
   .hero-content-carousel {
-      min-height: 500px;
-    }
+    min-height: 500px;
+  }
 
   .hero-content-slide {
-      max-width: 610px;
-    }
+    max-width: 610px;
+  }
 
   .hero-content-slide .hero-title {
-      font-size: 3.5rem; 
-    }
+    font-size: 3.5rem;
+  }
 
   .hero-content-slide .hero-desc {
-      font-size: 14px;
-    }
+    font-size: 14px;
+  }
 
   .hero-content-slide .badge-highlight {
-      font-size: 0.9rem;
-      padding: 10px 20px;
-      margin-bottom: 20px;
-    }
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+  }
 
   /* Widescreen components scaling */
-  
-    .service-card-new {
-      padding: 40px;
-    }
+
+  .service-card-new {
+    padding: 40px;
+  }
 
   .service-title-new {
-      font-size: 1.45rem;
-    }
+    font-size: 1.45rem;
+  }
 
   .service-desc-new {
-      font-size: 0.95rem;
-    }
+    font-size: 0.95rem;
+  }
 
   .about-title {
-      font-size: 2.5rem;
-    }
+    font-size: 2.5rem;
+  }
 
   .about-desc-list {
-      font-size: 1rem;
-    }
+    font-size: 1rem;
+  }
 
   .about-stat-val {
-      font-size: 2.5rem;
-    }
+    font-size: 2.5rem;
+  }
 
   .showcase-blue-card {
-      height: 460px;
-    }
+    height: 460px;
+  }
 
   .showcase-yellow-circle {
-      width: 340px;
-      height: 340px;
-    }
+    width: 340px;
+    height: 340px;
+  }
 
   .showcase-main-img-wrapper {
-      width: 260px;
-      height: 260px;
-    }
+    width: 260px;
+    height: 260px;
+  }
 
   .item-info-name {
-      font-size: 1.15rem;
-    }
+    font-size: 1.15rem;
+  }
 
   .wizard-step-title {
-      font-size: 1.75rem;
-    }
+    font-size: 1.75rem;
+  }
 
   .form-input {
-      font-size: 1rem;
-    }
+    font-size: 1rem;
+  }
 
   .faq-question {
-      font-size: 1.125rem;
-    }
+    font-size: 1.125rem;
+  }
 
   .faq-answer {
-      font-size: 0.95rem;
-    }
+    font-size: 0.95rem;
+  }
 
   .locations-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (min-width: 1440px) {
   .hero-content-slide {
-      max-width: 660px;
-    }
+    max-width: 660px;
+  }
 }
 
 @media (min-width: 1536px) {
   .hero-content-slide {
-      max-width: 700px;
-    }
+    max-width: 700px;
+  }
 
   .hero-content-carousel {
-      min-height: 540px;
-    }
+    min-height: 540px;
+  }
 
   .hero-content-slide .hero-title {
-      font-size: 4rem; /* Premium scale header for very large layouts */
-  
-    }
+    font-size: 4rem; /* Premium scale header for very large layouts */
+  }
 
   .hero-content-slide .hero-desc {
-      font-size: 14px;
-    }
+    font-size: 14px;
+  }
 
   .hero-content-slide .badge-highlight {
-      font-size: 0.95rem;
-      padding: 12px 22px;
-      margin-bottom: 24px;
-    }
+    font-size: 0.95rem;
+    padding: 12px 22px;
+    margin-bottom: 24px;
+  }
 
   /* Ultra-wide components scaling */
-  
-    .service-card-new {
-      padding: 44px;
-    }
+
+  .service-card-new {
+    padding: 44px;
+  }
 
   .service-title-new {
-      font-size: 1.625rem;
-    }
+    font-size: 1.625rem;
+  }
 
   .service-desc-new {
-      font-size: 1rem;
-    }
+    font-size: 1rem;
+  }
 
   .about-title {
-      font-size: 2.75rem;
-    }
+    font-size: 2.75rem;
+  }
 
   .about-desc-list {
-      font-size: 1.05rem;
-    }
+    font-size: 1.05rem;
+  }
 
   .about-stat-val {
-      font-size: 2.75rem;
-    }
+    font-size: 2.75rem;
+  }
 
   .item-info-name {
-      font-size: 1.25rem;
-    }
+    font-size: 1.25rem;
+  }
 
   .wizard-step-title {
-      font-size: 1.875rem;
-    }
+    font-size: 1.875rem;
+  }
 
   .faq-question {
-      font-size: 1.2rem;
-    }
+    font-size: 1.2rem;
+  }
 }
 
 @media (min-width: 1650px) {
   .hero-content-slide {
-      max-width: 740px;
-    }
+    max-width: 740px;
+  }
 }
 
 @media (min-width: 1920px) {
   .hero-content-slide {
-      max-width: 780px;
-    }
+    max-width: 780px;
+  }
 
   /* Hero Section */
-  
-    .hero-section {
-      padding-top: 160px;
-      padding-bottom: 80px;
-      align-items: flex-start;
-    }
+
+  .hero-section {
+    padding-top: 160px;
+    padding-bottom: 80px;
+    align-items: flex-start;
+  }
 
   .hero-content-carousel {
-      min-height: 600px;
-    }
+    min-height: 600px;
+  }
 
   .hero-content-slide .hero-title {
-      font-size: 4.5rem;
-      margin-bottom: 24px;
-    }
+    font-size: 4.5rem;
+    margin-bottom: 24px;
+  }
 
   .hero-content-slide .hero-desc {
-      font-size: 14px;
-      margin-bottom: 24px;
-      max-width: 700px;
-    }
+    font-size: 14px;
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
 
   .hero-content-slide .badge-highlight {
-      font-size: 1rem;
-      padding: 12px 24px;
-      margin-bottom: 24px;
-    }
+    font-size: 1rem;
+    padding: 12px 24px;
+    margin-bottom: 24px;
+  }
 
   .hero-content-slide .hero-actions {
-      gap: 24px;
-      margin-bottom: 24px;
-    }
+    gap: 24px;
+    margin-bottom: 24px;
+  }
 
   .hero-content-slide .hero-contact {
-      gap: 32px;
-      font-size: 1.1rem;
-    }
+    gap: 32px;
+    font-size: 1.1rem;
+  }
 
   .hero-showcase-card {
-      padding: 24px;
-    }
+    padding: 24px;
+  }
 
   .floating-badge-title {
-      font-size: 1.1rem;
-    }
+    font-size: 1.1rem;
+  }
 
   .floating-badge-tagline {
-      font-size: 0.85rem;
-    }
+    font-size: 0.85rem;
+  }
 
   .floating-badge-pill {
-      font-size: 0.85rem;
-    }
+    font-size: 0.85rem;
+  }
 
   .floating-badge-icon {
-      width: 48px;
-      height: 48px;
-      font-size: 1.5rem;
-    }
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
 
   /* Services & About US */
-  
-    .service-card-new {
-      padding: 48px;
-    }
+
+  .service-card-new {
+    padding: 48px;
+  }
 
   .service-title-new {
-      font-size: 1.75rem;
-    }
+    font-size: 1.75rem;
+  }
 
   .service-desc-new {
-      font-size: 1.1rem;
-    }
+    font-size: 1.1rem;
+  }
 
   .about-title {
-      font-size: 3rem;
-    }
+    font-size: 3rem;
+  }
 
   .about-desc-list {
-      font-size: 1.1rem;
-    }
+    font-size: 1.1rem;
+  }
 
   .about-stat-val {
-      font-size: 3rem;
-    }
+    font-size: 3rem;
+  }
 
   .showcase-blue-card {
-      height: 540px;
-    }
+    height: 540px;
+  }
 
   .showcase-yellow-circle {
-      width: 400px;
-      height: 400px;
-    }
+    width: 400px;
+    height: 400px;
+  }
 
   .showcase-main-img-wrapper {
-      width: 310px;
-      height: 310px;
-    }
+    width: 310px;
+    height: 310px;
+  }
 
   .about-stat-lbl {
-      font-size: 0.875rem;
-    }
+    font-size: 0.875rem;
+  }
 
   .about-floating-card {
-      max-width: 240px;
-      padding: 20px;
-      gap: 16px;
-    }
+    max-width: 240px;
+    padding: 20px;
+    gap: 16px;
+  }
 
   .about-floating-title {
-      font-size: 0.9rem;
-    }
+    font-size: 0.9rem;
+  }
 
   .about-floating-lbl {
-      font-size: 0.75rem;
-    }
+    font-size: 0.75rem;
+  }
 
   /* Cost Estimator */
-  
-    .item-info-name {
-      font-size: 1.35rem;
-    }
+
+  .item-info-name {
+    font-size: 1.35rem;
+  }
 
   .item-service-name {
-      font-size: 1rem;
-    }
+    font-size: 1rem;
+  }
 
   .item-service-price {
-      font-size: 0.95rem;
-    }
+    font-size: 0.95rem;
+  }
 
   .bag-card-title {
-      font-size: 1.4rem;
-    }
+    font-size: 1.4rem;
+  }
 
   .bag-item-name {
-      font-size: 1.05rem;
-    }
+    font-size: 1.05rem;
+  }
 
   .bag-item-total {
-      font-size: 1.05rem;
-    }
-
+    font-size: 1.05rem;
+  }
 
   /* FAQ accordion and search */
-  
-    .faq-question {
-      font-size: 1.25rem;
-    }
+
+  .faq-question {
+    font-size: 1.25rem;
+  }
 
   .faq-answer {
-      font-size: 1.05rem;
-    }
+    font-size: 1.05rem;
+  }
 
   .faq-search-input-new {
-      font-size: 1.05rem;
-      padding: 16px 20px 16px 56px;
-    }
+    font-size: 1.05rem;
+    padding: 16px 20px 16px 56px;
+  }
 
   .faq-search-box-new i {
-      left: 24px;
-    }
+    left: 24px;
+  }
 }
 
 @media (min-width: 2560px) {
   .hero-content-slide {
-      max-width: 960px;
-    }
+    max-width: 960px;
+  }
 
   /* Hero Section */
-  
-    .hero-section {
-      min-height: 100vh;
-      padding-top: 200px;
-      padding-bottom: 100px;
-      align-items: flex-start;
-    }
+
+  .hero-section {
+    min-height: 100vh;
+    padding-top: 200px;
+    padding-bottom: 100px;
+    align-items: flex-start;
+  }
 
   .hero-content-carousel {
-      min-height: 700px;
-    }
+    min-height: 700px;
+  }
 
   .hero-content-slide .hero-title {
-      font-size: 5.5rem;
-      margin-bottom: 32px;
-    }
+    font-size: 5.5rem;
+    margin-bottom: 32px;
+  }
 
   .hero-content-slide .hero-desc {
-      font-size: 14px;
-      margin-bottom: 32px;
-      max-width: 800px;
-    }
+    font-size: 14px;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
 
   .hero-content-slide .badge-highlight {
-      font-size: 1.1rem;
-      padding: 14px 28px;
-      margin-bottom: 28px;
-    }
+    font-size: 1.1rem;
+    padding: 14px 28px;
+    margin-bottom: 28px;
+  }
 
   .hero-content-slide .hero-actions {
-      gap: 32px;
-      margin-bottom: 32px;
-    }
+    gap: 32px;
+    margin-bottom: 32px;
+  }
 
   .hero-content-slide .hero-contact {
-      gap: 40px;
-      font-size: 1.35rem;
-    }
+    gap: 40px;
+    font-size: 1.35rem;
+  }
 
   .hero-showcase-card {
-      padding: 32px;
-    }
+    padding: 32px;
+  }
 
   .floating-badge-title {
-      font-size: 1.3rem;
-    }
+    font-size: 1.3rem;
+  }
 
   .floating-badge-tagline {
-      font-size: 1rem;
-    }
+    font-size: 1rem;
+  }
 
   .floating-badge-pill {
-      font-size: 1rem;
-    }
+    font-size: 1rem;
+  }
 
   .floating-badge-icon {
-      width: 60px;
-      height: 60px;
-      font-size: 2rem;
-    }
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
 
   /* Services & About US */
-  
-    .service-card-new {
-      padding: 56px;
-    }
+
+  .service-card-new {
+    padding: 56px;
+  }
 
   .service-title-new {
-      font-size: 2.1rem;
-    }
+    font-size: 2.1rem;
+  }
 
   .service-desc-new {
-      font-size: 1.25rem;
-    }
+    font-size: 1.25rem;
+  }
 
   .about-title {
-      font-size: 3.75rem;
-    }
+    font-size: 3.75rem;
+  }
 
   .about-desc-list {
-      font-size: 1.25rem;
-      gap: 24px;
-    }
+    font-size: 1.25rem;
+    gap: 24px;
+  }
 
   .about-stats {
-      margin-top: 48px;
-      padding-top: 48px;
-    }
+    margin-top: 48px;
+    padding-top: 48px;
+  }
 
   .about-stat-val {
-      font-size: 3.75rem;
-    }
+    font-size: 3.75rem;
+  }
 
   .showcase-blue-card {
-      height: 700px;
-    }
+    height: 700px;
+  }
 
   .showcase-yellow-circle {
-      width: 520px;
-      height: 520px;
-    }
+    width: 520px;
+    height: 520px;
+  }
 
   .showcase-main-img-wrapper {
-      width: 400px;
-      height: 400px;
-    }
+    width: 400px;
+    height: 400px;
+  }
 
   .about-stat-lbl {
-      font-size: 1.1rem;
-    }
+    font-size: 1.1rem;
+  }
 
   /* Cost Estimator */
-  
-    .item-info-name {
-      font-size: 1.6rem;
-    }
+
+  .item-info-name {
+    font-size: 1.6rem;
+  }
 
   .item-service-name {
-      font-size: 1.25rem;
-    }
+    font-size: 1.25rem;
+  }
 
   .item-service-price {
-      font-size: 1.15rem;
-    }
+    font-size: 1.15rem;
+  }
 
   .item-qty-control {
-      padding: 8px 16px;
-      gap: 16px;
-    }
+    padding: 8px 16px;
+    gap: 16px;
+  }
 
   .item-qty-btn {
-      width: 24px;
-      height: 24px;
-      font-size: 1rem;
-    }
+    width: 24px;
+    height: 24px;
+    font-size: 1rem;
+  }
 
   .item-qty-val {
-      width: 32px;
-      font-size: 1.125rem;
-    }
+    width: 32px;
+    font-size: 1.125rem;
+  }
 
   .bag-card-title {
-      font-size: 1.75rem;
-    }
+    font-size: 1.75rem;
+  }
 
   .bag-item-name {
-      font-size: 1.25rem;
-    }
+    font-size: 1.25rem;
+  }
 
   .bag-item-total {
-      font-size: 1.25rem;
-    }
+    font-size: 1.25rem;
+  }
 
   .bag-calc-row {
-      font-size: 1.15rem;
-    }
+    font-size: 1.15rem;
+  }
 
   .bag-calc-row.total-row {
-      font-size: 1.5rem;
-    }
+    font-size: 1.5rem;
+  }
 
   /* FAQ accordion and search */
-  
-    .faq-question {
-      font-size: 1.6rem;
-    }
+
+  .faq-question {
+    font-size: 1.6rem;
+  }
 
   .faq-answer {
-      font-size: 1.35rem;
-    }
+    font-size: 1.35rem;
+  }
 
   .faq-search-input-new {
-      font-size: 1.25rem;
-      padding: 20px 24px 20px 64px;
-    }
+    font-size: 1.25rem;
+    padding: 20px 24px 20px 64px;
+  }
 
   .faq-search-box-new i {
-      left: 28px;
-    }
+    left: 28px;
+  }
 }
 
 @media (max-width: 375px) {
   .showcase-yellow-circle {
-      width: 220px;
-      height: 220px;
-    }
+    width: 220px;
+    height: 220px;
+  }
 
   .showcase-main-img-wrapper {
-      width: 180px;
-      height: 180px;
-    }
+    width: 180px;
+    height: 180px;
+  }
 }
 
 @media (max-width: 768px) {
   .form-grid-2 {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 
   .wizard-tracker {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-      padding-bottom: 20px;
-      margin-bottom: 24px;
-      border-bottom: none;
-    }
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+    border-bottom: none;
+  }
 
   .wizard-step-node {
-      width: auto;
-      padding: 0;
-      background-color: transparent !important;
-      border: none !important;
-      justify-content: flex-start;
-      gap: 16px;
-      transition: var(--transition);
-    }
+    width: auto;
+    padding: 0;
+    background-color: transparent !important;
+    border: none !important;
+    justify-content: flex-start;
+    gap: 16px;
+    transition: var(--transition);
+  }
 
   .wizard-step-num {
-      width: 20px !important;
-      height: 20px !important;
-      font-size: 0 !important;
-      color: transparent !important;
-      border: 2px solid #cbd5e1;
-      background-color: var(--white);
-      box-shadow: none !important;
-      flex-shrink: 0;
-    }
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 0 !important;
+    color: transparent !important;
+    border: 2px solid #cbd5e1;
+    background-color: var(--white);
+    box-shadow: none !important;
+    flex-shrink: 0;
+  }
 
   .wizard-step-node.active .wizard-step-num {
-      border-color: var(--yellow-dark);
-      background-color: var(--white);
-    }
+    border-color: var(--yellow-dark);
+    background-color: var(--white);
+  }
 
   .wizard-step-node.completed .wizard-step-num {
-      border-color: var(--yellow-dark);
-      background-color: var(--yellow-dark);
-    }
+    border-color: var(--yellow-dark);
+    background-color: var(--yellow-dark);
+  }
 
   .wizard-tracker-line {
-      display: block !important;
-      width: 2px !important;
-      min-width: 0 !important;
-      flex-grow: 0 !important;
-      height: 24px;
-      margin-left: 9px !important;
-      margin-right: 0 !important;
-      background-color: #cbd5e1;
-      border-radius: 0;
-    }
+    display: block !important;
+    width: 2px !important;
+    min-width: 0 !important;
+    flex-grow: 0 !important;
+    height: 24px;
+    margin-left: 9px !important;
+    margin-right: 0 !important;
+    background-color: #cbd5e1;
+    border-radius: 0;
+  }
 
   .wizard-tracker-line.active {
-      background-color: var(--yellow-dark);
-    }
+    background-color: var(--yellow-dark);
+  }
 
   .wizard-step-label {
-      font-size: 0.875rem;
-      font-weight: 500;
-    }
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
 }
 
 @media (max-width: 480px) {
   .wizard-card {
-      padding: 16px 12px;
-    }
+    padding: 16px 12px;
+  }
 
   .wizard-step-footer {
-      flex-direction: column-reverse;
-      align-items: stretch;
-      gap: 10px;
-    }
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 10px;
+  }
 
   .wizard-step-footer .btn {
-      width: 100%;
-      justify-content: center;
-    }
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Hero Stats Section */
