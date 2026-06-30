@@ -1,5 +1,7 @@
 {% extends "website/base.html" %}
 
+{% load static %}
+
 {% block content %}
 
   <main>
@@ -131,7 +133,7 @@
           </div>
 
           <div class="offer-img-box">
-            <img src="assets/images/about/offer_specialist.png" alt="About Waves Laundry" />
+            <img src="{% static 'website/images/about/offer_specialist.png' %}" alt="About Waves Laundry" />
           </div>
         </div>
       </div>
@@ -143,7 +145,7 @@
         <div class="philosophy-grid">
           <!-- Adjacent Picture Left Column -->
           <div class="philosophy-img-box reveal">
-            <img src="assets/images/about/hugging_laundry.png" alt="Our Brand Philosophy - Gentle and Pure" />
+            <img src="{% static 'website/images/about/hugging_laundry.png' %}" alt="Our Brand Philosophy - Gentle and Pure" />
           </div>
 
           <!-- Content and Monogram Right Column -->
@@ -159,7 +161,7 @@
             <div class="philosophy-interactive-container">
               <!-- Central Monogram/Logo -->
               <div class="philosophy-center-logo">
-                <img src="assets/images/common_images/brand/favicon.png" alt="Waves Logo Icon" />
+                <img src="{% static 'website/images/common_images/brand/favicon.png' %}" alt="Waves Logo Icon" />
               </div>
 
               <!-- Pop Item 1 (Top Left) -->
@@ -201,7 +203,7 @@
         <div class="why-choose-grid">
           <!-- Left Column: Image -->
           <div class="why-choose-img-box">
-            <img src="assets/images/about/waves_storefront.png" alt="Why Choose Waves Laundry" />
+            <img src="{% static 'website/images/about/waves_storefront.png' %}" alt="Why Choose Waves Laundry" />
           </div>
 
           <!-- Right Column: Content -->
@@ -253,10 +255,10 @@
           <div class="specialists-img-box reveal">
             <div class="specialists-img-grid">
               <div class="specialist-img-card">
-                <img src="assets/images/about/specialist_pressing.png" alt="Fabric Specialist Pressing Garment" />
+                <img src="{% static 'website/images/about/specialist_pressing.png' %}" alt="Fabric Specialist Pressing Garment" />
               </div>
               <div class="specialist-img-card">
-                <img src="assets/images/about/specialist_detailing.png" alt="Fabric Specialist Detailing Shirt" />
+                <img src="{% static 'website/images/about/specialist_detailing.png' %}" alt="Fabric Specialist Detailing Shirt" />
               </div>
             </div>
           </div>
@@ -269,7 +271,7 @@
       <div class="container">
         <div class="eco-grid">
           <div class="eco-img-box reveal">
-            <img src="assets/images/about/eco_grass_wave.png" alt="Waves Goes Green - Eco-Friendly Garment Care"
+            <img src="{% static 'website/images/about/eco_grass_wave.png' %}" alt="Waves Goes Green - Eco-Friendly Garment Care"
               class="eco-logo-img" />
           </div>
 

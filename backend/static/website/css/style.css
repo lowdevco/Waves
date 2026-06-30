@@ -531,13 +531,17 @@ select {
   transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.mobile-logo h1 {
+.mobile-logo img {
   display: none;
   color: var(--white);
   height: 40px;
+  scale:3.3;
+  position:relative;
+  left:22px;
+  top:1px;
 }
 
-.mobile-logo:hover h1 {
+.mobile-logo:hover img {
   transform: scale(1.05);
 }
 
@@ -1690,7 +1694,7 @@ select {
     display: none;
   }
 
-  .mobile-logo h1 {
+  .mobile-logo img {
     display: flex;
     align-items: center;
     justify-content: flex-start;

@@ -1,5 +1,7 @@
 {% extends "website/base.html" %}
 
+{% load static %}
+
 {% block content %}
 
   <main id="home">
@@ -9,9 +11,9 @@
     <section id="home" class="hero-section reveal">
       <!-- Background Image Carousel -->
       <div class="hero-bg-carousel">
-        <div class="hero-bg-slide active" style="background-image: url('assets/images/index/hero-1.png');"></div>
-        <div class="hero-bg-slide" style="background-image: url('assets/images/index/hero-2.png');"></div>
-        <div class="hero-bg-slide" style="background-image: url('assets/images/index/hero-3.png');"></div>
+        <div class="hero-bg-slide active" style="background-image: url('{% static "website/images/index/hero-1.png" %}');"></div>
+        <div class="hero-bg-slide" style="background-image: url('{% static "website/images/index/hero-2.png" %}');"></div>
+        <div class="hero-bg-slide" style="background-image: url('{% static "website/images/index/hero-3.png" %}');"></div>
         <div class="hero-bg-overlay"></div>
       </div>
 
@@ -315,18 +317,18 @@
 
               <!-- Main Image -->
               <div class="showcase-main-img-wrapper">
-                <img src="assets/images/index/michane.png" alt="Waves Premium Laundry Facility"
+                <img src="{% static "website/images/index/michane.png" %}" alt="Waves Premium Laundry Facility"
                   class="showcase-main-img" />
               </div>
 
               <!-- Floating thumbnail 1 (Shoe Cleaning) -->
               <div class="floating-thumb thumb-bottom-left">
-                <img src="assets/images/common_images/items/shoecleaning.png" alt="Shoe Detailing" />
+                <img src="{% static 'website/images/common_images/items/shoecleaning.png' %}" alt="Shoe Detailing" />
               </div>
 
               <!-- Floating thumbnail 2 (Dry Cleaning Facility) -->
               <div class="floating-thumb thumb-top-right">
-                <img src="assets/images/common_images/items/jacket.png" alt="Dry Cleaning Facility" />
+                <img src="{% static 'website/images/common_images/items/jacket.png' %}" alt="Dry Cleaning Facility" />
               </div>
             </div>
           </div>
@@ -386,7 +388,7 @@
           <!-- Left: Facility Plant image -->
           <div class="benefits-showcase">
             <div class="benefits-image-card">
-              <img src="assets/images/index/Lead.png" alt="Waves Premium Laundry Cleaning Facility Plant" />
+              <img src="{% static 'website/images/index/Lead.png' %}" alt="Waves Premium Laundry Cleaning Facility Plant" />
             </div>
 
             <!-- Overlays Badge -->
@@ -930,7 +932,7 @@
           <!-- Right Column: Illustration -->
           <div class="faq-img-col">
             <div class="faq-illustration-wrapper">
-              <img src="assets/images/index/Faq.png" alt="Frequently Asked Questions Illustration"
+              <img src="{% static 'website/images/index/Faq.png' %}" alt="Frequently Asked Questions Illustration"
                 class="faq-illustration" />
             </div>
           </div>
