@@ -1,0 +1,174 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% load static %}
+{% block title %}Dashboard - Add Post{% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'posts' %}">Posts</a></li>
+                <li class="breadcrumb-item active">Add Post</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="content">
+            <div class="usergroup card">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <span>Add New Post</span>
+                    <a href="{% url 'posts' %}" class="btn btn-light btn-sm">
+                        <i class="fas fa-arrow-left"></i> Back to List
+                    </a>
+                </div>
+                <div class="card-body mt-3">
+                    <!-- ENCTYPE is strictly required for image uploads -->
+                    <form method="post" enctype="multipart/form-data" novalidate>
+                        {% csrf_token %}
+                        {{ form.media }}
+                        
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    {% for field in form %}
+                                        {% for error in field.errors %}
+                                            <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                    {% for error in form.non_field_errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+
+                        <div class="row">
+                            <!-- Left Column: Main Content -->
+                            <div class="col-md-8">
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold">{{ form.title.label }}</label>
+                                    {{ form.title }}
+                                </div>
+                                
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold">{{ form.slug.label }}</label>
+                                    {{ form.slug }}
+                                    <small class="form-text text-muted">Slug is automatically generated from the title after saving.</small>
+                                </div>
+                                
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold">{{ form.short_description.label }}</label>
+                                    {{ form.short_description }}
+                                </div>
+                                
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold">Meta Tags (Comma Separated)</label>
+                                    {{ form.meta_tags }}
+                                </div>
+                            </div>
+                            
+                            <!-- Right Column: Meta Info -->
+                            <div class="col-md-4">
+                                <div class="card shadow-sm border-0 mb-3">
+                                    <div class="card-body bg-light rounded">
+                                        <div class="form-group mb-3">
+                                            <label class="font-weight-bold">{{ form.category.label }}</label>
+                                            {{ form.category }}
+                                        </div>
+                                        
+                                        <div class="form-group mb-3">
+                                            <label class="font-weight-bold">{{ form.status.label }}</label>
+                                            {{ form.status }}
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card shadow-sm border-0 mb-3">
+                                    <div class="card-body bg-light rounded">
+                                        <div class="form-group mb-0">
+                                            <label class="font-weight-bold">{{ form.featured_image.label }}</label><br>
+                                            {{ form.featured_image }}
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card shadow-sm border-0">
+                                    <div class="card-body bg-light rounded">
+                                        <div class="form-check">
+                                            {{ form.is_featured }}
+                                            <label class="form-check-label font-weight-bold ml-1" for="{{ form.is_featured.id_for_label }}">
+                                                {{ form.is_featured.label }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Full Width: Blog Body -->
+                        <div class="form-group mb-3 mt-4">
+                            <label class="font-weight-bold">{{ form.blog_body.label }}</label>
+                            <div class="border rounded bg-white">
+                                {{ form.blog_body }}
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-top text-right">
+                            <a href="{% url 'posts' %}" class="btn btn-secondary mr-2">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="fas fa-save"></i> Save Post
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<style>
+    /* Force CKEditor to be 100% width instead of its default fixed width */
+    .django-ckeditor-widget {
+        display: block !important;
+        width: 100% !important;
+    }
+    .django-ckeditor-widget .cke {
+        width: 100% !important;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Apply Bootstrap 4 classes to Django form elements natively
+        document.querySelectorAll('input[type="text"], input[type="email"], select, textarea').forEach(function(el) {
+            el.classList.add('form-control');
+        });
+        document.querySelectorAll('input[type="file"]').forEach(function(el) {
+            el.classList.add('form-control-file');
+        });
+        document.querySelectorAll('input[type="checkbox"]').forEach(function(el) {
+            el.classList.add('form-check-input');
+        });
+
+        const titleInput = document.getElementById('id_title');
+        const slugInput = document.getElementById('id_slug');
+        
+        if (titleInput && slugInput) {
+            // Make slug readonly to prevent manual weirdness
+            slugInput.setAttribute('readonly', 'readonly');
+            slugInput.classList.add('bg-light');
+
+            titleInput.addEventListener('input', function() {
+                let slug = this.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+                slugInput.value = slug ? slug + '-[auto-id]' : '';
+            });
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% load static %}
+{% block title %}Dashboard - Edit Post{% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'posts' %}">Posts</a></li>
+                <li class="breadcrumb-item active">Edit Post</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="content">
+            <div class="usergroup card">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <span>Edit Post: {{ post.title }}</span>
+                    <a href="{% url 'posts' %}" class="btn btn-light btn-sm">
+                        <i class="fas fa-arrow-left"></i> Back to List
+                    </a>
+                </div>
+                <div class="card-body mt-3">
+                    <form method="post" enctype="multipart/form-data" novalidate>
+                        {% csrf_token %}
+                        {{ form.media }}
+                        
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    {% for field in form %}
+                                        {% for error in field.errors %}
+                                            <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                    {% for error in form.non_field_errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+
+                        <div class="row">
+                            <!-- Left Column: Main Content -->
+                            <div class="col-md-8">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">{{ form.title.label }}</label>
+                                    {{ form.title }}
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">{{ form.slug.label }}</label>
+                                    {{ form.slug }}
+                                    <small class="text-muted">Slug is automatically generated from the title after saving.</small>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">{{ form.short_description.label }}</label>
+                                    {{ form.short_description }}
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Meta Tags (Comma Separated)</label>
+                                    {{ form.meta_tags }}
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">{{ form.blog_body.label }}</label>
+                                    {{ form.blog_body }}
+                                </div>
+                            </div>
+                            
+                            <!-- Right Column: Meta Info -->
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">{{ form.category.label }}</label>
+                                    {{ form.category }}
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">{{ form.status.label }}</label>
+                                    {{ form.status }}
+                                </div>
+                                
+                                <div class="mb-3 p-3 border rounded bg-light">
+                                    <label class="form-label fw-bold">{{ form.featured_image.label }}</label><br>
+                                    {% if post.featured_image %}
+                                        <div class="mb-2">
+                                            <small class="text-muted d-block mb-1">Current Image:</small>
+                                            <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="img-thumbnail" style="max-height: 150px;">
+                                        </div>
+                                    {% endif %}
+                                    {{ form.featured_image }}
+                                </div>
+                                
+                                <div class="mb-3 form-check mt-4 border rounded p-3 bg-light">
+                                    {{ form.is_featured }}
+                                    <label class="form-check-label fw-bold ms-1" for="{{ form.is_featured.id_for_label }}">
+                                        {{ form.is_featured.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 border-top pt-3">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Update Post
+                            </button>
+                            <a href="{% url 'posts' %}" class="btn btn-secondary ms-2">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const titleInput = document.getElementById('id_title');
+        const slugInput = document.getElementById('id_slug');
+        
+        if (titleInput && slugInput) {
+            titleInput.addEventListener('input', function() {
+                let slug = this.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+                slugInput.value = slug ? slug + '-{{ post.id }}' : '';
+            });
+        }
+    });
+</script>
+{% endblock %}

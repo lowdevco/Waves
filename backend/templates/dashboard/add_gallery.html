@@ -1,0 +1,120 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% load static %}
+{% block title %}Dashboard - My Django Project{% endblock %}
+{% block content %}
+<!-- ======= Header ======= -->
+ <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+
+
+<div>
+
+    <!-- ======= Sidebar ======= -->
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <nav>
+                <ol class="breadcrumb"></ol>
+                <a href="http://"><i class="fas fa-users">|</i></a>
+                <span><b>Gallery</b></span>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section profile">
+            <div class="container mt-5">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Add New Gallery</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data" id="galleryForm">
+                            {% csrf_token %}
+
+                            <div class="mb-3">
+                                <label>Title</label>
+                                {{ form.title }}
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Select Image</label>
+                                <input type="file" id="imageInput" accept="image/*" class="form-control">
+                            </div>
+
+                            <div class="mb-3 text-center">
+                                <img id="imagePreview" style="max-width:100%; display:none;">
+                            </div>
+
+                            <input type="hidden" name="cropped_image" id="croppedImage">
+
+                            <button type="submit" class="btn btn-primary">
+                                Add Gallery
+                            </button>
+
+                            <a href="{% url 'gallery_view' %}" class="btn btn-secondary">
+                                Back
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+
+</div>
+<script>
+    let cropper;
+
+    document.getElementById('imageInput').addEventListener('change', function (e) {
+
+        const file = e.target.files[0];
+
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+
+            const image = document.getElementById('imagePreview');
+
+            image.src = event.target.result;
+            image.style.display = 'block';
+
+            if (cropper) {
+                cropper.destroy();
+            }
+
+            cropper = new Cropper(image, {
+                aspectRatio: NaN,
+                viewMode: 1,
+                autoCropArea: 1,
+                responsive: true
+            });
+        };
+
+        reader.readAsDataURL(file);
+    });
+
+    document.getElementById('galleryForm').addEventListener('submit', function (e) {
+
+        if (!cropper) {
+            return true;
+        }
+
+        e.preventDefault();
+
+        const canvas = cropper.getCroppedCanvas();
+
+        document.getElementById('croppedImage').value =
+            canvas.toDataURL('image/jpeg');
+
+        this.submit();
+    });
+</script>
+{% endblock %}

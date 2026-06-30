@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+    <!-- Vendor CSS -->
+    <link href="{% static 'dashboard/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'dashboard/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'dashboard/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'dashboard/vendor/quill/quill.snow.css' %}" rel="stylesheet">
+    <link href="{% static 'dashboard/vendor/quill/quill.bubble.css' %}" rel="stylesheet">
+    <link href="{% static 'dashboard/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'dashboard/vendor/simple-datatables/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+    <!-- Toastr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <!-- Main CSS -->
+    <link href="{% static 'dashboard/css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="sidebar">
+        {% include 'dashboard/includes/sidebar.html' %}
+    </div>
+
+    {% include 'dashboard/includes/navigation.html' %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <!-- jQuery (only once - full version) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Vendor JS -->
+    <script src="{% static 'dashboard/vendor/apexcharts/apexcharts.min.js' %}"></script>
+    <script src="{% static 'dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'dashboard/vendor/chart.js/chart.umd.js' %}"></script>
+    <script src="{% static 'dashboard/vendor/echarts/echarts.min.js' %}"></script>
+    <script src="{% static 'dashboard/vendor/quill/quill.js' %}"></script>
+    <script src="{% static 'dashboard/vendor/simple-datatables/simple-datatables.js' %}"></script>
+    <script src="{% static 'dashboard/vendor/tinymce/tinymce.min.js' %}"></script>
+    <script src="{% static 'dashboard/vendor/php-email-form/validate.js' %}"></script>
+
+    <!-- Toastr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="{% static 'dashboard/js/main.js' %}"></script>
+<!-- 
+    {% include 'dashboard/includes/footer.html' %} -->
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% load static %}
+{% block title %}Dashboard - My Django Project{% endblock %}
+{% block content %}
+<!-- ======= Header ======= -->
+<div>
+
+  <!-- ======= Sidebar ======= -->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <nav>
+        <ol class="breadcrumb"></ol>
+        <a href="http://"><i class="fas fa-users">|</i></a>
+        <span><b>Usergroup</b></span>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+
+      <div class="container my-4">
+        <div class="card">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">Usergroup List</h5>
+              <a href="{% url 'add_usergroup' %}" class="btn btn-primary">Add new</a>
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-3">
+                <div class="d-flex align-items-center">
+                  Show
+                  <select class="form-select mx-2" style="width: auto;">
+                    <option>10</option>
+                    <option>25</option>
+                    <option>50</option>
+                  </select>
+                  entries
+                </div>
+                <div class="d-flex align-items-center">
+                  Search:
+                  <input type="text" class="form-control ms-2">
+                </div>
+              </div>
+              <table id="usergroupTable" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Sl.no</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                    <th>Permission</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for group in usergroups %}
+                  <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ group.name }}</td>
+                    <td>
+                      {% if group.status %}
+                      <span class="badge bg-success">&#10003;</span>
+                      {% else %}
+                      <span class="badge bg-danger">&#10007;</span>
+                      {% endif %}
+                    </td>
+                    <!-- Edit -->
+                    <td>
+                      <form method="POST" action="{% url 'edit_usergroup' group.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-link p-0" title="Edit">
+                          <i class="fas fa-edit"></i>
+                        </button>
+                      </form>
+                    </td>
+                    <!-- Lock or Delete -->
+                    <td>
+                      <a href="{% url 'user_permission' group.id %}">
+                        <i class="fas fa-lock"></i>
+                      </a>
+                    </td>
+                    <td>
+                      <a href="javascript:void(0);" data-bs-toggle="modal"
+                        data-bs-target="#deleteUserGroupModal{{ group.id }}">
+                        <i class="fas fa-trash text-danger"></i>
+                      </a>
+
+                      <!-- Delete Modal -->
+                      <div class="modal fade" id="deleteUserGroupModal{{ group.id }}" tabindex="-1"
+                        aria-labelledby="deleteUserGroupModalLabel{{ group.id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+                          <div class="modal-content">
+                            <div class="modal-header bg-danger text-white">
+                              <h5 class="modal-title" id="deleteUserGroupModalLabel{{ group.id }}">Confirm Delete</h5>
+                              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close" onclick="$(this).closest('.modal').modal('hide');"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                              <p class="mt-2" style="white-space: normal;">Are you sure you want to delete the usergroup
+                                <strong>{{ group.name }}</strong>?</p>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="$(this).closest('.modal').modal('hide');">Cancel</button>
+                              <a href="{% url 'usergroup_delete' group.id %}" class="btn btn-danger" onclick="window.location.href=this.href; return false;">Yes, Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+
+              </table>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <div>Showing 1 to {{ usergroups|length }} of {{ usergroups|length }} entries</div>
+                <nav>
+                  <ul class="pagination mb-0">
+                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <script>
+    ript >
+      $(document).ready(function () {
+        $('#usergroupTable').DataTable();
+      });
+  </script>
+</div>
+{% endblock %}

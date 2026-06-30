@@ -1,0 +1,44 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% load static %}
+{% block title %}Dashboard - My Django Project{% endblock %}
+
+{% block content %}
+<!-- ======= Header ======= -->
+<div>
+
+
+    <!-- ======= Sidebar ======= -->
+
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>User</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                   
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section profile">
+            <div class="container mt-5">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">{{ title }}</div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-success">Save</button>
+                            <a href="{% url 'usergroup' %}" class="btn btn-secondary">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- ======= Footer ======= -->
+</div>
+{% endblock %}

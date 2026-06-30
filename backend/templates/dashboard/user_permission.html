@@ -1,0 +1,73 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% load static %}
+{% block title %}Dashboard - My Django Project{% endblock %}
+{% block content %}
+<!-- ======= Header ======= -->
+<div>
+
+    <!-- ======= Sidebar ======= -->
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <nav>
+                <ol class="breadcrumb"></ol>
+                <a href="http://"><i class="fas fa-users">|</i></a>
+                <span><b>Usergroup</b></span>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section profile">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">User Permission</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Name:</strong> {{ usergroup.name }}</p>
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="table-responsive">
+                            <table id="permissions-table" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sl.no</th>
+                                        <th>Module</th>
+                                        <th>Enable / Disable</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in permission_data %}
+                                    <tr>
+                                        <td>{{ item.sl_no }}</td>
+                                        <td>{{ item.module }}</td>
+                                        <td>
+                                            <input type="checkbox" name="module_{{ item.module_id }}"
+                                                class="form-check-input" {% if item.enabled %}checked{% endif %}>
+                                        </td>
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="3" class="text-center">No modules found</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="text-end mt-3">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+
+</div>
+{% endblock %}

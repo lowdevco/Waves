@@ -1,0 +1,110 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% load static %}
+{% block title %}Dashboard - My Django Project{% endblock %}
+
+{% block content %}
+<div>
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>User</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                    <li class="breadcrumb-item active">Add User</li> <!-- ← added -->
+                </ol>
+            </nav>
+        </div>
+
+        <section class="section profile">
+            <div class="container mt-5">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Add User</h5>
+                        <a href="{% url 'users_list' %}" class="btn btn-light btn-sm">List all</a>
+                    </div>
+                    <div class="card-body">
+
+                        <!-- ← Add action URL and novalidate -->
+                        <form method="post" action="{% url 'create_user' %}" enctype="multipart/form-data" novalidate>
+                            {% csrf_token %}
+
+                            <!-- ← Show non-field errors (e.g. password mismatch) -->
+                            {% if form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    {{ form.non_field_errors }}
+                                </div>
+                            {% endif %}
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Usergroup</label>
+                                    {{ form.usergroup }}
+                                    <!-- ← Show field-level errors -->
+                                    {% if form.usergroup.errors %}
+                                        <div class="text-danger small">{{ form.usergroup.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Name</label>
+                                    {{ form.name }}
+                                    {% if form.name.errors %}
+                                        <div class="text-danger small">{{ form.name.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">E-mail</label>
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                        <div class="text-danger small">{{ form.email.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Username</label>
+                                    {{ form.username }}
+                                    {% if form.username.errors %}
+                                        <div class="text-danger small">{{ form.username.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Password</label>
+                                    {{ form.password1 }}
+                                    {% if form.password1.errors %}
+                                        <div class="text-danger small">{{ form.password1.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Confirm Password</label>
+                                    {{ form.password2 }}
+                                    {% if form.password2.errors %}
+                                        <div class="text-danger small">{{ form.password2.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Image</label>
+                                {{ form.image }}
+                                {% if form.image.errors %}
+                                    <div class="text-danger small">{{ form.image.errors }}</div>
+                                {% endif %}
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <a href="{% url 'users_list' %}" class="btn btn-secondary">Cancel</a>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
+{% endblock %}

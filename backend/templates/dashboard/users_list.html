@@ -1,0 +1,156 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% load static %}
+{% block title %}Dashboard - My Django Project{% endblock %}
+
+{% block content %}
+<!-- ======= Header ======= -->
+<div>
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>User</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section profile">
+
+            <div class="container-fluid my-4">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+                        <h5 class="mb-0 font-weight-bold">User List</h5>
+                        <a href="{% url 'create_user' %}" class="btn btn-primary btn-sm px-3"><i
+                                class="fas fa-plus mr-1"></i> Add new</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3 align-items-center">
+                            <div class="col-sm-6 d-flex align-items-center mb-2 mb-sm-0">
+                                <span class="mr-2">Show</span>
+                                <select class="form-control form-control-sm d-inline-block w-auto">
+                                    <option>10</option>
+                                    <option>25</option>
+                                    <option>50</option>
+                                </select>
+                                <span class="ml-2">entries</span>
+                            </div>
+                            <div class="col-sm-6 d-flex align-items-center justify-content-sm-end">
+                                <span class="mr-2">Search:</span>
+                                <input type="text" class="form-control form-control-sm w-auto d-inline-block">
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped align-middle mb-0">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Sl.no</th>
+                                        <th>Usergroup</th>
+                                        <th>Name</th>
+                                        <th>Status</th>
+                                        <th>Online status</th>
+                                        <th class="text-center">Edit</th>
+                                        <th class="text-center">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for profile in profiles %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ profile.usergroup }}</td>
+                                        <td class="font-weight-bold">{{ profile.name }}</td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>
+                                            {% if profile.user == request.user %}
+                                            <span class="text-success"><i class="fas fa-circle"
+                                                    style="font-size: 0.6rem;"></i> Online</span>
+                                            {% else %}
+                                            <span class="text-muted"><i class="fas fa-circle"
+                                                    style="font-size: 0.6rem;"></i> Offline</span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-center">
+                                            {% if profile.user and profile.user.id %}
+                                            <a href="{% url 'users_profile' profile.user.id %}"
+                                                class="btn btn-sm btn-outline-primary rounded-circle">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            {% else %}
+                                            <span class="text-danger small">Invalid User</span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-center">
+                                            {% if profile.user and profile.user.id %}
+                                            <a href="javascript:void(0);" data-bs-toggle="modal"
+                                                data-bs-target="#deleteProfileModal{{ profile.user.id }}"
+                                                class="btn btn-sm btn-outline-danger rounded-circle">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+
+                                            <!-- Delete Modal -->
+                                            <div class="modal fade text-start"
+                                                id="deleteProfileModal{{ profile.user.id }}" tabindex="-1"
+                                                aria-labelledby="deleteProfileModalLabel{{ profile.user.id }}"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog modal-sm">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header bg-danger text-white">
+                                                            <h5 class="modal-title"
+                                                                id="deleteProfileModalLabel{{ profile.user.id }}">
+                                                                Confirm Delete</h5>
+                                                            <button type="button" class="btn-close btn-close-white"
+                                                                data-bs-dismiss="modal" aria-label="Close" onclick="$(this).closest('.modal').modal('hide');"></button>
+                                                        </div>
+                                                        <div class="modal-body text-center">
+                                                            <p class="mt-2" style="white-space: normal;">Are you sure
+                                                                you want to delete the user <strong>{{ profile.name
+                                                                    }}</strong>?</p>
+                                                        </div>
+                                                        <div class="modal-footer justify-content-center">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal" onclick="$(this).closest('.modal').modal('hide');">Cancel</button>
+                                                            <a href="{% url 'delete_profile' profile.user.id %}"
+                                                                class="btn btn-danger" onclick="window.location.href=this.href; return false;">Yes, Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% else %}
+                                            <span class="text-danger small">No user assigned</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="7" class="text-center py-4 text-muted">No users found.</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row mt-3 align-items-center">
+                            <div class="col-sm-6 mb-2 mb-sm-0 text-muted small">
+                                Showing 1 to {{ profiles|length }} of {{ profiles|length }} entries
+                            </div>
+                            <div class="col-sm-6 d-flex justify-content-sm-end">
+                                <nav>
+                                    <ul class="pagination pagination-sm mb-0">
+                                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- ======= Footer ======= -->
+</div>
+{% endblock %}
