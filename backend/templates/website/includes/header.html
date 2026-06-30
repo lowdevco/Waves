@@ -1,0 +1,104 @@
+  {% load static %}
+
+  <header class="header" id="header">
+    <!-- Top Social Bar -->
+    <div class="top-social-bar">
+      <div class="container top-social-container">
+        <div class="top-social-left">
+          <a href="tel:+971523033446" class="social-link">
+            <i class="fa-solid fa-phone"></i> +971 52 303 3446
+          </a>
+        </div>
+        <div class="top-social-right">
+
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link"
+            aria-label="Twitter">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link"
+            aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="social-link"
+            aria-label="Pinterest">
+            <i class="fa-brands fa-brands fa-pinterest"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link"
+            aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navbar (Blue Pill Container) -->
+    <div class="container navbar-container">
+      <div class="navbar-inner-container container">
+        <!-- Logo -->
+        <a href="{% url "home" %}" data-scroll-to="home" class="logo">
+          <img src="{% static 'website/images/common_images/brand/logo.webp' %}" alt="Waves Laundry Logo" />
+        </a>
+
+        <a href="{% url "home" %}" class="mobile-logo">
+          <h1>Waves</h1>
+        </a>
+        <!-- Desktop Links -->
+        <nav class="nav-links">
+          <a href="{% url "home" %}"  class="nav-link-btn {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+            Home
+          </a>
+          <a href="{% url "about" %}" class="nav-link-btn {% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a>
+          <a href="{% url "service" %}" class="nav-link-btn {% if request.resolver_match.url_name == 'service' %}active{% endif %}">
+            Services
+          </a>
+          <!-- Locations Dropdown -->
+          <div class="nav-dropdown-wrapper">
+            <a href="{% url "location" %}" data-scroll-to="locations" class="nav-link-btn dropdown-toggle {% if request.resolver_match.url_name == 'location' %}active{% endif %}">
+              Locations <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <div class="nav-dropdown-menu">
+              <a href="{% url "creek-harbour" %}" class="dropdown-item {% if request.resolver_match.url_name == 'creek-harbour' %}active{% endif %}">Creek Harbour</a>
+              <a href="location.html#business-bay" data-scroll-to="business-bay" class="dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Business Bay</a>
+              <a href="location.html#down-town" data-scroll-to="down-town" class="dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Down Town</a>
+            </div>
+          </div>
+          <a href="{% url "blog" %}" class="nav-link-btn {% if request.resolver_match.url_name == 'blog' %}active{% endif %}">Blog</a>
+        </nav>
+
+        <!-- CTA Buttons -->
+        <div class="nav-cta">
+          <a href="{% url "contact" %}" class="btn btn-white-outline">
+            Contact Us
+          </a>
+          <a href="{% url "booking" %}" data-scroll-to="booking" class="btn btn-white-fill">
+            Book Free Pickup
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <a href="{% url "home" %}"  class="mobile-nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" >Home</a>
+      <a href="{% url "about" %}" class="mobile-nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a>
+      <a href="{% url "service" %}" class="mobile-nav-link {% if request.resolver_match.url_name == 'service' %}active{% endif %}">Services</a>
+      <!-- Locations Accordion Trigger -->
+      <button class="mobile-nav-link mobile-dropdown-toggle {% if request.resolver_match.url_name == 'location' %}active{% endif %}">
+        Locations <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+      </button>
+      <div class="mobile-dropdown-menu">
+        <a href="{% url "creek-harbour" %}" class="mobile-nav-link mobile-dropdown-item {% if request.resolver_match.url_name == 'creek-harbour' %}active{% endif %}">Creek Harbour</a>
+        <a href="location.html#business-bay " data-scroll-to="business-bay"
+          class="mobile-nav-link mobile-dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Business Bay</a>
+        <a href="location.html#down-town" data-scroll-to="down-town" class="mobile-nav-link mobile-dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Down
+          Town</a>
+      </div>
+      <a href="{% url "blog" %}" class="mobile-nav-link {% if request.resolver_match.url_name == 'blog' %}active{% endif %}">Blog</a>
+      <a href="{% url "contact" %}" class="mobile-nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a>
+    </div>
+  </header>

@@ -1,0 +1,133 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+
+    <main>
+        <!-- #---------------CONTACT HERO SECTION-----------------# -->
+        <section class="about-hero reveal">
+            <div class="container">
+                <div class="about-hero-content">
+                    <h1 class="about-hero-title">Contact Us</h1>
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                        <a href="{% url "home" %}" class="breadcrumb-item">Home</a>
+                        <span class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></span>
+                        <span class="breadcrumb-item active">Contact Us</span>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- #---------------CONTACT INFO CARDS SECTION-----------------# -->
+        <section class="contact-cards-section reveal">
+            <div class="container">
+                <div class="contact-cards-grid">
+                    <!-- Card 1: Call Us -->
+                    <div class="contact-info-card">
+                        <div class="card-icon-wrapper">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <h3 class="card-title">Call Us</h3>
+                        <p class="card-text">Speak directly with our laundry care experts.</p>
+                        <a href="tel:+971523033446" class="card-link">+971 52 303 3446</a>
+                    </div>
+                    <!-- Card 2: WhatsApp -->
+                    <div class="contact-info-card">
+                        <div class="card-icon-wrapper whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <h3 class="card-title">WhatsApp Support</h3>
+                        <p class="card-text">Chat with us 24/7 for support and bookings.</p>
+                        <a href="https://wa.me/971523033446" target="_blank" rel="noopener noreferrer"
+                            class="card-link">+971 52 303 3446</a>
+                    </div>
+                    <!-- Card 3: Email Us -->
+                    <div class="contact-info-card">
+                        <div class="card-icon-wrapper">
+                            <i class="fa-regular fa-envelope"></i>
+                        </div>
+                        <h3 class="card-title">Email Us</h3>
+                        <p class="card-text">Drop us a line and we'll reply within 24 hours.</p>
+                        <a href="mailto:waveslaundrydubai@gmail.com" class="card-link">waveslaundrydubai@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- #---------------CONTACT GRID SECTION-----------------# -->
+        <section class="contact-grid-section reveal">
+            <div class="container">
+                <div class="contact-split-grid">
+                    <!-- Left Column: Contact Form -->
+                    <div class="contact-form-card">
+                        <div class="form-header">
+                            <span class="section-subtitle">Get In Touch</span>
+                            <h2 class="contact-section-title">Send Us A Message</h2>
+                            <p class="contact-section-desc">Have questions about our premium services or need assistance
+                                with a pickup? Fill out the form below and we will get back to you shortly.</p>
+                        </div>
+                        <form id="contact-message-form" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-name">Full Name</label>
+                                    <div class="input-wrapper"><i class="fa-regular fa-user input-icon"></i><input
+                                            type="text" id="contact-name" name="name" placeholder="John Doe" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email">Email Address</label>
+                                    <div class="input-wrapper"><i class="fa-regular fa-envelope input-icon"></i><input
+                                            type="email" id="contact-email" name="email" placeholder="john@example.com"
+                                            required /></div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-phone">Phone Number</label>
+                                    <div class="input-wrapper"><i class="fa-solid fa-phone input-icon"></i><input
+                                            type="tel" id="contact-phone" name="phone" placeholder="+971 50 000 0000"
+                                            required /></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-subject">Subject</label>
+                                    <div class="input-wrapper"><i
+                                            class="fa-regular fa-folder-open input-icon"></i><select
+                                            id="contact-subject" name="subject" required>
+                                            <option value="" disabled selected>Select a subject</option>
+                                            <option value="general">General Inquiry</option>
+                                            <option value="pickup">Schedule Pickup</option>
+                                            <option value="pricing">Pricing & Services</option>
+                                            <option value="corporate">Corporate Accounts</option>
+                                            <option value="custom_location">Custom Location Order / Inquiry</option>
+                                            <option value="feedback">Feedback & Suggestions</option>
+                                        </select></div>
+                                </div>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="contact-message">Your Message</label>
+                                <div class="input-wrapper"><i
+                                        class="fa-regular fa-comment-dots textarea-icon input-icon"></i><textarea
+                                        id="contact-message" name="message" placeholder="How can we help you?"
+                                        required></textarea></div>
+                            </div>
+                            <button type="submit" class="contact-submit-btn"><span>Send Message</span><i
+                                    class="fa-solid fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+
+                    <!-- Right Column: Google Map -->
+                    <div class="contact-map-card">
+                        <div class="contact-map-block">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d616.6993866132735!2d55.343025119648594!3d25.20815953611079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x22eb3de62f834eb3%3A0x94929ee190bb792c!2sWaves%20Laundry%20%7C%20Laundry%20Service%20%26%20Dry%20Cleaners!5e1!3m2!1sen!2sin!4v1782185890570!5m2!1sen!2sin"
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}
+
+
+

@@ -1,0 +1,389 @@
+@import url("contact.css");
+
+/* =====================================================================
+   WAVES LAUNDRY - LOCATION PAGE STYLES
+   ===================================================================== */
+
+/* 1. HERO BANNER OVERRIDES */
+.location-hero {
+  display: flex;
+  align-items: center;
+  height: 45vh;
+  min-height: 380px;
+  background:
+    linear-gradient(
+      to right,
+      rgba(15, 23, 42, 0.9) 0%,
+      rgba(15, 23, 42, 0.65) 50%,
+      rgba(15, 23, 42, 0.3) 100%
+    ),
+    url("../images/contact/contact_hero_bg.png") no-repeat center center / cover;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  padding-top: 140px;
+  box-sizing: border-box;
+}
+
+.location-hero-content {
+  position: relative;
+  z-index: 5;
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.location-hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.breadcrumb-item {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-item:hover {
+  color: var(--white);
+}
+
+.breadcrumb-item.active {
+  color: var(--white);
+  pointer-events: none;
+}
+
+.breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+/* 2. LOCATIONS GRID/ROW SHOWCASE */
+.locations-showcase-section {
+  background-color: var(--white);
+}
+
+.location-row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.location-row.row-reverse {
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
+.location-row:last-child {
+  margin-bottom: 0;
+}
+
+.location-showcase-card {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+#business-bay-mobile {
+  display: none;
+}
+
+#business-bay {
+  display: flex;
+}
+
+@media (max-width: 1000px) {
+  #business-bay-mobile {
+    display: block;
+  }
+
+  #business-bay {
+    display: none;
+  }
+}
+
+.showcase-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 16px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.showcase-desc {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--slate-desc);
+  margin-bottom: 24px;
+}
+
+.showcase-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 20px;
+}
+
+.showcase-features li {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.showcase-features li i {
+  color: var(--primary);
+  font-size: 1.15rem;
+}
+
+.showcase-meta {
+  background-color: var(--background);
+  border-radius: var(--radius-xl);
+  padding: 22px;
+  border: 1px solid var(--slate-border);
+  margin-bottom: 28px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--primary-dark);
+}
+
+.showcase-meta p {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.showcase-meta p:last-child {
+  margin-bottom: 0;
+}
+
+.showcase-meta i {
+  color: var(--primary);
+  margin-top: 4px;
+  font-size: 1.05rem;
+}
+
+.showcase-btn {
+  align-self: flex-start;
+}
+
+.location-showcase-map {
+  width: 100%;
+  height: 420px;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--slate-border);
+}
+
+.location-showcase-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* 3. LOCATIONS CONTACT SECTION */
+.location-contact-section {
+  background-color: var(--background);
+}
+
+.location-contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: stretch;
+}
+
+.location-info-card {
+  background-color: var(--white);
+  border-radius: var(--radius-2xl);
+  padding: 45px;
+  border: 1px solid var(--slate-border);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.location-info-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-top: 10px;
+  margin-bottom: 18px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.location-info-desc {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--slate-desc);
+  margin-bottom: 35px;
+}
+
+.location-info-details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: auto;
+}
+
+.info-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.info-detail-item i {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background-color: rgba(4, 107, 210, 0.08);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.detail-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--slate-desc);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.detail-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.detail-value:hover {
+  color: var(--primary);
+}
+
+/* 4. RESPONSIVE MEDIA QUERIES */
+@media (min-width: 992px) {
+  .location-row.row-reverse .location-showcase-card {
+    grid-column: 2;
+  }
+  .location-row.row-reverse .location-showcase-map {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 991px) {
+  .location-row,
+  .location-row.row-reverse {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 70px;
+  }
+
+  .location-showcase-map {
+    height: 360px;
+  }
+
+  .location-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .location-info-card {
+    padding: 35px;
+    height: auto !important;
+  }
+
+  .contact-form-card {
+    height: auto !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .location-hero-title {
+    font-size: 2.75rem;
+  }
+
+  .showcase-title {
+    font-size: 2rem;
+  }
+
+  .showcase-features {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .location-info-title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .location-info-card {
+    padding: 24px 20px !important;
+  }
+
+  .contact-form-card {
+    padding: 24px 20px !important;
+  }
+
+  .location-info-desc {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+
+  .location-info-details {
+    gap: 18px;
+  }
+
+  .info-detail-item {
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .info-detail-item i {
+    width: 44px;
+    height: 44px;
+    font-size: 1.15rem;
+  }
+
+  .detail-value {
+    font-size: 0.95rem;
+    word-break: break-all;
+  }
+}

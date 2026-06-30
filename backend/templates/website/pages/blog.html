@@ -1,0 +1,67 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+
+    <main>
+        <!-- #---------------BLOG HERO SECTION-----------------# -->
+        <section class="blog-hero reveal">
+            <div class="container">
+                <div class="blog-hero-content">
+                    <h1 class="blog-hero-title">Blog</h1>
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                        <a href="{% url "home" %}" class="breadcrumb-item">Home</a>
+                        <span class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></span>
+                        <span class="breadcrumb-item active">Blog</span>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- #---------------Blog Section-----------------# -->
+        <section class="blog-section py-section reveal" id="blog">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="text-center" style="margin-bottom: 50px;">
+                    <span class="section-subtitle">Our Blog</span>
+                    <h2 class="section-title">Latest Articles & Laundry Care Tips</h2>
+                    <p class="section-desc" style="margin: 0 auto;">
+                        Discover useful tips, garment care guides, and the latest updates from Waves Laundry.
+                    </p>
+                </div>
+
+                <!-- Blog Grid -->
+                <div class="blog-grid" id="blog-grid">
+                    <!-- Dynamically populated by assets/js/blog/blog.js -->
+
+                    <!-- Reference Card Template 
+                    <article class="blog-card">
+                        <div class="blog-card-img-wrapper">
+                            <img src="assets/images/blog/placeholder.png" alt="Blog Title" class="blog-card-img" />
+                            <span class="blog-card-category">Category</span>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-meta">
+                                <span class="meta-item"><i class="fa-regular fa-calendar"></i> Date</span>
+                                <span class="meta-item"><i class="fa-regular fa-clock"></i> Read Time</span>
+                            </div>
+                            <h3 class="blog-card-title">
+                                <a href="#">Blog Title Here</a>
+                            </h3>
+                            <p class="blog-card-excerpt">Blog excerpt description goes here.</p>
+                            <a href="#" class="blog-card-link">
+                                Read More <i class="fa-solid fa-arrow-right-long"></i>
+                            </a>
+                        </div>
+                    </article>
+                    -->
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+{% endblock content %}
+
+
+

@@ -1,0 +1,269 @@
+{% extends "website/base.html" %}
+
+
+{% block content %}
+
+   <main>
+        <!-- #---------------CONTACT HERO SECTION-----------------# -->
+        <section class="location-hero reveal">
+            <div class="container">
+                <div class="location-hero-content">
+                    <h1 class="location-hero-title">Locations</h1>
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                        <a href="{% url "home" %}" class="breadcrumb-item">Home</a>
+                        <span class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></span>
+                        <span class="breadcrumb-item active">Location</span>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- #---------------LOCATIONS SHOWCASE SECTION-----------------# -->
+        <section class="locations-showcase-section py-section">
+            <div class="container">
+
+                <!-- Location 1: Creek Harbour -->
+                <div class="location-row reveal" id="creek-harbour">
+                    <div class="location-showcase-card">
+                        <span class="section-subtitle subtitle-blue-line">Service Area 01</span>
+                        <h2 class="showcase-title">Creek Harbour</h2>
+                        <p class="showcase-desc">
+                            Serving the vibrant waterfront community of Dubai Creek with our ultra-convenient doorstep
+                            laundry and dry cleaning services. We cater to all residential towers and complexes in the
+                            Creek Harbour district.
+                        </p>
+                        <ul class="showcase-features">
+                            <li><i class="fa-solid fa-circle-check"></i> Free Pickup & Delivery</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Eco-Safe Gentle Solvents</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Next-Day Fast Delivery</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Premium Garment Finish</li>
+                        </ul>
+                        <div class="showcase-meta">
+                            <p><strong><i class="fa-solid fa-location-dot"></i> Hub Address:</strong> Residential Pickup
+                                Hub, Creek Harbour, Dubai</p>
+                            <p><strong><i class="fa-solid fa-phone"></i> Contact:</strong> +971 52 303 3446</p>
+                        </div>
+                        <a href="{% url "creek-harbour" %}" class="btn btn-primary showcase-btn">View Location Details
+                            <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="location-showcase-map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14442.846513476208!2d55.347035548682054!3d25.196095593888365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f60cb019f3cb1%3A0xe6bf446d33306dbb!2sDubai%20Creek%20Harbour!5e0!3m2!1sen!2sae!4v1719600000000!5m2!1sen!2sae"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <!-- Location 2: Business Bay -->
+                <div>
+                    <div class="location-row row-reverse reveal" id="business-bay">
+                        <div class="location-showcase-map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14443.743126747209!2d55.26388484868078!3d25.188483994017585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f682def95f137%3A0x6bba84b067d5f5a6!2sBusiness%20Bay%2C%20Dubai!5e0!3m2!1sen!2sae!4v1719600000000!5m2!1sen!2sae"
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="location-showcase-card">
+                            <span class="section-subtitle subtitle-yellow-line">Service Area 02</span>
+                            <h2 class="showcase-title">Business Bay</h2>
+                            <p class="showcase-desc">
+                                Tailored corporate and executive laundry care for busy professionals residing and
+                                working in Business Bay.
+                                Fast turnarounds and pristine quality for corporate attire and designer garments.
+                            </p>
+                            <ul class="showcase-features">
+                                <li><i class="fa-solid fa-circle-check"></i> Executive Express Services</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Crisp Shirt & Suit Pressing</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Free Pickup & Delivery</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Eco-Safe Odorless Clean</li>
+                            </ul>
+                            <div class="showcase-meta">
+                                <p><strong><i class="fa-solid fa-location-dot"></i> Hub Address:</strong> Commercial &
+                                    Executive Laundry
+                                    Bay, Dubai</p>
+                                <p><strong><i class="fa-solid fa-phone"></i> Contact:</strong> +971 52 303 3446</p>
+                            </div>
+                            <a href="{% url "booking" %}" class="btn btn-primary showcase-btn">Book Free Pickup <i
+                                    class="fa-solid fa-truck"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- #---------------MOBILE VERSION-----------------# -->
+
+                    <div class="location-row row-reverse reveal" id="business-bay-mobile">
+                        <div class="location-showcase-card">
+                            <span class="section-subtitle subtitle-yellow-line">Service Area 02</span>
+                            <h2 class="showcase-title">Business Bay</h2>
+                            <p class="showcase-desc">
+                                Tailored corporate and executive laundry care for busy professionals residing and
+                                working in Business Bay. Fast turnarounds and pristine quality for corporate attire and
+                                designer garments.
+                            </p>
+                            <ul class="showcase-features">
+                                <li><i class="fa-solid fa-circle-check"></i> Executive Express Services</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Crisp Shirt & Suit Pressing</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Free Pickup & Delivery</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Eco-Safe Odorless Clean</li>
+                            </ul>
+                            <div class="showcase-meta">
+                                <p><strong><i class="fa-solid fa-location-dot"></i> Hub Address:</strong> Commercial &
+                                    Executive Laundry Bay, Dubai</p>
+                                <p><strong><i class="fa-solid fa-phone"></i> Contact:</strong> +971 52 303 3446</p>
+                            </div>
+                            <a href="{% url "booking" %}" class="btn btn-primary showcase-btn">Book Free Pickup <i
+                                    class="fa-solid fa-truck"></i></a>
+                        </div>
+                        <div class="location-showcase-map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14443.743126747209!2d55.26388484868078!3d25.188483994017585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f682def95f137%3A0x6bba84b067d5f5a6!2sBusiness%20Bay%2C%20Dubai!5e0!3m2!1sen!2sae!4v1719600000000!5m2!1sen!2sae"
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location 3: Down Town -->
+                <div class="location-row reveal" id="down-town">
+                    <div class="location-showcase-card">
+                        <span class="section-subtitle subtitle-green-line">Service Area 03</span>
+                        <h2 class="showcase-title">Down Town</h2>
+                        <p class="showcase-desc">
+                            Providing the highest standard of couture cleaning and laundry care right in the heart of
+                            Downtown Dubai, servicing all major luxury towers and high-rise apartments.
+                        </p>
+                        <ul class="showcase-features">
+                            <li><i class="fa-solid fa-circle-check"></i> Couture & Fine Fabric Care</li>
+                            <li><i class="fa-solid fa-circle-check"></i> 100% Non-Toxic Process</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Premium Silk & Linen Finish</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Dedicated White-Glove Support</li>
+                        </ul>
+                        <div class="showcase-meta">
+                            <p><strong><i class="fa-solid fa-location-dot"></i> Hub Address:</strong> Boulevard Elite
+                                Care Center, Downtown, Dubai</p>
+                            <p><strong><i class="fa-solid fa-phone"></i> Contact:</strong> +971 52 303 3446</p>
+                        </div>
+                        <a href="{% url "booking" %}" class="btn btn-primary showcase-btn">Book Free Pickup <i
+                                class="fa-solid fa-truck"></i></a>
+                    </div>
+                    <div class="location-showcase-map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14442.923485055375!2d55.2721877486819!3d25.195441393900224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xff45e502f1c7e29d!2sDowntown%20Dubai%20-%20Dubai!5e0!3m2!1sen!2sae!4v1719600000000!5m2!1sen!2sae"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- #---------------LOCATIONS CONTACT SECTION-----------------# -->
+        <section class="location-contact-section py-section reveal">
+            <div class="container">
+                <div class="location-contact-grid">
+                    <!-- Left Column: Contact Form -->
+                    <div class="contact-form-card">
+                        <div class="form-header">
+                            <span class="section-subtitle">Get In Touch</span>
+                            <h2 class="contact-section-title">Send Us A Message</h2>
+                            <p class="contact-section-desc">Have questions about our premium services or need assistance
+                                with a custom location order? Fill out the form below and we will get back to you
+                                shortly.</p>
+                        </div>
+                        <form id="contact-message-form" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-name">Full Name</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-user input-icon"></i>
+                                        <input type="text" id="contact-name" name="name" placeholder="John Doe"
+                                            required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email">Email Address</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-envelope input-icon"></i>
+                                        <input type="email" id="contact-email" name="email"
+                                            placeholder="john@example.com" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-phone">Phone Number</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-phone input-icon"></i>
+                                        <input type="text" id="contact-phone" name="phone"
+                                            placeholder="+971 50 000 0000" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-subject">Subject</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-folder-open input-icon"></i>
+                                        <select id="contact-subject" name="subject" required>
+                                            <option value="" disabled>Select a subject</option>
+                                            <option value="general">General Inquiry</option>
+                                            <option value="pickup">Schedule Pickup</option>
+                                            <option value="pricing">Pricing & Services</option>
+                                            <option value="corporate">Corporate Accounts</option>
+                                            <option value="custom_location" selected>Custom Location Order / Inquiry
+                                            </option>
+                                            <option value="feedback">Feedback & Suggestions</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="contact-message">Your Message</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-comment-dots textarea-icon input-icon"></i>
+                                    <textarea id="contact-message" name="message"
+                                        placeholder="Please specify your location details..." required></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="contact-submit-btn">
+                                <span>Send Message</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Right Column: custom text block -->
+                    <div class="location-info-card">
+                        <span class="section-subtitle subtitle-yellow-line">Custom Service Area</span>
+                        <h2 class="location-info-title">Don't See Your Area?</h2>
+                        <p class="location-info-desc">
+                            Don't see your area listed? Contact us today! We serve all over Dubai for bulk and custom
+                            requests. Whether it's a hotel, corporate office, or private estate outside our main hubs,
+                            our specialized team is ready to coordinate a custom laundry pickup and delivery schedule
+                            for you.
+                        </p>
+                        <div class="location-info-details">
+                            <div class="info-detail-item">
+                                <i class="fa-solid fa-phone"></i>
+                                <div>
+                                    <p class="detail-label">Call Support</p>
+                                    <a href="tel:+971523033446" class="detail-value">+971 52 303 3446</a>
+                                </div>
+                            </div>
+                            <div class="info-detail-item">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <div>
+                                    <p class="detail-label">WhatsApp 24/7</p>
+                                    <a href="https://wa.me/971523033446" target="_blank" rel="noopener noreferrer"
+                                        class="detail-value">+971 52 303 3446</a>
+                                </div>
+                            </div>
+                            <div class="info-detail-item">
+                                <i class="fa-regular fa-envelope"></i>
+                                <div>
+                                    <p class="detail-label">Email Support</p>
+                                    <a href="mailto:waveslaundrydubai@gmail.com"
+                                        class="detail-value">waveslaundrydubai@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}

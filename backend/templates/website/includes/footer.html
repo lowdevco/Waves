@@ -1,0 +1,148 @@
+  {% load static %}
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <!-- Col 1: Logo & details -->
+      <div class="footer-col">
+        <div class="footer-logo">
+          <img src="{% static 'website/images/common_images/brand/logo.webp' %}" alt="Waves Premium Laundry Logo" />
+        </div>
+        <p class="footer-desc">
+          Premium laundry and dry cleaning services in Dubai, delivered with
+          precision, care, and ultimate doorstep convenience. We make your
+          garments look and feel their best—every single time.
+        </p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/share/1DjJnwd1Ly/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"
+            class="footer-social-btn" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/waveslaundry.ae?igsh=MWJ4MHdzNTd2dHhlag==" target="_blank"
+            rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/company/waves-laundry/" target="_blank" rel="noopener noreferrer"
+            class="footer-social-btn" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Navigation links -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links-list">
+          <li>
+            <a href="{% url "home" %}" data-scroll-to="home" class="footer-link-btn">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="{% url "about" %}" class="footer-link-btn">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="{% url "service" %}" class="footer-link-btn">
+              Services
+            </a>
+          </li>
+          <li>
+            <a href="{% url "location" %}" data-scroll-to="locations" class="footer-link-btn">
+              Location
+            </a>
+          </li>
+          <li>
+            <a href="{% url "blog" %}" class="footer-link-btn">
+              Blog
+            </a>
+          </li>
+          <li>
+            <a href="{% url "contact" %}" class="footer-link-btn">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Served Areas -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Served Areas</h4>
+        <ul class="footer-links-list">
+          <li>
+            <a href="{% url "creek-harbour" %}" class="footer-link-btn">
+              <span class="dot"></span> Creek Harbour
+            </a>
+          </li>
+          <li>
+            <a href="location.html#business-bay" data-scroll-to="business-bay" class="footer-link-btn">
+              <span class="dot"></span> Business Bay
+            </a>
+          </li>
+          <li>
+            <a href="location.html#down-town" data-scroll-to="down-town" class="footer-link-btn">
+              <span class="dot"></span> Downtown Dubai
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Contact details -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Contact Info</h4>
+        <ul class="footer-contact-list">
+          <!-- Phone Call support -->
+          <li class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <p class="footer-contact-label">Call Support</p>
+              <a href="tel:+971523033446"><span class="footer-contact-val">+971 52 303 3446</span></a>
+            </div>
+          </li>
+
+          <!-- WhatsApp chat -->
+          <li class="footer-contact-item">
+            <i class="fa-brands fa-whatsapp whatsapp"></i>
+            <div>
+              <p class="footer-contact-label">WhatsApp 24/7</p>
+              <a href="https://wa.me/971523033446" target="_blank" rel="noopener noreferrer">
+                <span class="footer-contact-val whatsapp-text">+971 52 303 3446</span>
+              </a>
+            </div>
+          </li>
+
+          <!-- Email support -->
+          <li class="footer-contact-item">
+            <i class="fa-regular fa-envelope"></i>
+            <div>
+              <p class="footer-contact-label">Email Us</p>
+              <a href="mailto:waveslaundrydubai@gmail.com">
+                <span class="footer-contact-val">waveslaundrydubai@gmail.com</span>
+              </a>
+            </div>
+          </li>
+
+          <!-- Head office address -->
+          <li class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <p class="footer-contact-label">Head Office Address</p>
+              <p class="footer-contact-val">
+                Dubai Sobha Hartland, Nad Al Sheba 1, Dubai
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright bar -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p>Copyright © 2026 <a href="{% url "home" %}"> <strong>Waves Laundry</strong> </a> | Developed by <a
+            href="https://xeventure.com/" target="_blank"><strong>Xeventure</strong></a> </p>
+        <div class="footer-bottom-links">
+          <a href="#faq" data-scroll-to="faq" class="footer-bottom-link">Privacy Policy</a>
+          <a href="#faq" data-scroll-to="faq" class="footer-bottom-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>

@@ -1,0 +1,78 @@
+{% load static  %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/webp" href="{% static 'website/images/common_images/brand/favicon.png' %}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- FontAwesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Custom Style Sheet -->
+  <link rel="stylesheet" href="{% static 'website/css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'website/css/index.css' %}" />
+  <link rel="stylesheet" href="{% static 'website/css/about.css' %}" />
+  <link rel="stylesheet" href="{% static 'website/css/blog.css' %}" />
+  <link rel="stylesheet" href="{% static 'website/css/booking.css' %}" />
+  <link rel="stylesheet" href="{% static 'website/css/contact.css' %}" />
+  <link rel="stylesheet" href="{% static 'website/css/location-creek-harbour.css' %}" />
+  <link rel="stylesheet" href="{% static 'website/css/location.css' %}" />
+  <link rel="stylesheet" href="{% static 'website/css/service.css' %}" />
+
+
+  <title>Waves</title>
+</head>
+
+<body>
+
+    {% include "website/includes/header.html" %}
+
+{% block content %}
+
+  {% comment %} Realevaen Content  {% endcomment %}
+
+{% endblock %}
+
+
+  {% include "website/includes/footer.html" %}
+
+  {% include "website/includes/floating-widget.html" %}
+
+ {% comment %} Custom js Files  {% endcomment %}
+ 
+ {% comment %} common js  {% endcomment %}
+
+  <script src="{% static "website/js/script.js" %}"></script>
+  <script src="{% static 'website/js/service.js' %}"></script>
+  <script src="{% static 'website/js/location-creek-harbour.js' %}"></script>
+
+  {% comment %} index js  {% endcomment %}
+
+  <script src="{% static 'website/js/index/index.js' %}"></script>
+  <script src="{% static 'website/js/index/price_items.js' %}"></script>
+  <script src="{% static 'website/js/index/service_card.js' %}"></script>
+
+  {% comment %} about js  {% endcomment %}
+
+  <script src="{% static 'website/js/about/about.js' %}"></script>
+  
+  {% comment %} blog js  {% endcomment %}
+
+  <script src="{% static 'website/js/blog/blog.js' %}"></script>
+
+  {% comment %} booking.js  {% endcomment %}
+
+  <script src="{% static 'website/js/booking/booking.js' %}"></script>
+
+</body>
+
+</html>

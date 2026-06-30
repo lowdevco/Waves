@@ -1,0 +1,305 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+
+  <main>
+    <!-- #---------------ABOUT HERO SECTION-----------------# -->
+    <section class="about-hero reveal">
+      <div class="container">
+        <div class="about-hero-content">
+          <h1 class="about-hero-title">About Us</h1>
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="{% url "home" %}" class="breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></span>
+            <span class="breadcrumb-item active">About Us</span>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <section class="workflow-section py-section">
+      <div class="container">
+        <div class="workflow-card reveal">
+          <div class="workflow-container">
+            <!-- Timeline Line -->
+            <div class="workflow-line">
+              <div class="workflow-line-progress"></div>
+            </div>
+
+            <!-- Steps -->
+            <div class="workflow-steps">
+              <!-- Step 1 -->
+              <div class="workflow-step active">
+                <div class="step-icon-box">
+                  <i class="fa-solid fa-truck-ramp-box"></i>
+                  <span class="step-number">1</span>
+                </div>
+                <h4 class="step-title">Collection</h4>
+                <p class="step-desc">Free doorstep collection in Dubai.</p>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="workflow-step active current">
+                <div class="step-icon-box">
+                  <i class="fa-solid fa-barcode"></i>
+                  <span class="step-number">2</span>
+                </div>
+                <h4 class="step-title">Audit</h4>
+                <p class="step-desc">Fabric classification & tagging.</p>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="workflow-step">
+                <div class="step-icon-box">
+                  <i class="fa-solid fa-flask-vial"></i>
+                  <span class="step-number">3</span>
+                </div>
+                <h4 class="step-title">Tailored Wash</h4>
+                <p class="step-desc">Soft water & eco-safe wash.</p>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="workflow-step">
+                <div class="step-icon-box">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i>
+                  <span class="step-number">4</span>
+                </div>
+                <h4 class="step-title">Finishing</h4>
+                <p class="step-desc">Couture pressing & detailing.</p>
+              </div>
+
+              <!-- Step 5 -->
+              <div class="workflow-step">
+                <div class="step-icon-box">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span class="step-number">5</span>
+                </div>
+                <h4 class="step-title">Delivery</h4>
+                <p class="step-desc">Fresh doorstep delivery.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- #---------------ABOUT WAVES LAUNDRY-----------------# -->
+    <section class="offer-section py-section reveal">
+      <div class="container">
+        <div class="offer-grid">
+          <div class="offer-content">
+            <span class="section-subtitle">About Us</span>
+            <h2 class="section-title">About Waves Laundry</h2>
+            <p class="offer-desc">
+              We at Waves provide high-quality laundry services in Dubai, focusing on both regular care and dry cleaning
+              in Dubai with more than a year of reliable experience. Regarded as the best dry cleaning service in Dubai,
+              our aim is to guarantee that each item gets outstanding attention to detail.
+            </p>
+            <p class="offer-desc">
+              For individuals seeking laundry services near me, we excel because our dedication to quality, convenience,
+              and customer satisfaction. Our experienced team employs eco-friendly, fabric-safe cleaning products and
+              advanced technology to manage large-scale residential and commercial laundry, providing professional
+              outcomes.
+            </p>
+            <!-- Key Highlights Grid -->
+            <div class="about-features-grid">
+              <div class="about-feature-item">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-truck"></i>
+                </div>
+                <h4 class="feature-title">Free Pickup & Delivery</h4>
+              </div>
+              <div class="about-feature-item">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-leaf"></i>
+                </div>
+                <h4 class="feature-title">100% Eco-Safe Cleaning</h4>
+              </div>
+              <div class="about-feature-item">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-shirt"></i>
+                </div>
+                <h4 class="feature-title">Couture Detailing</h4>
+              </div>
+              <div class="about-feature-item">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <h4 class="feature-title">Express Turnaround</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="offer-img-box">
+            <img src="assets/images/about/offer_specialist.png" alt="About Waves Laundry" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- #---------------OUR BRAND PHILOSOPHY-----------------# -->
+    <section class="philosophy-section py-section">
+      <div class="container">
+        <div class="philosophy-grid">
+          <!-- Adjacent Picture Left Column -->
+          <div class="philosophy-img-box reveal">
+            <img src="assets/images/about/hugging_laundry.png" alt="Our Brand Philosophy - Gentle and Pure" />
+          </div>
+
+          <!-- Content and Monogram Right Column -->
+          <div class="philosophy-content reveal">
+            <span class="section-subtitle">Our Philosophy</span>
+            <h2 class="section-title">Gentle, Pure, and Precise</h2>
+            <p class="philosophy-desc">
+              The name Waves reflects our core philosophy: gentle, pure, and precise in every movement. Hover over the
+              mark to explore our foundational pillars.
+            </p>
+
+            <!-- Interactive Monogram -->
+            <div class="philosophy-interactive-container">
+              <!-- Central Monogram/Logo -->
+              <div class="philosophy-center-logo">
+                <img src="assets/images/common_images/brand/favicon.png" alt="Waves Logo Icon" />
+              </div>
+
+              <!-- Pop Item 1 (Top Left) -->
+              <div class="philosophy-pop-item pop-top-left">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+                <h4 class="pillar-title">Delicacy</h4>
+                <p class="pillar-text">treating every thread with respect</p>
+              </div>
+
+              <!-- Pop Item 2 (Top Right) -->
+              <div class="philosophy-pop-item pop-top-right">
+                <i class="fa-solid fa-water"></i>
+                <h4 class="pillar-title">Flow</h4>
+                <p class="pillar-text">seamless service, effortless experience</p>
+              </div>
+
+              <!-- Pop Item 3 (Bottom Left) -->
+              <div class="philosophy-pop-item pop-bottom-left">
+                <i class="fa-solid fa-shirt"></i>
+                <h4 class="pillar-title">Purity</h4>
+                <p class="pillar-text">hygienic, eco-responsible garment care</p>
+              </div>
+
+              <!-- Pop Item 4 (Bottom Right) -->
+              <div class="philosophy-pop-item pop-bottom-right">
+                <i class="fa-solid fa-scissors"></i>
+                <h4 class="pillar-title">Craftsmanship</h4>
+                <p class="pillar-text">couture-level detailing and finishing</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- #---------------WHY CHOOSE US-----------------# -->
+    <section class="why-choose-us-section py-section reveal">
+      <div class="container">
+        <div class="why-choose-grid">
+          <!-- Left Column: Image -->
+          <div class="why-choose-img-box">
+            <img src="assets/images/about/waves_storefront.png" alt="Why Choose Waves Laundry" />
+          </div>
+
+          <!-- Right Column: Content -->
+          <div class="why-choose-content">
+            <span class="section-subtitle">Why Choose Waves</span>
+            <h2 class="section-title">Why Choose Us</h2>
+            <p class="why-choose-lead">
+              No more worry about your piled-up laundry! We are Waves a pioneer in providing the best quality services
+              for laundry and dry cleaning in Dubai. Our expertise lies in delivering convenient services that suit the
+              busy lifestyle of our customers.
+            </p>
+            <p class="why-choose-text">
+              Our team is strengthened by experienced laundry professionals who are trained with fabric-safe laundry
+              practices that keep your possessions at their best version. We employ high-quality and eco-friendly
+              cleaning products and equipment to ensure a thorough cleaning with gentle care given to all your laundry
+              needs.
+            </p>
+            <p class="why-choose-text">
+              Our all-rounded laundry services offer quick and contactless pick-up and drop-in services that add to your
+              convenience. We're your final destination for the best laundry and dry cleaners in Dubai, offering
+              convenient, high-quality laundry services. So save your time by saving your laundry for waves!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- #---------------OUR FABRIC CARE SPECIALISTS-----------------# -->
+    <section class="specialists-section py-section reveal">
+      <div class="container">
+        <div class="specialists-grid">
+          <div class="specialists-content reveal">
+            <span class="section-subtitle">Our Fabric Care Specialists</span>
+            <h2 class="section-title">Fabric Specialists Who Understand Every Thread</h2>
+            <p class="specialists-desc">
+              Exceptional garments deserve exceptional care, and our specialists bring unmatched expertise to every
+              piece entrusted to us. Trained to understand the unique characteristics of luxury textiles—whether it’s
+              Italian luxury wool, Japanese raw denim, delicate chiffon, flowing silk, structured organza, fine tulle,
+              or intricately embellished couture—they apply precision techniques tailored to each fabric.
+            </p>
+            <p class="specialists-desc">
+              Their craftsmanship ensures your wardrobe remains pristine, soft to the touch, refreshingly clean, and
+              flawlessly finished after every service. At Waves Garment Care, we do more than clean your garments; we
+              preserve their beauty, maintain their structure, and extend their life—ensuring they look and feel
+              impeccable, wear after wear.
+            </p>
+          </div>
+
+          <div class="specialists-img-box reveal">
+            <div class="specialists-img-grid">
+              <div class="specialist-img-card">
+                <img src="assets/images/about/specialist_pressing.png" alt="Fabric Specialist Pressing Garment" />
+              </div>
+              <div class="specialist-img-card">
+                <img src="assets/images/about/specialist_detailing.png" alt="Fabric Specialist Detailing Shirt" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- #---------------ECO-CARE & SUSTAINABILITY-----------------# -->
+    <section class="eco-section py-section">
+      <div class="container">
+        <div class="eco-grid">
+          <div class="eco-img-box reveal">
+            <img src="assets/images/about/eco_grass_wave.png" alt="Waves Goes Green - Eco-Friendly Garment Care"
+              class="eco-logo-img" />
+          </div>
+
+          <div class="eco-content reveal">
+            <span class="section-subtitle">Eco-Care & Sustainability</span>
+            <h2 class="section-title">Waves Goes Green</h2>
+            <p class="eco-lead">Cleaner choices, greener solutions, and fabric care that respects the planet.</p>
+            <p class="eco-desc">
+              At Waves, premium garment care and environmental responsibility go hand in hand. Every process, product,
+              and technology we use is selected with sustainability at its core—ensuring your garments receive
+              exceptional care while reducing our ecological footprint.
+            </p>
+
+            <h4 class="eco-checklist-title">Our Eco-Safe Commitments</h4>
+            <ul class="eco-checklist">
+              <li><i class="fa-solid fa-circle-check"></i> Biodegradable, fabric-safe detergents gentle on luxury
+                textiles & the planet</li>
+              <li><i class="fa-solid fa-circle-check"></i> Energy-efficient cleaning systems designed to minimize waste
+              </li>
+              <li><i class="fa-solid fa-circle-check"></i> Reusable & recyclable packaging for responsible garment
+                handling</li>
+              <li><i class="fa-solid fa-circle-check"></i> Low-water-consumption cycles without compromising quality
+              </li>
+              <li><i class="fa-solid fa-circle-check"></i> Non-toxic stain-removal techniques safe for you and the
+                environment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+{% endblock content %}
