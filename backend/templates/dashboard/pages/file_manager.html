@@ -99,12 +99,14 @@
                                                        class="form-control form-control-sm text-center mb-2"
                                                        readonly> -->
 
-                                                <button class="btn btn-sm btn-light border"
-                                                        onclick="copyFileUrl('fileurl{{ item.id }}')">
+                                                       <button
+    type="button"
+    class="btn btn-sm btn-light border"
+    onclick="copyFileUrl('{{ request.scheme }}://{{ request.get_host }}{{ item.image.url }}')">
 
-                                                    Click to Copy
+    Copy URL
 
-                                                </button>
+</button>
 
                                             {% endif %}
 
@@ -173,14 +175,19 @@
 <!-- Copy URL Script -->
 <script>
 
-function copyFileUrl(id) {
+function copyFileUrl(url, button) {
 
-    var copyText = document.getElementById(id);
+    navigator.clipboard.writeText(url);
 
-    copyText.select();
-    copyText.setSelectionRange(0, 99999);
+    const oldText = button.innerHTML;
 
-    navigator.clipboard.writeText(copyText.value);
+    button.innerHTML = '<i class="fas fa-check"></i> Copied';
+
+    setTimeout(() => {
+
+        button.innerHTML = oldText;
+
+    }, 1500);
 
 }
 

@@ -61,23 +61,6 @@
         </div>
 
         <div class="blog-card-content">
-
-            <div class="blog-card-meta">
-
-                <span class="meta-item">
-                    <i class="fa-regular fa-calendar"></i>
-                    {{ blog.created_at|date:"F d, Y" }}
-                </span>
-
-                <span class="meta-item">
-                    <i class="fa-regular fa-clock"></i>
-
-                    {% widthratio blog.blog_body|wordcount 200 1 %} Min Read
-
-                </span>
-
-            </div>
-
             <h3 class="blog-card-title">
                 <a href="{% url 'blog_detail' blog.slug %}">
                     {{ blog.title }}
@@ -85,7 +68,7 @@
             </h3>
 
             <p class="blog-card-excerpt">
-                {{ blog.short_description|truncatechars:150 }}
+                {{ blog.short_description|truncatechars:100 }}
             </p>
 
             <a
@@ -93,9 +76,18 @@
                 class="blog-card-link"
             >
                 Read More
-                <i class="fa-solid fa-arrow-right-long"></i>
             </a>
+        </div>
 
+        <div class="blog-card-footer">
+            <span class="meta-item">
+                <i class="fa-regular fa-clock"></i>
+                {{ blog.created_at|date:"M d, Y" }}
+            </span>
+            <span class="meta-item">
+                <i class="fa-regular fa-folder-open"></i>
+                {{ blog.category.category_name }}
+            </span>
         </div>
 
     </article>

@@ -1,193 +1,122 @@
-{% extends "website/base.html" %}
-
-{% block content %}
-
+{% extends "website/base.html" %} {% block content %}
 
 <main>
-
-    <!-- Hero -->
-    <section class="blog-hero reveal">
-        <div class="container">
-            <div class="blog-hero-content">
-
-                <h1 class="blog-hero-title">
-                    {{ blog.title }}
-                </h1>
-
-                <nav class="breadcrumb">
-
-                    <a href="{% url 'home' %}" class="breadcrumb-item">
-                        Home
-                    </a>
-
-                    <span class="breadcrumb-separator">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </span>
-
-                    <a href="{% url 'blog' %}" class="breadcrumb-item">
-                        Blog
-                    </a>
-
-                    <span class="breadcrumb-separator">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </span>
-
-                    <span class="breadcrumb-item active">
-                        {{ blog.title }}
-                    </span>
-
-                </nav>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog -->
-
-    <section class="blog-detail py-section">
-
-        <div class="container">
-
-            <div class="blog-detail-wrapper">
-
-                <div class="blog-detail-meta">
-
-                    <span>
-                        <i class="fa-regular fa-calendar"></i>
-
-                        {{ blog.created_at|date:"F d, Y" }}
-
-                    </span>
-
-                    <span>
-
-                        <i class="fa-solid fa-tag"></i>
-
-                        {{ blog.category.category_name }}
-
-                    </span>
-
-                    <span>
-
-                        <i class="fa-regular fa-clock"></i>
-
-                        {% widthratio blog.blog_body|wordcount 200 1 %} Min Read
-
-                    </span>
-
-                </div>
-
-
-                {% if blog.featured_image %}
-
-                <div class="blog-detail-image">
-
-                    <img
-                        src="{{ blog.featured_image.url }}"
-                        alt="{{ blog.title }}"
-                    >
-
-                </div>
-
-                {% endif %}
-
-
-                <div class="blog-detail-content">
-
-                    {{ blog.blog_body|safe }}
-
-                </div>
-
-            </div>
-
-
-            {% if related_blogs %}
-
-            <div class="related-posts">
-
-                <h2>You May Also Like</h2>
-
-                <div class="blog-grid">
-
-                    {% for item in related_blogs %}
-
-                    <article class="blog-card">
-
-                        <div class="blog-card-img-wrapper">
-
-                            <img
-                                src="{{ item.featured_image.url }}"
-                                class="blog-card-img"
-                                alt="{{ item.title }}"
-                            >
-
-                            <span class="blog-card-category">
-
-                                {{ item.category.category_name }}
-
-                            </span>
-
-                        </div>
-
-                        <div class="blog-card-content">
-
-                            <div class="blog-card-meta">
-
-                                <span class="meta-item">
-
-                                    <i class="fa-regular fa-calendar"></i>
-
-                                    {{ item.created_at|date:"F d, Y" }}
-
-                                </span>
-
-                            </div>
-
-                            <h3 class="blog-card-title">
-
-                                <a href="{% url 'blog_detail' item.slug %}">
-
-                                    {{ item.title }}
-
-                                </a>
-
-                            </h3>
-
-                            <p class="blog-card-excerpt">
-
-                                {{ item.short_description|truncatechars:120 }}
-
-                            </p>
-
-                            <a
-                                href="{% url 'blog_detail' item.slug %}"
-                                class="blog-card-link"
-                            >
-
-                                Read More
-
-                                <i class="fa-solid fa-arrow-right-long"></i>
-
-                            </a>
-
-                        </div>
-
-                    </article>
-
-                    {% endfor %}
-
-                </div>
-
-            </div>
-
-            {% endif %}
-
+  <!-- Hero -->
+  <section class="blog-hero reveal">
+    <div class="container">
+      <div class="blog-hero-content">
+        <h1 class="blog-hero-title"> Blog Details </h1>
+        <nav class="breadcrumb">
+          <a href="{% url 'home' %}" class="breadcrumb-item"> Home </a>
+
+          <span class="breadcrumb-separator">
+            <i class="fa-solid fa-chevron-right"></i>
+          </span>
+
+          <a href="{% url 'blog' %}" class="breadcrumb-item"> Blog </a>
+
+          <span class="breadcrumb-separator">
+            <i class="fa-solid fa-chevron-right"></i>
+          </span>
+
+          <span class="breadcrumb-item active"> Blog Details </span>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+
+  <section class="blog-detail py-section">
+    <div class="container">
+      <div class="blog-detail-wrapper">
+        <div class="blog-detail-header">
+          <span class="category-badge">
+            {{ blog.category.category_name }}
+          </span>
+          <h1 class="blog-main-title">{{ blog.title }}</h1>
         </div>
 
-    </section>
+        <div class="blog-detail-meta">
+          <span>
+            <i class="fa-regular fa-calendar"></i>
+            {{ blog.created_at|date:"F d, Y" }}
+          </span>
+          <span>
+            <i class="fa-solid fa-user"></i>
+            By admin
+          </span>
+        </div>
 
+        {% if blog.featured_image %}
+
+        <div class="blog-detail-image">
+          <img src="{{ blog.featured_image.url }}" alt="{{ blog.title }}" />
+        </div>
+
+        {% endif %}
+
+        <div class="blog-detail-content">{{ blog.blog_body|safe }}</div>
+      </div>
+
+      {% if related_blogs %}
+
+      <div class="related-posts">
+        <h2>You May Also Like</h2>
+
+        <div class="blog-grid">
+          {% for item in related_blogs %}
+
+          <article class="blog-card">
+            <div class="blog-card-img-wrapper">
+              <img
+                src="{{ item.featured_image.url }}"
+                class="blog-card-img"
+                alt="{{ item.title }}"
+              />
+
+              <span class="blog-card-category">
+                {{ item.category.category_name }}
+              </span>
+            </div>
+
+            <div class="blog-card-content">
+              <div class="blog-card-meta">
+                <span class="meta-item">
+                  <i class="fa-regular fa-calendar"></i>
+
+                  {{ item.created_at|date:"F d, Y" }}
+                </span>
+              </div>
+
+              <h3 class="blog-card-title">
+                <a href="{% url 'blog_detail' item.slug %}">
+                  {{ item.title }}
+                </a>
+              </h3>
+
+              <p class="blog-card-excerpt">
+                {{ item.short_description|truncatechars:120 }}
+              </p>
+
+              <a
+                href="{% url 'blog_detail' item.slug %}"
+                class="blog-card-link"
+              >
+                Read More
+
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </a>
+            </div>
+          </article>
+
+          {% endfor %}
+        </div>
+      </div>
+
+      {% endif %}
+    </div>
+  </section>
 </main>
 
-
-    
 {% endblock content %}
