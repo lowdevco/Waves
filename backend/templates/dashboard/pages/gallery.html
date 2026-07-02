@@ -1,0 +1,108 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% load static %}
+{% block title %}Dashboard - My Django Project{% endblock %}
+
+{% block content %}
+
+    
+
+        <div class="pagetitle">
+            <nav>
+                <ol class="breadcrumb">
+                    <a href="http://">
+                        <i class="far fa-comments">|</i>
+                    </a>
+                    <span><b>Pages</b></span>
+                </ol>
+            </nav>
+        </div>
+
+        <section class="section profile">
+
+            <div class="con content">
+
+                <div class="usergroup card">
+
+                    <div class="card-header bg-primary text-white d-flex justify-content-between">
+                        <span>Pages List</span>
+
+                        <a href="{% url 'add_gallery' %}" class="btn btn-light btn-sm">
+                            Add New
+                        </a>
+                    </div>
+
+                    <div class="ca card-body">
+
+                        <table class="table table-bordered">
+
+                            <thead>
+                                <tr>
+                                    <th>Sl.no</th>
+                                    <th>Title</th>
+                                    <th>Image</th>
+                                    <th>View</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                {% if gallery %}
+
+                                    {% for item in gallery %}
+
+                                    <tr>
+
+                                        <td>{{ forloop.counter }}</td>
+
+                                        <td>{{ item.title }}</td>
+
+                                        <td>
+                                            {% if item.image %}
+                                                <img src="{{ item.image.url }}" width="60">
+                                            {% else %}
+                                                No Image
+                                            {% endif %}
+                                        </td>
+
+                                        <td>
+                                            <a href="{% url 'edit_gallery' id=item.id %}" class="text-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <a href="{% url 'delete_gallery' id=item.id %}" class="text-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </td>
+
+                                    </tr>
+
+                                    {% endfor %}
+
+                                {% else %}
+
+                                    <tr>
+                                        <td colspan="5" class="text-center">
+                                            No Gallery Found
+                                        </td>
+                                    </tr>
+
+                                {% endif %}
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    
+
+{% endblock %}

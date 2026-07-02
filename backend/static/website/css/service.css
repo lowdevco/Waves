@@ -350,7 +350,7 @@
   gap: 24px;
 }
 
-.price-item-card {
+.price-service-card {
   background-color: var(--white);
   border-radius: var(--radius-lg);
   padding: 24px;
@@ -364,7 +364,7 @@
   border: 1px solid rgba(0, 0, 0, 0.02);
 }
 
-.price-item-card:hover {
+.price-service-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
   border-color: rgba(4, 107, 210, 0.1);
@@ -387,7 +387,7 @@
   object-fit: contain;
 }
 
-.price-item-card:hover .price-image-wrapper {
+.price-service-card:hover .price-image-wrapper {
   transform: scale(1.08);
 }
 
@@ -534,7 +534,7 @@
   transition: all 0.4s ease;
 }
 
-.price-item-card:hover .price-image-fallback {
+.price-service-card:hover .price-image-fallback {
   background-color: var(--primary);
   color: var(--white);
 }

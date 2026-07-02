@@ -909,7 +909,6 @@
 
 /* Individual Premium Pricing Card */
 .price-item-card {
-  grid-column: span 2; /* 3 cards per row */
   background: var(--white);
   border: 1px solid var(--slate-border);
   border-radius: 20px;
@@ -923,13 +922,7 @@
   transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.price-item-card.span-3 {
-  grid-column: span 3; /* 2 cards per row */
-}
-
-.price-item-card.span-6 {
-  grid-column: span 6; /* 1 card per row */
-}
+/* Removed old span classes */
 
 /* Animation on item render */
 @keyframes cardEntrance {

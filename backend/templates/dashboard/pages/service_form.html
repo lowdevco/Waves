@@ -1,0 +1,23 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<div class="pagetitle">
+  <h1>{{ title }}</h1>
+  <nav><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li><li class="breadcrumb-item"><a href="{% url 'service_list' %}">Services</a></li><li class="breadcrumb-item active">{{ title }}</li></ol></nav>
+</div>
+<section class="section">
+  <div class="card border-0 shadow-sm modern-card">
+    <div class="card-body">
+      <h5 class="card-title">{{ title }}</h5>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="mt-4">
+          <button type="submit" class="btn btn-success">Save</button>
+          <a href="{% url 'service_list' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

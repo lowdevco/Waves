@@ -33,6 +33,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'apps.website',
     'apps.dashboard',
+    "widget_tweaks",
+    "ckeditor",
+    "ckeditor_uploader",
 ]
 
 MIDDLEWARE = [
@@ -58,6 +61,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.dashboard.context_processors.global_variables',
             ],
         },
     },
@@ -129,5 +133,9 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 #media
 
-MEDIA_URL = "media/"
+MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+CKEDITOR_UPLOAD_PATH = "ckeditor/"
+
+# Auth
+LOGIN_URL = "/admin/login/"

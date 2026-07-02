@@ -58,8 +58,8 @@
             </a>
             <div class="nav-dropdown-menu">
               <a href="{% url "creek-harbour" %}" class="dropdown-item {% if request.resolver_match.url_name == 'creek-harbour' %}active{% endif %}">Creek Harbour</a>
-              <a href="location.html#business-bay" data-scroll-to="business-bay" class="dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Business Bay</a>
-              <a href="location.html#down-town" data-scroll-to="down-town" class="dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Down Town</a>
+              <a href="{% url 'business-bay' %}"  class="dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Business Bay</a>
+              <a href="{% url 'down-town' %}"  class="dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Down Town</a>
             </div>
           </div>
           <a href="{% url "blog" %}" class="nav-link-btn {% if request.resolver_match.url_name == 'blog' %}active{% endif %}">Blog</a>
@@ -93,9 +93,9 @@
       </button>
       <div class="mobile-dropdown-menu">
         <a href="{% url "creek-harbour" %}" class="mobile-nav-link mobile-dropdown-item {% if request.resolver_match.url_name == 'creek-harbour' %}active{% endif %}">Creek Harbour</a>
-        <a href="location.html#business-bay " data-scroll-to="business-bay"
+        <a href="{% url 'business-bay' %}"
           class="mobile-nav-link mobile-dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Business Bay</a>
-        <a href="location.html#down-town" data-scroll-to="down-town" class="mobile-nav-link mobile-dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Down
+        <a href="{% url 'business-bay' %}" class="mobile-nav-link mobile-dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Down
           Town</a>
       </div>
       <a href="{% url "blog" %}" class="mobile-nav-link {% if request.resolver_match.url_name == 'blog' %}active{% endif %}">Blog</a>

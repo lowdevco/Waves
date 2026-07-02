@@ -1,4 +1,4 @@
-from dash_app.models import Profile,Module  # Adjust to your actual app name
+from .models import Profile, Module
 from .models import Permission
 from .models import Page
 
@@ -24,6 +24,14 @@ def global_variables(request):
     user_profile = None
     if request.user.is_authenticated:
         user_profile = Profile.objects.filter(user=request.user).first()
+        if user_profile and user_profile.usergroup:
+            perms = Permission.objects.filter(
+                usergroup=user_profile.usergroup,
+                enabled=True
+            )
+            allowed_module_ids = perms.values_list('module_id', flat=True)
+            modules = modules.filter(id__in=allowed_module_ids)
+
     return {
         'modules': modules,
         'global_user_profile': user_profile,

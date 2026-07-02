@@ -6,7 +6,7 @@ const SERVICES_DATA = [
     title: "Expert Dry Cleaning",
     description:
       "Advanced solvent systems, gentle processing cycles, and expert stain-removal techniques tailored specifically for luxury textiles such as silk, velvet, chiffon, cashmere, and couture garments. Every item is treated with the utmost precision to maintain fabric integrity and color richness.",
-    image: "assets/images/common_images/services/service-dryclean.png",
+    image: "/static/website/images/common_images/services/service-dryclean.png",
     iconColorClass: "icon-blue",
     iconSvg: `
                                 <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round"
@@ -30,7 +30,7 @@ const SERVICES_DATA = [
     title: "Designer & Delicate Wear Handling",
     description:
       "A dedicated team manages bridal wear, couture fashion, embellished garments, sequins, beads, and limited-edition designer pieces. Specialized techniques ensure the finest garments retain their elegance, structure, and brilliance.",
-    image: "assets/images/common_images/services/service-delicates.png",
+    image: "/static/website/images/common_images/services/service-delicates.png",
     iconColorClass: "icon-blue",
     iconSvg: `
                                 <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round"
@@ -55,7 +55,7 @@ const SERVICES_DATA = [
     title: "Premium Laundry & Finishing",
     description:
       "Fabric-specific wash programs combined with premium softeners and hand-finished pressing deliver crisp, immaculate, hotel-grade results. Perfect for individuals who expect refined perfection in every fold.",
-    image: "assets/images/common_images/services/service-washfold.png",
+    image: "/static/website/images/common_images/services/service-washfold.png",
     iconColorClass: "icon-green",
     iconSvg: `
                                 <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round"
@@ -76,7 +76,7 @@ const SERVICES_DATA = [
     title: "Professional Alterations ",
     description:
       "Couture-level tailoring solutions including hemming, tapering, resizing, zip replacements, and button fixing. Your garments receive detailed craftsmanship that enhances both fit and comfort.",
-    image: "assets/images/common_images/services/service-alterations.png",
+    image: "/static/website/images/common_images/services/service-alterations.png",
     iconColorClass: "icon-blue",
     iconSvg: `
                                 <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round"
@@ -98,7 +98,7 @@ const SERVICES_DATA = [
     title: "Shoe Care",
     description:
       "Deep cleaning, deodorizing, polishing, suede revival, color correction, and full sneaker spa treatments. Each pair is rejuvenated using premium materials and expert care methods.",
-    image: "assets/images/common_images/services/service-shoes.png",
+    image: "/static/website/images/common_images/services/service-shoes.png",
     iconColorClass: "icon-green",
     iconSvg: `
                                 <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round"
@@ -122,7 +122,7 @@ const SERVICES_DATA = [
     title: "Curtain & Drapery Care",
     description:
       "Precision cleaning solutions for sheers, blackout drapes, velvet curtains, and custom installations. Our process preserves fabric richness, drape, and structure while eliminating dust and allergens.",
-    image: "assets/images/common_images/services/service-curtain.png",
+    image: "/static/website/images/common_images/services/service-curtain.png",
     iconColorClass: "icon-blue",
     iconSvg: `
                                 <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round"
@@ -148,7 +148,7 @@ const SERVICES_DATA = [
     title: "Bag Care",
     description:
       "Comprehensive handbag care featuring deep cleaning, stain correction, leather conditioning, moisturization treatments, and hardware polishing. Ideal for luxury leather goods and designer bags.",
-    image: "assets/images/common_images/services/service-bag-spa.png",
+    image: "/static/website/images/common_images/services/service-bag-spa.png",
     iconColorClass: "icon-blue",
     iconSvg: `
                                 <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round"
@@ -170,7 +170,7 @@ const SERVICES_DATA = [
     title: "Carpet Deep Cleaning",
     description:
       "Professional carpet treatment using high-performance extraction, stain removal systems, deep sanitization, and fiber-protection coatings. Suitable for residences and commercial spaces requiring long-lasting freshness and hygiene.",
-    image: "assets/images/common_images/services/service-carpet.png",
+    image: "/static/website/images/common_images/services/service-carpet.png",
     iconColorClass: "icon-blue",
     iconSvg: `
                                 <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round"
@@ -189,7 +189,7 @@ const SERVICES_DATA = [
     title: "Leather & Suede Care",
     description:
       "Leather and suede are durable and stylish materials often used in clothing, footwear, accessories, and furniture. Specialized cleaning prevents cracking and maintains color.",
-    image: "assets/images/common_images/services/service-leather.png",
+    image: "/static/website/images/common_images/services/service-leather.png",
     iconColorClass: "icon-blue",
     iconSvg: `
                                 <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round"

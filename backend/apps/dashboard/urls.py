@@ -61,7 +61,10 @@ urlpatterns = [
     path('contact-enquiry/delete/<int:id>/',views.delete_contact_enquiry,name='delete_contact_enquiry'),
     path('general-enquiry/',views.general_enquiries,name='general_enquiries'),
     
- 
+    # MODULE PRIORITY URL
+    path('module-priority/', views.module_priority, name='module_priority'),
+    
+
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

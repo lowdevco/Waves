@@ -1,0 +1,36 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% load static %}
+{% block title %}Dashboard - My Django Project{% endblock %}
+{% block content %}
+
+
+    <div class="pagetitle">
+      <nav>
+        <ol class="breadcrumb"></ol>
+        <a href="http://"><i class="fas fa-users">|</i></a>
+        <span><b>Usergroup</b></span>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+      <div class="container mt-5">
+        <div class="card border-0 shadow-sm modern-card">
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Add New User Group</h5>
+          </div>
+          <div class="card-body">
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="btn btn-primary">Add Group</button>
+              <a href="{% url 'usergroup' %}" class="btn btn-secondary">Back</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+
+{% endblock %}

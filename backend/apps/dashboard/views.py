@@ -44,8 +44,8 @@ def login(request):
             return redirect('index')
         else:
             print("DEBUG: authentication failed")
-            return render(request, 'dashboard/login.html', {'error': 'Invalid credentials'})
-    return render(request, 'dashboard/login.html')
+            return render(request, 'dashboard/pages/login.html', {'error': 'Invalid credentials'})
+    return render(request, 'dashboard/pages/login.html')
 
 
 def logout(request):
@@ -78,7 +78,7 @@ def index(request):
             'modules': modules,
             'global_user_profile': None,
         })
-        return render(request, 'dashboard/index.html', context)
+        return render(request, 'dashboard/pages/index.html', context)
 
     perms = Permission.objects.filter(
         usergroup=user_profile.usergroup,
@@ -93,18 +93,18 @@ def index(request):
         'modules': modules,
         'global_user_profile': user_profile,
     })
-    return render(request, 'dashboard/index.html', context)
+    return render(request, 'dashboard/pages/index.html', context)
 
 
 def module_view(request, module_id):
     module = get_object_or_404(Module, id=module_id)
     template_name = (
-        f'dashboard/{module.url_name}.html'
+        f'dashboard/pages/{module.url_name}.html'
         if module.url_name
-        else 'dashboard/index.html'
+        else 'dashboard/pages/index.html'
     )
     context = {'module': module}
-    if template_name == 'dashboard/index.html':
+    if template_name == 'dashboard/pages/index.html':
         context['dashboard_cards'] = get_dashboard_cards()
     return render(request, template_name, context)
 
@@ -112,9 +112,9 @@ def module_view(request, module_id):
 def child_view(request, child_id):
     child = get_object_or_404(Child, id=child_id)
     template_path = (
-        f'dashboard/{child.url_name}.html'
+        f'dashboard/pages/{child.url_name}.html'
         if child.url_name
-        else 'dashboard/add_usergroup.html'
+        else 'dashboard/pages/add_usergroup.html'
     )
     return render(request, template_path, {'child': child})
 
@@ -131,8 +131,6 @@ def add_usergroup(request):
 
             if UserGroup.objects.filter(name__iexact=group_name).exists():
                 messages.error(request, f"Group '{group_name}' already exists.")
-            elif group_name.lower() == 'admin':
-                messages.error(request, "Cannot create a group named 'admin'.")
             else:
                 usergroup = form.save(commit=False)
                 usergroup.name = group_name
@@ -142,13 +140,13 @@ def add_usergroup(request):
     else:
         form = UserGroupForm()
 
-    return render(request, 'dashboard/add_usergroup.html', {'form': form})
+    return render(request, 'dashboard/pages/add_usergroup.html', {'form': form})
 
 
 @login_required
 def usergroup(request):
     usergroups = UserGroup.objects.all()
-    return render(request, 'dashboard/usergroup.html', {'usergroups': usergroups})
+    return render(request, 'dashboard/pages/usergroup.html', {'usergroups': usergroups})
 @login_required
 @user_passes_test(is_admin)
 def edit_usergroup(request, group_id):
@@ -161,7 +159,7 @@ def edit_usergroup(request, group_id):
             messages.success(request, "Group updated successfully.")
             return redirect('usergroup')
 
-    return render(request, 'dashboard/edit_usergroup.html', {
+    return render(request, 'dashboard/pages/edit_usergroup.html', {
         'form': form,
         'usergroup': usergroup,
     })
@@ -186,7 +184,8 @@ def usergroup_delete(request, id):
 
 @login_required
 def users_profile(request, user_id):
-    profile = get_object_or_404(Profile, user__id=user_id)
+    user = get_object_or_404(User, id=user_id)
+    profile, created = Profile.objects.get_or_create(user=user)
     user = profile.user
 
     if request.method == 'POST':
@@ -198,7 +197,7 @@ def users_profile(request, user_id):
         image = request.FILES.get('image')
 
         if not username:
-            return render(request, 'dashboard/users_profile.html', {
+            return render(request, 'dashboard/pages/users_profile.html', {
                 'error': 'Username is required!',
                 'form_data': request.POST,
                 'profile': profile,
@@ -211,14 +210,17 @@ def users_profile(request, user_id):
             update_session_auth_hash(request, user)
         user.save()
 
-        # Fix: resolve UserGroup object from name string
+        # Fix: resolve UserGroup object from name string or ID
         if usergroup_name:
             try:
-                usergroup_obj = UserGroup.objects.get(name=usergroup_name)
+                if usergroup_name.isdigit():
+                    usergroup_obj = UserGroup.objects.get(id=int(usergroup_name))
+                else:
+                    usergroup_obj = UserGroup.objects.get(name=usergroup_name)
                 profile.usergroup = usergroup_obj
             except UserGroup.DoesNotExist:
                 messages.error(request, f"Usergroup '{usergroup_name}' does not exist.")
-                return render(request, 'dashboard/users_profile.html', {
+                return render(request, 'dashboard/pages/users_profile.html', {
                     'form_data': request.POST,
                     'profile': profile,
                 })
@@ -240,16 +242,22 @@ def users_profile(request, user_id):
             'image': profile.image,
         }
 
-    return render(request, 'dashboard/users_profile.html', {
+    usergroups = UserGroup.objects.all()
+    return render(request, 'dashboard/pages/users_profile.html', {
         'form_data': form_data,
         'profile': profile,
+        'usergroups': usergroups,
     })
 
 
 @login_required
 def users_list(request):
+    # Ensure all users have a profile before listing
+    for user in User.objects.all():
+        Profile.objects.get_or_create(user=user)
+        
     profiles = Profile.objects.select_related('user').all()
-    return render(request, 'dashboard/users_list.html', {'profiles': profiles})
+    return render(request, 'dashboard/pages/users_list.html', {'profiles': profiles})
 
 
 @login_required
@@ -284,14 +292,11 @@ def create_user(request):
             user.set_password(form.cleaned_data['password1'])
             user.save()
 
-            group_name = form.cleaned_data['usergroup']
-            # Fix: handle the case where usergroup doesn't exist
-            try:
-                usergroup = UserGroup.objects.get(name=group_name)
-            except UserGroup.DoesNotExist:
-                messages.error(request, f"Usergroup '{group_name}' does not exist.")
+            usergroup = form.cleaned_data.get('usergroup')
+            if not usergroup:
+                messages.error(request, "A valid Usergroup must be selected.")
                 user.delete()  # Roll back user creation
-                return render(request, 'dashboard/create_user.html', {'form': form})
+                return render(request, 'dashboard/pages/create_user.html', {'form': form})
 
             Profile.objects.create(
                 user=user,
@@ -308,7 +313,7 @@ def create_user(request):
     else:
         form = RegistrationForm()
 
-    return render(request, 'dashboard/create_user.html', {'form': form})
+    return render(request, 'dashboard/pages/create_user.html', {'form': form})
 
 
 @login_required
@@ -342,7 +347,7 @@ def user_permission(request, usergroup_id):
             'enabled': enabled,
         })
 
-    return render(request, 'dashboard/user_permission.html', {
+    return render(request, 'dashboard/pages/user_permission.html', {
         'usergroup': usergroup,
         'permission_data': permission_data,
     })
@@ -357,10 +362,10 @@ def add_page(request):
             return redirect('page_view')
         else:
             # Show errors back in the form
-            return render(request, 'dashboard/add_page.html', {'form': form})
+            return render(request, 'dashboard/pages/add_page.html', {'form': form})
     else:
         form = PageForm()
-    return render(request, 'dashboard/add_page.html', {'form': form})
+    return render(request, 'dashboard/pages/add_page.html', {'form': form})
 
 
 def edit_page(request, page_id):
@@ -372,10 +377,10 @@ def edit_page(request, page_id):
             messages.success(request, "Page updated successfully.")
             return redirect('page_view')
         else:
-            return render(request, 'dashboard/edit_page.html', {'form': form, 'page': page})
+            return render(request, 'dashboard/pages/edit_page.html', {'form': form, 'page': page})
     else:
         form = PageForm(instance=page)
-    return render(request, 'dashboard/edit_page.html', {'form': form, 'page': page})
+    return render(request, 'dashboard/pages/edit_page.html', {'form': form, 'page': page})
 
 
 def delete_page(request, page_id):
@@ -395,12 +400,12 @@ def toggle_page_status(request, page_id):
 
 
 def enquiry_view(request):
-    return render(request, 'dashboard/enquiry.html', {})
+    return render(request, 'dashboard/pages/enquiry.html', {})
 
 
 def page_view(request):
     pages = Page.objects.all().order_by('priority', 'title')
-    return render(request, 'dashboard/page.html', {'pages': pages})
+    return render(request, 'dashboard/pages/page.html', {'pages': pages})
 
 import base64
 from django.core.files.base import ContentFile
@@ -444,15 +449,15 @@ def add_gallery(request):
 
     return render(
         request,
-        'dashboard/add_gallery.html',
+        'dashboard/pages/add_gallery.html',
         {'form': form}
     )
 
-    return render(request, 'dashboard/add_gallery.html', {'form': form})
+    return render(request, 'dashboard/pages/add_gallery.html', {'form': form})
 
 def gallery_view(request):
     gallery= Gallery.objects.all()
-    return render(request, 'dashboard/gallery.html', {'gallery': gallery})
+    return render(request, 'dashboard/pages/gallery.html', {'gallery': gallery})
 
 def edit_gallery(request, id):
 
@@ -468,7 +473,7 @@ def edit_gallery(request, id):
     else:
         form = GalleryForm(instance=gallery)
 
-    return render(request, 'dashboard/add_gallery.html', {'form': form})
+    return render(request, 'dashboard/pages/add_gallery.html', {'form': form})
 
 
 def delete_gallery(request, id):
@@ -503,7 +508,7 @@ def add_file(request):
 
     return render(
         request,
-        'dashboard/add_file.html',
+        'dashboard/pages/add_file.html',
         {
             'form': form
         }
@@ -514,7 +519,7 @@ def file_manager(request):
     files = FileManager.objects.all().order_by('id')
 
     
-    return render(request, 'dashboard/file_manager.html', {'files': files})
+    return render(request, 'dashboard/pages/file_manager.html', {'files': files})
 
 # EDIT VIEW
 def edit_file(request, id):
@@ -541,7 +546,7 @@ def edit_file(request, id):
 
     return render(
         request,
-        'dashboard/add_file.html',
+        'dashboard/pages/add_file.html',
         {'form': form}
     )
 
@@ -579,7 +584,7 @@ def categories(request):
     context = {
         'categories': categories,
     }
-    return render(request, 'dashboard/blog_categories.html', context)
+    return render(request, 'dashboard/pages/blog_categories.html', context)
 
     
 def add_category(request):
@@ -597,7 +602,7 @@ def add_category(request):
     context = {
         'form': form,
     }
-    return render(request, 'dashboard/add_category.html', context)
+    return render(request, 'dashboard/pages/add_category.html', context)
 
 def edit_category(request, pk):
     category = Category.objects.get(id = pk)
@@ -614,7 +619,7 @@ def edit_category(request, pk):
         'form': form,
         'category': category,
     }
-    return render(request, 'dashboard/edit_category.html', context)
+    return render(request, 'dashboard/pages/edit_category.html', context)
 
 def delete_category(request, pk):
     category = Category.objects.get(id = pk)
@@ -634,7 +639,7 @@ def posts(request):
         'posts': posts,
         'sort_by': sort_by,
     }
-    return render(request, 'dashboard/all_posts.html', context)
+    return render(request, 'dashboard/pages/all_posts.html', context)
 
 def add_post(request):
     if request.method == 'POST':
@@ -653,7 +658,7 @@ def add_post(request):
     context = {
         'form':form,
     }
-    return render(request, 'dashboard/add_post.html',context)
+    return render(request, 'dashboard/pages/add_post.html',context)
 
 
 def edit_post(request , pk):
@@ -671,7 +676,7 @@ def edit_post(request , pk):
         'form': form,
         'post': post,
     }
-    return render(request, 'dashboard/edit_post.html', context)
+    return render(request, 'dashboard/pages/edit_post.html', context)
 def delete_post(request,  pk):
     post = Blog.objects.get(id = pk)
     post.delete()
@@ -681,14 +686,14 @@ def delete_post(request,  pk):
 
 def service_enquiries(request):
     enquiries = ServiceEnquiry.objects.all().order_by('-created_at')
-    return render(request, 'dashboard/service_enquiry.html', {'enquiries': enquiries})
+    return render(request, 'dashboard/pages/service_enquiry.html', {'enquiries': enquiries})
 
 def contact_requests(request):
     enquiries = ContactEnquiry.objects.all().order_by('-created_at')
-    return render(request, 'dashboard/contact_enquiry.html', {'enquiries': enquiries})
+    return render(request, 'dashboard/pages/contact_enquiry.html', {'enquiries': enquiries})
 
 def general_enquiries(request):
-    return render(request, 'dashboard/general_enquiry.html', {})
+    return render(request, 'dashboard/pages/general_enquiry.html', {})
 
 def delete_service_enquiry(request, id):
     enquiry = get_object_or_404(ServiceEnquiry, id=id)
@@ -701,3 +706,19 @@ def delete_contact_enquiry(request, id):
     enquiry.delete()
     messages.success(request, 'Contact enquiry deleted successfully.')
     return redirect('contact_requests')
+
+
+# ==========================================
+
+@login_required
+def module_priority(request):
+    modules = Module.objects.all()
+    if request.method == 'POST':
+        for module in modules:
+            priority_val = request.POST.get(f'priority_{module.id}')
+            if priority_val and priority_val.isdigit():
+                module.priority = int(priority_val)
+                module.save()
+        messages.success(request, 'Module positions updated successfully.')
+        return redirect('module_priority')
+    return render(request, 'dashboard/pages/module_priority.html', {'modules': modules})

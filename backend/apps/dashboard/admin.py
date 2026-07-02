@@ -43,9 +43,9 @@ class ChildInline(admin.TabularInline):
 
 
 class ModuleAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name', 'priority', 'url_name', 'icon_class')
+    list_editable = ('priority',)
     inlines = [ChildInline]
-
 
 admin.site.register(Module, ModuleAdmin)
 # Optional: only if you want to manage Child separately too
@@ -64,3 +64,4 @@ admin.site.register(Category)
 admin.site.register(Blog)
 
 #  addd cpanell
+

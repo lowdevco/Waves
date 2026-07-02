@@ -1,0 +1,58 @@
+{% extends "website/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <main>
+
+        <!-- #--------------- HERO SECTION -----------------# -->
+        <section class="service-hero reveal">
+            <div class="container">
+                <div class="service-hero-content">
+                    <h1 class="service-hero-title">Business Bay</h1>
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                        <a href="{% url "home" %}" class="breadcrumb-item">Home</a>
+                        <span class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></span>
+                        <a href="{% url "location" %}" class="breadcrumb-item">Locations</a>
+                        <span class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></span>
+                        <span class="breadcrumb-item active">Business Bay</span>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- #--------------- ABOUT SECTION -----------------# -->
+        <section class="py-section reveal">
+            <div class="container">
+                <div class="location-sub-about-grid">
+                    <!-- Left: Relevant image -->
+                    <div class="location-sub-about-image">
+                        <img src="{% static 'website/images/locations/about.png' %}"
+                            alt="State of the art laundry and cleaning facility" />
+                    </div>
+
+                    <!-- Right: Text Block -->
+                    <div class="location-sub-about-content">
+                        <span class="section-subtitle">ABOUT WAVES LAUNDRY AND DRY CLEANERS IN BUSINESS BAY</span>
+                        <h2 class="section-title">Laundry Woes? We're The Answer!</h2>
+                        <p style="margin-bottom: 15px;">
+                          Waves Laundry is transforming the laundry experience at Business Bay. We all want our ‘me’ time to enjoy the things we love; however, mundane tasks like laundry can take much of your free time. But no worries, we can take care of all your laundry needs! Our cutting-edge facility, combined with expertly trained staff, ensures that your garments receive the utmost care. From delicate clothes to sturdy business attire, we treat every item with care.
+                        </p>
+                        <p>
+                            Find a laundry experience that perfectly complements your hectic lifestyle. At Waves Laundry, we simplify it for you to book online, get competitive prices, and top-notch customer service. Our professional staff is here to make sure you have a hassle-free and stress-free experience so you can concentrate on what matters most to you. Book your laundry service today and experience your blissful laundry-free days
+                        </p>
+                        <a href="{% url "about" %}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% include "website/includes/location-subpage.html" %}
+
+    </main>
+
+{% endblock content %}
+
+
+

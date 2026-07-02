@@ -1,0 +1,42 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% block title %}Manage Price Categories{% endblock %}
+{% block content %}
+<div class="pagetitle">
+  <h1>Price Categories</h1>
+  <nav><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li><li class="breadcrumb-item active">Price Categories</li></ol></nav>
+</div>
+<section class="section">
+  <div class="card border-0 shadow-sm modern-card">
+    <div class="card-body">
+      <h5 class="card-title">Price Categories List <a href="{% url 'add_price_category' %}" class="btn btn-sm btn-primary float-right">Add New Category</a></h5>
+      <div class="table-responsive">
+      <table class="table table-hover datatable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>ID Name</th>
+            <th>Icon</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+          <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.id_name }}</td>
+            <td>{{ item.icon }}</td>
+            <td>
+              <a href="{% url 'edit_price_category' item.id %}" class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></a>
+              <a href="{% url 'delete_price_category' item.id %}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this category?');"><i class="fas fa-trash"></i></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

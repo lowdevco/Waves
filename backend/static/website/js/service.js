@@ -139,7 +139,7 @@ function renderPricingItems(category) {
   // Generate cards
   filteredList.forEach((item) => {
     const card = document.createElement("div");
-    card.className = "price-item-card animate-fade-in";
+    card.className = "price-service-card animate-fade-in";
 
     // Clean & Iron Price HTML
     const cleanIronPriceHtml = item.cleanIron

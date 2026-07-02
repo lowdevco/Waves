@@ -25,10 +25,13 @@ class CustomAuthenticationForm(AuthenticationForm):
             'placeholder': 'Enter your password'
         })
     )
+
+
 USERGROUP_CHOICES = [
     ('admin', 'admin'),
     ('developer', 'developer'),
 ]
+
 
 class RegistrationForm(UserCreationForm):
     usergroup = forms.ModelChoiceField(
@@ -64,7 +67,8 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2', 'usergroup', 'name', 'image']  # ← added password2
+        fields = ['username', 'email', 'password1', 'password2',
+                  'usergroup', 'name', 'image']  # ← added password2
         widgets = {
             'username': forms.TextInput(attrs={
                 'class': 'form-control',
@@ -75,7 +79,7 @@ class RegistrationForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        
+
         # Fix password fields — UserCreationForm defines them outside Meta.widgets
         self.fields['password1'].widget.attrs.update({
             'class': 'form-control',
@@ -88,6 +92,7 @@ class RegistrationForm(UserCreationForm):
             'autocomplete': 'new-password'  # ← added
         })
 
+
 class UserGroupForm(forms.ModelForm):
     class Meta:
         model = UserGroup
@@ -99,12 +104,16 @@ class UserGroupForm(forms.ModelForm):
             }),
         }
 
+
 class ModuleForm(ModelForm):
     class Meta:
         model = Module
         fields = ['name', 'url_name', 'icon_class']
 
-ChildFormSet = inlineformset_factory(Module, Child, fields=('name', 'url_name'), extra=1, can_delete=True)
+
+ChildFormSet = inlineformset_factory(Module, Child, fields=(
+    'name', 'url_name'), extra=1, can_delete=True)
+
 
 class PageForm(forms.ModelForm):
 
@@ -135,7 +144,8 @@ class PageForm(forms.ModelForm):
 
             'page_name': forms.TextInput(attrs={'class': 'form-control'}),
             'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'slug': forms.TextInput(attrs={'class': 'form-control'}),        # Changed from 'url'
+            # Changed from 'url'
+            'slug': forms.TextInput(attrs={'class': 'form-control'}),
 
             'priority': forms.NumberInput(attrs={'class': 'form-control'}),
             'show_in_menu': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
@@ -158,6 +168,7 @@ class PageForm(forms.ModelForm):
         self.fields['priority'].required = False
         self.fields['priority'].initial = 0
 
+
 class GalleryForm(forms.ModelForm):
 
     class Meta:
@@ -167,6 +178,7 @@ class GalleryForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
+
 
 class FileManagerForm(forms.ModelForm):
 
@@ -192,28 +204,32 @@ class FileManagerForm(forms.ModelForm):
         }
 
 # blog
+
+
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
         fields = '__all__'
         widgets = {
             'category_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'slug': forms.TextInput(attrs={'class': 'form-control', 'disabled': 'disabled', 'placeholder': 'Auto-generated from name'}),
+            'slug': forms.TextInput(attrs={'class': 'form-control', 'readonly': 'readonly', 'placeholder': 'Auto-generated from name'}),
         }
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['slug'].required = False
 
+
 class BlogPostForm(forms.ModelForm):
     class Meta:
         model = Blog
-        fields = ('title', 'slug', 'category','featured_image','short_description','meta_tags','blog_body','status','is_featured' )
+        fields = ('title', 'slug', 'category', 'featured_image',
+                  'short_description', 'meta_tags', 'blog_body', 'status', 'is_featured')
         widgets = {
             'slug': forms.TextInput(attrs={'class': 'form-control', 'disabled': 'disabled', 'placeholder': 'Auto-generated from title'}),
             'meta_tags': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'e.g., Car Care Qatar, Summer Driving'}),
         }
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['slug'].required = False

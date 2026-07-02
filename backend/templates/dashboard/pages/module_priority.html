@@ -1,0 +1,41 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% block title %}Module Position Priorities{% endblock %}
+{% block content %}
+<div class="pagetitle">
+  <h1>Module Position Priorities</h1>
+  <nav><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li><li class="breadcrumb-item active">Module Priorities</li></ol></nav>
+</div>
+<section class="section">
+  <div class="card border-0 shadow-sm modern-card">
+    <div class="card-body">
+      <h5 class="card-title">Set Module Sidebar Order (Lower number = Higher position)</h5>
+      <form method="post">
+        {% csrf_token %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Module Name</th>
+                    <th>Icon Class</th>
+                    <th style="width: 200px;">Priority (0 = default)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for module in modules %}
+                <tr>
+                    <td>{{ module.name }}</td>
+                    <td><i class="{{ module.icon_class }}"></i> {{ module.icon_class }}</td>
+                    <td>
+                        <input type="number" name="priority_{{ module.id }}" value="{{ module.priority }}" class="form-control" />
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary">Save Priorities</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -36,12 +36,14 @@ class Module(models.Model):
     name = models.CharField(max_length=100)
     url_name = models.CharField(max_length=255, null=True, blank=True)
     icon_class = models.CharField(max_length=100, blank=True)
+    priority = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
 
     class Meta:
         db_table = "dash_module"
+        ordering = ['priority', 'id']
 
 
 class Child(models.Model):
@@ -201,10 +203,10 @@ class Blog(models.Model):
     slug = models.SlugField(max_length=150, unique=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    featured_image = models.ImageField(upload_to='uploads/%y/%m/%d/')
+    featured_image = models.ImageField(upload_to='blog/')
     short_description = models.TextField(max_length=500)
     meta_tags = models.CharField(max_length=255, blank=True, null=True,
-                                 help_text="Comma-separated tags (e.g., Car Care Qatar, Summer Driving)")
+                                 help_text="Comma-separated tags (e.g., Laundry Care, Dry cleaning Tips)")
     blog_body = RichTextField()
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default='Draft')
@@ -238,8 +240,6 @@ class ServiceEnquiry(models.Model):
     preferred_date = models.DateField()
     service_type = models.CharField(max_length=100)
     pickup_address = models.CharField(max_length=255)
-    vehicle_make = models.CharField(max_length=50)
-    vehicle_model = models.CharField(max_length=50)
     issue_description = models.TextField(blank=True, null=True)
     landmarks = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)

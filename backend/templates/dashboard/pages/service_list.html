@@ -1,0 +1,40 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% block title %}Manage Services{% endblock %}
+{% block content %}
+<div class="pagetitle">
+  <h1>Services</h1>
+  <nav><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li><li class="breadcrumb-item active">Services</li></ol></nav>
+</div>
+<section class="section">
+  <div class="card border-0 shadow-sm modern-card">
+    <div class="card-body">
+      <h5 class="card-title">Services List <a href="{% url 'add_service' %}" class="btn btn-sm btn-primary float-right">Add New Service</a></h5>
+      <div class="table-responsive">
+      <table class="table table-hover datatable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>ID Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+          <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.id_name }}</td>
+            <td>
+              <a href="{% url 'edit_service' item.id %}" class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></a>
+              <a href="{% url 'delete_service' item.id %}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this service?');"><i class="fas fa-trash"></i></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

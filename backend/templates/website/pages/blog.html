@@ -30,31 +30,92 @@
                 </div>
 
                 <!-- Blog Grid -->
-                <div class="blog-grid" id="blog-grid">
-                    <!-- Dynamically populated by assets/js/blog/blog.js -->
+<div class="blog-grid" id="blog-grid">
 
-                    <!-- Reference Card Template 
-                    <article class="blog-card">
-                        <div class="blog-card-img-wrapper">
-                            <img src="assets/images/blog/placeholder.png" alt="Blog Title" class="blog-card-img" />
-                            <span class="blog-card-category">Category</span>
-                        </div>
-                        <div class="blog-card-content">
-                            <div class="blog-card-meta">
-                                <span class="meta-item"><i class="fa-regular fa-calendar"></i> Date</span>
-                                <span class="meta-item"><i class="fa-regular fa-clock"></i> Read Time</span>
-                            </div>
-                            <h3 class="blog-card-title">
-                                <a href="#">Blog Title Here</a>
-                            </h3>
-                            <p class="blog-card-excerpt">Blog excerpt description goes here.</p>
-                            <a href="#" class="blog-card-link">
-                                Read More <i class="fa-solid fa-arrow-right-long"></i>
-                            </a>
-                        </div>
-                    </article>
-                    -->
+    {% for blog in blogs %}
+
+    <article class="blog-card reveal">
+
+        <div class="blog-card-img-wrapper">
+
+            {% if blog.featured_image %}
+                <img
+                    src="{{ blog.featured_image.url }}"
+                    alt="{{ blog.title }}"
+                    class="blog-card-img"
+                    loading="lazy"
+                >
+            {% else %}
+                <div class="blog-card-img-placeholder">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <span class="placeholder-text">
+                        Image to be added
+                    </span>
                 </div>
+            {% endif %}
+
+            <span class="blog-card-category">
+                {{ blog.category.category_name }}
+            </span>
+
+        </div>
+
+        <div class="blog-card-content">
+
+            <div class="blog-card-meta">
+
+                <span class="meta-item">
+                    <i class="fa-regular fa-calendar"></i>
+                    {{ blog.created_at|date:"F d, Y" }}
+                </span>
+
+                <span class="meta-item">
+                    <i class="fa-regular fa-clock"></i>
+
+                    {% widthratio blog.blog_body|wordcount 200 1 %} Min Read
+
+                </span>
+
+            </div>
+
+            <h3 class="blog-card-title">
+                <a href="{% url 'blog_detail' blog.slug %}">
+                    {{ blog.title }}
+                </a>
+            </h3>
+
+            <p class="blog-card-excerpt">
+                {{ blog.short_description|truncatechars:150 }}
+            </p>
+
+            <a
+                href="{% url 'blog_detail' blog.slug %}"
+                class="blog-card-link"
+            >
+                Read More
+                <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+
+        </div>
+
+    </article>
+
+    {% empty %}
+
+    <div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--slate-light);">
+
+        <i
+            class="fa-solid fa-newspaper"
+            style="font-size:3.5rem;margin-bottom:20px;display:block;opacity:.5;"
+        ></i>
+
+        <p>No blog posts found. Check back soon for updates!</p>
+
+    </div>
+
+    {% endfor %}
+
+</div>
             </div>
         </section>
 

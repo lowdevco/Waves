@@ -1,0 +1,688 @@
+{% load static %}
+
+<!-- #--------------- SERVICES GRID SECTION -----------------# -->
+<section
+  id="location-sub-services-list"
+  class="services-grid-section py-section"
+>
+  <div class="container reveal">
+    <!-- Section Header -->
+    <div class="text-center" style="margin-bottom: 50px">
+      <span class="section-subtitle">What We Offer</span>
+      <h2 class="section-title">Our Laundry & Dry Cleaning Services</h2>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="services-grid">
+      <!-- Service 1: Premium Dry Cleaning -->
+      <div class="service-item-card">
+        <div class="service-card-img-wrapper">
+          <img
+            src="{% static 'website/images/common_images/services/service-dryclean.png' %}"
+            alt="Premium Dry Cleaning"
+            class="service-card-img"
+            loading="lazy"
+          />
+        </div>
+        <div class="service-card-info">
+          <div class="service-icon-wrapper">
+            <svg
+              viewBox="0 0 64 64"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M12 18 L12 56 A 4 4 0 0 0 16 60 L48 60 A 4 4 0 0 0 52 56 L52 18 L32 10 Z"
+              />
+              <path d="M22 28 L32 38 L42 28" />
+              <path d="M32 38 L32 60" />
+              <path d="M26 36 L20 48" />
+              <path d="M38 36 L44 48" />
+              <path d="M32 10 V4 A 3 3 0 0 1 35 1 A 1 1 0 0 1 36 2" />
+            </svg>
+          </div>
+          <h3 class="service-item-title">Premium Dry Cleaning</h3>
+          <p class="service-item-desc">
+            Advanced solvent systems, gentle processing cycles, and expert
+            stain-removal techniques tailored specifically for luxury textiles.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 2: Designer & Delicate Handling -->
+      <div class="service-item-card">
+        <div class="service-card-img-wrapper">
+          <img
+            src="{% static 'website/images/common_images/services/service-delicates.png' %}"
+            alt="Designer & Delicate Wear"
+            class="service-card-img"
+            loading="lazy"
+          />
+        </div>
+        <div class="service-card-info">
+          <div class="service-icon-wrapper">
+            <svg
+              viewBox="0 0 64 64"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 18 L25 10 L32 13 L39 10 L44 18 L42 34 L22 34 Z" />
+              <path d="M28 10 A 4 4 0 0 0 36 10" />
+              <path
+                d="M10 44 C 14 44, 18 42, 22 47 L 24 50 C 26 53, 30 53, 32 50 C 34 53, 38 53, 40 50 L 42 47 C 46 42, 50 44, 54 44"
+              />
+            </svg>
+          </div>
+          <h3 class="service-item-title">Designer & Delicate Wear</h3>
+          <p class="service-item-desc">
+            A dedicated team manages bridal wear, couture fashion, embellished
+            garments, and limited-edition designer pieces ensuring structure and
+            brilliance.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 3: Luxury Laundry & Finishing -->
+      <div class="service-item-card">
+        <div class="service-card-img-wrapper">
+          <img
+            src="{% static 'website/images/common_images/services/service-washfold.png' %}"
+            alt="Luxury Laundry & Finishing"
+            class="service-card-img"
+            loading="lazy"
+          />
+        </div>
+        <div class="service-card-info">
+          <div class="service-icon-wrapper">
+            <svg
+              viewBox="0 0 64 64"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M32 14 L18 20 L22 36 L42 36 L46 20 Z" />
+              <path d="M32 14 V8 A 3 3 0 0 1 35 5" />
+              <path d="M26 20 A 6 6 0 0 0 38 20" />
+              <path
+                d="M14 42 H50 C54 42, 54 46, 50 46 H14 C10 46, 10 42, 14 42 Z"
+              />
+              <path
+                d="M14 48 H50 C54 48, 54 52, 50 52 H14 C10 52, 10 48, 14 48 Z"
+              />
+            </svg>
+          </div>
+          <h3 class="service-item-title">Luxury Laundry & Finishing</h3>
+          <p class="service-item-desc">
+            Fabric-specific wash programs combined with premium softeners and
+            hand-finished pressing deliver crisp, immaculate results.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 4: Professional Alterations -->
+      <div class="service-item-card">
+        <div class="service-card-img-wrapper">
+          <img
+            src="{% static 'website/images/common_images/services/service-alterations.png' %}"
+            alt="Professional Alterations"
+            class="service-card-img"
+            loading="lazy"
+          />
+        </div>
+        <div class="service-card-info">
+          <div class="service-icon-wrapper">
+            <svg
+              viewBox="0 0 64 64"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M8 52 H56 V56 H8 Z" />
+              <path d="M16 52 V20 H40 C46 20, 48 24, 48 28 V52" />
+              <path d="M48 28 H36 V36 H48" />
+              <circle cx="16" cy="28" r="6" />
+            </svg>
+          </div>
+          <h3 class="service-item-title">Professional Alterations</h3>
+          <p class="service-item-desc">
+            Couture-level tailoring solutions including hemming, tapering,
+            resizing, zip replacements, button fixing, and structural repairs.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 5: Shoe Care -->
+      <div class="service-item-card">
+        <div class="service-card-img-wrapper">
+          <img
+            src="{% static 'website/images/common_images/services/service-shoes.png' %}"
+            alt="Shoe Care"
+            class="service-card-img"
+            loading="lazy"
+          />
+        </div>
+        <div class="service-card-info">
+          <div class="service-icon-wrapper">
+            <svg
+              viewBox="0 0 64 64"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M10 46 L24 46 C28 46, 32 40, 36 38 L48 38 C54 38, 56 42, 56 46 V50 H10 Z"
+              />
+              <path d="M26 32 L34 38" />
+              <path d="M30 30 L36 36" />
+            </svg>
+          </div>
+          <h3 class="service-item-title">Shoe Care</h3>
+          <p class="service-item-desc">
+            Deep cleaning, deodorizing, polishing, suede revival, and full
+            sneaker spa treatments using premium products.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 6: Curtain & Drapery Care -->
+      <div class="service-item-card">
+        <div class="service-card-img-wrapper">
+          <img
+            src="{% static 'website/images/common_images/services/service-curtain.png' %}"
+            alt="Curtain & Drapery Care"
+            class="service-card-img"
+            loading="lazy"
+          />
+        </div>
+        <div class="service-card-info">
+          <div class="service-icon-wrapper">
+            <svg
+              viewBox="0 0 64 64"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M6 10 H58" />
+              <path d="M12 10 V52 C12 52, 16 42, 24 46 C28 48, 28 10, 28 10" />
+              <path d="M52 10 V52 C52 52, 48 42, 40 46 C36 48, 36 10, 36 10" />
+            </svg>
+          </div>
+          <h3 class="service-item-title">Curtain & Drapery Care</h3>
+          <p class="service-item-desc">
+            Precision cleaning for blackout drapes, velvet curtains, and custom
+            installations preserving fabric richness and structure.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 7: Bag Care -->
+      <div class="service-item-card">
+        <div class="service-card-img-wrapper">
+          <img
+            src="{% static 'website/images/common_images/services/service-bag-spa.png' %}"
+            alt="Bag Care"
+            class="service-card-img"
+            loading="lazy"
+          />
+        </div>
+        <div class="service-card-info">
+          <div class="service-icon-wrapper">
+            <svg
+              viewBox="0 0 64 64"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 26 H50 A 4 4 0 0 1 54 30 L50 54 A 4 4 0 0 1 46 58 H18 A 4 4 0 0 1 14 54 L10 30 A 4 4 0 0 1 14 26 Z"
+              />
+              <path d="M22 26 V18 C22 12, 42 12, 42 18 V26" />
+            </svg>
+          </div>
+          <h3 class="service-item-title">Bag Care</h3>
+          <p class="service-item-desc">
+            Comprehensive handbag care featuring deep cleaning, leather
+            conditioning, stain treatment, and hardware polishing.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 8: Carpet Deep Cleaning -->
+      <div class="service-item-card">
+        <div class="service-card-img-wrapper">
+          <img
+            src="{% static 'website/images/common_images/services/service-carpet.png' %}"
+            alt="Carpet Deep Cleaning"
+            class="service-card-img"
+            loading="lazy"
+          />
+        </div>
+        <div class="service-card-info">
+          <div class="service-icon-wrapper">
+            <svg
+              viewBox="0 0 64 64"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 20 L44 12 C52 10, 56 16, 50 20 L20 28 C14 30, 10 24, 16 20"
+              />
+              <path
+                d="M20 28 L50 50 C56 54, 52 60, 44 56 L14 34 C8 30, 8 24, 14 20"
+              />
+            </svg>
+          </div>
+          <h3 class="service-item-title">Carpet Deep Cleaning</h3>
+          <p class="service-item-desc">
+            Professional treatment using extraction systems, stain removal, deep
+            sanitization, and fiber-protection coatings.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 9: Leather & Suede Care -->
+      <div class="service-item-card">
+        <div class="service-card-img-wrapper">
+          <img
+            src="{% static 'website/images/common_images/services/service-leather.png' %}"
+            alt="Leather & Suede Care"
+            class="service-card-img"
+            loading="lazy"
+          />
+        </div>
+        <div class="service-card-info">
+          <div class="service-icon-wrapper">
+            <svg
+              viewBox="0 0 64 64"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M32 6 C24 6, 20 12, 14 10 C8 8, 6 16, 10 22 C6 28, 8 36, 12 40 C10 46, 14 54, 22 52 C28 56, 36 56, 42 52 C50 54, 54 46, 52 40 C56 36, 58 28, 54 22 C58 16, 56 8, 50 10 C44 12, 40 6, 32 6 Z"
+              />
+            </svg>
+          </div>
+          <h3 class="service-item-title">Leather & Suede Care</h3>
+          <p class="service-item-desc">
+            Specialized cleaning and conditioning for jackets, footwear, and
+            accessories to prevent cracking and maintain rich color.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- #--------------- SPECIAL OFFER SECTION -----------------# -->
+<section class="py-section reveal">
+  <div class="container">
+    <div class="location-sub-offer-grid">
+      <!-- Left: Checklist -->
+      <div class="location-sub-offer-content">
+        <span class="section-subtitle"
+          >PREMIUM LAUNDRY AND DRY CLEANERS IN CREEK HARBOUR</span
+        >
+        <h2 class="section-title">See What Special We Offer</h2>
+        <ul class="location-sub-offer-list">
+          <li>
+            <i class="fa-solid fa-circle-check"></i> Free Contactless Pick up
+            and Delivery
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i> Fastest Services All around
+            Dubai
+          </li>
+          <li><i class="fa-solid fa-circle-check"></i> Flexible Scheduling</li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i> 30 Minutes Fast Pick up
+          </li>
+          <li><i class="fa-solid fa-circle-check"></i> Ultra Clean Services</li>
+          <li><i class="fa-solid fa-circle-check"></i> Keen Fabric care</li>
+          <li><i class="fa-solid fa-circle-check"></i> Affordable pricing</li>
+          <li><i class="fa-solid fa-circle-check"></i> Delivery within 48hr</li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i> Express Delivery within 24
+            hr
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i> Cover Everything
+            Laundry-related
+          </li>
+          <li><i class="fa-solid fa-circle-check"></i> Professional team</li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i> Latest Technology Plant
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i> Eco-friendly Detergents
+          </li>
+        </ul>
+        <a
+          href="https://wa.me/971523033446"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+          >WHATSAPP US <i class="fa-brands fa-whatsapp"></i
+        ></a>
+      </div>
+
+      <!-- Right: Relevant delivery image -->
+      <div class="location-sub-offer-image">
+        <img
+          src="{% static 'website/images/locations/delivery.png' %}"
+          alt="Waves Premium Laundry delivery courier in Dubai"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- #--------------- PRICE LIST SECTION -----------------# -->
+<section id="estimator" class="estimator-section py-section reveal">
+  <div class="wave-backdrop">
+    <div class="wave-circle-left"></div>
+    <div class="wave-circle-right"></div>
+  </div>
+
+  <div class="container" style="position: relative; z-index: 10">
+    <div class="text-center" style="margin-bottom: 60px">
+      <span class="section-subtitle">Price List</span>
+      <h2 class="section-title">Premium care for every item</h2>
+    </div>
+
+    <div
+      class="price-list-tabs-container theme-men"
+      id="price-list-tabs-container"
+    >
+      <div class="text-center" style="margin-bottom: 20px">
+        <div class="price-tabs-switcher">
+          <button class="price-tab active men-active" data-category-id="men">
+            <i class="fa-solid fa-shirt"></i> Men
+          </button>
+          <button class="price-tab" data-category-id="women">
+            <i class="fa-solid fa-person-dress"></i> Women
+          </button>
+          <button class="price-tab" data-category-id="home">
+            <i class="fa-solid fa-house"></i> Home Items
+          </button>
+          <div
+            class="active-tab-indicator indicator-men"
+            id="active-tab-indicator"
+          ></div>
+        </div>
+      </div>
+
+      <div class="price-grid-container" id="price-grid-container">
+        <!-- Dynamically populated by script -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- #--------------- TEASER CTA BANNER -----------------# -->
+<section class="location-sub-cta-banner reveal">
+  <div class="container">
+    <span class="location-sub-cta-subtitle"
+      >LAUNDRY SERVICES AND DRY CLEANERS IN CREEK HARBOUR</span
+    >
+    <h2 class="location-sub-cta-title">
+      Ring Us For Your Special Requirements
+    </h2>
+    <p class="location-sub-cta-desc">
+      From everyday essentials to delicate garments, trust Waves Laundry to
+      deliver premium laundry and dry cleaning services in Dubai — spotless
+      results with a smile!
+    </p>
+    <div class="location-sub-cta-btns">
+      <a href="tel:+971523033446" class="btn btn-white-fill"
+        >CALL US NOW <i class="fa-solid fa-phone"></i
+      ></a>
+      <a
+        href="https://wa.me/971523033446"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-white-outline"
+        >WHATSAPP US <i class="fa-brands fa-whatsapp"></i
+      ></a>
+    </div>
+  </div>
+</section>
+
+<!-- #--------------- FAQ SECTION (NO BACKGROUND CARD, EYE ICONS, SEARCH FILTER) -----------------# -->
+<section class="faq-section py-section reveal">
+  <div class="container">
+    <div class="location-sub-faq-container">
+      <div class="text-center" style="margin-bottom: 30px">
+        <span class="section-subtitle"
+          >LAUNDRY AND DRY CLEANERS IN CREEK HARBOUR</span
+        >
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <!-- FAQ Search Box -->
+      <div
+        class="faq-search-box-new"
+        style="max-width: 600px; margin: 0 auto 40px"
+      >
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input
+          type="text"
+          id="faq-search-input"
+          placeholder="Search questions..."
+          class="faq-search-input-new"
+        />
+      </div>
+
+      <div class="location-sub-faq-columns">
+        <!-- Left Column FAQs -->
+        <div class="location-sub-faq-column faq-list">
+          <!-- FAQ 1 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question"
+                >What types of laundry services do you offer?</span
+              >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+            <div class="faq-content-pane">
+              <div class="faq-answer">
+                We offer professional laundry, dry cleaning, steam pressing,
+                carpet cleaning, curtain deep cleaning, shoe care, and bag spa
+                services.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question"
+                >Can I request a specific detergent or fabric softener?</span
+              >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+            <div class="faq-content-pane">
+              <div class="faq-answer">
+                Yes, we accommodate preferences for unscented, hypoallergenic,
+                or eco-friendly detergents. Please specify your preference when
+                scheduling your pickup.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question"
+                >How long does the laundry process take?</span
+              >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+            <div class="faq-content-pane">
+              <div class="faq-answer">
+                Our standard service takes 48 hours. We also offer express
+                24-hour delivery for urgent requests.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question"
+                >Do you offer folding and ironing services as well?</span
+              >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+            <div class="faq-content-pane">
+              <div class="faq-answer">
+                Yes, all clean laundry services include premium folding and
+                crisp steam ironing to ensure your garments are ready to wear.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question"
+                >Do you offer laundry services for businesses?</span
+              >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+            <div class="faq-content-pane">
+              <div class="faq-answer">
+                Yes, we provide customized commercial laundry contracts for
+                corporate offices, hotels, spas, salons, and gymnasiums.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column FAQs -->
+        <div class="location-sub-faq-column faq-list">
+          <!-- FAQ 6 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question"
+                >What if I need to reschedule my pickup?</span
+              >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+            <div class="faq-content-pane">
+              <div class="faq-answer">
+                You can easily reschedule your pickup or delivery time by
+                contacting our support team via call or WhatsApp at least 2
+                hours before the slot.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 7 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question"
+                >Can I request a receipt or invoice for my laundry
+                service?</span
+              >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+            <div class="faq-content-pane">
+              <div class="faq-answer">
+                Yes, a digital receipt and detailed invoice will be sent to your
+                registered email address and WhatsApp after delivery.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 8 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question"
+                >Can I drop off my laundry at Waves?</span
+              >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+            <div class="faq-content-pane">
+              <div class="faq-answer">
+                Yes, you can drop off your laundry at any of our physical hubs
+                or schedule a free contactless pickup right from your doorstep.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 9 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question"
+                >Do you use eco-friendly detergents?</span
+              >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+            <div class="faq-content-pane">
+              <div class="faq-answer">
+                Absolutely. We use 100% biodegradable and non-toxic detergents
+                that are gentle on both your fabrics and the environment.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 10 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span class="faq-question"
+                >How does the free pickup and delivery work?</span
+              >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+            <div class="faq-content-pane">
+              <div class="faq-answer">
+                Simply book online, choose a convenient date and time, and our
+                driver will arrive with a laundry bag to collect your items.
+                They are returned clean and fresh within 48 hours.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty search results placeholder -->
+      <div
+        class="faq-empty-results"
+        id="faq-empty-results"
+        style="display: none; text-align: center; margin-top: 25px"
+      >
+        <p>No results found for "<span></span>"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- #--------------- BOOKING & SCHEDULING WIZARD -----------------# -->
+<section class="booking-section py-section reveal">
+  <div class="container booking-container" id="booking">
+    <!-- Header -->
+    <div class="text-center booking-p" style="margin-bottom: 40px">
+      <span class="section-subtitle">Hassle-Free Booking</span>
+      <h2 class="section-title">Fill in to Book Your Services</h2>
+      <p class="section-desc">
+        We provide fast, free home pickup and delivery all across Creek Harbour
+        and major hubs in Dubai.
+      </p>
+    </div>
+
+    {% include "website/components/booking-wizard.html" %}
+  </div>
+</section>

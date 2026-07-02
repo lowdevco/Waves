@@ -1,0 +1,44 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% block title %}Manage Item Prices{% endblock %}
+{% block content %}
+<div class="pagetitle">
+  <h1>Item Prices</h1>
+  <nav><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li><li class="breadcrumb-item active">Item Prices</li></ol></nav>
+</div>
+<section class="section">
+  <div class="card border-0 shadow-sm modern-card">
+    <div class="card-body">
+      <h5 class="card-title">Item Prices List <a href="{% url 'add_item_price' %}" class="btn btn-sm btn-primary float-right">Add New Item Price</a></h5>
+      <div class="table-responsive">
+      <table class="table table-hover datatable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Clean & Iron</th>
+            <th>Steam Iron</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+          <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.category.title }}</td>
+            <td>{{ item.clean_iron_price }}</td>
+            <td>{{ item.steam_iron_price }}</td>
+            <td>
+              <a href="{% url 'edit_item_price' item.id %}" class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></a>
+              <a href="{% url 'delete_item_price' item.id %}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this item price?');"><i class="fas fa-trash"></i></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
