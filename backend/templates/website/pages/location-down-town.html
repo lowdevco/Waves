@@ -22,31 +22,8 @@
             </div>
         </section>
 
-        <!-- #--------------- ABOUT SECTION -----------------# -->
-        <section class="py-section reveal">
-            <div class="container">
-                <div class="location-sub-about-grid">
-                    <!-- Left: Relevant image -->
-                    <div class="location-sub-about-image">
-                        <img src="{% static 'website/images/locations/about.png' %}"
-                            alt="State of the art laundry and cleaning facility" />
-                    </div>
-
-                    <!-- Right: Text Block -->
-                    <div class="location-sub-about-content">
-                        <span class="section-subtitle">ABOUT WAVES LAUNDRY AND DRY CLEANERS IN DOWN TOWN</span>
-                        <h2 class="section-title">Catch the Wave of Quality Laundry!</h2>
-                        <p style="margin-bottom: 15px;">
-                            In the heart of Down Town, Waves Laundry is changing the way you do laundry! Picture having extra time to do the things you enjoy doing while we handle the pesky details. Our modern facility combined with expertly trained staff will guarantee that not only are your garments clean, they are well cared for. From lacy silk to rugged denim, we respect your garments.
-                        </p>
-                        <p>
-                           At Waves Laundry, we do not just wash your clothes; we help you wash them off your conscience. We are the number one spot for Laundry and dry cleaning in Down town with easy online scheduling and cheap prices, along with the promise of great customer service. Whether you are a working professional, an active on-the-go student, or just a busy resident, we have you covered.  Schedule your laundry service today and live life untangled!
-                        </p>
-                        <a href="{% url "about" %}" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- #---------------DYNAMIC ABOUT SECTION -----------------# -->
+        {{ page.description|safe }}
 
         {% include "website/includes/location-subpage.html" %}
 

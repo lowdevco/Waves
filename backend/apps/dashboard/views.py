@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout as auth_logout
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.hashers import make_password
-from .models import FileManager, Gallery, Profile, ContactEnquiry, ServiceEnquiry
+from .models import FileManager, Gallery, Profile, ContactEnquiry, ServiceEnquiry, CompanyDetails
 from django.contrib import messages
 from .models import Permission
 from .forms import UserGroupForm
@@ -251,6 +251,22 @@ def users_profile(request, user_id):
 
 
 @login_required
+def company_profile(request):
+    company = CompanyDetails.load()
+    if request.method == "POST":
+        company.company_name = request.POST.get("company_name", "")
+        company.email = request.POST.get("email", "")
+        company.phone = request.POST.get("phone", "")
+        company.short_description = request.POST.get("short_description", "")
+        if "company_logo" in request.FILES:
+            company.company_logo = request.FILES["company_logo"]
+        company.save()
+        messages.success(request, "Company profile updated successfully.")
+        return redirect("company_profile")
+        
+    return render(request, "dashboard/pages/company_profile.html", {"company": company})
+
+@login_required
 def users_list(request):
     # Ensure all users have a profile before listing
     for user in User.objects.all():
@@ -361,7 +377,6 @@ def add_page(request):
             messages.success(request, "Page added successfully.")
             return redirect('page_view')
         else:
-            # Show errors back in the form
             return render(request, 'dashboard/pages/add_page.html', {'form': form})
     else:
         form = PageForm()
@@ -385,8 +400,12 @@ def edit_page(request, page_id):
 
 def delete_page(request, page_id):
     page = get_object_or_404(Page, id=page_id)
-    page.delete()
-    messages.success(request, f"Page '{page.title}' deleted successfully.")
+    default_slugs = ['home', 'about', 'service', 'booking', 'contact', 'location', 'location-creek-harbour', 'location-business-bay', 'location-down-town']
+    if page.slug in default_slugs:
+        messages.error(request, f"System page '{page.title}' cannot be deleted.")
+    else:
+        page.delete()
+        messages.success(request, f"Page '{page.title}' deleted successfully.")
     return redirect('page_view')
 
 

@@ -339,7 +339,7 @@ const PRICE_LIST = [
       },
       {
         name: "Shoe Cleaning",
-        cleanIron: "40.00",
+        cleanIron: "Price based on shoes",
         steamIron: null,
         icon: "shoecleaning",
         image: "/static/website/images/common_images/items/shoecleaning.png",

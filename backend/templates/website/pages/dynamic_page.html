@@ -1,0 +1,33 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block content %}
+<main id="main">
+    <!-- Breadcrumbs Section -->
+    <section class="breadcrumbs" style="background-image: url('{% static 'website/images/common_images/patterns/pattern_bg_1.jpg' %}'); background-size: cover; background-position: center; padding: 120px 0 60px;">
+        <div class="container position-relative">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-lg-8 text-center mt-4">
+                    <h2 class="display-4 fw-bold text-navy-dark mb-3">{{ page.title }}</h2>
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                        <ol class="breadcrumb justify-content-center mb-0">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-primary text-decoration-none">Home</a></li>
+                            <li class="breadcrumb-item active text-muted" aria-current="page">{{ page.title }}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="dynamic-page-content py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 page-content text-dark">
+                    {{ page.description|safe }}
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

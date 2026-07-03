@@ -98,6 +98,13 @@ function renderPriceCategory(categoryId) {
           spanClass = "span-3";
         }
 
+        const formatPrice = (price) => {
+          if (!price) return "";
+          const parsed = parseFloat(price);
+          if (isNaN(parsed)) return price;
+          return `${parsed.toFixed(2)} AED`;
+        };
+
         let pricesHtml = "";
 
         if (hasCleanIron && hasSteamIron) {
@@ -105,11 +112,11 @@ function renderPriceCategory(categoryId) {
           <div class="card-price-grid">
             <div class="price-pill-row">
               <span class="price-pill-lbl"><i class="fa-solid fa-soap"></i> Clean & iron</span>
-              <span class="price-pill-val">${parseFloat(item.cleanIron).toFixed(2)} AED</span>
+              <span class="price-pill-val">${formatPrice(item.cleanIron)}</span>
             </div>
             <div class="price-pill-row">
               <span class="price-pill-lbl"><i class="fa-solid fa-shirt"></i> Steam & iron</span>
-              <span class="price-pill-val">${parseFloat(item.steamIron).toFixed(2)} AED</span>
+              <span class="price-pill-val">${formatPrice(item.steamIron)}</span>
             </div>
           </div>
         `;
@@ -117,7 +124,7 @@ function renderPriceCategory(categoryId) {
           pricesHtml = `
           <div class="single-price-pill">
             <span class="price-pill-lbl"><i class="fa-solid fa-soap"></i> Clean & iron Only</span>
-            <span class="price-pill-val">${parseFloat(item.cleanIron).toFixed(2)} AED</span>
+            <span class="price-pill-val">${formatPrice(item.cleanIron)}</span>
           </div>
         `;
         }

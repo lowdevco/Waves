@@ -32,9 +32,14 @@ def global_variables(request):
             allowed_module_ids = perms.values_list('module_id', flat=True)
             modules = modules.filter(id__in=allowed_module_ids)
 
+    header_pages = Page.objects.filter(show_in_menu=True, position='header', parent__isnull=True).order_by('priority')
+    footer_pages = Page.objects.filter(show_in_menu=True, position='footer', parent__isnull=True).order_by('priority')
+
     return {
         'modules': modules,
         'global_user_profile': user_profile,
+        'header_pages': header_pages,
+        'footer_pages': footer_pages,
     }
 
 

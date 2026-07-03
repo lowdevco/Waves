@@ -125,6 +125,7 @@ function initNavbar() {
     ".mobile-drawer .mobile-nav-link",
   );
   function updateActiveLinkOnScroll() {
+    if (window.location.pathname !== '/' && window.location.pathname !== '/en/' && window.location.pathname !== '/ar/') return;
     let currentActiveId = "";
     const scrollPosition = window.scrollY + 160; // offset for fixed header trigger
 

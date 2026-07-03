@@ -141,15 +141,18 @@ function renderPricingItems(category) {
     const card = document.createElement("div");
     card.className = "price-service-card animate-fade-in";
 
+    const formatPrice = (price) => {
+      if (!price) return `<span class="price-rate-value not-available">—</span>`;
+      const parsed = parseFloat(price);
+      if (isNaN(parsed)) return `<span class="price-rate-value text-muted" style="font-size: 0.8rem; font-weight: 500;">${price}</span>`;
+      return `<span class="price-rate-value">${parsed.toFixed(2)} AED</span>`;
+    };
+
     // Clean & Iron Price HTML
-    const cleanIronPriceHtml = item.cleanIron
-      ? `<span class="price-rate-value">${parseFloat(item.cleanIron).toFixed(2)} AED</span>`
-      : `<span class="price-rate-value not-available">—</span>`;
+    const cleanIronPriceHtml = formatPrice(item.cleanIron);
 
     // Steam & Iron Price HTML
-    const steamIronPriceHtml = item.steamIron
-      ? `<span class="price-rate-value">${parseFloat(item.steamIron).toFixed(2)} AED</span>`
-      : `<span class="price-rate-value not-available">—</span>`;
+    const steamIronPriceHtml = formatPrice(item.steamIron);
 
     // Image or Fallback Icon HTML
     let imageHtml = "";

@@ -22,41 +22,8 @@
             </div>
         </section>
 
-        <!-- #--------------- ABOUT SECTION -----------------# -->
-        <section class="py-section reveal">
-            <div class="container">
-                <div class="location-sub-about-grid">
-                    <!-- Left: Relevant image -->
-                    <div class="location-sub-about-image">
-                        <img src="{% static 'website/images/locations/about.png' %}"
-                            alt="State of the art laundry and cleaning facility" />
-                    </div>
-
-                    <!-- Right: Text Block -->
-                    <div class="location-sub-about-content">
-                        <span class="section-subtitle">ABOUT WAVES LAUNDRY AND DRY CLEANERS IN CREEK HARBOUR</span>
-                        <h2 class="section-title">We Turn The Mucky To Magnificent!</h2>
-                        <p style="margin-bottom: 15px;">
-                            Life's too short to spend on mundane chores like laundry. At Waves Laundry, we believe in
-                            giving you back your precious time with premium laundry and dry cleaning services in Dubai.
-                            Our state-of-the-art facility and expert team are dedicated to providing a seamless laundry
-                            experience tailored to match your lifestyle and needs. Whether it's everyday wear, luxury
-                            garments, or household items, we offer the best laundry in Dubai, handling all your clothing
-                            and non-garment items with the utmost care.
-                        </p>
-                        <p>
-                            We specialize in laundry and dry cleaning services in Dubai, ensuring your clothes receive
-                            exceptional treatment. With easy online booking, competitive pricing, and a location that
-                            makes us the top choice when you search for "laundry near me", we take the hassle out of
-                            your routine. Discover the best dry cleaning service in Dubai and let our team help you
-                            enjoy more of life's moments. Book your laundry service with Waves today and embrace
-                            blissful days—free from laundry worries.
-                        </p>
-                        <a href="{% url "about" %}" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- #---------------DYNAMIC ABOUT SECTION -----------------# -->
+        {{ page.description|safe }}
 
         {% include "website/includes/location-subpage.html" %}
 

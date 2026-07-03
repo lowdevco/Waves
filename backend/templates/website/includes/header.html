@@ -44,25 +44,28 @@
         </a>
         <!-- Desktop Links -->
         <nav class="nav-links">
-          <a href="{% url "home" %}"  class="nav-link-btn {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
-            Home
-          </a>
-          <a href="{% url "about" %}" class="nav-link-btn {% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a>
-          <a href="{% url "service" %}" class="nav-link-btn {% if request.resolver_match.url_name == 'service' %}active{% endif %}">
-            Services
-          </a>
-          <!-- Locations Dropdown -->
-          <div class="nav-dropdown-wrapper">
-            <a href="{% url "location" %}" data-scroll-to="locations" class="nav-link-btn dropdown-toggle {% if request.resolver_match.url_name == 'location' %}active{% endif %}">
-              Locations <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
-            </a>
-            <div class="nav-dropdown-menu">
-              <a href="{% url "creek-harbour" %}" class="dropdown-item {% if request.resolver_match.url_name == 'creek-harbour' %}active{% endif %}">Creek Harbour</a>
-              <a href="{% url 'business-bay' %}"  class="dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Business Bay</a>
-              <a href="{% url 'down-town' %}"  class="dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Down Town</a>
-            </div>
-          </div>
-          <a href="{% url "blog" %}" class="nav-link-btn {% if request.resolver_match.url_name == 'blog' %}active{% endif %}">Blog</a>
+          {% for p in header_pages %}
+            {% if p.slug != 'booking' and p.slug != 'contact' %}
+              {% if p.get_menu_children %}
+                <!-- Dropdown -->
+                <div class="nav-dropdown-wrapper">
+                  <a href="{{ p.get_absolute_url }}" data-scroll-to="{{ p.slug }}" class="nav-link-btn dropdown-toggle {% if request.resolver_match.url_name == p.slug %}active{% else %}{% for child in p.get_menu_children %}{% if request.resolver_match.url_name == child.slug or request.resolver_match.url_name == 'creek-harbour' and child.slug == 'location-creek-harbour' or request.resolver_match.url_name == 'business-bay' and child.slug == 'location-business-bay' or request.resolver_match.url_name == 'down-town' and child.slug == 'location-down-town' %}active{% endif %}{% endfor %}{% endif %}">
+                    {{ p.title }} <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+                  </a>
+                  <div class="nav-dropdown-menu">
+                    {% for child in p.get_menu_children %}
+                      <a href="{{ child.get_absolute_url }}" class="dropdown-item">{{ child.title }}</a>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% else %}
+                <a href="{{ p.get_absolute_url }}" class="nav-link-btn {% if request.resolver_match.url_name == p.slug %}active{% endif %}">
+                  {{ p.title }}
+                </a>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          <a href="{% url 'blog' %}" class="nav-link-btn {% if request.resolver_match.url_name == 'blog' %}active{% endif %}">Blog</a>
         </nav>
 
         <!-- CTA Buttons -->
@@ -84,21 +87,23 @@
 
     <!-- Mobile Drawer -->
     <div class="mobile-drawer" id="mobile-drawer">
-      <a href="{% url "home" %}"  class="mobile-nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" >Home</a>
-      <a href="{% url "about" %}" class="mobile-nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a>
-      <a href="{% url "service" %}" class="mobile-nav-link {% if request.resolver_match.url_name == 'service' %}active{% endif %}">Services</a>
-      <!-- Locations Accordion Trigger -->
-      <button class="mobile-nav-link mobile-dropdown-toggle {% if request.resolver_match.url_name == 'location' %}active{% endif %}">
-        Locations <i class="fa-solid fa-chevron-down toggle-arrow"></i>
-      </button>
-      <div class="mobile-dropdown-menu">
-        <a href="{% url "creek-harbour" %}" class="mobile-nav-link mobile-dropdown-item {% if request.resolver_match.url_name == 'creek-harbour' %}active{% endif %}">Creek Harbour</a>
-        <a href="{% url 'business-bay' %}"
-          class="mobile-nav-link mobile-dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Business Bay</a>
-        <a href="{% url 'business-bay' %}" class="mobile-nav-link mobile-dropdown-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Down
-          Town</a>
-      </div>
-      <a href="{% url "blog" %}" class="mobile-nav-link {% if request.resolver_match.url_name == 'blog' %}active{% endif %}">Blog</a>
-      <a href="{% url "contact" %}" class="mobile-nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a>
+      {% for p in header_pages %}
+        {% if p.slug != 'booking' and p.slug != 'contact' %}
+          {% if p.get_menu_children %}
+            <button class="mobile-nav-link mobile-dropdown-toggle {% if request.resolver_match.url_name == p.slug %}active{% else %}{% for child in p.get_menu_children %}{% if request.resolver_match.url_name == child.slug or request.resolver_match.url_name == 'creek-harbour' and child.slug == 'location-creek-harbour' or request.resolver_match.url_name == 'business-bay' and child.slug == 'location-business-bay' or request.resolver_match.url_name == 'down-town' and child.slug == 'location-down-town' %}active{% endif %}{% endfor %}{% endif %}">
+              {{ p.title }} <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+            </button>
+            <div class="mobile-dropdown-menu">
+              {% for child in p.get_menu_children %}
+                <a href="{{ child.get_absolute_url }}" class="mobile-nav-link mobile-dropdown-item">{{ child.title }}</a>
+              {% endfor %}
+            </div>
+          {% else %}
+            <a href="{{ p.get_absolute_url }}"  class="mobile-nav-link {% if request.resolver_match.url_name == p.slug %}active{% endif %}" >{{ p.title }}</a>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      <a href="{% url 'blog' %}" class="mobile-nav-link {% if request.resolver_match.url_name == 'blog' %}active{% endif %}">Blog</a>
+      <a href="{% url 'contact' %}" class="mobile-nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a>
     </div>
   </header>

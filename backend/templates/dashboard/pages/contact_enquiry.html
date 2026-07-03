@@ -48,51 +48,11 @@
                                         <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#messageModal{{ enquiry.id }}">
                                             View Message
                                         </button>
-
-                                        <!-- Message Modal -->
-                                        <div class="modal fade" id="messageModal{{ enquiry.id }}" tabindex="-1" aria-labelledby="messageModalLabel{{ enquiry.id }}" aria-hidden="true">
-                                          <div class="modal-dialog">
-                                            <div class="modal-content">
-                                              <div class="modal-header">
-                                                <h5 class="modal-title" id="messageModalLabel{{ enquiry.id }}">Message from {{ enquiry.name }}</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                              </div>
-                                              <div class="modal-body">
-                                                <p><strong>Subject:</strong> {{ enquiry.subject|default:"No Subject" }}</p>
-                                                <hr>
-                                                <p style="white-space: pre-wrap;">{{ enquiry.message }}</p>
-                                              </div>
-                                              <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <a href="mailto:{{ enquiry.email }}" class="btn btn-primary">Reply via Email</a>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteContactModal{{ enquiry.id }}" title="Delete">
                                             <i class="fas fa-trash"></i>
                                         </button>
-
-                                        <!-- Delete Modal -->
-                                        <div class="modal fade" id="deleteContactModal{{ enquiry.id }}" tabindex="-1" aria-labelledby="deleteContactModalLabel{{ enquiry.id }}" aria-hidden="true">
-                                            <div class="modal-dialog modal-sm">
-                                                <div class="modal-content">
-                                                    <div class="modal-header bg-danger text-white">
-                                                        <h5 class="modal-title" id="deleteContactModalLabel{{ enquiry.id }}">Confirm Delete</h5>
-                                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body text-center">
-                                                        <p class="mt-2">Are you sure you want to delete this contact enquiry from <strong>{{ enquiry.name }}</strong>?</p>
-                                                    </div>
-                                                    <div class="modal-footer justify-content-center">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                        <a href="{% url 'delete_contact_enquiry' enquiry.id %}" class="btn btn-danger">Yes, Delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </td>
                                 </tr>
                                 {% empty %}
@@ -107,5 +67,48 @@
             </div>
         </div>
     </section>
+
+    <!-- MODALS OUTSIDE SECTION TO FIX Z-INDEX FLICKERING -->
+    {% for enquiry in enquiries %}
+    <!-- Message Modal -->
+    <div class="modal fade" id="messageModal{{ enquiry.id }}" tabindex="-1" aria-labelledby="messageModalLabel{{ enquiry.id }}" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="messageModalLabel{{ enquiry.id }}">Message from {{ enquiry.name }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Subject:</strong> {{ enquiry.subject|default:"No Subject" }}</p>
+            <hr>
+            <p style="white-space: pre-wrap;">{{ enquiry.message }}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <a href="mailto:{{ enquiry.email }}" class="btn btn-primary">Reply via Email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteContactModal{{ enquiry.id }}" tabindex="-1" aria-labelledby="deleteContactModalLabel{{ enquiry.id }}" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="deleteContactModalLabel{{ enquiry.id }}">Confirm Delete</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="mt-2">Are you sure you want to delete this contact enquiry from <strong>{{ enquiry.name }}</strong>?</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="{% url 'delete_contact_enquiry' enquiry.id %}" class="btn btn-danger">Yes, Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 
 {% endblock %}

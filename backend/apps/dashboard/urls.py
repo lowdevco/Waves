@@ -7,7 +7,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.index, name='home'),  # Add this line for the root path
+    path('', views.index, name='home'),  
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
     path('password-reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
@@ -16,6 +16,7 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('index/', views.index, name='index'),
     path('users_profile/<int:user_id>/', views.users_profile, name='users_profile'),
+    path('company_profile/', views.company_profile, name="company_profile" ),
     
     
     path('create_user/',views.create_user,name="create_user"),

@@ -1,0 +1,74 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% load static %}
+{% block title %}Dashboard - Company Details{% endblock %}
+{% block content %}
+
+<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+            <li class="breadcrumb-item active">Company Details</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section profile">
+    <div class="container my-4">
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="card border-0 shadow-sm modern-card">
+            <div class="card-header bg-primary text-white" style="font-size: 1.1rem; padding: 15px 20px;">
+                Add company details
+            </div>
+            <div class="card-body p-4">
+                <form method="post" action="{% url 'company_profile' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="company_name" class="form-label fw-bold">Company Name</label>
+                        <input type="text" class="form-control" id="company_name" name="company_name" value="{{ company.company_name|default:'' }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label fw-bold">E-mail</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ company.email|default:'' }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label fw-bold">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone" value="{{ company.phone|default:'' }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="short_description" class="form-label fw-bold">Short Description</label>
+                        <textarea class="form-control" id="short_description" name="short_description" rows="3">{{ company.short_description|default:'' }}</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="company_logo" class="form-label fw-bold">Company Logo</label>
+                        <input class="form-control" type="file" id="company_logo" name="company_logo" accept="image/*">
+                        {% if company.company_logo %}
+                            <div class="mt-3">
+                                <img src="{{ company.company_logo.url }}" alt="Company Logo" class="img-thumbnail border-0" style="max-height: 100px;">
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="text-end mt-4">
+                        <button type="submit" class="btn btn-primary px-4 py-2">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

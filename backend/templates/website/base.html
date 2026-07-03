@@ -8,6 +8,14 @@
   <link rel="icon" type="image/webp" href="{% static 'website/images/common_images/brand/favicon.png' %}" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>{% if page and page.meta_title %}{{ page.meta_title }}{% elif page %}{{ page.title }}{% else %}Waves{% endif %}</title>
+  {% if page and page.meta_description %}
+  <meta name="description" content="{{ page.meta_description }}" />
+  {% endif %}
+  {% if page and page.meta_keywords %}
+  <meta name="keywords" content="{{ page.meta_keywords }}" />
+  {% endif %}
+
   <!-- Google Fonts: Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
