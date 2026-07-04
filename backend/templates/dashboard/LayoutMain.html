@@ -68,13 +68,7 @@
     <link href="{% static 'dashboard/css/style.css' %}" rel="stylesheet" />
   </head>
   <body>
-    {% if messages %}
-    <div class="messages">
-      {% for message in messages %}
-      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-      {% endfor %}
-    </div>
-    {% endif %}
+
 
     {% include 'dashboard/includes/navigation.html' %}
 
@@ -105,8 +99,205 @@
     <!-- Main JS -->
     <script src="{% static 'dashboard/js/main.js' %}"></script>
 
+    <!-- Toastr flash messages -->
+    {% if messages %}
+    <script>
+      $(document).ready(function() {
+        toastr.options = {
+          "closeButton": true,
+          "progressBar": true,
+          "positionClass": "toast-top-right",
+          "timeOut": "4000"
+        };
+        {% for message in messages %}
+          {% if message.tags == 'success' %}
+            toastr.success("{{ message|escapejs }}");
+          {% elif message.tags == 'error' or message.tags == 'danger' %}
+            toastr.error("{{ message|escapejs }}");
+          {% elif message.tags == 'warning' %}
+            toastr.warning("{{ message|escapejs }}");
+          {% else %}
+            toastr.info("{{ message|escapejs }}");
+          {% endif %}
+        {% endfor %}
+      });
+    </script>
+    {% endif %}
+
+    <!-- Ctrl+K Command Palette Modal -->
+    <div id="commandPalette" class="command-palette-overlay" style="display: none;">
+      <div class="command-palette-container">
+        <div class="command-palette-search-wrapper">
+          <i class="bi bi-search command-palette-icon"></i>
+          <input type="text" id="commandPaletteSearch" placeholder="Type a page name to search..." autocomplete="off">
+          <span class="command-palette-esc">ESC</span>
+        </div>
+        <div class="command-palette-results" id="commandPaletteResults">
+          <!-- Results injected dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Table Search & Command Palette JS -->
+    <script>
+      $(document).ready(function() {
+        // --- 0. Responsive Table Auto-wrap ---
+        // Automatically wrap tables in a responsive scrollable container if they aren't already
+        $('table').each(function() {
+          if (!$(this).parent().hasClass('table-responsive')) {
+            $(this).wrap('<div class="table-responsive"></div>');
+          }
+        });
+
+        // --- 1. Client-side Table Search Auto-wiring ---
+        // Automatically finds all text inputs that look like searches and binds filtering
+        $('input[type="text"]').each(function() {
+          const input = $(this);
+          const isSearch = (input.attr('placeholder') && input.attr('placeholder').toLowerCase().includes('search')) ||
+                           input.parent().text().toLowerCase().includes('search:') ||
+                           input.prev().text().toLowerCase().includes('search:');
+          
+          if (isSearch) {
+            input.on('keyup input', function() {
+              const val = $(this).val().toLowerCase();
+              const table = $(this).closest('.card-body').find('table');
+              if (table.length) {
+                table.find('tbody tr').each(function() {
+                  const text = $(this).text().toLowerCase();
+                  if (text.includes(val)) {
+                    $(this).show();
+                  } else {
+                    $(this).hide();
+                  }
+                });
+              }
+            });
+          }
+        });
+
+        // --- 2. Custom Command Palette (Ctrl+K) ---
+        const searchItems = [];
+
+        // Parse sidebar navigation to build routes list automatically
+        $('.sidebar-nav a').each(function() {
+          const link = $(this);
+          const url = link.attr('href');
+          
+          if (!url || url.startsWith('#') || url === 'javascript:void(0)') {
+            return;
+          }
+          
+          const title = link.find('span').text().trim();
+          const icon = link.find('i').attr('class') || 'bi bi-link-45deg';
+          
+          // Determine parent module name
+          const parentCollapse = link.closest('ul.collapse');
+          let category = 'Main';
+          if (parentCollapse.length) {
+            const parentLink = $(`.sidebar-nav a[href="#${parentCollapse.attr('id')}"]`);
+            if (parentLink.length) {
+              category = parentLink.find('span').text().trim();
+            }
+          }
+          
+          searchItems.push({
+            title: title,
+            url: url,
+            icon: icon,
+            category: category
+          });
+        });
+
+        // Toggle Command Palette (Ctrl+K or Cmd+K)
+        $(document).on('keydown', function(e) {
+          if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+            e.preventDefault();
+            $('#commandPalette').addClass('active');
+            $('#commandPaletteSearch').val('').focus();
+            renderResults('');
+          }
+        });
+
+        // Hide Palette on ESC key (supports key and keycode)
+        $(document).on('keydown', function(e) {
+          if (e.key === 'Escape' || e.key === 'Esc' || e.which === 27) {
+            $('#commandPalette').removeClass('active');
+          }
+        });
+
+        // Hide Palette when clicking backdrop
+        $('#commandPalette').on('click', function(e) {
+          if ($(e.target).is('#commandPalette')) {
+            $(this).removeClass('active');
+          }
+        });
+
+        // Hide Palette when clicking the visual ESC badge
+        $('.command-palette-esc').on('click', function() {
+          $('#commandPalette').removeClass('active');
+        });
+
+        // Input search query trigger
+        $('#commandPaletteSearch').on('input', function() {
+          const query = $(this).val().toLowerCase().trim();
+          renderResults(query);
+        });
+
+        // Handle Arrow keys and Enter select inside command palette search input
+        $('#commandPaletteSearch').on('keydown', function(e) {
+          const items = $('.command-palette-item');
+          if (!items.length) return;
+          
+          let activeIdx = items.index($('.command-palette-item.active'));
+          
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            items.eq(activeIdx).removeClass('active');
+            activeIdx = (activeIdx + 1) % items.length;
+            items.eq(activeIdx).addClass('active').get(0).scrollIntoView({ block: 'nearest' });
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            items.eq(activeIdx).removeClass('active');
+            activeIdx = (activeIdx - 1 + items.length) % items.length;
+            items.eq(activeIdx).addClass('active').get(0).scrollIntoView({ block: 'nearest' });
+          } else if (e.key === 'Enter') {
+            e.preventDefault();
+            const activeLink = items.eq(activeIdx);
+            if (activeLink.length) {
+              window.location.href = activeLink.attr('href');
+            }
+          }
+        });
+
+        function renderResults(query) {
+          const container = $('#commandPaletteResults');
+          container.empty();
+
+          const filtered = searchItems.filter(item => {
+            return item.title.toLowerCase().includes(query) || 
+                   item.category.toLowerCase().includes(query);
+          });
+
+          if (filtered.length === 0) {
+            container.html('<div class="text-center py-4 text-muted" style="font-size: 13px;">No results found</div>');
+            return;
+          }
+
+          filtered.forEach((item, idx) => {
+            const itemHtml = `
+              <a href="${item.url}" class="command-palette-item ${idx === 0 ? 'active' : ''}">
+                <i class="${item.icon}"></i>
+                <span>${item.title}</span>
+                <span class="command-palette-item-meta">${item.category}</span>
+              </a>
+            `;
+            container.append(itemHtml);
+          });
+        }
+      });
+    </script>
+
     {% include "dashboard/includes/footer.html" %}
   </body>
-
 
 </html>

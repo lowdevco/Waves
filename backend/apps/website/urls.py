@@ -13,5 +13,6 @@ urlpatterns = [
     path("blog/<slug:slug>/", views.blog_detail, name="blog_detail",),
     path("contact", views.contact, name="contact"),
     path("booking", views.booking, name="booking"),
+    path("booking/submit/", views.submit_booking, name="submit_booking"),
     path("p/<slug:slug>/", views.dynamic_page, name="dynamic_page"),
 ]

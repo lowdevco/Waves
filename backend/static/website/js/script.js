@@ -15,6 +15,7 @@ const state = {
   formData: {
     name: "",
     mobile: "",
+    email: "",
     address: "",
     date: "",
     time: "",
@@ -254,13 +255,48 @@ function initBookingWizard() {
     form.style.display = "none";
     loadingPanel.classList.add("active");
 
-    // Simulate API request timeout for 2 seconds
-    setTimeout(() => {
+    const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    fetch("/booking/submit/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrfToken
+      },
+      body: JSON.stringify(state.formData)
+    })
+    .then(response => response.json())
+    .then(data => {
       loadingPanel.classList.remove("active");
-      successPanel.classList.add("active");
-      renderSuccessConfirmation();
-    }, 2000);
+      if (data.success) {
+        successPanel.classList.add("active");
+        renderSuccessConfirmation();
+      } else {
+        const errorPanel = document.getElementById("wizard-error-panel");
+        const errorSummary = document.getElementById("error-details-summary");
+        errorSummary.innerHTML = `<strong>Error Details:</strong><br>${data.message || "Unknown error occurred."}`;
+        errorPanel.classList.add("active");
+      }
+    })
+    .catch(err => {
+      loadingPanel.classList.remove("active");
+      const errorPanel = document.getElementById("wizard-error-panel");
+      const errorSummary = document.getElementById("error-details-summary");
+      errorSummary.innerHTML = `<strong>Error Details:</strong><br>${err.message || err || "Failed to connect to server."}`;
+      errorPanel.classList.add("active");
+    });
   });
+
+  // Retry booking after failure
+  const retryBtn = document.getElementById("error-retry-btn");
+  if (retryBtn) {
+    retryBtn.addEventListener("click", () => {
+      const errorPanel = document.getElementById("wizard-error-panel");
+      errorPanel.classList.remove("active");
+      form.style.display = "block";
+      changeWizardStep(3); // Go back to final review step
+    });
+  }
 
   // Restart Wizard booking flow click handler
   const resetBtn = document.getElementById("success-book-again-btn");
@@ -273,6 +309,7 @@ function initBookingWizard() {
       state.formData = {
         name: "",
         mobile: "",
+        email: "",
         address: "",
         date: formattedDate,
         time: formattedTime,
@@ -343,12 +380,13 @@ function showToast(message, type = "error") {
 function validateStepInputs() {
   const nameInput = document.getElementById("name");
   const mobileInput = document.getElementById("mobile");
+  const emailInput = document.getElementById("email");
   const addressInput = document.getElementById("address");
   const dateInput = document.getElementById("date");
   const timeInput = document.getElementById("time");
 
   // Clear previous validation states
-  const inputs = [nameInput, mobileInput, addressInput, dateInput, timeInput];
+  const inputs = [nameInput, mobileInput, emailInput, addressInput, dateInput, timeInput];
   inputs.forEach((input) => {
     if (!input) return;
     input.classList.remove("is-invalid");
@@ -408,6 +446,10 @@ function validateStepInputs() {
       markInvalid(mobileInput, "Mobile number is required");
       hasError = true;
     }
+    if (!emailInput.value.trim() || !emailInput.value.includes("@")) {
+      markInvalid(emailInput, "Valid email is required");
+      hasError = true;
+    }
     if (!addressInput.value.trim()) {
       markInvalid(addressInput, "Delivery address is required");
       hasError = true;
@@ -418,6 +460,7 @@ function validateStepInputs() {
     }
     state.formData.name = nameInput.value;
     state.formData.mobile = mobileInput.value;
+    state.formData.email = emailInput.value;
     state.formData.address = addressInput.value;
 
     const notesInput = document.getElementById("notes");
@@ -487,6 +530,7 @@ function renderFinalOrderReview() {
     <h4 class="wizard-review-col-title">Client Information</h4>
     <p><strong>Name:</strong> ${state.formData.name}</p>
     <p><strong>Mobile:</strong> ${state.formData.mobile}</p>
+    <p><strong>Email:</strong> ${state.formData.email}</p>
     <p><strong>Pickup Speed:</strong> <span class="text-highlight-green">${speedDisplay}</span></p>
   `;
 

@@ -1,4 +1,7 @@
 # models.py
+from django.dispatch import receiver
+from django.db.models.signals import pre_save, post_delete
+import os
 from ckeditor import widgets
 from django.db import models
 from django.contrib.auth.models import User
@@ -146,7 +149,7 @@ class Page(models.Model):
 
     def __str__(self):
         return self.title
-        
+
     def get_absolute_url(self):
         try:
             from django.urls import reverse
@@ -265,22 +268,23 @@ class ContactEnquiry(models.Model):
         verbose_name_plural = "Contact Enquiries"
 
 
-class ServiceEnquiry(models.Model):
+class BookingEnquiry(models.Model):
     fullname = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
-    preferred_date = models.DateField()
-    service_type = models.CharField(max_length=100)
-    pickup_address = models.CharField(max_length=255)
-    issue_description = models.TextField(blank=True, null=True)
-    landmarks = models.CharField(max_length=255, blank=True, null=True)
+    pickup_date = models.DateField()
+    pickup_time = models.TimeField(null=True, blank=True)
+    service_speed = models.CharField(max_length=50, default='standard')
+    pickup_address = models.TextField()
+    special_instructions = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.fullname} - {self.service_type}"
+        return f"{self.fullname} - {self.pickup_date} {self.pickup_time}"
 
     class Meta:
-        verbose_name_plural = "Service Enquiries"
+        db_table = "dash_bookingenquiry"
+        verbose_name_plural = "Booking Enquiries"
 
 
 class CompanyDetails(models.Model):
@@ -288,7 +292,8 @@ class CompanyDetails(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=20)
     short_description = models.TextField(blank=True, null=True)
-    company_logo = models.ImageField(upload_to='company_logos/', blank=True, null=True)
+    company_logo = models.ImageField(
+        upload_to='company_logos/', blank=True, null=True)
 
     def save(self, *args, **kwargs):
         self.pk = 1
@@ -301,14 +306,10 @@ class CompanyDetails(models.Model):
 
     def __str__(self):
         return self.company_name or "Company Profile"
-    
+
     class Meta:
         verbose_name_plural = "Company Details"
 
-
-import os
-from django.db.models.signals import pre_save, post_delete
-from django.dispatch import receiver
 
 # Define which fields to clean up for each model
 MEDIA_MODELS = {
@@ -317,6 +318,7 @@ MEDIA_MODELS = {
     FileManager: 'image',
     CompanyDetails: 'company_logo',
 }
+
 
 @receiver(post_delete)
 def auto_delete_file_on_delete(sender, instance, **kwargs):
@@ -329,6 +331,7 @@ def auto_delete_file_on_delete(sender, instance, **kwargs):
         if file_field:
             if os.path.isfile(file_field.path):
                 os.remove(file_field.path)
+
 
 @receiver(pre_save)
 def auto_delete_file_on_change(sender, instance, **kwargs):
@@ -354,4 +357,3 @@ def auto_delete_file_on_change(sender, instance, **kwargs):
         if old_file != new_file:
             if os.path.isfile(old_file.path):
                 os.remove(old_file.path)
-

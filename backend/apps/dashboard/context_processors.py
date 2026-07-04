@@ -3,7 +3,6 @@ from .models import Permission
 from .models import Page
 
 
-
 def global_user_profile(request):
     # Debugging: Log the current user being processed
     print(f"Processing user: {request.user}")
@@ -16,7 +15,6 @@ def global_user_profile(request):
         except Profile.DoesNotExist:
             return {'global_user_profile': None}
     return {'global_user_profile': None}
-
 
 
 def global_variables(request):
@@ -32,8 +30,10 @@ def global_variables(request):
             allowed_module_ids = perms.values_list('module_id', flat=True)
             modules = modules.filter(id__in=allowed_module_ids)
 
-    header_pages = Page.objects.filter(show_in_menu=True, position='header', parent__isnull=True).order_by('priority')
-    footer_pages = Page.objects.filter(show_in_menu=True, position='footer', parent__isnull=True).order_by('priority')
+    header_pages = Page.objects.filter(
+        show_in_menu=True, position='header', parent__isnull=True).order_by('priority')
+    footer_pages = Page.objects.filter(
+        show_in_menu=True, position='footer', parent__isnull=True).order_by('priority')
 
     return {
         'modules': modules,

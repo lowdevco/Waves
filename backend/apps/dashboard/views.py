@@ -1,3 +1,5 @@
+import base64
+from django.core.files.base import ContentFile
 from django.utils.text import slugify
 from .forms import BlogPostForm
 from .models import Blog
@@ -11,7 +13,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout as auth_logout
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.hashers import make_password
-from .models import FileManager, Gallery, Profile, ContactEnquiry, ServiceEnquiry, CompanyDetails
+from .models import FileManager, Gallery, Profile, ContactEnquiry, BookingEnquiry, CompanyDetails
 from django.contrib import messages
 from .models import Permission
 from .forms import UserGroupForm
@@ -35,7 +37,8 @@ def login(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(f"DEBUG: username={username}, password={'*' * len(password or '')}")
+        print(
+            f"DEBUG: username={username}, password={'*' * len(password or '')}")
         user = authenticate(request, username=username, password=password)
         print(f"DEBUG: user={user}")
         if user is not None:
@@ -56,13 +59,24 @@ def logout(request):
 
 def get_dashboard_cards():
     return [
-        {'title': 'Usergroup', 'count': UserGroup.objects.count(), 'icon': 'fas fa-users', 'url': reverse('usergroup')},
-        {'title': 'Users', 'count': User.objects.count(), 'icon': 'far fa-user', 'url': reverse('users_list')},
-        {'title': 'Pages', 'count': Page.objects.count(), 'icon': 'far fa-file-alt', 'url': reverse('page_view')},
-        {'title': 'Enquiries', 'count': ContactEnquiry.objects.count() + ServiceEnquiry.objects.count(), 'icon': 'far fa-comments', 'url': reverse('contact_requests')},
-        {'title': 'Services', 'count': ServiceEnquiry.objects.count(), 'icon': 'fas fa-cogs', 'url': reverse('service_enquiries')},
-        {'title': 'News', 'count': Blog.objects.count(), 'icon': 'far fa-newspaper', 'url': reverse('posts')},
+        {'title': 'Usergroup', 'count': UserGroup.objects.count(
+        ), 'icon': 'fas fa-users', 'url': reverse('usergroup')},
+        {'title': 'Users', 'count': User.objects.count(), 'icon': 'far fa-user',
+         'url': reverse('users_list')},
+        {'title': 'Pages', 'count': Page.objects.count(), 'icon': 'far fa-file-alt',
+         'url': reverse('page_view')},
+        {'title': 'Enquiries', 'count': ContactEnquiry.objects.count() + BookingEnquiry.objects.count(),
+         'icon': 'far fa-comments', 'url': reverse('contact_requests')},
+        {'title': 'Bookings', 'count': BookingEnquiry.objects.count(
+        ), 'icon': 'fas fa-calendar-check', 'url': reverse('booking_enquiries')},
+        {'title': 'Blog', 'count': Blog.objects.count(), 'icon': 'far fa-newspaper',
+         'url': reverse('posts')},
+        {'title': 'Files', 'count': FileManager.objects.count(
+        ), 'icon': 'fas fa-folder-open', 'url': reverse('file_manager')},
+        {'title': 'Gallery', 'count': Gallery.objects.count(
+        ), 'icon': 'fas fa-images', 'url': reverse('gallery_view')},
     ]
+
 
 @login_required
 def index(request):
@@ -118,8 +132,10 @@ def child_view(request, child_id):
     )
     return render(request, template_path, {'child': child})
 
+
 def is_admin(user):
     return user.is_superuser or user.is_staff
+
 
 @login_required
 @user_passes_test(is_admin)
@@ -130,12 +146,14 @@ def add_usergroup(request):
             group_name = form.cleaned_data['name'].strip()
 
             if UserGroup.objects.filter(name__iexact=group_name).exists():
-                messages.error(request, f"Group '{group_name}' already exists.")
+                messages.error(
+                    request, f"Group '{group_name}' already exists.")
             else:
                 usergroup = form.save(commit=False)
                 usergroup.name = group_name
                 usergroup.save()
-                messages.success(request, f"Group '{group_name}' added successfully.")
+                messages.success(
+                    request, f"Group '{group_name}' added successfully.")
                 return redirect('usergroup')
     else:
         form = UserGroupForm()
@@ -147,6 +165,8 @@ def add_usergroup(request):
 def usergroup(request):
     usergroups = UserGroup.objects.all()
     return render(request, 'dashboard/pages/usergroup.html', {'usergroups': usergroups})
+
+
 @login_required
 @user_passes_test(is_admin)
 def edit_usergroup(request, group_id):
@@ -164,6 +184,7 @@ def edit_usergroup(request, group_id):
         'usergroup': usergroup,
     })
 
+
 @login_required
 @user_passes_test(is_admin)
 def usergroup_delete(request, id):
@@ -175,12 +196,14 @@ def usergroup_delete(request, id):
 
     # Fix: filter by FK object, not string comparison
     if Profile.objects.filter(usergroup=group).exists():
-        messages.error(request, f"Cannot delete group '{group.name}' — it is assigned to existing users.")
+        messages.error(
+            request, f"Cannot delete group '{group.name}' — it is assigned to existing users.")
         return redirect('usergroup')
 
     group.delete()
     messages.success(request, f"Group '{group.name}' deleted successfully.")
     return redirect('usergroup')
+
 
 @login_required
 def users_profile(request, user_id):
@@ -214,12 +237,14 @@ def users_profile(request, user_id):
         if usergroup_name:
             try:
                 if usergroup_name.isdigit():
-                    usergroup_obj = UserGroup.objects.get(id=int(usergroup_name))
+                    usergroup_obj = UserGroup.objects.get(
+                        id=int(usergroup_name))
                 else:
                     usergroup_obj = UserGroup.objects.get(name=usergroup_name)
                 profile.usergroup = usergroup_obj
             except UserGroup.DoesNotExist:
-                messages.error(request, f"Usergroup '{usergroup_name}' does not exist.")
+                messages.error(
+                    request, f"Usergroup '{usergroup_name}' does not exist.")
                 return render(request, 'dashboard/pages/users_profile.html', {
                     'form_data': request.POST,
                     'profile': profile,
@@ -263,15 +288,16 @@ def company_profile(request):
         company.save()
         messages.success(request, "Company profile updated successfully.")
         return redirect("company_profile")
-        
+
     return render(request, "dashboard/pages/company_profile.html", {"company": company})
+
 
 @login_required
 def users_list(request):
     # Ensure all users have a profile before listing
     for user in User.objects.all():
         Profile.objects.get_or_create(user=user)
-        
+
     profiles = Profile.objects.select_related('user').all()
     return render(request, 'dashboard/pages/users_list.html', {'profiles': profiles})
 
@@ -282,7 +308,8 @@ def delete_profile(request, user_id):
         user = get_object_or_404(User, id=user_id)
 
         if not request.user.is_superuser and request.user.id != user_id:
-            messages.error(request, "You are not authorized to delete this user.")
+            messages.error(
+                request, "You are not authorized to delete this user.")
             return redirect('users_list')
 
         # Profile is deleted via CASCADE when user is deleted;
@@ -321,7 +348,8 @@ def create_user(request):
                 image=form.cleaned_data.get('image'),
             )
 
-            messages.success(request, f"User '{user.username}' created successfully.")
+            messages.success(
+                request, f"User '{user.username}' created successfully.")
             return redirect('users_list')
         else:
             # form.errors are passed via the form object automatically
@@ -354,7 +382,8 @@ def user_permission(request, usergroup_id):
 
     permission_data = []
     for idx, module in enumerate(modules, start=1):
-        perm = Permission.objects.filter(usergroup=usergroup, module=module).first()
+        perm = Permission.objects.filter(
+            usergroup=usergroup, module=module).first()
         enabled = perm.enabled if perm else False
         permission_data.append({
             'sl_no': idx,
@@ -400,9 +429,11 @@ def edit_page(request, page_id):
 
 def delete_page(request, page_id):
     page = get_object_or_404(Page, id=page_id)
-    default_slugs = ['home', 'about', 'service', 'booking', 'contact', 'location', 'location-creek-harbour', 'location-business-bay', 'location-down-town']
+    default_slugs = ['home', 'about', 'service', 'booking', 'contact', 'location',
+                     'location-creek-harbour', 'location-business-bay', 'location-down-town']
     if page.slug in default_slugs:
-        messages.error(request, f"System page '{page.title}' cannot be deleted.")
+        messages.error(
+            request, f"System page '{page.title}' cannot be deleted.")
     else:
         page.delete()
         messages.success(request, f"Page '{page.title}' deleted successfully.")
@@ -426,8 +457,6 @@ def page_view(request):
     pages = Page.objects.all().order_by('priority', 'title')
     return render(request, 'dashboard/pages/page.html', {'pages': pages})
 
-import base64
-from django.core.files.base import ContentFile
 
 def add_gallery(request):
 
@@ -474,9 +503,11 @@ def add_gallery(request):
 
     return render(request, 'dashboard/pages/add_gallery.html', {'form': form})
 
+
 def gallery_view(request):
-    gallery= Gallery.objects.all()
+    gallery = Gallery.objects.all()
     return render(request, 'dashboard/pages/gallery.html', {'gallery': gallery})
+
 
 def edit_gallery(request, id):
 
@@ -505,6 +536,8 @@ def delete_gallery(request, id):
     gallery.delete()
 
     return redirect('gallery_view')
+
+
 def add_file(request):
 
     form = FileManagerForm()
@@ -537,10 +570,11 @@ def add_file(request):
 def file_manager(request):
     files = FileManager.objects.all().order_by('id')
 
-    
     return render(request, 'dashboard/pages/file_manager.html', {'files': files})
 
 # EDIT VIEW
+
+
 def edit_file(request, id):
 
     file = get_object_or_404(
@@ -585,6 +619,8 @@ def delete_file(request, id):
     file.delete()
 
     return redirect('file_manager')
+
+
 def test_sidebar(request):
     return render(request, 'includes/sidebar.html')
 
@@ -598,6 +634,7 @@ def test_navigation(request):
 
 # blog views
 
+
 def categories(request):
     categories = Category.objects.all()
     context = {
@@ -605,7 +642,7 @@ def categories(request):
     }
     return render(request, 'dashboard/pages/blog_categories.html', context)
 
-    
+
 def add_category(request):
     form = CategoryForm()
     if request.method == 'POST':
@@ -623,8 +660,9 @@ def add_category(request):
     }
     return render(request, 'dashboard/pages/add_category.html', context)
 
+
 def edit_category(request, pk):
-    category = Category.objects.get(id = pk)
+    category = Category.objects.get(id=pk)
     if request.method == 'POST':
         form = CategoryForm(request.POST, instance=category)
         if form.is_valid():
@@ -640,31 +678,34 @@ def edit_category(request, pk):
     }
     return render(request, 'dashboard/pages/edit_category.html', context)
 
+
 def delete_category(request, pk):
-    category = Category.objects.get(id = pk)
+    category = Category.objects.get(id=pk)
     category.delete()
     return redirect('categories')
 
+
 def posts(request):
     sort_by = request.GET.get('sort', 'recent')
-    
+
     if sort_by == 'oldest':
         posts = Blog.objects.all().order_by('created_at')
     else:
         # Default to recent
         posts = Blog.objects.all().order_by('-created_at')
-        
+
     context = {
         'posts': posts,
         'sort_by': sort_by,
     }
     return render(request, 'dashboard/pages/all_posts.html', context)
 
+
 def add_post(request):
     if request.method == 'POST':
         form = BlogPostForm(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save(commit = False)
+            post = form.save(commit=False)
             post.author = request.user
             post.save()
             title = form.cleaned_data.get('title')
@@ -673,15 +714,15 @@ def add_post(request):
             return redirect('posts')
     else:
         form = BlogPostForm()
-        
+
     context = {
-        'form':form,
+        'form': form,
     }
-    return render(request, 'dashboard/pages/add_post.html',context)
+    return render(request, 'dashboard/pages/add_post.html', context)
 
 
-def edit_post(request , pk):
-    post = Blog.objects.get(id = pk)
+def edit_post(request, pk):
+    post = Blog.objects.get(id=pk)
     form = BlogPostForm(instance=post)
     if request.method == 'POST':
         form = BlogPostForm(request.POST, request.FILES, instance=post)
@@ -696,29 +737,36 @@ def edit_post(request , pk):
         'post': post,
     }
     return render(request, 'dashboard/pages/edit_post.html', context)
+
+
 def delete_post(request,  pk):
-    post = Blog.objects.get(id = pk)
+    post = Blog.objects.get(id=pk)
     post.delete()
     return redirect('posts')
 
 # form requests
 
-def service_enquiries(request):
-    enquiries = ServiceEnquiry.objects.all().order_by('-created_at')
-    return render(request, 'dashboard/pages/service_enquiry.html', {'enquiries': enquiries})
+
+def booking_enquiries(request):
+    enquiries = BookingEnquiry.objects.all().order_by('-created_at')
+    return render(request, 'dashboard/pages/booking_enquiry.html', {'enquiries': enquiries})
+
 
 def contact_requests(request):
     enquiries = ContactEnquiry.objects.all().order_by('-created_at')
     return render(request, 'dashboard/pages/contact_enquiry.html', {'enquiries': enquiries})
 
+
 def general_enquiries(request):
     return render(request, 'dashboard/pages/general_enquiry.html', {})
 
-def delete_service_enquiry(request, id):
-    enquiry = get_object_or_404(ServiceEnquiry, id=id)
+
+def delete_booking_enquiry(request, id):
+    enquiry = get_object_or_404(BookingEnquiry, id=id)
     enquiry.delete()
-    messages.success(request, 'Service enquiry deleted successfully.')
-    return redirect('service_enquiries')
+    messages.success(request, 'Booking enquiry deleted successfully.')
+    return redirect('booking_enquiries')
+
 
 def delete_contact_enquiry(request, id):
     enquiry = get_object_or_404(ContactEnquiry, id=id)

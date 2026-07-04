@@ -2,7 +2,9 @@ from django.shortcuts import redirect
 from django.urls import resolve
 from .models import Permission
 
-EXEMPT_URLS = ['login', 'logout', 'user_permission', 'edit_usergroup', 'dashboard_403']
+EXEMPT_URLS = ['login', 'logout', 'user_permission',
+               'edit_usergroup', 'dashboard_403']
+
 
 class PermissionMiddleware:
     def __init__(self, get_response):

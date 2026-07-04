@@ -26,6 +26,7 @@
 
   <!-- Form Wizard content panels -->
   <form id="booking-wizard-form">
+    {% csrf_token %}
     <!-- ==========================================
                        STEP 1: SCHEDULE & SPEED
                        ========================================== -->
@@ -139,6 +140,21 @@
             id="mobile"
             name="mobile"
             placeholder="e.g. +971 52 303 3446"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <!-- Email Address -->
+        <div class="form-group">
+          <label for="email" class="form-label">
+            <i class="fa-regular fa-envelope"></i> Email Address:
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="e.g. john@example.com"
             class="form-input"
             required
           />
@@ -272,6 +288,55 @@
       >
         <i class="fa-brands fa-whatsapp"></i> Message WhatsApp
       </a>
+    </div>
+  </div>
+
+  <!-- ==========================================
+                     WIZARD ERROR PANE
+                     ========================================== -->
+  <div class="wizard-success-panel" id="wizard-error-panel">
+    <div
+      class="success-icon-box"
+      style="
+        background-color: rgba(239, 68, 68, 0.1);
+        color: #ef4444;
+        border: none;
+      "
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+    <h3 class="success-title" style="color: #ef4444">Booking Failed</h3>
+    <p class="success-desc">
+      We encountered an issue while processing your booking.
+    </p>
+
+    <!-- Error message details -->
+    <div
+      class="success-details-summary"
+      id="error-details-summary"
+      style="
+        background-color: #fef2f2;
+        border: 1px solid #fee2e2;
+        color: #991b1b;
+        text-align: left;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 24px;
+        font-size: 0.9rem;
+      "
+    >
+      <!-- Rendered dynamically -->
+    </div>
+
+    <!-- Button CTA options -->
+    <div class="success-actions">
+      <button
+        type="button"
+        class="wizard-btn btn-secondary"
+        id="error-retry-btn"
+      >
+        <i class="fa-solid fa-arrow-rotate-left"></i> Try Again
+      </button>
     </div>
   </div>
 </div>

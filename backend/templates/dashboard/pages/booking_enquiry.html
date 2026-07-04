@@ -1,0 +1,155 @@
+{% extends 'dashboard/LayoutMain.html' %}
+{% load static %}
+{% block title %}Dashboard - Booking Enquiries{% endblock %}
+
+{% block content %}
+
+    <div class="pagetitle">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                <li class="breadcrumb-item active">Booking Enquiries</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="content">
+            <div class="usergroup card">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <span>Booking Submissions</span>
+                </div>
+                <div class="card-body mt-3">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Submitted On</th>
+                                    <th>Pickup Date</th>
+                                    <th>Pickup Time</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Speed</th>
+                                    <th>Details</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for enquiry in enquiries %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td style="white-space: nowrap;">{{ enquiry.created_at|date:"M d, Y H:i" }}</td>
+                                    <td style="white-space: nowrap;"><strong>{{ enquiry.pickup_date|date:"M d, Y" }}</strong></td>
+                                    <td style="white-space: nowrap;">{{ enquiry.pickup_time|time:"H:i" }}</td>
+                                    <td>{{ enquiry.fullname }}</td>
+                                    <td><a href="tel:{{ enquiry.phone }}">{{ enquiry.phone }}</a></td>
+                                    <td>
+                                        {% if enquiry.service_speed == 'express' %}
+                                        <span class="badge bg-warning text-dark"><i class="fas fa-bolt"></i> Express</span>
+                                        {% else %}
+                                        <span class="badge bg-secondary"><i class="fas fa-clock"></i> Standard</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-outline-primary"
+                                            data-bs-toggle="modal" data-bs-target="#detailsModal{{ enquiry.id }}">
+                                            View Details
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteServiceModal{{ enquiry.id }}" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="9" class="text-center text-muted py-4">No booking enquiries received yet.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals Section (Placed outside table to prevent rendering / centering glitches) -->
+    {% for enquiry in enquiries %}
+        <!-- Details Modal -->
+        <div class="modal fade" id="detailsModal{{ enquiry.id }}" tabindex="-1"
+            aria-labelledby="detailsModalLabel{{ enquiry.id }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="detailsModalLabel{{ enquiry.id }}">
+                            Booking Details for {{ enquiry.fullname }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-2">
+                            <div class="col-sm-4 text-muted">Pickup Date & Time:</div>
+                            <div class="col-sm-8 fw-bold">
+                                {{ enquiry.pickup_date|date:"F d, Y" }} at {{ enquiry.pickup_time|time:"H:i" }}
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-4 text-muted">Service Speed:</div>
+                            <div class="col-sm-8 text-capitalize">{{ enquiry.service_speed }}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-4 text-muted">Email:</div>
+                            <div class="col-sm-8"><a
+                                    href="mailto:{{ enquiry.email }}">{{ enquiry.email }}</a></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-4 text-muted">Phone:</div>
+                            <div class="col-sm-8"><a href="tel:{{ enquiry.phone }}">{{ enquiry.phone }}</a></div>
+                        </div>
+                        <hr>
+                        <div class="row mb-2">
+                            <div class="col-sm-4 text-muted">Pickup Address:</div>
+                            <div class="col-sm-8">{{ enquiry.pickup_address }}</div>
+                        </div>
+                        <hr>
+                        <div class="row mb-2">
+                            <div class="col-sm-12 text-muted mb-1">Special Instructions:</div>
+                            <div class="col-sm-12"
+                                style="white-space: pre-wrap; background-color: #f8f9fa; padding: 10px; border-radius: 4px;">
+                                {{ enquiry.special_instructions|default:"No instructions provided." }}</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Close</button>
+                        <a href="tel:{{ enquiry.phone }}" class="btn btn-primary"><i
+                                class="fas fa-phone"></i> Call Customer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteServiceModal{{ enquiry.id }}" tabindex="-1" aria-labelledby="deleteServiceModalLabel{{ enquiry.id }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="deleteServiceModalLabel{{ enquiry.id }}">Confirm Delete</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p class="mt-2">Are you sure you want to delete this enquiry from <strong>{{ enquiry.fullname }}</strong>?</p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <a href="{% url 'delete_booking_enquiry' enquiry.id %}" class="btn btn-danger">Yes, Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

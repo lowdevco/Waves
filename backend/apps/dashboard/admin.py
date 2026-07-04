@@ -47,6 +47,7 @@ class ModuleAdmin(admin.ModelAdmin):
     list_editable = ('priority',)
     inlines = [ChildInline]
 
+
 admin.site.register(Module, ModuleAdmin)
 # Optional: only if you want to manage Child separately too
 admin.site.register(Child)
@@ -64,4 +65,3 @@ admin.site.register(Category)
 admin.site.register(Blog)
 
 #  addd cpanell
-
