@@ -34,6 +34,9 @@ from django.urls import reverse
 
 @csrf_protect
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -53,7 +56,6 @@ def login(request):
 
 def logout(request):
     auth_logout(request)
-    messages.success(request, "You have successfully logged out.")
     return redirect('login')
 
 
@@ -110,6 +112,7 @@ def index(request):
     return render(request, 'dashboard/pages/index.html', context)
 
 
+@login_required
 def module_view(request, module_id):
     module = get_object_or_404(Module, id=module_id)
     template_name = (
@@ -123,6 +126,7 @@ def module_view(request, module_id):
     return render(request, template_name, context)
 
 
+@login_required
 def child_view(request, child_id):
     child = get_object_or_404(Child, id=child_id)
     template_path = (
@@ -326,6 +330,7 @@ def delete_profile(request, user_id):
     return redirect('users_list')
 
 
+@login_required
 def create_user(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST, request.FILES)
@@ -398,6 +403,7 @@ def user_permission(request, usergroup_id):
     })
 
 
+@login_required
 def add_page(request):
     if request.method == 'POST':
         form = PageForm(request.POST)
@@ -412,6 +418,7 @@ def add_page(request):
     return render(request, 'dashboard/pages/add_page.html', {'form': form})
 
 
+@login_required
 def edit_page(request, page_id):
     page = get_object_or_404(Page, id=page_id)
     if request.method == 'POST':
@@ -427,6 +434,7 @@ def edit_page(request, page_id):
     return render(request, 'dashboard/pages/edit_page.html', {'form': form, 'page': page})
 
 
+@login_required
 def delete_page(request, page_id):
     page = get_object_or_404(Page, id=page_id)
     default_slugs = ['home', 'about', 'service', 'booking', 'contact', 'location',
@@ -440,6 +448,7 @@ def delete_page(request, page_id):
     return redirect('page_view')
 
 
+@login_required
 def toggle_page_status(request, page_id):
     page = get_object_or_404(Page, id=page_id)
     page.show_in_menu = not page.show_in_menu
@@ -449,15 +458,18 @@ def toggle_page_status(request, page_id):
     return redirect('page_view')
 
 
+@login_required
 def enquiry_view(request):
     return render(request, 'dashboard/pages/enquiry.html', {})
 
 
+@login_required
 def page_view(request):
     pages = Page.objects.all().order_by('priority', 'title')
     return render(request, 'dashboard/pages/page.html', {'pages': pages})
 
 
+@login_required
 def add_gallery(request):
 
     if request.method == 'POST':
@@ -504,11 +516,13 @@ def add_gallery(request):
     return render(request, 'dashboard/pages/add_gallery.html', {'form': form})
 
 
+@login_required
 def gallery_view(request):
     gallery = Gallery.objects.all()
     return render(request, 'dashboard/pages/gallery.html', {'gallery': gallery})
 
 
+@login_required
 def edit_gallery(request, id):
 
     gallery = get_object_or_404(Gallery, id=id)
@@ -526,6 +540,7 @@ def edit_gallery(request, id):
     return render(request, 'dashboard/pages/add_gallery.html', {'form': form})
 
 
+@login_required
 def delete_gallery(request, id):
 
     gallery = get_object_or_404(Gallery, id=id)
@@ -538,6 +553,7 @@ def delete_gallery(request, id):
     return redirect('gallery_view')
 
 
+@login_required
 def add_file(request):
 
     form = FileManagerForm()
@@ -567,6 +583,7 @@ def add_file(request):
     )
 
 
+@login_required
 def file_manager(request):
     files = FileManager.objects.all().order_by('id')
 
@@ -575,6 +592,7 @@ def file_manager(request):
 # EDIT VIEW
 
 
+@login_required
 def edit_file(request, id):
 
     file = get_object_or_404(
@@ -605,6 +623,8 @@ def edit_file(request, id):
 
 
 # DELETE VIEW
+
+@login_required
 def delete_file(request, id):
 
     file = get_object_or_404(
@@ -619,18 +639,6 @@ def delete_file(request, id):
     file.delete()
 
     return redirect('file_manager')
-
-
-def test_sidebar(request):
-    return render(request, 'includes/sidebar.html')
-
-
-def test_footer(request):
-    return render(request, 'includes/footer.html')
-
-
-def test_navigation(request):
-    return render(request, 'includes/navigation.html')
 
 # blog views
 

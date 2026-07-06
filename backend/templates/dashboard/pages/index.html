@@ -1,15 +1,7 @@
 {% extends 'dashboard/LayoutMain.html' %}
 {% load static %}
-{% block title %}Dashboard - My Django Project{% endblock %}
-
 {% block content %}
-    {% if messages %}
-    <div class="messages mb-4">
-      {% for message in messages %}
-      <div class="alert alert-{{ message.tags }} shadow-sm rounded-3">{{ message }}</div>
-      {% endfor %}
-    </div>
-    {% endif %}
+
 
     <div class="pagetitle mb-4">
       <h1 class="fw-bold text-dark">Overview</h1>
@@ -39,43 +31,7 @@
       {% endfor %}
     </div>
 
-{% if messages %}
-<div id="django-messages" style="display: none;">
-  {% for message in messages %}
-  <div data-tags="{{ message.tags }}" data-text="{{ message|escapejs }}"></div>
-  {% endfor %}
-</div>
-{% endif %}
 
-<script>
-  toastr.options = {
-    "closeButton": true,
-    "progressBar": true,
-    "positionClass": "toast-top-right",
-    "showDuration": "300",
-    "hideDuration": "1000",
-    "timeOut": "5000",
-    "extendedTimeOut": "1000",
-    "showEasing": "swing",
-    "hideEasing": "linear",
-    "showMethod": "fadeIn",
-    "hideMethod": "fadeOut"
-  };
-
-  const messageContainer = document.getElementById('django-messages');
-  if (messageContainer) {
-    const messageElements = messageContainer.children;
-    for (let i = 0; i < messageElements.length; i++) {
-      const tags = messageElements[i].getAttribute('data-tags');
-      const text = messageElements[i].getAttribute('data-text');
-      if (toastr[tags]) {
-        toastr[tags](text);
-      } else {
-        toastr.info(text);
-      }
-    }
-  }
-</script>
 
 
 

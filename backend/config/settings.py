@@ -47,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'apps.dashboard.middleware.NoCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -145,7 +146,7 @@ CKEDITOR_CONFIGS = {
 }
 
 # Auth
-LOGIN_URL = "/admin/login/"
+LOGIN_URL = "login"
 
 # Email Settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
