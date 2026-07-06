@@ -25,10 +25,17 @@ ALLOWED_HOSTS = config(
     default="127.0.0.1,localhost"
 )
 
+CSRF_TRUSTED_ORIGINS = config(
+    "CSRF_TRUSTED_ORIGINS",
+    cast=lambda v: [origin.strip() for origin in v.split(",")],
+    default=""
+)
+
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_SSL_REDIRECT = not DEBUG
 
 # Application definition
 
@@ -175,6 +182,7 @@ MEDIA_URL = "/media/"
 
 CKEDITOR_UPLOAD_PATH = "waves/ckeditor/"
 
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CK Editor Config
 
