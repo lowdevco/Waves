@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
-from apps.dashboard.models import Blog, ContactEnquiry, BookingEnquiry, CompanyDetails, Page
+from apps.dashboard.models import Blog, ContactEnquiry, BookingEnquiry, CompanyDetails, Page, FileManager
 
 
 def home(request):
@@ -149,9 +149,12 @@ def booking(request):
 
 
 def dynamic_page(request, slug):
-    from django.shortcuts import get_object_or_404
     page = get_object_or_404(Page, slug=slug)
-    return render(request, "website/pages/dynamic_page.html", {"page": page})
+    
+    # If a custom template is set, render it, else default to 'page.html'
+    template_name = f"website/pages/{page.template_name}" if page.template_name else "website/pages/page.html"
+    
+    return render(request, template_name, {"page": page})
 
 
 def submit_booking(request):
@@ -266,3 +269,11 @@ def submit_booking(request):
             return JsonResponse({"success": False, "message": f"SMTP / Mail Error: {str(e)}"})
 
     return JsonResponse({"success": False, "message": "Invalid request method."})
+
+def file_redirect(request, id):
+    """
+    Provides a short URL index (e.g. /f/1/) that dynamically redirects 
+    to the actual absolute media URL (Cloudinary).
+    """
+    file_obj = get_object_or_404(FileManager, id=id)
+    return redirect(file_obj.image.url)

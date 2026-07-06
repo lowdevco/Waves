@@ -200,6 +200,8 @@
   const isSmallScreen = window.matchMedia("(max-width: 1023.5px)").matches;
 
   tinymce.init({
+    extended_valid_elements: 'i[class|style|id|data-*],span[class|style|id|data-*],div[class|style|id|data-*]',
+    verify_html: false,
     selector: "textarea.tinymce-editor",
     plugins:
       "preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons accordion",

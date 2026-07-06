@@ -191,6 +191,7 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'full',
         'allowedContent': True,
         'extraAllowedContent': '*(*);*{*}',
+        'customConfig': '/static/dashboard/js/ckeditor_custom.js',
     },
 }
 

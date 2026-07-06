@@ -39,7 +39,8 @@
                                     <th>Sl.no</th>
                                     <th>Title</th>
                                     <th>Image</th>
-                                    <th>View</th>
+                                    <th>URL</th>
+                                    <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                             </thead>
@@ -61,6 +62,19 @@
                                                 <img src="{{ item.image.url }}" width="60">
                                             {% else %}
                                                 No Image
+                                            {% endif %}
+                                        </td>
+
+                                        <td>
+                                            {% if item.image %}
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-sm btn-light border"
+                                                    onclick="copyFileUrl('{% if 'http' in item.image.url %}{{ item.image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{{ item.image.url }}{% endif %}')">
+                                                    Copy URL
+                                                </button>
+                                            {% else %}
+                                                N/A
                                             {% endif %}
                                         </td>
 
@@ -101,6 +115,31 @@
             </div>
 
         </section>
+
+<!-- Copy URL Script -->
+<script>
+    function copyFileUrl(url) {
+        // Fallback for older browsers
+        if (!navigator.clipboard) {
+            const tempInput = document.createElement("input");
+            tempInput.value = url;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("URL Copied to clipboard!");
+            return;
+        }
+
+        // Modern clipboard API
+        navigator.clipboard.writeText(url).then(function() {
+            alert("URL Copied to clipboard!");
+        }, function(err) {
+            console.error("Could not copy URL: ", err);
+            alert("Failed to copy URL");
+        });
+    }
+</script>
 
     
 

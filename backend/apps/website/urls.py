@@ -15,4 +15,5 @@ urlpatterns = [
     path("booking", views.booking, name="booking"),
     path("booking/submit/", views.submit_booking, name="submit_booking"),
     path("p/<slug:slug>/", views.dynamic_page, name="dynamic_page"),
+    path("f/<int:id>/", views.file_redirect, name="file_redirect"),
 ]

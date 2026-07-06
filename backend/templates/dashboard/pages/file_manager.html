@@ -101,7 +101,7 @@
                                                        <button
     type="button"
     class="btn btn-sm btn-light border"
-    onclick="copyFileUrl('{{ request.scheme }}://{{ request.get_host }}{{ item.image.url }}')">
+    onclick="copyFileUrl('{% url 'file_redirect' id=item.id %}')">
 
     Copy URL
 
