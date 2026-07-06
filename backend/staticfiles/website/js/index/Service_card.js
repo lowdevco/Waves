@@ -1,6 +1,7 @@
 //  * Waves Laundry - Services Data
 
 const SERVICES_DATA = [
+  
   {
     id: "dry_cleaning",
     title: "Expert Dry Cleaning",

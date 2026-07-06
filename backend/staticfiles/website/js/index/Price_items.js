@@ -4,6 +4,7 @@
  */
 
 const PRICE_LIST = [
+  
   {
     id: "men",
     title: "Men",
