@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initPricingTabs();
 });
 
+
+
 /**
  * Helper function to map item icons to Font Awesome icons
  */
