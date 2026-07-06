@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            color: #333333;
+        }
+        .email-wrapper {
+            width: 100%;
+            background-color: #f4f7f6;
+            padding: 40px 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .header {
+            background-color: #0d6efd;
+            padding: 30px;
+            text-align: center;
+        }
+        .header img {
+            max-height: 60px;
+        }
+        .content {
+            padding: 40px 30px;
+        }
+        .title {
+            color: #0d6efd;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .text {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .details-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0d6efd;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #555555;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #777777;
+            border-top: 1px solid #eeeeee;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #0d6efd;
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <div class="email-container">
+            <div class="header">
+                <img src="{{ base_url }}/static/dashboard/img/logo.webp" alt="Waves Laundry">
+            </div>
+            <div class="content">
+                <h1 class="title">We Received Your Message!</h1>
+                <p class="text">Dear {{ name }},</p>
+                <p class="text">Thank you for reaching out to Waves Laundry. We have received your message regarding <strong>{{ subject }}</strong>.</p>
+                
+                <div class="details-box">
+                    "{{ message }}"
+                </div>
+                
+                <p class="text">One of our team members will review your inquiry and get back to you shortly at <strong>{{ email }}</strong> or <strong>{{ phone }}</strong>.</p>
+                
+                <div style="text-align: center;">
+                    <a href="{{ base_url }}" class="btn">Visit Our Website</a>
+                </div>
+            </div>
+            <div class="footer">
+                &copy; {% now "Y" %} Waves Laundry. All rights reserved.<br>
+                <a href="{{ base_url }}" style="color: #0d6efd; text-decoration: none;">www.waveslaundry.com</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -98,24 +98,7 @@
                                                     <i class="fas fa-trash"></i>
                                                 </a>
 
-                                                <!-- Delete Modal -->
-                                                <div class="modal fade text-start" id="deletePostModal{{ post.pk }}" tabindex="-1" aria-labelledby="deletePostModalLabel{{ post.pk }}" aria-hidden="true">
-                                                    <div class="modal-dialog modal-sm">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header bg-danger text-white">
-                                                                <h5 class="modal-title" id="deletePostModalLabel{{ post.pk }}">Confirm Delete</h5>
-                                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" onclick="$(this).closest('.modal').modal('hide');"></button>
-                                                            </div>
-                                                            <div class="modal-body text-center">
-                                                                <p class="mt-2" style="white-space: normal;">Are you sure you want to delete the post <strong>{{ post.title }}</strong>?</p>
-                                                            </div>
-                                                            <div class="modal-footer justify-content-center">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="$(this).closest('.modal').modal('hide');">Cancel</button>
-                                                                <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger" onclick="window.location.href=this.href; return false;">Yes, Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+
                                             </div>
                                         </td>
                                     </tr>
@@ -151,5 +134,26 @@
         </div>
     </section>
 
+
+<!-- Modals rendered outside of table flow to prevent flickering/z-index issues -->
+{% for post in posts %}
+<div class="modal fade text-start" id="deletePostModal{{ post.pk }}" tabindex="-1" aria-labelledby="deletePostModalLabel{{ post.pk }}" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+            <div class="modal-header bg-danger text-white border-0">
+                <h5 class="modal-title" id="deletePostModalLabel{{ post.pk }}">Confirm Delete</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" onclick="$(this).closest('.modal').modal('hide');"></button>
+            </div>
+            <div class="modal-body text-center py-4">
+                <p class="mb-0" style="white-space: normal;">Are you sure you want to delete the post<br><strong class="text-dark">{{ post.title }}</strong>?</p>
+            </div>
+            <div class="modal-footer justify-content-center border-0 bg-light">
+                <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal" onclick="$(this).closest('.modal').modal('hide');">Cancel</button>
+                <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger px-4" onclick="window.location.href=this.href; return false;">Yes, Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 
 {% endblock %}

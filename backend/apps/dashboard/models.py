@@ -312,48 +312,63 @@ class CompanyDetails(models.Model):
 
 
 # Define which fields to clean up for each model
+
 MEDIA_MODELS = {
-    Profile: 'image',
-    Gallery: 'image',
-    FileManager: 'image',
-    CompanyDetails: 'company_logo',
+    Profile: "image",
+    Gallery: "image",
+    FileManager: "image",
+    CompanyDetails: "company_logo",
+    Blog: "featured_image",
 }
+
+
+def delete_media(file_field):
+    if not file_field:
+        return
+
+    try:
+        storage = file_field.storage
+
+        if storage.__class__.__module__.startswith("cloudinary_storage"):
+            import cloudinary.uploader
+
+            public_id = file_field.name.rsplit(".", 1)[0]
+            cloudinary.uploader.destroy(public_id, invalidate=True)
+        else:
+            storage.delete(file_field.name)
+
+    except Exception:
+        pass
 
 
 @receiver(post_delete)
 def auto_delete_file_on_delete(sender, instance, **kwargs):
-    """
-    Deletes file from filesystem when corresponding object is deleted.
-    """
-    if sender in MEDIA_MODELS:
-        field_name = MEDIA_MODELS[sender]
-        file_field = getattr(instance, field_name, None)
-        if file_field:
-            if os.path.isfile(file_field.path):
-                os.remove(file_field.path)
+    if sender not in MEDIA_MODELS:
+        return
+
+    field_name = MEDIA_MODELS[sender]
+    file_field = getattr(instance, field_name, None)
+
+    delete_media(file_field)
 
 
 @receiver(pre_save)
 def auto_delete_file_on_change(sender, instance, **kwargs):
-    """
-    Deletes old file from filesystem when corresponding object is updated with a new file.
-    """
-    if sender in MEDIA_MODELS:
-        if not instance.pk:
-            return False
+    if sender not in MEDIA_MODELS:
+        return
 
-        try:
-            old_instance = sender.objects.get(pk=instance.pk)
-        except sender.DoesNotExist:
-            return False
+    if not instance.pk:
+        return
 
-        field_name = MEDIA_MODELS[sender]
-        old_file = getattr(old_instance, field_name, None)
-        new_file = getattr(instance, field_name, None)
+    try:
+        old_instance = sender.objects.get(pk=instance.pk)
+    except sender.DoesNotExist:
+        return
 
-        if not old_file:
-            return
+    field_name = MEDIA_MODELS[sender]
 
-        if old_file != new_file:
-            if os.path.isfile(old_file.path):
-                os.remove(old_file.path)
+    old_file = getattr(old_instance, field_name, None)
+    new_file = getattr(instance, field_name, None)
+
+    if old_file and old_file != new_file:
+        delete_media(old_file)

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            color: #333333;
+        }
+        .email-wrapper {
+            width: 100%;
+            background-color: #f4f7f6;
+            padding: 40px 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .header {
+            background-color: #1e293b;
+            padding: 25px;
+            text-align: center;
+        }
+        .header h2 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .content {
+            padding: 40px 30px;
+        }
+        .title {
+            color: #1e293b;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        .text {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .details-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+        .detail-item {
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        .detail-item strong {
+            color: #555555;
+            display: inline-block;
+            width: 150px;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #777777;
+            border-top: 1px solid #eeeeee;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <div class="email-container">
+            <div class="header">
+                <h2>SYSTEM NOTIFICATION</h2>
+            </div>
+            <div class="content">
+                <h1 class="title">New Pickup Order Received</h1>
+                <p class="text">A new laundry pickup order has just been submitted via the website </p>
+                
+                <div class="details-box">
+                    <div class="detail-item"><strong>Customer Name:</strong> {{ fullname }}</div>
+                    <div class="detail-item"><strong>Mobile Number:</strong> {{ phone }}</div>
+                    <div class="detail-item"><strong>Email Address:</strong> {{ email }}</div>
+                    <div class="detail-item"><strong>Pickup Address:</strong> {{ pickup_address }}</div>
+                    <div class="detail-item"><strong>Pickup Date:</strong> {{ pickup_date }}</div>
+                    <div class="detail-item"><strong>Pickup Time:</strong> {{ pickup_time|default:"Not specified" }}</div>
+                    <div class="detail-item"><strong>Service Speed:</strong> <span style="font-weight: 600; color: #0d6efd;">{{ service_speed|title }}</span></div>
+                    {% if special_instructions %}
+                    <div class="detail-item"><strong>Special Instructions:</strong> {{ special_instructions }}</div>
+                    {% endif %}
+                </div>
+                
+                <p class="text" style="font-size: 13px; color: #666;">
+                    To contact the client directly, you can call them at <strong><a href="tel:{{ phone }}">{{ phone }}</a></strong> or reply directly to their email at <strong><a href="mailto:{{ email }}">{{ email }}</a></strong>.
+                </p>
+            </div>
+            <div class="footer">
+                Automated System Message - Waves CMS
+            </div>
+        </div>
+    </div>
+</body>
+</html>

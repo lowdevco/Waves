@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from django.contrib import messages
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.template.loader import render_to_string
 from django.conf import settings
 from apps.dashboard.models import Blog, ContactEnquiry, BookingEnquiry, CompanyDetails, Page
 
@@ -89,13 +90,42 @@ def contact(request):
 
         # Send email first
         try:
-            send_mail(
-                subject=f"New Contact Form Submission: {subject}",
-                message=f"Name: {name}\nEmail: {email}\nPhone: {phone}\n\nMessage:\n{message}",
+            # Send Email 1 to Client
+            client_subject = "We Received Your Message!"
+            client_html = render_to_string('emails/contact_client.html', {
+                'name': name,
+                'subject': subject,
+                'email': email,
+                'phone': phone,
+                'message': message,
+                'base_url': request.build_absolute_uri('/')[:-1]
+            })
+            msg_client = EmailMultiAlternatives(
+                subject=client_subject,
+                body=f"Dear {name},\n\nThank you for reaching out. We have received your message regarding {subject}.\n\n{message}\n\nOur team will review your inquiry and get back to you shortly.\n\nBest regards,\nWaves Laundry Team",
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[admin_email],
-                fail_silently=False,
+                to=[email]
             )
+            msg_client.attach_alternative(client_html, "text/html")
+            msg_client.send(fail_silently=False)
+
+            # Send Email 2 to Admin
+            admin_subject = f"New Contact Form Submission: {subject}"
+            admin_html = render_to_string('emails/contact_admin.html', {
+                'name': name,
+                'email': email,
+                'phone': phone,
+                'subject': subject,
+                'message': message
+            })
+            msg_admin = EmailMultiAlternatives(
+                subject=admin_subject,
+                body=f"Name: {name}\nEmail: {email}\nPhone: {phone}\n\nMessage:\n{message}",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[admin_email]
+            )
+            msg_admin.attach_alternative(admin_html, "text/html")
+            msg_admin.send(fail_silently=False)
 
             enquiry = ContactEnquiry.objects.create(
                 name=name,
@@ -178,23 +208,46 @@ def submit_booking(request):
                 admin_message += f"- Special Instructions: {special_instructions}\n"
             admin_message += f"\nTo contact the client directly, call {phone} or email {email}."
 
-            # Send client email first
-            send_mail(
+            # Send Email 1 to Client
+            client_subject = "Waves Laundry - Booking Confirmed!"
+            client_html = render_to_string('emails/booking_client.html', {
+                'fullname': fullname,
+                'pickup_date': pickup_date,
+                'pickup_time': pickup_time,
+                'service_speed': service_speed,
+                'pickup_address': pickup_address,
+                'special_instructions': special_instructions,
+                'base_url': request.build_absolute_uri('/')[:-1]
+            })
+            msg_client = EmailMultiAlternatives(
                 subject=client_subject,
-                message=client_message,
+                body=client_message,
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[email],
-                fail_silently=False,
+                to=[email]
             )
+            msg_client.attach_alternative(client_html, "text/html")
+            msg_client.send(fail_silently=False)
 
-            # Send admin email second
-            send_mail(
+            # Send Email 2 to Admin
+            admin_subject = f"New Pickup Order Received: {fullname}"
+            admin_html = render_to_string('emails/booking_admin.html', {
+                'fullname': fullname,
+                'email': email,
+                'phone': phone,
+                'pickup_date': pickup_date,
+                'pickup_time': pickup_time,
+                'service_speed': service_speed,
+                'pickup_address': pickup_address,
+                'special_instructions': special_instructions
+            })
+            msg_admin = EmailMultiAlternatives(
                 subject=admin_subject,
-                message=admin_message,
+                body=admin_message,
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[admin_email],
-                fail_silently=False,
+                to=[admin_email]
             )
+            msg_admin.attach_alternative(admin_html, "text/html")
+            msg_admin.send(fail_silently=False)
 
             # Save to database ONLY if emails were sent successfully
             enquiry = BookingEnquiry.objects.create(
