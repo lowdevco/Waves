@@ -66,6 +66,12 @@
                                 <textarea class="form-control" id="short_description" name="short_description" rows="3">{{ company.short_description|default:'' }}</textarea>
                             </div>
 
+                            <div class="mb-4">
+                                <label for="email_logo_url" class="form-label">Company Logo (Google Drive ID)</label>
+                                <input type="text" class="form-control" id="email_logo_url" name="email_logo_url" value="{{ company.email_logo_url|default:'' }}" placeholder="e.g. 1a2B3c4D5e6F7g8H9i0J">
+                                <div class="form-text text-muted"><i class="bi bi-info-circle"></i> <strong>Google Drive:</strong> Copy your share link and paste ONLY the changing ID from the middle of the link here.</div>
+                            </div>
+
                             <div class="text-end">
                                 <button type="submit" class="btn btn-primary px-4 py-2">
                                     <i class="fas fa-check-circle me-1"></i> Save Changes

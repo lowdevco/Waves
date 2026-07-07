@@ -80,7 +80,11 @@
     <div class="email-wrapper">
         <div class="email-container">
             <div class="header">
-                <img src="{{ base_url }}/static/dashboard/img/logo.webp" alt="Waves Laundry">
+                {% if company and company.email_logo_url %}
+                <img src="https://drive.google.com/uc?export=view&id={{ company.email_logo_url }}" alt="Waves Laundry">
+                {% else %}
+                <h1 style="color: #ffffff; font-size: 36px; font-weight: 700; margin: 0; letter-spacing: 2px;">WAVES</h1>
+                {% endif %}
             </div>
             <div class="content">
                 <h1 class="title">We Received Your Message!</h1>

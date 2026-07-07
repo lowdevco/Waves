@@ -294,7 +294,9 @@ class CompanyDetails(models.Model):
     short_description = models.TextField(blank=True, null=True)
     company_logo = models.ImageField(
         upload_to='company_logos/', blank=True, null=True)
-
+    email_logo_url = models.CharField(
+        max_length=500, blank=True, null=True, 
+        help_text="Google Drive Logo ID: Extract and paste ONLY the file ID from your Google Drive share link.")
     def save(self, *args, **kwargs):
         self.pk = 1
         super(CompanyDetails, self).save(*args, **kwargs)

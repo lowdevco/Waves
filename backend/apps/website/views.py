@@ -98,7 +98,8 @@ def contact(request):
                 'email': email,
                 'phone': phone,
                 'message': message,
-                'base_url': request.build_absolute_uri('/')[:-1]
+                'base_url': request.build_absolute_uri('/')[:-1],
+                'company': company
             })
             msg_client = EmailMultiAlternatives(
                 subject=client_subject,
@@ -220,7 +221,8 @@ def submit_booking(request):
                 'service_speed': service_speed,
                 'pickup_address': pickup_address,
                 'special_instructions': special_instructions,
-                'base_url': request.build_absolute_uri('/')[:-1]
+                'base_url': request.build_absolute_uri('/')[:-1],
+                'company': company
             })
             msg_client = EmailMultiAlternatives(
                 subject=client_subject,

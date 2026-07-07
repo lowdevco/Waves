@@ -286,6 +286,7 @@ def company_profile(request):
         company.company_name = request.POST.get("company_name", "")
         company.email = request.POST.get("email", "")
         company.phone = request.POST.get("phone", "")
+        company.email_logo_url = request.POST.get("email_logo_url", "")
         company.short_description = request.POST.get("short_description", "")
         if "company_logo" in request.FILES:
             company.company_logo = request.FILES["company_logo"]
