@@ -53,7 +53,7 @@
                 </thead>
                 <tbody>
                   {% for group in usergroups %}
-                  <tr>
+                  <tr {% if global_user_profile and global_user_profile.usergroup == group %}class="current-usergroup-row"{% endif %}>
                     <td>{{ forloop.counter }}</td>
                     <td>{{ group.name }}</td>
                     <td>

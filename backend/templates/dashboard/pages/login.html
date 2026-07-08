@@ -70,7 +70,7 @@
         right: 0;
         width: 250px;
         height: 250px;
-        background: radial-gradient(circle, rgba(4, 107, 210, 0.15) 0%, transparent 70%);
+        background: none;
         pointer-events: none;
         z-index: 1;
       }
@@ -236,6 +236,11 @@
           min-height: auto;
           padding: 35px;
         }
+        .brand-logo {
+          transform: scale(1);
+          max-width: 100%;
+          max-height: 50px;
+        }
         .brand-welcome-msg {
           margin-top: 30px;
         }
@@ -298,6 +303,9 @@
                     placeholder="Enter your password"
                     required
                   />
+                  <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
+                    <i class="bi bi-eye"></i>
+                  </span>
                 </div>
               </div>
               <button type="submit" class="btn btn-primary" id="loginBtn">
@@ -330,6 +338,18 @@
       document.addEventListener('DOMContentLoaded', function () {
         const form = document.getElementById('loginForm');
         const submitBtn = document.getElementById('loginBtn');
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('id_password');
+
+        if (togglePassword && passwordInput) {
+          togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            const icon = togglePassword.querySelector('i');
+            icon.classList.toggle('bi-eye');
+            icon.classList.toggle('bi-eye-slash');
+          });
+        }
 
         form.addEventListener('submit', function () {
           submitBtn.classList.add('loading');

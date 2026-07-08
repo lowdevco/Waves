@@ -63,9 +63,15 @@
                                     </td>
                                 </tr>
                                 {% empty %}
-                                <tr>
-                                    <td colspan="9" class="text-center text-muted py-4">No booking enquiries received yet.</td>
-                                </tr>
+                                 <tr>
+                                     <td colspan="9" class="text-center py-5 text-muted">
+                                         <div class="d-flex flex-column align-items-center py-4">
+                                             <i class="bi bi-calendar2-x fs-1 text-secondary mb-2"></i>
+                                             <p class="mb-1 fw-bold text-dark">No booking enquiries received yet</p>
+                                             <small class="text-muted">Submissions from your customer booking form will appear here.</small>
+                                         </div>
+                                     </td>
+                                 </tr>
                                 {% endfor %}
                             </tbody>
                         </table>

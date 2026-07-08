@@ -123,11 +123,76 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        const postKey = 'blog_draft_' + ('{{ post.id }}' || 'new');
+        const form = document.querySelector('form');
         const titleInput = document.getElementById('id_title');
+        const shortDescInput = document.getElementById('id_short_description');
+        const metaTagsInput = document.getElementById('id_meta_tags');
+        
+        function getEditorData() {
+            if (typeof CKEDITOR !== 'undefined' && CKEDITOR.instances['id_blog_body']) {
+                return CKEDITOR.instances['id_blog_body'].getData();
+            }
+            return '';
+        }
+        
+        function setEditorData(data) {
+            if (typeof CKEDITOR !== 'undefined' && CKEDITOR.instances['id_blog_body']) {
+                CKEDITOR.instances['id_blog_body'].setData(data);
+            }
+        }
+
+        const savedDraft = localStorage.getItem(postKey);
+        if (savedDraft) {
+            try {
+                const draft = JSON.parse(savedDraft);
+                toastr.info(
+                    'We found an unsaved draft. <button id="restore-draft-btn" class="btn btn-sm btn-light font-weight-bold ml-2">Restore Draft</button>',
+                    'Draft Found',
+                    {
+                        timeOut: 15000,
+                        closeButton: true,
+                        tapToDismiss: false,
+                        onShown: function() {
+                            document.getElementById('restore-draft-btn').addEventListener('click', function() {
+                                if (titleInput && draft.title) titleInput.value = draft.title;
+                                if (shortDescInput && draft.short_description) shortDescInput.value = draft.short_description;
+                                if (metaTagsInput && draft.meta_tags) metaTagsInput.value = draft.meta_tags;
+                                if (draft.body) setEditorData(draft.body);
+                                toastr.success('Draft restored.');
+                            });
+                        }
+                    }
+                );
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        setInterval(function() {
+            const draftData = {
+                title: titleInput ? titleInput.value : '',
+                short_description: shortDescInput ? shortDescInput.value : '',
+                meta_tags: metaTagsInput ? metaTagsInput.value : '',
+                body: getEditorData(),
+                timestamp: new Date().getTime()
+            };
+            if (draftData.title || draftData.short_description || draftData.body) {
+                localStorage.setItem(postKey, JSON.stringify(draftData));
+            }
+        }, 10000);
+
+        if (form) {
+            form.addEventListener('submit', function() {
+                localStorage.removeItem(postKey);
+            });
+        }
+
+        const titleInputEl = document.getElementById('id_title');
         const slugInput = document.getElementById('id_slug');
         
-        if (titleInput && slugInput) {
-            titleInput.addEventListener('input', function() {
+        if (titleInputEl && slugInput) {
+            titleInputEl.addEventListener('input', function() {
                 let slug = this.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
                 slugInput.value = slug ? slug + '-{{ post.id }}' : '';
             });

@@ -4,11 +4,13 @@
   <ul class="sidebar-nav p-3" id="sidebar-nav" style="list-style: none; padding-left: 0;">
 
     <div class="text-center mt-2 mb-4 pb-4 border-bottom">
-      {% if global_user_profile and global_user_profile.image %}
-      <img src="{{ global_user_profile.image.url }}" class="rounded-circle shadow-sm border border-2" style="width: 110px; height: 110px; object-fit: cover; border-color: var(--primary-light-border) !important;" alt="Profile Image">
-      {% else %}
-      <img src="{% static 'dashboard/img/default.jpg' %}" class="rounded-circle shadow-sm border border-2" style="width: 110px; height: 110px; object-fit: cover; border-color: var(--primary-light-border) !important;" alt="Default Image">
-      {% endif %}
+      <a href="{% url 'users_profile' request.user.id %}">
+        {% if global_user_profile and global_user_profile.image %}
+        <img src="{{ global_user_profile.image.url }}" class="rounded-circle shadow-sm border border-2" style="width: 110px; height: 110px; object-fit: cover; border-color: var(--primary-light-border) !important; cursor: pointer;" alt="Profile Image">
+        {% else %}
+        <img src="{% static 'dashboard/img/default.jpg' %}" class="rounded-circle shadow-sm border border-2" style="width: 110px; height: 110px; object-fit: cover; border-color: var(--primary-light-border) !important; cursor: pointer;" alt="Default Image">
+        {% endif %}
+      </a>
       
       <h4 class="sidebar-profile-name mt-3 fw-bold mb-1">
         {% if global_user_profile and global_user_profile.name %}{{ global_user_profile.name }}{% else %}{{ request.user.username }}{% endif %}
@@ -19,7 +21,7 @@
         <a href="https://wa.me/#" target="_blank" class="profile-social-btn" title="WhatsApp">
           <i class="bi bi-whatsapp"></i>
         </a>
-        <a href="https://www.facebook.com/share/1DjJnwd1Ly/?mibextid=wwXIfr" class="profile-social-btn" title="Facebook">
+        <a href="https://www.facebook.com/share/1DjJnwd1Ly/?mibextid=wwXIfr" target="_blank" class="profile-social-btn" title="Facebook">
           <i class="bi bi-facebook"></i>
         </a>
         <a href="{% url "home" %}" class="profile-social-btn" title="website">

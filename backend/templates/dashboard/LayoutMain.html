@@ -153,6 +153,85 @@
           }
         });
 
+        $('a[href^="mailto:"], a[href^="tel:"], .copyable').each(function() {
+          const el = $(this);
+          const copyBtn = $('<i class="bi bi-clipboard ms-1 text-muted" style="cursor: pointer; font-size: 0.85rem;" title="Copy"></i>');
+          el.after(copyBtn);
+          copyBtn.on('click', function(e) {
+            e.preventDefault();
+            const text = el.text().trim() || el.attr('href').replace(/(mailto:|tel:)/, '');
+            navigator.clipboard.writeText(text).then(() => {
+              copyBtn.removeClass('bi-clipboard').addClass('bi-clipboard-check text-success');
+              setTimeout(() => { copyBtn.removeClass('bi-clipboard-check text-success').addClass('bi-clipboard'); }, 2000);
+            });
+          });
+        });
+
+        $('.table .btn-outline-danger').attr('title', 'Delete Entry');
+        $('.table .btn-outline-primary').attr('title', 'View Details');
+
+        $('input[type="file"]').each(function() {
+          const input = $(this);
+          if (input.hasClass('form-control-file') || input.hasClass('form-control')) {
+            input.wrap('<div class="file-dropzone-wrapper"></div>');
+            const wrapper = input.parent();
+            wrapper.append('<div class="dropzone-text"><i class="bi bi-cloud-upload fs-3 text-muted"></i><p class="mb-0 text-muted font-weight-bold" style="font-size: 0.85rem;">Click or Drag to Upload</p></div>');
+            input.on('change', function() {
+              const file = this.files[0];
+              if (file && file.type.startsWith('image/')) {
+                let preview = wrapper.find('.file-preview-img');
+                if (!preview.length) {
+                  preview = $('<img class="file-preview-img shadow-sm border">');
+                  wrapper.append(preview);
+                }
+                const reader = new FileReader();
+                reader.onload = function(e) { preview.attr('src', e.target.result); };
+                reader.readAsDataURL(file);
+              }
+            });
+          }
+        });
+
+        $('input[type="checkbox"]').each(function() {
+          const checkbox = $(this);
+          checkbox.parent().addClass('form-switch');
+        });
+
+        $('input[required], input[type="email"]').on('input blur', function() {
+          const input = $(this);
+          if (input.val().trim() === '') {
+            if (input.attr('required')) { input.css('border-color', '#ef4444'); }
+          } else if (input.attr('type') === 'email') {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            input.css('border-color', regex.test(input.val()) ? '#10b981' : '#ef4444');
+          } else {
+            input.css('border-color', '#10b981');
+          }
+        });
+
+        $('.table th').each(function() {
+          const th = $(this);
+          const text = th.text().trim().toLowerCase();
+          if (text !== '#' && text !== 'actions' && text !== 'details' && text !== 'action') {
+            th.css('cursor', 'pointer');
+            th.append(' <i class="bi bi-arrow-down-up text-muted ms-1" style="font-size: 0.75rem;"></i>');
+          }
+        });
+
+        $('.card-header').each(function() {
+          const header = $(this);
+          const card = header.closest('.card');
+          const table = card.find('table');
+          if (table.length) {
+            const denseToggle = $('<div class="form-check form-switch d-inline-block ms-auto"><input class="form-check-input dense-toggle-input" type="checkbox" id="denseToggle"><label class="form-check-label text-white font-weight-bold ms-1" style="font-size: 0.8rem; cursor:pointer;" for="denseToggle">Compact</label></div>');
+            header.append(denseToggle);
+            denseToggle.find('.dense-toggle-input').on('change', function() {
+              if (this.checked) { table.addClass('table-dense'); }
+              else { table.removeClass('table-dense'); }
+            });
+          }
+        });
+
         // --- 1. Client-side Table Search Auto-wiring ---
         // Automatically finds all text inputs that look like searches and binds filtering
         $('input[type="text"]').each(function() {
