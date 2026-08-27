@@ -2,17 +2,21 @@
 
 # Waves Laundry
 
-### Full-Stack Django Web Application
+**Full-Stack Django Web Application**
 
-*A modern customer-facing website paired with a powerful administrative dashboard — all in one seamless Django project.*
+A modern customer-facing website paired with a powerful administrative dashboard — all in one seamless Django project.
 
 </div>
+
+> **Note:** This codebase has been migrated to a production-standard setup.
 
 ---
 
 ## Overview
 
-**Waves Laundry** provides customers with an intuitive online experience while giving administrators full control over website content, blogs, enquiries, media assets, and other business operations — all through a secure, easy-to-use dashboard.
+**Waves Laundry** gives customers an intuitive online experience while giving administrators full control over website content, blogs, enquiries, media assets, and other business operations — all through a secure, easy-to-use dashboard.
+
+**[View Live Website](https://waveslaundry.ae/)**
 
 ---
 
@@ -23,31 +27,29 @@
 <td valign="top" width="50%">
 
 ### Public Website
-- Responsive and modern UI
+- Responsive, modern UI
 - Home, About, Services, Booking, Contact & Location pages
-- Dynamic Blog System
-- Dynamic Page Content
-- Contact Enquiry Form
-- Service Booking Form
-- SEO Friendly Pages
-- Image Gallery
+- Dynamic blog system
+- Dynamic page content
+- Contact enquiry form
+- Service booking form
+- SEO-friendly pages
+- Image gallery
 
 </td>
 <td valign="top" width="50%">
 
 ### Admin Dashboard
-- Secure Authentication
-- Dashboard Analytics
-- Blog Management
-- Blog Category Management
-- Page Content Management
-- Gallery Management
-- File Manager
-- User & Permission Management
-- Contact Enquiry Management
-- Service Enquiry Management
-- Rich Text Editing (CKEditor)
-- SEO Management
+- Secure authentication
+- Dashboard analytics
+- Blog & category management
+- Page content management
+- Gallery management
+- File manager
+- User & permission management
+- Contact & service enquiry management
+- Rich text editing (CKEditor)
+- SEO management
 
 </td>
 </tr>
@@ -55,7 +57,7 @@
 
 ---
 
-## Technology Stack
+## Tech Stack
 
 | Layer | Technologies |
 |---|---|
@@ -69,12 +71,10 @@
 
 ```text
 backend/
-│
 ├── apps/
 │   ├── dashboard/      # Admin dashboard app
 │   └── website/        # Public-facing website app
-│
-├── config/              # Project settings & configuration
+├── config/              # Settings (base / dev / prod) & configuration
 ├── static/               # Static assets (CSS, JS, images)
 ├── templates/            # HTML templates
 └── manage.py
@@ -82,35 +82,18 @@ backend/
 
 ---
 
-## Core Modules
-
-| | | |
-|---|---|---|
-| Website | Dashboard | Blog Management |
-| Page Management | Gallery | File Manager |
-| User Management | User Groups & Permissions | Contact Enquiries |
-| Service Enquiries | Authentication | |
-
----
-
 ## Highlights
 
-- Single Django Project
-- Modular App Architecture
-- Dynamic Content Management
-- Rich Text Editing
-- SEO Optimized
-- Media Management
-- Responsive Design
-- Secure Authentication
-- Production-Oriented Structure
+- Single Django project, modular app architecture
+- Production-standard settings split & environment-driven config
+- Dynamic content management with rich text editing
+- SEO optimized & media managed
+- Responsive design, secure authentication
 
 ---
-
-## Author
 
 <div align="center">
 
-**lowdevco**
+Built by **lowdevco**
 
 </div>
